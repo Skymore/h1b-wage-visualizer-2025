@@ -16,6 +16,11 @@
         "area": "Area",
         "records_found": "{count} records found",
         "show_all": "Show All ({count} more)",
-        "show_less": "Show Less"
+        "show_less": "Show Less",
+        "level_2_annual_wage": "Level 2 Annual Wage",
+        "high": "High",
+        "med_high": "Med-High",
+        "medium": "Medium",
+        "low": "Low"
     }
 }

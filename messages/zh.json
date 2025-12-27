@@ -16,6 +16,11 @@
         "area": "地区",
         "records_found": "{count} 条记录",
         "show_all": "显示全部 ({count} 条更多)",
-        "show_less": "收起"
+        "show_less": "收起",
+        "level_2_annual_wage": "Level 2 年薪",
+        "high": "高",
+        "med_high": "中高",
+        "medium": "中",
+        "low": "低"
     }
 }

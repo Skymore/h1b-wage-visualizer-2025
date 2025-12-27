@@ -99,6 +99,22 @@ export default function Home() {
     return filtered;
   }, [wageData, searchQuery, selectedState, areaMap]);
 
+  // Calculate Min/Max wages for consistent coloring (using full dataset)
+  const wageScale = useMemo(() => {
+    if (!wageData || wageData.length === 0) return { min: 0, max: 0 };
+    let min = Infinity;
+    let max = -Infinity;
+    wageData.forEach(w => {
+      // w.l2 is hourly, convert to annual approx for bounds or keep hourly.
+      // Let's use hourly since that's what's in data, but map will likely show relative.
+      if (w.l2 > 0) { // filter out zero
+        if (w.l2 < min) min = w.l2;
+        if (w.l2 > max) max = w.l2;
+      }
+    });
+    return { min: min === Infinity ? 0 : min, max: max === -Infinity ? 0 : max };
+  }, [wageData]);
+
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 space-y-6">
       <header className="w-full max-w-7xl flex justify-end items-center py-4 px-4 space-x-2">
@@ -141,7 +157,7 @@ export default function Home() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
         <div className="w-full">
-          <MapView wageData={filteredWageData} areas={areas} />
+          <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} />
         </div>
 
         <div className="w-full">

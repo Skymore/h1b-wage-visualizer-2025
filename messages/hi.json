@@ -16,6 +16,11 @@
         "area": "क्षेत्र",
         "records_found": "{count} रिकॉर्ड मिले",
         "show_all": "सभी दिखाएं ({count} और)",
-        "show_less": "कम दिखाएं"
+        "show_less": "कम दिखाएं",
+        "level_2_annual_wage": "स्तर 2 वार्षिक वेतन",
+        "high": "उच्च",
+        "med_high": "मध्यम-उच्च",
+        "medium": "मध्यम",
+        "low": "कम"
     }
 }

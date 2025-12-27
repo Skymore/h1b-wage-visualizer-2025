@@ -16,6 +16,11 @@
         "area": "Gebiet",
         "records_found": "{count} Datensätze gefunden",
         "show_all": "Alle anzeigen ({count} mehr)",
-        "show_less": "Weniger anzeigen"
+        "show_less": "Weniger anzeigen",
+        "level_2_annual_wage": "Level 2 Jahresgehalt",
+        "high": "Hoch",
+        "med_high": "Mittel-Hoch",
+        "medium": "Mittel",
+        "low": "Niedrig"
     }
 }

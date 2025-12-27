@@ -144,11 +144,11 @@ export function WageDashboard({
                         <TableBody>
                             {displayData.map((row) => (
                                 <TableRow key={row.area_id}>
-                                    <TableCell className="font-medium text-sm">{areaMap.get(row.area_id) || row.area_id}</TableCell>
-                                    <TableCell><WageCell hourly={row.l1} /></TableCell>
-                                    <TableCell className="font-bold bg-muted/20"><WageCell hourly={row.l2} /></TableCell>
-                                    <TableCell><WageCell hourly={row.l3} /></TableCell>
-                                    <TableCell><WageCell hourly={row.l4} /></TableCell>
+                                    <TableCell className={`font-medium text-sm ${sortKey === 'area' ? "font-bold bg-muted/20" : ""}`}>{areaMap.get(row.area_id) || row.area_id}</TableCell>
+                                    <TableCell className={sortKey === 'l1' ? "font-bold bg-muted/20" : ""}><WageCell hourly={row.l1} /></TableCell>
+                                    <TableCell className={sortKey === 'l2' ? "font-bold bg-muted/20" : ""}><WageCell hourly={row.l2} /></TableCell>
+                                    <TableCell className={sortKey === 'l3' ? "font-bold bg-muted/20" : ""}><WageCell hourly={row.l3} /></TableCell>
+                                    <TableCell className={sortKey === 'l4' ? "font-bold bg-muted/20" : ""}><WageCell hourly={row.l4} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

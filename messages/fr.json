@@ -16,6 +16,11 @@
         "area": "Zone",
         "records_found": "{count} enregistrements trouvés",
         "show_all": "Tout afficher ({count} de plus)",
-        "show_less": "Afficher moins"
+        "show_less": "Montrer moins",
+        "level_2_annual_wage": "Salaire Annuel Niveau 2",
+        "high": "Élevé",
+        "med_high": "Moy-Élevé",
+        "medium": "Moyen",
+        "low": "Faible"
     }
 }
