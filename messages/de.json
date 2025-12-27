@@ -1,0 +1,21 @@
+{
+    "HomePage": {
+        "title": "H1B-Gehaltsvisualisierung",
+        "subtitle": "Entdecken Sie H1B-Gehaltsdaten 2025-2026 nach Beruf und Standort",
+        "search_placeholder": "Beruf suchen...",
+        "map_view": "Kartenansicht",
+        "list_view": "Listenansicht",
+        "wages_for": "Gehälter für {soc} in {area}",
+        "search_locations": "Standorte filtern...",
+        "level_1": "Level 1",
+        "level_2": "Level 2",
+        "level_3": "Level 3",
+        "level_4": "Level 4",
+        "hourly": "Stündlich",
+        "yearly": "Jährlich",
+        "area": "Gebiet",
+        "records_found": "{count} Datensätze gefunden",
+        "show_all": "Alle anzeigen ({count} mehr)",
+        "show_less": "Weniger anzeigen"
+    }
+}

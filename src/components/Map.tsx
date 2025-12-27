@@ -8,14 +8,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 type WageData = { area_id: string, l1: number, l2: number, l3: number, l4: number };
+type Area = { id: string, name: string, lat?: number, lng?: number };
 
 export default function MapView({
-    wageData
+    wageData,
+    areas = []
 }: {
-    wageData?: WageData[]
+    wageData?: WageData[],
+    areas?: Area[]
 }) {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<mapboxgl.Map | null>(null);
+    const markers = useRef<mapboxgl.Marker[]>([]);
     const [lng, setLng] = useState(-95.7129);
     const [lat, setLat] = useState(37.0902);
     const [zoom, setZoom] = useState(3);
@@ -23,7 +27,7 @@ export default function MapView({
     useEffect(() => {
         if (map.current || !mapContainer.current) return;
 
-        mapboxgl.accessToken = MAPBOX_TOKEN;
+        mapboxgl.accessToken = MAPBOX_TOKEN || "";
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -43,6 +47,47 @@ export default function MapView({
         });
 
     }, []);
+
+    // Update markers when wageData or areas change
+    useEffect(() => {
+        if (!map.current || !wageData || !areas) return;
+
+        // Clear existing markers
+        markers.current.forEach(marker => marker.remove());
+        markers.current = [];
+
+        // Create a lookup for areas
+        const areaMap = new Map(areas.map(a => [a.id, a]));
+
+        wageData.forEach(wage => {
+            const area = areaMap.get(wage.area_id);
+            if (area && area.lat && area.lng) {
+                // Create custom marker element if needed, or use default
+                const popup = new mapboxgl.Popup({ offset: 25 })
+                    .setHTML(`
+                        <div class="p-2">
+                            <h3 class="font-bold text-sm">${area.name}</h3>
+                            <div class="text-xs pt-1">
+                                <div class="grid grid-cols-2 gap-x-2">
+                                    <span>Level 1:</span> <span class="font-mono text-right">$${Math.round(wage.l1 * 2080).toLocaleString()}</span>
+                                    <span>Level 2:</span> <span class="font-mono text-right">$${Math.round(wage.l2 * 2080).toLocaleString()}</span>
+                                    <span>Level 3:</span> <span class="font-mono text-right">$${Math.round(wage.l3 * 2080).toLocaleString()}</span>
+                                    <span>Level 4:</span> <span class="font-mono text-right">$${Math.round(wage.l4 * 2080).toLocaleString()}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                const marker = new mapboxgl.Marker({ color: '#0F172A', scale: 0.6 })
+                    .setLngLat([area.lng, area.lat])
+                    .setPopup(popup)
+                    .addTo(map.current!);
+
+                markers.current.push(marker);
+            }
+        });
+
+    }, [wageData, areas]);
 
     return (
         <div className="h-[600px] w-full rounded-md border overflow-hidden relative">

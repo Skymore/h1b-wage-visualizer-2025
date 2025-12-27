@@ -1,0 +1,21 @@
+{
+    "HomePage": {
+        "title": "H1B वेतन दृश्यांकन",
+        "subtitle": "व्यवसाय और स्थान के आधार पर 2025-2026 H1B वेतन डेटा देखें",
+        "search_placeholder": "व्यवसाय खोजें...",
+        "map_view": "मानचित्र दृश्य",
+        "list_view": "सूची दृश्य",
+        "wages_for": "{area} में {soc} के लिए वेतन",
+        "search_locations": "स्थान फ़िल्टर करें...",
+        "level_1": "Level 1",
+        "level_2": "Level 2",
+        "level_3": "Level 3",
+        "level_4": "Level 4",
+        "hourly": "प्रति घंटा",
+        "yearly": "वार्षिक",
+        "area": "क्षेत्र",
+        "records_found": "{count} रिकॉर्ड मिले",
+        "show_all": "सभी दिखाएं ({count} और)",
+        "show_less": "कम दिखाएं"
+    }
+}

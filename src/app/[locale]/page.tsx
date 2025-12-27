@@ -1,13 +1,14 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Search } from '@/components/Search';
 import dynamic from 'next/dynamic';
 import { WageDashboard } from '@/components/WageDashboard';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { Input } from "@/components/ui/input";
 
 const MapView = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">Loading Map...</div>,
@@ -20,12 +21,18 @@ export default function Home() {
   const [wageData, setWageData] = useState<any[]>([]);
   const [areas, setAreas] = useState<any[]>([]);
 
+  // Filters
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedState, setSelectedState] = useState('ALL');
+
   // Fetch areas on mount
   useEffect(() => {
     fetch('/data/areas.json')
       .then(res => res.json())
       .then(setAreas);
   }, []);
+
+  const [selectedSocTitle, setSelectedSocTitle] = useState<string>('');
 
   // Fetch wages when SOC is selected
   useEffect(() => {
@@ -34,8 +41,63 @@ export default function Home() {
         .then(res => res.json())
         .then(data => setWageData(data.wages))
         .catch(err => console.error("Failed to load wages", err));
+
+      // Also fetch occupation title if not available differently, or we can get it from search component but that is sibling.
+      // We can fetch occupations.json again or just iterate if we had it. 
+      // Actually Search component fetches occupations.json. Let's lift that up or fetch here.
+      // Easiest is to fetch occupations.json once in parent.
     }
   }, [selectedSoc]);
+
+  const [occupations, setOccupations] = useState<any[]>([]);
+  useEffect(() => {
+    fetch('/data/occupations.json')
+      .then(res => res.json())
+      .then(data => {
+        setOccupations(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedSoc && occupations.length > 0) {
+      const occ = occupations.find(o => o.code === selectedSoc);
+      if (occ) setSelectedSocTitle(occ.title);
+    }
+  }, [selectedSoc, occupations]);
+
+  // Derived State: Filtered Wages
+  const uniqueStates = useMemo(() => {
+    const states = new Set(areas.map(a => a.state));
+    return Array.from(states).sort();
+  }, [areas]);
+
+  const areaMap = useMemo(() => new Map(areas.map(a => [a.id, a])), [areas]);
+
+  const filteredWageData = useMemo(() => {
+    if (!wageData) return [];
+
+    let filtered = wageData;
+
+    // 1. Filter by Search Query (Area Name)
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(row => {
+        const area = areaMap.get(row.area_id);
+        const name = area ? `${area.name}, ${area.state}` : row.area_id;
+        return name.toLowerCase().includes(query);
+      });
+    }
+
+    // 2. Filter by State
+    if (selectedState !== 'ALL') {
+      filtered = filtered.filter(row => {
+        const area = areaMap.get(row.area_id);
+        return area && area.state === selectedState;
+      });
+    }
+
+    return filtered;
+  }, [wageData, searchQuery, selectedState, areaMap]);
 
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 space-y-6">
@@ -53,16 +115,41 @@ export default function Home() {
         <Search onSelectOccupation={setSelectedSoc} />
       </div>
 
+      {selectedSoc && (
+        <div className="w-full max-w-7xl bg-card border rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center">
+          <Input
+            placeholder={t('search_locations')}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="max-w-sm"
+          />
+          <select
+            className="flex h-10 w-full md:w-[200px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            value={selectedState}
+            onChange={(e) => setSelectedState(e.target.value)}
+          >
+            <option value="ALL">All States</option>
+            {uniqueStates.map(state => (
+              <option key={state} value={state}>{state}</option>
+            ))}
+          </select>
+          <div className="text-sm text-muted-foreground ml-auto">
+            Showing {filteredWageData.length} locations
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
         <div className="w-full">
-          <MapView wageData={wageData} />
+          <MapView wageData={filteredWageData} areas={areas} />
         </div>
 
         <div className="w-full">
           {selectedSoc && (
             <WageDashboard
               socCode={selectedSoc}
-              wageData={wageData}
+              socTitle={selectedSocTitle}
+              wageData={filteredWageData}
               areas={areas}
             />
           )}

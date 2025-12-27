@@ -17,6 +17,9 @@ const languages = [
     { code: "ko", label: "한국어" },
     { code: "ja", label: "日本語" },
     { code: "es", label: "Español" },
+    { code: "hi", label: "हिन्दी" },
+    { code: "fr", label: "Français" },
+    { code: "de", label: "Deutsch" },
 ]
 
 export function LanguageSelector() {

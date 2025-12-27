@@ -2,892 +2,1248 @@
   {
     "id": "10180",
     "name": "Abilene, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 32.445602,
+    "lng": -99.747894
   },
   {
     "id": "10380",
     "name": "Aguadilla, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.427436,
+    "lng": -67.154134
   },
   {
     "id": "10420",
     "name": "Akron, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 41.080881,
+    "lng": -81.517567
   },
   {
     "id": "200006",
     "name": "Alaska nonmetropolitan area",
-    "state": "AK"
+    "state": "AK",
+    "lat": 57.121296,
+    "lng": -170.28142
   },
   {
     "id": "10580",
     "name": "Albany-Schenectady-Troy, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 42.649866,
+    "lng": -73.752739
   },
   {
     "id": "10500",
     "name": "Albany, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 31.576947,
+    "lng": -84.153665
   },
   {
     "id": "10540",
     "name": "Albany, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.636509,
+    "lng": -123.106013
   },
   {
     "id": "10740",
     "name": "Albuquerque, NM",
-    "state": "NM"
+    "state": "NM",
+    "lat": 35.088192,
+    "lng": -106.650945
   },
   {
     "id": "10780",
     "name": "Alexandria, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 31.309265,
+    "lng": -92.44593
   },
   {
     "id": "10900",
     "name": "Allentown-Bethlehem-Easton, PA-NJ",
-    "state": "NJ"
+    "state": "NJ",
+    "lat": 40.602245,
+    "lng": -75.471776
   },
   {
     "id": "11020",
     "name": "Altoona, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.515682,
+    "lng": -78.402765
   },
   {
     "id": "11100",
     "name": "Amarillo, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 35.207498,
+    "lng": -101.835785
   },
   {
     "id": "11180",
     "name": "Ames, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 42.026896,
+    "lng": -93.615413
   },
   {
     "id": "11200",
     "name": "Amherst Town-Northampton, MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.375831,
+    "lng": -72.519849
   },
   {
     "id": "11260",
     "name": "Anchorage, AK",
-    "state": "AK"
+    "state": "AK",
+    "lat": 61.216563,
+    "lng": -149.893442
   },
   {
     "id": "11460",
     "name": "Ann Arbor, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.281424,
+    "lng": -83.748499
   },
   {
     "id": "11500",
     "name": "Anniston-Oxford, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 33.659162,
+    "lng": -85.82977
   },
   {
     "id": "11540",
     "name": "Appleton, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 44.26182,
+    "lng": -88.410792
   },
   {
     "id": "11640",
     "name": "Arecibo, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.470171,
+    "lng": -66.718161
   },
   {
     "id": "400001",
     "name": "Arizona nonmetropolitan area",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 34.220261,
+    "lng": -111.422128
   },
   {
     "id": "11700",
     "name": "Asheville, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.595523,
+    "lng": -82.551925
   },
   {
     "id": "12020",
     "name": "Athens-Clarke County, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 33.957715,
+    "lng": -83.37524
   },
   {
     "id": "12060",
     "name": "Atlanta-Sandy Springs-Roswell, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 33.921597,
+    "lng": -84.379119
   },
   {
     "id": "12100",
     "name": "Atlantic City-Hammonton, NJ",
-    "state": "NJ"
+    "state": "NJ",
+    "lat": 39.364148,
+    "lng": -74.423028
   },
   {
     "id": "12220",
     "name": "Auburn-Opelika, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.60655,
+    "lng": -85.481729
   },
   {
     "id": "12260",
     "name": "Augusta-Richmond County, GA-SC",
-    "state": "GA"
+    "state": "GA",
+    "lat": 33.475142,
+    "lng": -81.965412
   },
   {
     "id": "12420",
     "name": "Austin-Round Rock-San Marcos, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 29.883057,
+    "lng": -97.941453
   },
   {
     "id": "12540",
     "name": "Bakersfield-Delano, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.374337,
+    "lng": -119.018926
   },
   {
     "id": "3200006",
     "name": "Balance of Nevada nonmetropolitan area",
-    "state": "NV"
+    "state": "NV",
+    "lat": 40.07112,
+    "lng": -116.598822
   },
   {
     "id": "12580",
     "name": "Baltimore-Columbia-Towson, MD",
-    "state": "MD"
+    "state": "MD",
+    "lat": 39.289643,
+    "lng": -76.612299
   },
   {
     "id": "12620",
     "name": "Bangor, ME",
-    "state": "ME"
+    "state": "ME",
+    "lat": 44.801616,
+    "lng": -68.771305
   },
   {
     "id": "12700",
     "name": "Barnstable Town, MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 41.702096,
+    "lng": -70.305331
   },
   {
     "id": "12940",
     "name": "Baton Rouge, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.447224,
+    "lng": -91.186948
   },
   {
     "id": "12980",
     "name": "Battle Creek, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.316616,
+    "lng": -85.179956
   },
   {
     "id": "13020",
     "name": "Bay City, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 43.599077,
+    "lng": -83.887653
   },
   {
     "id": "13140",
     "name": "Beaumont-Port Arthur, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 29.87163,
+    "lng": -93.933265
   },
   {
     "id": "13220",
     "name": "Beckley, WV",
-    "state": "WV"
+    "state": "WV",
+    "lat": 37.777902,
+    "lng": -81.187876
   },
   {
     "id": "13380",
     "name": "Bellingham, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 48.750442,
+    "lng": -122.480222
   },
   {
     "id": "13460",
     "name": "Bend, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.059025,
+    "lng": -121.31226
   },
   {
     "id": "13740",
     "name": "Billings, MT",
-    "state": "MT"
+    "state": "MT",
+    "lat": 45.783531,
+    "lng": -108.505384
   },
   {
     "id": "13780",
     "name": "Binghamton, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 42.097198,
+    "lng": -75.912512
   },
   {
     "id": "13820",
     "name": "Birmingham, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 33.522217,
+    "lng": -86.809079
   },
   {
     "id": "13900",
     "name": "Bismarck, ND",
-    "state": "ND"
+    "state": "ND",
+    "lat": 46.80752,
+    "lng": -100.784617
   },
   {
     "id": "13980",
     "name": "Blacksburg-Christiansburg-Radford, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.230661,
+    "lng": -80.415355
   },
   {
     "id": "14010",
     "name": "Bloomington, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 40.479602,
+    "lng": -88.992658
   },
   {
     "id": "14020",
     "name": "Bloomington, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.166596,
+    "lng": -86.534885
   },
   {
     "id": "14260",
     "name": "Boise City, ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 43.615045,
+    "lng": -116.202327
   },
   {
     "id": "4800005",
     "name": "Border Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 35.671689,
+    "lng": -101.389899
   },
   {
     "id": "14460",
     "name": "Boston-Cambridge-Newton, MA-NH",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.35888,
+    "lng": -71.056804
   },
   {
     "id": "14500",
     "name": "Boulder, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 40.01816,
+    "lng": -105.278683
   },
   {
     "id": "14540",
     "name": "Bowling Green, KY",
-    "state": "KY"
+    "state": "KY",
+    "lat": 36.993515,
+    "lng": -86.4421
   },
   {
     "id": "14580",
     "name": "Bozeman, MT",
-    "state": "MT"
+    "state": "MT",
+    "lat": 45.679303,
+    "lng": -111.035732
   },
   {
     "id": "14740",
     "name": "Bremerton-Silverdale-Port Orchard, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 47.537955,
+    "lng": -122.636303
   },
   {
     "id": "14860",
     "name": "Bridgeport-Stamford-Danbury, CT",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.393712,
+    "lng": -73.451483
   },
   {
     "id": "15180",
     "name": "Brownsville-Harlingen, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 25.901069,
+    "lng": -97.498154
   },
   {
     "id": "15260",
     "name": "Brunswick-St. Simons, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 31.150593,
+    "lng": -81.369987
   },
   {
     "id": "15380",
     "name": "Buffalo-Cheektowaga, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 42.886791,
+    "lng": -78.878646
   },
   {
     "id": "15540",
     "name": "Burlington-South Burlington, VT",
-    "state": "VT"
+    "state": "VT",
+    "lat": 44.466948,
+    "lng": -73.171339
   },
   {
     "id": "15500",
     "name": "Burlington, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 36.093814,
+    "lng": -79.435184
   },
   {
     "id": "15940",
     "name": "Canton-Massillon, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.798812,
+    "lng": -81.376542
   },
   {
     "id": "15980",
     "name": "Cape Coral-Fort Myers, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 26.641868,
+    "lng": -81.871675
   },
   {
     "id": "16020",
     "name": "Cape Girardeau, MO-IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 37.306008,
+    "lng": -89.519215
   },
   {
     "id": "3600001",
     "name": "Capital/Northern New York nonmetropolitan area",
-    "state": "NY"
+    "state": "NY",
+    "lat": 40.712749,
+    "lng": -74.005994
   },
   {
     "id": "16180",
     "name": "Carson City, NV",
-    "state": "NV"
+    "state": "NV",
+    "lat": 39.164579,
+    "lng": -119.766995
   },
   {
     "id": "16220",
     "name": "Casper, WY",
-    "state": "WY"
+    "state": "WY",
+    "lat": 42.850082,
+    "lng": -106.325188
   },
   {
     "id": "16300",
     "name": "Cedar Rapids, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 41.977647,
+    "lng": -91.665826
   },
   {
     "id": "3600006",
     "name": "Central East New York nonmetropolitan area",
-    "state": "NY"
+    "state": "NY",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "1800002",
     "name": "Central Indiana nonmetropolitan area",
-    "state": "IN"
+    "state": "IN",
+    "lat": 38.099639,
+    "lng": -86.15872
   },
   {
     "id": "2100003",
     "name": "Central Kentucky nonmetropolitan area",
-    "state": "KY"
+    "state": "KY",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "2200002",
     "name": "Central Louisiana nonmetropolitan area",
-    "state": "LA"
+    "state": "LA",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "2900001",
     "name": "Central Missouri nonmetropolitan area",
-    "state": "MO"
+    "state": "MO",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "3300002",
     "name": "Central New Hampshire nonmetropolitan area",
-    "state": "NH"
+    "state": "NH",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "3700002",
     "name": "Central North Carolina nonmetropolitan area",
-    "state": "NC"
+    "state": "NC",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "4100007",
     "name": "Central Oregon nonmetropolitan area",
-    "state": "OR"
+    "state": "OR",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "4200003",
     "name": "Central Pennsylvania nonmetropolitan area",
-    "state": "PA"
+    "state": "PA",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "16540",
     "name": "Chambersburg, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 39.937417,
+    "lng": -77.661222
   },
   {
     "id": "16580",
     "name": "Champaign-Urbana, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 40.112444,
+    "lng": -88.207412
   },
   {
     "id": "16700",
     "name": "Charleston-North Charleston, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 32.853882,
+    "lng": -79.973451
   },
   {
     "id": "16620",
     "name": "Charleston, WV",
-    "state": "WV"
+    "state": "WV",
+    "lat": 38.351704,
+    "lng": -81.634029
   },
   {
     "id": "16740",
     "name": "Charlotte-Concord-Gastonia, NC-SC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.227207,
+    "lng": -80.84309
   },
   {
     "id": "16820",
     "name": "Charlottesville, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 38.030395,
+    "lng": -78.477477
   },
   {
     "id": "16860",
     "name": "Chattanooga, TN-GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 35.045767,
+    "lng": -85.308281
   },
   {
     "id": "16940",
     "name": "Cheyenne, WY",
-    "state": "WY"
+    "state": "WY",
+    "lat": 41.135453,
+    "lng": -104.819883
   },
   {
     "id": "16980",
     "name": "Chicago-Naperville-Elgin, IL-IN",
-    "state": "IL"
+    "state": "IL",
+    "lat": 41.772977,
+    "lng": -88.14955
   },
   {
     "id": "17020",
     "name": "Chico, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 39.729022,
+    "lng": -121.8405
   },
   {
     "id": "17140",
     "name": "Cincinnati, OH-KY-IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.102438,
+    "lng": -84.513301
   },
   {
     "id": "17300",
     "name": "Clarksville, TN-KY",
-    "state": "KY"
+    "state": "KY",
+    "lat": 36.527788,
+    "lng": -87.357849
   },
   {
     "id": "17410",
     "name": "Cleveland, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 41.501377,
+    "lng": -81.690317
   },
   {
     "id": "17420",
     "name": "Cleveland, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 35.159226,
+    "lng": -84.876003
   },
   {
     "id": "4100006",
     "name": "Coast Oregon nonmetropolitan area",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.032884,
+    "lng": -120.281412
   },
   {
     "id": "4800006",
     "name": "Coastal Plains Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 33.188706,
+    "lng": -102.828154
   },
   {
     "id": "17660",
     "name": "Coeur d'Alene, ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 47.673475,
+    "lng": -116.781214
   },
   {
     "id": "17780",
     "name": "College Station-Bryan, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 30.618389,
+    "lng": -96.345485
   },
   {
     "id": "17820",
     "name": "Colorado Springs, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 38.83242,
+    "lng": -104.821879
   },
   {
     "id": "17860",
     "name": "Columbia, MO",
-    "state": "MO"
+    "state": "MO",
+    "lat": 38.95155,
+    "lng": -92.328625
   },
   {
     "id": "17900",
     "name": "Columbia, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 34.001312,
+    "lng": -81.033552
   },
   {
     "id": "17980",
     "name": "Columbus, GA-AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.466688,
+    "lng": -84.990401
   },
   {
     "id": "18020",
     "name": "Columbus, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.201445,
+    "lng": -85.919672
   },
   {
     "id": "18140",
     "name": "Columbus, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 39.962232,
+    "lng": -83.000642
   },
   {
     "id": "900001",
     "name": "Connecticut nonmetropolitan area",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.626142,
+    "lng": -72.726243
   },
   {
     "id": "18580",
     "name": "Corpus Christi, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 27.763557,
+    "lng": -97.403291
   },
   {
     "id": "18700",
     "name": "Corvallis, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.564639,
+    "lng": -123.261974
   },
   {
     "id": "18880",
     "name": "Crestview-Fort Walton Beach-Destin, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 30.404651,
+    "lng": -86.6193
   },
   {
     "id": "19100",
     "name": "Dallas-Fort Worth-Arlington, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 32.753521,
+    "lng": -97.331527
   },
   {
     "id": "19140",
     "name": "Dalton, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 34.771515,
+    "lng": -84.969133
   },
   {
     "id": "19300",
     "name": "Daphne-Fairhope-Foley, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 30.603909,
+    "lng": -87.902736
   },
   {
     "id": "19340",
     "name": "Davenport-Moline-Rock Island, IA-IL",
-    "state": "IA"
+    "state": "IA",
+    "lat": 41.511072,
+    "lng": -90.574639
   },
   {
     "id": "19430",
     "name": "Dayton-Kettering-Beavercreek, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 39.758781,
+    "lng": -84.19637
   },
   {
     "id": "19460",
     "name": "Decatur, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 34.606109,
+    "lng": -86.984928
   },
   {
     "id": "19500",
     "name": "Decatur, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 39.841415,
+    "lng": -88.955898
   },
   {
     "id": "19660",
     "name": "Deltona-Daytona Beach-Ormond Beach, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 29.211498,
+    "lng": -81.021183
   },
   {
     "id": "19740",
     "name": "Denver-Aurora-Centennial, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 39.741681,
+    "lng": -104.986109
   },
   {
     "id": "19780",
     "name": "Des Moines-West Des Moines, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 41.567408,
+    "lng": -93.75846
   },
   {
     "id": "19820",
     "name": "Detroit-Warren-Dearborn, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.331397,
+    "lng": -83.046217
   },
   {
     "id": "20020",
     "name": "Dothan, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 31.225183,
+    "lng": -85.393578
   },
   {
     "id": "20100",
     "name": "Dover, DE",
-    "state": "DE"
+    "state": "DE",
+    "lat": 39.158071,
+    "lng": -75.52442
   },
   {
     "id": "20220",
     "name": "Dubuque, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 42.502268,
+    "lng": -90.665504
   },
   {
     "id": "20260",
     "name": "Duluth, MN-WI",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.771982,
+    "lng": -92.125576
   },
   {
     "id": "20500",
     "name": "Durham-Chapel Hill, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.913146,
+    "lng": -79.055784
   },
   {
     "id": "20580",
     "name": "Eagle Pass, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 28.708347,
+    "lng": -100.504054
   },
   {
     "id": "500002",
     "name": "East Arkansas nonmetropolitan area",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.096885,
+    "lng": -92.420296
   },
   {
     "id": "1700003",
     "name": "East Central Illinois nonmetropolitan area",
-    "state": "IL"
+    "state": "IL",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "1300003",
     "name": "East Georgia nonmetropolitan area",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.330571,
+    "lng": -83.257256
   },
   {
     "id": "2100004",
     "name": "East Kentucky nonmetropolitan area",
-    "state": "KY"
+    "state": "KY",
+    "lat": 37.531088,
+    "lng": -85.289397
   },
   {
     "id": "3800007",
     "name": "East North Dakota nonmetropolitan area",
-    "state": "ND"
+    "state": "ND",
+    "lat": 47.127128,
+    "lng": -100.162967
   },
   {
     "id": "4600002",
     "name": "East South Dakota nonmetropolitan area",
-    "state": "SD"
+    "state": "SD",
+    "lat": 44.868886,
+    "lng": -100.149202
   },
   {
     "id": "4700004",
     "name": "East Tennessee nonmetropolitan area",
-    "state": "TN"
+    "state": "TN",
+    "lat": 35.988595,
+    "lng": -85.982335
   },
   {
     "id": "3000006",
     "name": "East-Central Montana nonmetropolitan area",
-    "state": "MT"
+    "state": "MT",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "800001",
     "name": "Eastern and Southern Colorado nonmetropolitan area",
-    "state": "CO"
+    "state": "CO",
+    "lat": 39.190246,
+    "lng": -105.604997
   },
   {
     "id": "3500007",
     "name": "Eastern New Mexico nonmetropolitan area",
-    "state": "NM"
+    "state": "NM",
+    "lat": 34.324856,
+    "lng": -105.998351
   },
   {
     "id": "3700001",
     "name": "Eastern North Carolina nonmetropolitan area",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.556885,
+    "lng": -79.389684
   },
   {
     "id": "3900003",
     "name": "Eastern Ohio nonmetropolitan area",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.41742,
+    "lng": -82.711449
   },
   {
     "id": "4100008",
     "name": "Eastern Oregon nonmetropolitan area",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.032884,
+    "lng": -120.281412
   },
   {
     "id": "4800003",
     "name": "Eastern Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.803973,
+    "lng": -98.822319
   },
   {
     "id": "600006",
     "name": "Eastern Sierra-Mother Lode Region of California nonmetropolitan area",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.7952,
+    "lng": -122.3939
   },
   {
     "id": "5300007",
     "name": "Eastern Washington nonmetropolitan area",
-    "state": "WA"
+    "state": "WA",
+    "lat": 38.90253,
+    "lng": -77.039386
   },
   {
     "id": "5600007",
     "name": "Eastern Wyoming nonmetropolitan area",
-    "state": "WY"
+    "state": "WY",
+    "lat": 42.913514,
+    "lng": -85.70526
   },
   {
     "id": "20740",
     "name": "Eau Claire, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 44.810641,
+    "lng": -91.497655
   },
   {
     "id": "20940",
     "name": "El Centro, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.791771,
+    "lng": -115.563565
   },
   {
     "id": "21340",
     "name": "El Paso, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.759959,
+    "lng": -106.485407
   },
   {
     "id": "21060",
     "name": "Elizabethtown, KY",
-    "state": "KY"
+    "state": "KY",
+    "lat": 37.693861,
+    "lng": -85.859442
   },
   {
     "id": "21140",
     "name": "Elkhart-Goshen, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 41.586442,
+    "lng": -85.836044
   },
   {
     "id": "21300",
     "name": "Elmira, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 42.09152,
+    "lng": -76.80259
   },
   {
     "id": "21420",
     "name": "Enid, OK",
-    "state": "OK"
+    "state": "OK",
+    "lat": 36.396647,
+    "lng": -97.878377
   },
   {
     "id": "21500",
     "name": "Erie, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 42.129029,
+    "lng": -80.084963
   },
   {
     "id": "21660",
     "name": "Eugene-Springfield, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.051148,
+    "lng": -123.091691
   },
   {
     "id": "21780",
     "name": "Evansville, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 37.972965,
+    "lng": -87.570699
   },
   {
     "id": "21820",
     "name": "Fairbanks-College, AK",
-    "state": "AK"
+    "state": "AK",
+    "lat": 64.836325,
+    "lng": -147.718082
   },
   {
     "id": "22020",
     "name": "Fargo, ND-MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.876936,
+    "lng": -96.787686
   },
   {
     "id": "22140",
     "name": "Farmington, NM",
-    "state": "NM"
+    "state": "NM",
+    "lat": 36.728075,
+    "lng": -108.205535
   },
   {
     "id": "22220",
     "name": "Fayetteville-Springdale-Rogers, AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 36.062629,
+    "lng": -94.160585
   },
   {
     "id": "22180",
     "name": "Fayetteville, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.052508,
+    "lng": -78.878105
   },
   {
     "id": "22380",
     "name": "Flagstaff, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 35.197184,
+    "lng": -111.648085
   },
   {
     "id": "22420",
     "name": "Flint, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 43.012555,
+    "lng": -83.687876
   },
   {
     "id": "22520",
     "name": "Florence-Muscle Shoals, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 34.800157,
+    "lng": -87.675926
   },
   {
     "id": "22500",
     "name": "Florence, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 34.197234,
+    "lng": -79.76818
   },
   {
     "id": "22540",
     "name": "Fond du Lac, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.77326,
+    "lng": -88.448231
   },
   {
     "id": "22660",
     "name": "Fort Collins-Loveland, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 40.587092,
+    "lng": -105.077119
   },
   {
     "id": "22900",
     "name": "Fort Smith, AR-OK",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.387247,
+    "lng": -94.425262
   },
   {
     "id": "23060",
     "name": "Fort Wayne, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 41.080496,
+    "lng": -85.138361
   },
   {
     "id": "23420",
     "name": "Fresno, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.736079,
+    "lng": -119.787082
   },
   {
     "id": "23460",
     "name": "Gadsden, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 34.014381,
+    "lng": -86.006372
   },
   {
     "id": "23540",
     "name": "Gainesville, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 29.651949,
+    "lng": -82.32501
   },
   {
     "id": "23580",
     "name": "Gainesville, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 34.300253,
+    "lng": -83.82432
   },
   {
     "id": "23900",
     "name": "Gettysburg, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 39.830754,
+    "lng": -77.231111
   },
   {
     "id": "24020",
     "name": "Glens Falls, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 43.309755,
+    "lng": -73.644349
   },
   {
     "id": "24140",
     "name": "Goldsboro, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.38263,
+    "lng": -77.995465
   },
   {
     "id": "24220",
     "name": "Grand Forks, ND-MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 47.924469,
+    "lng": -97.031592
   },
   {
     "id": "24260",
     "name": "Grand Island, NE",
-    "state": "NE"
+    "state": "NE",
+    "lat": 40.92496,
+    "lng": -98.339361
   },
   {
     "id": "24300",
     "name": "Grand Junction, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 39.068314,
+    "lng": -108.564442
   },
   {
     "id": "24340",
     "name": "Grand Rapids-Wyoming-Kentwood, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.966386,
+    "lng": -85.670181
   },
   {
     "id": "24420",
     "name": "Grants Pass, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 42.440042,
+    "lng": -123.326506
   },
   {
     "id": "24500",
     "name": "Great Falls, MT",
-    "state": "MT"
+    "state": "MT",
+    "lat": 47.506389,
+    "lng": -111.299049
   },
   {
     "id": "24540",
     "name": "Greeley, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 40.422649,
+    "lng": -104.707781
   },
   {
     "id": "24580",
     "name": "Green Bay, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 44.513314,
+    "lng": -88.013291
   },
   {
     "id": "24660",
     "name": "Greensboro-High Point, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.954137,
+    "lng": -80.002365
   },
   {
     "id": "24860",
     "name": "Greenville-Anderson-Greer, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 34.849611,
+    "lng": -82.399498
   },
   {
     "id": "24780",
     "name": "Greenville, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.611534,
+    "lng": -77.375184
   },
   {
     "id": "6600001",
@@ -897,1756 +1253,2458 @@
   {
     "id": "25020",
     "name": "Guayama, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 17.985204,
+    "lng": -66.113567
   },
   {
     "id": "25060",
     "name": "Gulfport-Biloxi, MS",
-    "state": "MS"
+    "state": "MS",
+    "lat": 30.36945,
+    "lng": -89.092858
   },
   {
     "id": "25180",
     "name": "Hagerstown-Martinsburg, MD-WV",
-    "state": "MD"
+    "state": "MD",
+    "lat": 39.642014,
+    "lng": -77.720278
   },
   {
     "id": "25220",
     "name": "Hammond, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.504016,
+    "lng": -90.461402
   },
   {
     "id": "25260",
     "name": "Hanford-Corcoran, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.327791,
+    "lng": -119.646928
   },
   {
     "id": "25420",
     "name": "Harrisburg-Carlisle, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.259614,
+    "lng": -76.881871
   },
   {
     "id": "25500",
     "name": "Harrisonburg, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 38.449016,
+    "lng": -78.868692
   },
   {
     "id": "25540",
     "name": "Hartford-West Hartford-East Hartford, CT",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.759455,
+    "lng": -72.742283
   },
   {
     "id": "25620",
     "name": "Hattiesburg, MS",
-    "state": "MS"
+    "state": "MS",
+    "lat": 31.327048,
+    "lng": -89.290376
   },
   {
     "id": "1500001",
     "name": "Hawaii / Kauai nonmetropolitan area",
-    "state": "HI"
+    "state": "HI",
+    "lat": 22.07,
+    "lng": -159.4975
   },
   {
     "id": "25740",
     "name": "Helena, MT",
-    "state": "MT"
+    "state": "MT",
+    "lat": 46.588854,
+    "lng": -112.038543
   },
   {
     "id": "25860",
     "name": "Hickory-Lenoir-Morganton, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.732041,
+    "lng": -81.338006
   },
   {
     "id": "4900011",
     "name": "High Desert Utah nonmetropolitan area",
-    "state": "UT"
+    "state": "UT",
+    "lat": 39.254817,
+    "lng": -111.6025
   },
   {
     "id": "4800004",
     "name": "Hill Country Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 32.01075,
+    "lng": -97.13015
   },
   {
     "id": "25940",
     "name": "Hilton Head Island-Bluffton-Port Royal, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 32.161539,
+    "lng": -80.750063
   },
   {
     "id": "25980",
     "name": "Hinesville, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 31.846774,
+    "lng": -81.596446
   },
   {
     "id": "26140",
     "name": "Homosassa Springs, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.784322,
+    "lng": -82.617918
   },
   {
     "id": "26300",
     "name": "Hot Springs, AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 34.51075,
+    "lng": -93.054003
   },
   {
     "id": "26380",
     "name": "Houma-Bayou Cane-Thibodaux, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 29.597596,
+    "lng": -90.720783
   },
   {
     "id": "26420",
     "name": "Houston-Pasadena-The Woodlands, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 30.173533,
+    "lng": -95.504253
   },
   {
     "id": "26580",
     "name": "Huntington-Ashland, WV-KY-OH",
-    "state": "KY"
+    "state": "KY",
+    "lat": 38.419422,
+    "lng": -82.443494
   },
   {
     "id": "26620",
     "name": "Huntsville, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 34.729538,
+    "lng": -86.585304
   },
   {
     "id": "26820",
     "name": "Idaho Falls, ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 43.493987,
+    "lng": -112.041237
   },
   {
     "id": "26900",
     "name": "Indianapolis-Carmel-Greenwood, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.768602,
+    "lng": -86.16166
   },
   {
     "id": "26980",
     "name": "Iowa City, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 41.659076,
+    "lng": -91.533128
   },
   {
     "id": "27060",
     "name": "Ithaca, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 42.439687,
+    "lng": -76.496695
   },
   {
     "id": "27100",
     "name": "Jackson, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.246577,
+    "lng": -84.40712
   },
   {
     "id": "27140",
     "name": "Jackson, MS",
-    "state": "MS"
+    "state": "MS",
+    "lat": 32.299689,
+    "lng": -90.184056
   },
   {
     "id": "27180",
     "name": "Jackson, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 35.614343,
+    "lng": -88.819386
   },
   {
     "id": "27260",
     "name": "Jacksonville, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 30.326472,
+    "lng": -81.65535
   },
   {
     "id": "27340",
     "name": "Jacksonville, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 34.750773,
+    "lng": -77.431071
   },
   {
     "id": "27500",
     "name": "Janesville-Beloit, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 42.508282,
+    "lng": -89.031849
   },
   {
     "id": "27620",
     "name": "Jefferson City, MO",
-    "state": "MO"
+    "state": "MO",
+    "lat": 38.578864,
+    "lng": -92.175027
   },
   {
     "id": "27740",
     "name": "Johnson City, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 36.316182,
+    "lng": -82.35305
   },
   {
     "id": "27780",
     "name": "Johnstown, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.325182,
+    "lng": -78.917966
   },
   {
     "id": "27860",
     "name": "Jonesboro, AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.828529,
+    "lng": -90.694756
   },
   {
     "id": "27900",
     "name": "Joplin, MO-KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 37.085489,
+    "lng": -94.513431
   },
   {
     "id": "27980",
     "name": "Kahului-Wailuku, HI",
-    "state": "HI"
+    "state": "HI",
+    "lat": 20.889433,
+    "lng": -156.47289
   },
   {
     "id": "28020",
     "name": "Kalamazoo-Portage, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.2012,
+    "lng": -85.58
   },
   {
     "id": "28100",
     "name": "Kankakee, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 41.120033,
+    "lng": -87.861114
   },
   {
     "id": "28140",
     "name": "Kansas City, MO-KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 39.09418,
+    "lng": -94.542846
   },
   {
     "id": "2000006",
     "name": "Kansas nonmetropolitan area",
-    "state": "KS"
+    "state": "KS",
+    "lat": 37.543046,
+    "lng": -94.699707
   },
   {
     "id": "28420",
     "name": "Kennewick-Richland, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 46.207643,
+    "lng": -119.119963
   },
   {
     "id": "28450",
     "name": "Kenosha, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 42.58464,
+    "lng": -87.822164
   },
   {
     "id": "28660",
     "name": "Killeen-Temple, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.117144,
+    "lng": -97.7278
   },
   {
     "id": "28700",
     "name": "Kingsport-Bristol, TN-VA",
-    "state": "TN"
+    "state": "TN",
+    "lat": 36.596551,
+    "lng": -82.183056
   },
   {
     "id": "28740",
     "name": "Kingston, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 41.928942,
+    "lng": -74.002901
   },
   {
     "id": "28880",
     "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 41.704156,
+    "lng": -73.928848
   },
   {
     "id": "28940",
     "name": "Knoxville, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 35.961762,
+    "lng": -83.916251
   },
   {
     "id": "29020",
     "name": "Kokomo, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 40.48648,
+    "lng": -86.129983
   },
   {
     "id": "29100",
     "name": "La Crosse-Onalaska, WI-MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 43.812395,
+    "lng": -91.251215
   },
   {
     "id": "29200",
     "name": "Lafayette-West Lafayette, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 40.423973,
+    "lng": -86.909201
   },
   {
     "id": "29180",
     "name": "Lafayette, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.222907,
+    "lng": -92.018777
   },
   {
     "id": "29340",
     "name": "Lake Charles, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.206366,
+    "lng": -93.205342
   },
   {
     "id": "29420",
     "name": "Lake Havasu City-Kingman, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 34.477695,
+    "lng": -114.338523
   },
   {
     "id": "29460",
     "name": "Lakeland-Winter Haven, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.022226,
+    "lng": -81.730461
   },
   {
     "id": "29540",
     "name": "Lancaster, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.039544,
+    "lng": -76.305975
   },
   {
     "id": "29620",
     "name": "Lansing-East Lansing, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 42.736026,
+    "lng": -84.48379
   },
   {
     "id": "29700",
     "name": "Laredo, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 27.502862,
+    "lng": -99.507568
   },
   {
     "id": "29740",
     "name": "Las Cruces, NM",
-    "state": "NM"
+    "state": "NM",
+    "lat": 32.310449,
+    "lng": -106.778821
   },
   {
     "id": "29820",
     "name": "Las Vegas-Henderson-North Las Vegas, NV",
-    "state": "NV"
+    "state": "NV",
+    "lat": 35.87113,
+    "lng": -115.207482
   },
   {
     "id": "29940",
     "name": "Lawrence, KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 38.967523,
+    "lng": -95.235917
   },
   {
     "id": "30020",
     "name": "Lawton, OK",
-    "state": "OK"
+    "state": "OK",
+    "lat": 34.604061,
+    "lng": -98.396834
   },
   {
     "id": "30140",
     "name": "Lebanon, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.339286,
+    "lng": -76.424505
   },
   {
     "id": "30340",
     "name": "Lewiston-Auburn, ME",
-    "state": "ME"
+    "state": "ME",
+    "lat": 44.097602,
+    "lng": -70.216911
   },
   {
     "id": "30300",
     "name": "Lewiston, ID-WA",
-    "state": "ID"
+    "state": "ID",
+    "lat": 46.418514,
+    "lng": -117.015795
   },
   {
     "id": "30500",
     "name": "Lexington Park, MD",
-    "state": "MD"
+    "state": "MD",
+    "lat": 38.264704,
+    "lng": -76.455013
   },
   {
     "id": "30460",
     "name": "Lexington-Fayette, KY",
-    "state": "KY"
+    "state": "KY",
+    "lat": 38.04569,
+    "lng": -84.498006
   },
   {
     "id": "30620",
     "name": "Lima, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.742688,
+    "lng": -84.106799
   },
   {
     "id": "30700",
     "name": "Lincoln, NE",
-    "state": "NE"
+    "state": "NE",
+    "lat": 40.809193,
+    "lng": -96.701189
   },
   {
     "id": "30780",
     "name": "Little Rock-North Little Rock-Conway, AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 34.768327,
+    "lng": -92.267224
   },
   {
     "id": "30860",
     "name": "Logan, UT-ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 41.735224,
+    "lng": -111.834892
   },
   {
     "id": "31020",
     "name": "Longview-Kelso, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 46.137533,
+    "lng": -122.937021
   },
   {
     "id": "30980",
     "name": "Longview, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 32.497448,
+    "lng": -94.73925
   },
   {
     "id": "31080",
     "name": "Los Angeles-Long Beach-Anaheim, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.769297,
+    "lng": -118.193674
   },
   {
     "id": "31140",
     "name": "Louisville/Jefferson County, KY-IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 38.253246,
+    "lng": -85.758804
   },
   {
     "id": "2800008",
     "name": "Lower East Mississippi nonmetropolitan area",
-    "state": "MS"
+    "state": "MS",
+    "lat": 32.856674,
+    "lng": -89.718168
   },
   {
     "id": "2800007",
     "name": "Lower West Mississippi nonmetropolitan area",
-    "state": "MS"
+    "state": "MS",
+    "lat": 33.197567,
+    "lng": -89.777116
   },
   {
     "id": "31180",
     "name": "Lubbock, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 33.585531,
+    "lng": -101.846803
   },
   {
     "id": "31340",
     "name": "Lynchburg, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.414018,
+    "lng": -79.141555
   },
   {
     "id": "31420",
     "name": "Macon-Bibb County, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.838003,
+    "lng": -83.62782
   },
   {
     "id": "31540",
     "name": "Madison, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.073198,
+    "lng": -89.38219
   },
   {
     "id": "31700",
     "name": "Manchester-Nashua, NH",
-    "state": "NH"
+    "state": "NH",
+    "lat": 42.990924,
+    "lng": -71.463086
   },
   {
     "id": "31740",
     "name": "Manhattan, KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 39.179357,
+    "lng": -96.561811
   },
   {
     "id": "31860",
     "name": "Mankato, MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 44.164944,
+    "lng": -94.003206
   },
   {
     "id": "31900",
     "name": "Mansfield, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.758496,
+    "lng": -82.51409
   },
   {
     "id": "2400006",
     "name": "Maryland nonmetropolitan area",
-    "state": "MD"
+    "state": "MD",
+    "lat": 39.478064,
+    "lng": -76.853637
   },
   {
     "id": "2500001",
     "name": "Massachusetts nonmetropolitan area",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.32047,
+    "lng": -71.960326
   },
   {
     "id": "32420",
     "name": "Mayaguez, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.221329,
+    "lng": -66.462339
   },
   {
     "id": "32580",
     "name": "McAllen-Edinburg-Mission, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 26.20364,
+    "lng": -98.236753
   },
   {
     "id": "32780",
     "name": "Medford, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 42.325502,
+    "lng": -122.87426
   },
   {
     "id": "32820",
     "name": "Memphis, TN-MS-AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.149844,
+    "lng": -90.049566
   },
   {
     "id": "32900",
     "name": "Merced, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.303979,
+    "lng": -120.48371
   },
   {
     "id": "33100",
     "name": "Miami-Fort Lauderdale-West Palm Beach, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 26.714449,
+    "lng": -80.054948
   },
   {
     "id": "33140",
     "name": "Michigan City-La Porte, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 41.610629,
+    "lng": -86.722386
   },
   {
     "id": "2600003",
     "name": "Mid Michigan nonmetropolitan area",
-    "state": "MI"
+    "state": "MI",
+    "lat": 44.933746,
+    "lng": -84.52524
   },
   {
     "id": "1300002",
     "name": "Middle Georgia nonmetropolitan area",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.330571,
+    "lng": -83.257256
   },
   {
     "id": "33220",
     "name": "Midland, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 31.99743,
+    "lng": -102.078056
   },
   {
     "id": "33260",
     "name": "Midland, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.99743,
+    "lng": -102.078056
   },
   {
     "id": "33340",
     "name": "Milwaukee-Waukesha, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.038772,
+    "lng": -87.906548
   },
   {
     "id": "33460",
     "name": "Minneapolis-St. Paul-Bloomington, MN-WI",
-    "state": "MN"
+    "state": "MN",
+    "lat": 44.999087,
+    "lng": -93.420545
   },
   {
     "id": "33500",
     "name": "Minot, ND",
-    "state": "ND"
+    "state": "ND",
+    "lat": 48.234403,
+    "lng": -101.293031
   },
   {
     "id": "33540",
     "name": "Missoula, MT",
-    "state": "MT"
+    "state": "MT",
+    "lat": 46.872108,
+    "lng": -113.99405
   },
   {
     "id": "33660",
     "name": "Mobile, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 30.689752,
+    "lng": -88.042148
   },
   {
     "id": "33700",
     "name": "Modesto, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.640516,
+    "lng": -121.000321
   },
   {
     "id": "33740",
     "name": "Monroe, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 32.511235,
+    "lng": -92.102516
   },
   {
     "id": "33780",
     "name": "Monroe, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 41.914335,
+    "lng": -83.396747
   },
   {
     "id": "33860",
     "name": "Montgomery, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.367404,
+    "lng": -86.302033
   },
   {
     "id": "34060",
     "name": "Morgantown, WV",
-    "state": "WV"
+    "state": "WV",
+    "lat": 39.629782,
+    "lng": -79.955935
   },
   {
     "id": "34100",
     "name": "Morristown, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 36.214668,
+    "lng": -83.292828
   },
   {
     "id": "34580",
     "name": "Mount Vernon-Anacortes, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 48.417498,
+    "lng": -122.336153
   },
   {
     "id": "34620",
     "name": "Muncie, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 40.193697,
+    "lng": -85.387658
   },
   {
     "id": "34740",
     "name": "Muskegon-Norton Shores, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 43.169059,
+    "lng": -86.263941
   },
   {
     "id": "34820",
     "name": "Myrtle Beach-Conway-North Myrtle Beach, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 33.827072,
+    "lng": -78.684378
   },
   {
     "id": "34900",
     "name": "Napa, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.298596,
+    "lng": -122.288187
   },
   {
     "id": "34940",
     "name": "Naples-Marco Island, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 25.93707,
+    "lng": -81.715835
   },
   {
     "id": "34980",
     "name": "Nashville-Davidson--Murfreesboro--Franklin, TN",
-    "state": "TN"
+    "state": "TN",
+    "lat": 36.164518,
+    "lng": -86.781073
   },
   {
     "id": "35300",
     "name": "New Haven, CT",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.306065,
+    "lng": -72.925772
   },
   {
     "id": "35380",
     "name": "New Orleans-Metairie, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 29.975962,
+    "lng": -90.078202
   },
   {
     "id": "35620",
     "name": "New York-Newark-Jersey City, NY-NJ",
-    "state": "NJ"
+    "state": "NJ",
+    "lat": 40.788925,
+    "lng": -74.016299
   },
   {
     "id": "35660",
     "name": "Niles, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 41.829927,
+    "lng": -86.258671
   },
   {
     "id": "500001",
     "name": "North Arkansas nonmetropolitan area",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.096885,
+    "lng": -92.420296
   },
   {
     "id": "4700003",
     "name": "North Central Tennessee nonmetropolitan area",
-    "state": "TN"
+    "state": "TN",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "600003",
     "name": "North Coast Region of California nonmetropolitan area",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.7952,
+    "lng": -122.3939
   },
   {
     "id": "1200006",
     "name": "North Florida nonmetropolitan area",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.944465,
+    "lng": -82.03363
   },
   {
     "id": "1300001",
     "name": "North Georgia nonmetropolitan area",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.330571,
+    "lng": -83.257256
   },
   {
     "id": "2900002",
     "name": "North Missouri nonmetropolitan area",
-    "state": "MO"
+    "state": "MO",
+    "lat": 40.404933,
+    "lng": -94.447541
   },
   {
     "id": "3900002",
     "name": "North Northeastern Ohio nonmetropolitan area (noncontiguous)",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.41742,
+    "lng": -82.711449
   },
   {
     "id": "35840",
     "name": "North Port-Bradenton-Sarasota, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.043754,
+    "lng": -82.236011
   },
   {
     "id": "4800002",
     "name": "North Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.803973,
+    "lng": -98.822319
   },
   {
     "id": "600007",
     "name": "North Valley-Northern Mountains Region of California nonmetropolitan area",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.7952,
+    "lng": -122.3939
   },
   {
     "id": "100002",
     "name": "Northeast Alabama nonmetropolitan area",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.828866,
+    "lng": -86.789292
   },
   {
     "id": "1900001",
     "name": "Northeast Iowa nonmetropolitan area",
-    "state": "IA"
+    "state": "IA",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "2200003",
     "name": "Northeast Louisiana nonmetropolitan area",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.937499,
+    "lng": -92.305998
   },
   {
     "id": "2300001",
     "name": "Northeast Maine nonmetropolitan area",
-    "state": "ME"
+    "state": "ME",
+    "lat": 45.398285,
+    "lng": -69.236551
   },
   {
     "id": "2700002",
     "name": "Northeast Minnesota nonmetropolitan area",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.343406,
+    "lng": -94.199117
   },
   {
     "id": "3100003",
     "name": "Northeast Nebraska nonmetropolitan area",
-    "state": "NE"
+    "state": "NE",
+    "lat": 41.863733,
+    "lng": -99.959547
   },
   {
     "id": "4000001",
     "name": "Northeast Oklahoma nonmetropolitan area",
-    "state": "OK"
+    "state": "OK",
+    "lat": 35.901587,
+    "lng": -97.538961
   },
   {
     "id": "5100003",
     "name": "Northeast Virginia nonmetropolitan area",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.677592,
+    "lng": -78.619053
   },
   {
     "id": "4200002",
     "name": "Northeastern Pennsylvania nonmetropolitan area",
-    "state": "PA"
+    "state": "PA",
+    "lat": 41.09114,
+    "lng": -78.290746
   },
   {
     "id": "4500007",
     "name": "Northeastern South Carolina nonmetropolitan area",
-    "state": "SC"
+    "state": "SC",
+    "lat": 33.918412,
+    "lng": -80.900773
   },
   {
     "id": "5500002",
     "name": "Northeastern Wisconsin nonmetropolitan area",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "1800001",
     "name": "Northern Indiana nonmetropolitan area",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.918408,
+    "lng": -86.284608
   },
   {
     "id": "2600002",
     "name": "Northern Michigan nonmetropolitan area",
-    "state": "MI"
+    "state": "MI",
+    "lat": 44.933746,
+    "lng": -84.52524
   },
   {
     "id": "3300001",
     "name": "Northern New Hampshire nonmetropolitan area",
-    "state": "NH"
+    "state": "NH",
+    "lat": 43.689888,
+    "lng": -71.578305
   },
   {
     "id": "3500006",
     "name": "Northern New Mexico nonmetropolitan area",
-    "state": "NM"
+    "state": "NM",
+    "lat": 34.324856,
+    "lng": -105.998351
   },
   {
     "id": "5000002",
     "name": "Northern Vermont nonmetropolitan area",
-    "state": "VT"
+    "state": "VT",
+    "lat": 44.047308,
+    "lng": -72.747388
   },
   {
     "id": "5400002",
     "name": "Northern West Virginia nonmetropolitan area",
-    "state": "WV"
+    "state": "WV",
+    "lat": 38.743259,
+    "lng": -80.714445
   },
   {
     "id": "100001",
     "name": "Northwest Alabama nonmetropolitan area",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.828866,
+    "lng": -86.789292
   },
   {
     "id": "800003",
     "name": "Northwest Colorado nonmetropolitan area",
-    "state": "CO"
+    "state": "CO",
+    "lat": 39.190246,
+    "lng": -105.604997
   },
   {
     "id": "1700001",
     "name": "Northwest Illinois nonmetropolitan area",
-    "state": "IL"
+    "state": "IL",
+    "lat": 40.149293,
+    "lng": -89.274946
   },
   {
     "id": "1900002",
     "name": "Northwest Iowa nonmetropolitan area",
-    "state": "IA"
+    "state": "IA",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "2700001",
     "name": "Northwest Minnesota nonmetropolitan area",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.343406,
+    "lng": -94.199117
   },
   {
     "id": "3100001",
     "name": "Northwest Nebraska nonmetropolitan area",
-    "state": "NE"
+    "state": "NE",
+    "lat": 41.863733,
+    "lng": -99.959547
   },
   {
     "id": "4000002",
     "name": "Northwest Oklahoma nonmetropolitan area",
-    "state": "OK"
+    "state": "OK",
+    "lat": 35.901587,
+    "lng": -97.538961
   },
   {
     "id": "5100004",
     "name": "Northwest Virginia nonmetropolitan area",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.677592,
+    "lng": -78.619053
   },
   {
     "id": "1600006",
     "name": "Northwestern Idaho nonmetropolitan area",
-    "state": "ID"
+    "state": "ID",
+    "lat": 44.391868,
+    "lng": -114.651379
   },
   {
     "id": "4200001",
     "name": "Northwestern Pennsylvania nonmetropolitan area",
-    "state": "PA"
+    "state": "PA",
+    "lat": 41.09114,
+    "lng": -78.290746
   },
   {
     "id": "4800001",
     "name": "Northwestern Region of Texas nonmetropolitan area",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.803973,
+    "lng": -98.822319
   },
   {
     "id": "4500003",
     "name": "Northwestern South Carolina nonmetropolitan area",
-    "state": "SC"
+    "state": "SC",
+    "lat": 33.918412,
+    "lng": -80.900773
   },
   {
     "id": "5500001",
     "name": "Northwestern Wisconsin nonmetropolitan area",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "35980",
     "name": "Norwich-New London-Willimantic, CT",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.524341,
+    "lng": -72.075912
   },
   {
     "id": "36100",
     "name": "Ocala, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 29.187087,
+    "lng": -82.13696
   },
   {
     "id": "36220",
     "name": "Odessa, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.847454,
+    "lng": -102.368996
   },
   {
     "id": "36260",
     "name": "Ogden, UT",
-    "state": "UT"
+    "state": "UT",
+    "lat": 41.222772,
+    "lng": -111.971886
   },
   {
     "id": "36420",
     "name": "Oklahoma City, OK",
-    "state": "OK"
+    "state": "OK",
+    "lat": 35.46883,
+    "lng": -97.517981
   },
   {
     "id": "36500",
     "name": "Olympia-Lacey-Tumwater, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 47.044908,
+    "lng": -122.90169
   },
   {
     "id": "36540",
     "name": "Omaha, NE-IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 41.256568,
+    "lng": -95.940959
   },
   {
     "id": "36740",
     "name": "Orlando-Kissimmee-Sanford, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.54211,
+    "lng": -81.379039
   },
   {
     "id": "36780",
     "name": "Oshkosh-Neenah, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 44.016893,
+    "lng": -88.537528
   },
   {
     "id": "36980",
     "name": "Owensboro, KY",
-    "state": "KY"
+    "state": "KY",
+    "lat": 37.772672,
+    "lng": -87.111031
   },
   {
     "id": "37100",
     "name": "Oxnard-Thousand Oaks-Ventura, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.169803,
+    "lng": -118.836912
   },
   {
     "id": "37140",
     "name": "Paducah, KY-IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 37.085188,
+    "lng": -88.598691
   },
   {
     "id": "37340",
     "name": "Palm Bay-Melbourne-Titusville, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.995929,
+    "lng": -80.63456
   },
   {
     "id": "37460",
     "name": "Panama City-Panama City Beach, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 30.177941,
+    "lng": -85.805315
   },
   {
     "id": "37620",
     "name": "Parkersburg-Vienna, WV",
-    "state": "WV"
+    "state": "WV",
+    "lat": 39.26674,
+    "lng": -81.561245
   },
   {
     "id": "37860",
     "name": "Pensacola-Ferry Pass-Brent, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 30.409666,
+    "lng": -87.215123
   },
   {
     "id": "37900",
     "name": "Peoria, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 40.691812,
+    "lng": -89.589548
   },
   {
     "id": "37980",
     "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
-    "state": "DE"
+    "state": "DE",
+    "lat": 39.113147,
+    "lng": -75.537254
   },
   {
     "id": "38060",
     "name": "Phoenix-Mesa-Chandler, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 33.44823,
+    "lng": -112.075098
   },
   {
     "id": "38240",
     "name": "Pinehurst-Southern Pines, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.173693,
+    "lng": -79.39184
   },
   {
     "id": "38300",
     "name": "Pittsburgh, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.439375,
+    "lng": -79.996754
   },
   {
     "id": "38340",
     "name": "Pittsfield, MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.448847,
+    "lng": -73.253758
   },
   {
     "id": "38540",
     "name": "Pocatello, ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 42.866523,
+    "lng": -112.443501
   },
   {
     "id": "38660",
     "name": "Ponce, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.011564,
+    "lng": -66.613958
   },
   {
     "id": "38940",
     "name": "Port St. Lucie, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.294434,
+    "lng": -80.34967
   },
   {
     "id": "38860",
     "name": "Portland-South Portland, ME",
-    "state": "ME"
+    "state": "ME",
+    "lat": 43.641624,
+    "lng": -70.241009
   },
   {
     "id": "38900",
     "name": "Portland-Vancouver-Hillsboro, OR-WA",
-    "state": "OR"
+    "state": "OR",
+    "lat": 45.522668,
+    "lng": -122.989767
   },
   {
     "id": "39150",
     "name": "Prescott Valley-Prescott, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 34.609674,
+    "lng": -112.315214
   },
   {
     "id": "39300",
     "name": "Providence-Warwick, RI-MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 41.823098,
+    "lng": -71.41099
   },
   {
     "id": "39340",
     "name": "Provo-Orem-Lehi, UT",
-    "state": "UT"
+    "state": "UT",
+    "lat": 40.233788,
+    "lng": -111.658815
   },
   {
     "id": "39380",
     "name": "Pueblo, CO",
-    "state": "CO"
+    "state": "CO",
+    "lat": 38.270638,
+    "lng": -104.610092
   },
   {
     "id": "7200006",
     "name": "Puerto Rico nonmetropolitan area",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.221329,
+    "lng": -66.462339
   },
   {
     "id": "39460",
     "name": "Punta Gorda, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 26.936113,
+    "lng": -82.050081
   },
   {
     "id": "39540",
     "name": "Racine-Mount Pleasant, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 42.719109,
+    "lng": -87.855608
   },
   {
     "id": "39580",
     "name": "Raleigh-Cary, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.779557,
+    "lng": -78.638148
   },
   {
     "id": "39660",
     "name": "Rapid City, SD",
-    "state": "SD"
+    "state": "SD",
+    "lat": 44.080029,
+    "lng": -103.227335
   },
   {
     "id": "39740",
     "name": "Reading, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.335285,
+    "lng": -75.9259
   },
   {
     "id": "39820",
     "name": "Redding, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 40.587679,
+    "lng": -122.392282
   },
   {
     "id": "39900",
     "name": "Reno, NV",
-    "state": "NV"
+    "state": "NV",
+    "lat": 39.525781,
+    "lng": -119.812917
   },
   {
     "id": "40060",
     "name": "Richmond, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.535871,
+    "lng": -77.434646
   },
   {
     "id": "40140",
     "name": "Riverside-San Bernardino-Ontario, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.06336,
+    "lng": -117.650814
   },
   {
     "id": "40220",
     "name": "Roanoke, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.271828,
+    "lng": -79.940557
   },
   {
     "id": "40340",
     "name": "Rochester, MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 44.021592,
+    "lng": -92.463101
   },
   {
     "id": "40380",
     "name": "Rochester, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 43.155717,
+    "lng": -77.612534
   },
   {
     "id": "40420",
     "name": "Rockford, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 42.271782,
+    "lng": -89.095819
   },
   {
     "id": "40580",
     "name": "Rocky Mount, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 35.939026,
+    "lng": -77.800244
   },
   {
     "id": "40660",
     "name": "Rome, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 34.254659,
+    "lng": -85.171673
   },
   {
     "id": "40900",
     "name": "Sacramento-Roseville-Folsom, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.581021,
+    "lng": -121.493933
   },
   {
     "id": "40980",
     "name": "Saginaw, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 43.420475,
+    "lng": -83.948114
   },
   {
     "id": "41420",
     "name": "Salem, OR",
-    "state": "OR"
+    "state": "OR",
+    "lat": 44.940689,
+    "lng": -123.036676
   },
   {
     "id": "41500",
     "name": "Salinas, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.675471,
+    "lng": -121.656443
   },
   {
     "id": "41540",
     "name": "Salisbury, MD",
-    "state": "MD"
+    "state": "MD",
+    "lat": 38.367022,
+    "lng": -75.599528
   },
   {
     "id": "41620",
     "name": "Salt Lake City-Murray, UT",
-    "state": "UT"
+    "state": "UT",
+    "lat": 40.762759,
+    "lng": -111.889779
   },
   {
     "id": "41660",
     "name": "San Angelo, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.462557,
+    "lng": -100.436759
   },
   {
     "id": "41700",
     "name": "San Antonio-New Braunfels, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 29.635989,
+    "lng": -98.294478
   },
   {
     "id": "41740",
     "name": "San Diego-Chula Vista-Carlsbad, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.641277,
+    "lng": -117.07996
   },
   {
     "id": "41860",
     "name": "San Francisco-Oakland-Fremont, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.779238,
+    "lng": -122.419359
   },
   {
     "id": "41940",
     "name": "San Jose-Sunnyvale-Santa Clara, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.336157,
+    "lng": -121.890608
   },
   {
     "id": "41980",
     "name": "San Juan-Bayamon-Caguas, PR",
-    "state": "PR"
+    "state": "PR",
+    "lat": 18.465299,
+    "lng": -66.116666
   },
   {
     "id": "42020",
     "name": "San Luis Obispo-Paso Robles, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.62781,
+    "lng": -120.688933
   },
   {
     "id": "41780",
     "name": "Sandusky, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 41.454919,
+    "lng": -82.710989
   },
   {
     "id": "42100",
     "name": "Santa Cruz-Watsonville, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.910255,
+    "lng": -121.756904
   },
   {
     "id": "42140",
     "name": "Santa Fe, NM",
-    "state": "NM"
+    "state": "NM",
+    "lat": 35.68785,
+    "lng": -105.938848
   },
   {
     "id": "42200",
     "name": "Santa Maria-Santa Barbara, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.953073,
+    "lng": -120.435967
   },
   {
     "id": "42220",
     "name": "Santa Rosa-Petaluma, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.439666,
+    "lng": -122.713437
   },
   {
     "id": "42340",
     "name": "Savannah, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.080527,
+    "lng": -81.092575
   },
   {
     "id": "42540",
     "name": "Scranton--Wilkes-Barre, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 41.245434,
+    "lng": -75.881336
   },
   {
     "id": "42660",
     "name": "Seattle-Tacoma-Bellevue, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 47.603243,
+    "lng": -122.330286
   },
   {
     "id": "42680",
     "name": "Sebastian-Vero Beach-West Vero Corridor, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.638585,
+    "lng": -80.399037
   },
   {
     "id": "42700",
     "name": "Sebring, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.493945,
+    "lng": -81.438936
   },
   {
     "id": "43100",
     "name": "Sheboygan, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.74978,
+    "lng": -87.712935
   },
   {
     "id": "43300",
     "name": "Sherman-Denison, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 33.636535,
+    "lng": -96.609292
   },
   {
     "id": "43340",
     "name": "Shreveport-Bossier City, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 32.515791,
+    "lng": -93.732226
   },
   {
     "id": "43420",
     "name": "Sierra Vista-Douglas, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 31.554651,
+    "lng": -110.296333
   },
   {
     "id": "43580",
     "name": "Sioux City, IA-NE-SD",
-    "state": "IA"
+    "state": "IA",
+    "lat": 42.473642,
+    "lng": -96.413936
   },
   {
     "id": "43620",
     "name": "Sioux Falls, SD-MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 43.545999,
+    "lng": -96.726776
   },
   {
     "id": "43640",
     "name": "Slidell-Mandeville-Covington, LA",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.2752,
+    "lng": -89.780473
   },
   {
     "id": "500004",
     "name": "South Arkansas nonmetropolitan area",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.096885,
+    "lng": -92.420296
   },
   {
     "id": "43780",
     "name": "South Bend-Mishawaka, IN-MI",
-    "state": "IN"
+    "state": "IN",
+    "lat": 41.617233,
+    "lng": -86.389099
   },
   {
     "id": "2100002",
     "name": "South Central Kentucky nonmetropolitan area",
-    "state": "KY"
+    "state": "KY",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "4700002",
     "name": "South Central Tennessee nonmetropolitan area",
-    "state": "TN"
+    "state": "TN",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "5500003",
     "name": "South Central Wisconsin nonmetropolitan area",
-    "state": "WI"
+    "state": "WI",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "1200003",
     "name": "South Florida nonmetropolitan area",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.944465,
+    "lng": -82.03363
   },
   {
     "id": "1300004",
     "name": "South Georgia nonmetropolitan area",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.330571,
+    "lng": -83.257256
   },
   {
     "id": "1700004",
     "name": "South Illinois nonmetropolitan area",
-    "state": "IL"
+    "state": "IL",
+    "lat": 40.149293,
+    "lng": -89.274946
   },
   {
     "id": "3100006",
     "name": "South Nebraska nonmetropolitan area",
-    "state": "NE"
+    "state": "NE",
+    "lat": 41.863733,
+    "lng": -99.959547
   },
   {
     "id": "100004",
     "name": "Southeast Alabama nonmetropolitan area",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.828866,
+    "lng": -86.789292
   },
   {
     "id": "1900004",
     "name": "Southeast Iowa nonmetropolitan area",
-    "state": "IA"
+    "state": "IA",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "2700004",
     "name": "Southeast Minnesota nonmetropolitan area",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.343406,
+    "lng": -94.199117
   },
   {
     "id": "2900003",
     "name": "Southeast Missouri nonmetropolitan area",
-    "state": "MO"
+    "state": "MO",
+    "lat": 38.190802,
+    "lng": -92.585915
   },
   {
     "id": "4000004",
     "name": "Southeast Oklahoma nonmetropolitan area",
-    "state": "OK"
+    "state": "OK",
+    "lat": 35.901587,
+    "lng": -97.538961
   },
   {
     "id": "1600007",
     "name": "Southeast-Central Idaho nonmetropolitan area",
-    "state": "ID"
+    "state": "ID",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "1800003",
     "name": "Southern Indiana nonmetropolitan area",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.918408,
+    "lng": -86.284608
   },
   {
     "id": "2600004",
     "name": "Southern Michigan nonmetropolitan area",
-    "state": "MI"
+    "state": "MI",
+    "lat": 44.933746,
+    "lng": -84.52524
   },
   {
     "id": "3900004",
     "name": "Southern Ohio nonmetropolitan area",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.41742,
+    "lng": -82.711449
   },
   {
     "id": "4500005",
     "name": "Southern South Carolina nonmetropolitan area",
-    "state": "SC"
+    "state": "SC",
+    "lat": 33.918412,
+    "lng": -80.900773
   },
   {
     "id": "5000001",
     "name": "Southern Vermont nonmetropolitan area",
-    "state": "VT"
+    "state": "VT",
+    "lat": 44.047308,
+    "lng": -72.747388
   },
   {
     "id": "5400001",
     "name": "Southern West Virginia nonmetropolitan area",
-    "state": "WV"
+    "state": "WV",
+    "lat": 38.743259,
+    "lng": -80.714445
   },
   {
     "id": "5100002",
     "name": "Southside Virginia nonmetropolitan area",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.677592,
+    "lng": -78.619053
   },
   {
     "id": "100003",
     "name": "Southwest Alabama nonmetropolitan area",
-    "state": "AL"
+    "state": "AL",
+    "lat": 32.828866,
+    "lng": -86.789292
   },
   {
     "id": "800002",
     "name": "Southwest Colorado nonmetropolitan area",
-    "state": "CO"
+    "state": "CO",
+    "lat": 39.190246,
+    "lng": -105.604997
   },
   {
     "id": "1900003",
     "name": "Southwest Iowa nonmetropolitan area",
-    "state": "IA"
+    "state": "IA",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "2200006",
     "name": "Southwest Louisiana nonmetropolitan area",
-    "state": "LA"
+    "state": "LA",
+    "lat": 30.937499,
+    "lng": -92.305998
   },
   {
     "id": "2300002",
     "name": "Southwest Maine nonmetropolitan area",
-    "state": "ME"
+    "state": "ME",
+    "lat": 45.398285,
+    "lng": -69.236551
   },
   {
     "id": "2700003",
     "name": "Southwest Minnesota nonmetropolitan area",
-    "state": "MN"
+    "state": "MN",
+    "lat": 46.343406,
+    "lng": -94.199117
   },
   {
     "id": "2900004",
     "name": "Southwest Missouri nonmetropolitan area",
-    "state": "MO"
+    "state": "MO",
+    "lat": 38.190802,
+    "lng": -92.585915
   },
   {
     "id": "3000003",
     "name": "Southwest Montana nonmetropolitan area",
-    "state": "MT"
+    "state": "MT",
+    "lat": 47.072515,
+    "lng": -109.172599
   },
   {
     "id": "3600004",
     "name": "Southwest New York nonmetropolitan area",
-    "state": "NY"
+    "state": "NY",
+    "lat": 40.712749,
+    "lng": -74.005994
   },
   {
     "id": "4000003",
     "name": "Southwest Oklahoma nonmetropolitan area",
-    "state": "OK"
+    "state": "OK",
+    "lat": 35.901587,
+    "lng": -97.538961
   },
   {
     "id": "5100001",
     "name": "Southwest Virginia nonmetropolitan area",
-    "state": "VA"
+    "state": "VA",
+    "lat": 37.677592,
+    "lng": -78.619053
   },
   {
     "id": "3300006",
     "name": "Southwestern New Hampshire nonmetropolitan area",
-    "state": "NH"
+    "state": "NH",
+    "lat": 43.689888,
+    "lng": -71.578305
   },
   {
     "id": "4200004",
     "name": "Southwestern Pennsylvania nonmetropolitan area",
-    "state": "PA"
+    "state": "PA",
+    "lat": 41.09114,
+    "lng": -78.290746
   },
   {
     "id": "43900",
     "name": "Spartanburg, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 34.949572,
+    "lng": -81.931681
   },
   {
     "id": "44060",
     "name": "Spokane-Spokane Valley, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 47.657148,
+    "lng": -117.261319
   },
   {
     "id": "44100",
     "name": "Springfield, IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 39.799463,
+    "lng": -89.64937
   },
   {
     "id": "44140",
     "name": "Springfield, MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.102635,
+    "lng": -72.590561
   },
   {
     "id": "44180",
     "name": "Springfield, MO",
-    "state": "MO"
+    "state": "MO",
+    "lat": 37.208835,
+    "lng": -93.292489
   },
   {
     "id": "44220",
     "name": "Springfield, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 39.925855,
+    "lng": -83.810053
   },
   {
     "id": "41060",
     "name": "St. Cloud, MN",
-    "state": "MN"
+    "state": "MN",
+    "lat": 45.560371,
+    "lng": -94.160439
   },
   {
     "id": "41100",
     "name": "St. George, UT",
-    "state": "UT"
+    "state": "UT",
+    "lat": 37.109837,
+    "lng": -113.581188
   },
   {
     "id": "41140",
     "name": "St. Joseph, MO-KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 39.767393,
+    "lng": -94.853027
   },
   {
     "id": "41180",
     "name": "St. Louis, MO-IL",
-    "state": "IL"
+    "state": "IL",
+    "lat": 38.627464,
+    "lng": -90.19835
   },
   {
     "id": "44300",
     "name": "State College, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 40.793438,
+    "lng": -77.860333
   },
   {
     "id": "44420",
     "name": "Staunton-Stuarts Draft, VA",
-    "state": "VA"
+    "state": "VA",
+    "lat": 38.037791,
+    "lng": -79.025637
   },
   {
     "id": "44700",
     "name": "Stockton-Lodi, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.952864,
+    "lng": -121.288399
   },
   {
     "id": "44940",
     "name": "Sumter, SC",
-    "state": "SC"
+    "state": "SC",
+    "lat": 33.92174,
+    "lng": -80.341562
   },
   {
     "id": "1000005",
     "name": "Sussex Delaware nonmetropolitan area",
-    "state": "DE"
+    "state": "DE",
+    "lat": 38.690266,
+    "lng": -75.385605
   },
   {
     "id": "45060",
     "name": "Syracuse, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 43.047022,
+    "lng": -76.147486
   },
   {
     "id": "45220",
     "name": "Tallahassee, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 30.438059,
+    "lng": -84.280624
   },
   {
     "id": "45300",
     "name": "Tampa-St. Petersburg-Clearwater, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 27.772077,
+    "lng": -82.638486
   },
   {
     "id": "45460",
     "name": "Terre Haute, IN",
-    "state": "IN"
+    "state": "IN",
+    "lat": 39.465436,
+    "lng": -87.407023
   },
   {
     "id": "45500",
     "name": "Texarkana, TX-AR",
-    "state": "AR"
+    "state": "AR",
+    "lat": 33.426071,
+    "lng": -94.048557
   },
   {
     "id": "45780",
     "name": "Toledo, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 41.65534,
+    "lng": -83.535709
   },
   {
     "id": "45820",
     "name": "Topeka, KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 39.046307,
+    "lng": -95.677219
   },
   {
     "id": "45900",
     "name": "Traverse City, MI",
-    "state": "MI"
+    "state": "MI",
+    "lat": 44.762912,
+    "lng": -85.621014
   },
   {
     "id": "45940",
     "name": "Trenton-Princeton, NJ",
-    "state": "NJ"
+    "state": "NJ",
+    "lat": 40.220578,
+    "lng": -74.759711
   },
   {
     "id": "46060",
     "name": "Tucson, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 32.221297,
+    "lng": -110.973306
   },
   {
     "id": "46140",
     "name": "Tulsa, OK",
-    "state": "OK"
+    "state": "OK",
+    "lat": 36.15286,
+    "lng": -95.989398
   },
   {
     "id": "46220",
     "name": "Tuscaloosa, AL",
-    "state": "AL"
+    "state": "AL",
+    "lat": 33.209826,
+    "lng": -87.568225
   },
   {
     "id": "46300",
     "name": "Twin Falls, ID",
-    "state": "ID"
+    "state": "ID",
+    "lat": 42.556549,
+    "lng": -114.469144
   },
   {
     "id": "46340",
     "name": "Tyler, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 32.35164,
+    "lng": -95.300644
   },
   {
     "id": "7800001",
     "name": "U.S. Virgin Islands MSA",
-    "state": "VI"
+    "state": "VI",
+    "lat": 18.344444,
+    "lng": -64.898101
   },
   {
     "id": "2800006",
     "name": "Upper East Mississippi nonmetropolitan area",
-    "state": "MS"
+    "state": "MS",
+    "lat": 32.856674,
+    "lng": -89.718168
   },
   {
     "id": "2600001",
     "name": "Upper Peninsula of Michigan nonmetropolitan area",
-    "state": "MI"
+    "state": "MI",
+    "lat": 44.933746,
+    "lng": -84.52524
   },
   {
     "id": "46520",
     "name": "Urban Honolulu, HI",
-    "state": "HI"
+    "state": "HI",
+    "lat": 21.308499,
+    "lng": -157.861535
   },
   {
     "id": "46540",
     "name": "Utica-Rome, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 43.101445,
+    "lng": -75.231169
   },
   {
     "id": "46660",
     "name": "Valdosta, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 30.832314,
+    "lng": -83.278628
   },
   {
     "id": "46700",
     "name": "Vallejo, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.101139,
+    "lng": -122.258282
   },
   {
     "id": "47020",
     "name": "Victoria, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 28.799402,
+    "lng": -97.006766
   },
   {
     "id": "47220",
     "name": "Vineland, NJ",
-    "state": "NJ"
+    "state": "NJ",
+    "lat": 39.485964,
+    "lng": -75.021091
   },
   {
     "id": "47260",
     "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 36.850006,
+    "lng": -75.976869
   },
   {
     "id": "47300",
     "name": "Visalia, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.331072,
+    "lng": -119.292345
   },
   {
     "id": "47380",
     "name": "Waco, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 31.54915,
+    "lng": -97.147063
   },
   {
     "id": "47460",
     "name": "Walla Walla, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 46.067549,
+    "lng": -118.340059
   },
   {
     "id": "47580",
     "name": "Warner Robins, GA",
-    "state": "GA"
+    "state": "GA",
+    "lat": 32.618879,
+    "lng": -83.609253
   },
   {
     "id": "4900010",
     "name": "Wasatch Front Fringe Utah nonmetropolitan area",
-    "state": "UT"
+    "state": "UT",
+    "lat": 40.50765,
+    "lng": -111.41349
   },
   {
     "id": "47900",
     "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV",
-    "state": "DC"
+    "state": "DC",
+    "lat": 38.877968,
+    "lng": -77.061813
   },
   {
     "id": "47930",
     "name": "Waterbury-Shelton, CT",
-    "state": "CT"
+    "state": "CT",
+    "lat": 41.554192,
+    "lng": -73.042903
   },
   {
     "id": "47940",
     "name": "Waterloo-Cedar Falls, IA",
-    "state": "IA"
+    "state": "IA",
+    "lat": 42.53595,
+    "lng": -92.445481
   },
   {
     "id": "48060",
     "name": "Watertown-Fort Drum, NY",
-    "state": "NY"
+    "state": "NY",
+    "lat": 44.041457,
+    "lng": -75.740349
   },
   {
     "id": "48140",
     "name": "Wausau, WI",
-    "state": "WI"
+    "state": "WI",
+    "lat": 44.960571,
+    "lng": -89.626654
   },
   {
     "id": "48260",
     "name": "Weirton-Steubenville, WV-OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.401768,
+    "lng": -80.589401
   },
   {
     "id": "48300",
     "name": "Wenatchee-East Wenatchee, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 47.413681,
+    "lng": -120.292222
   },
   {
     "id": "500003",
     "name": "West Arkansas nonmetropolitan area",
-    "state": "AR"
+    "state": "AR",
+    "lat": 35.096885,
+    "lng": -92.420296
   },
   {
     "id": "1700002",
     "name": "West Central Illinois nonmetropolitan area",
-    "state": "IL"
+    "state": "IL",
+    "lat": 65.572282,
+    "lng": -144.803963
   },
   {
     "id": "2800005",
     "name": "West Delta Mississippi nonmetropolitan area",
-    "state": "MS"
+    "state": "MS",
+    "lat": 33.197567,
+    "lng": -89.777116
   },
   {
     "id": "2100001",
     "name": "West Kentucky nonmetropolitan area",
-    "state": "KY"
+    "state": "KY",
+    "lat": 37.396257,
+    "lng": -83.006576
   },
   {
     "id": "3000004",
     "name": "West Montana nonmetropolitan area",
-    "state": "MT"
+    "state": "MT",
+    "lat": 47.072515,
+    "lng": -109.172599
   },
   {
     "id": "3800006",
     "name": "West North Dakota nonmetropolitan area",
-    "state": "ND"
+    "state": "ND",
+    "lat": 47.127128,
+    "lng": -100.162967
   },
   {
     "id": "3900001",
     "name": "West Northwestern Ohio nonmetropolitan area",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.41742,
+    "lng": -82.711449
   },
   {
     "id": "4600003",
     "name": "West South Dakota nonmetropolitan area",
-    "state": "SD"
+    "state": "SD",
+    "lat": 44.868886,
+    "lng": -100.149202
   },
   {
     "id": "4700001",
     "name": "West Tennessee nonmetropolitan area",
-    "state": "TN"
+    "state": "TN",
+    "lat": 35.988595,
+    "lng": -85.982335
   },
   {
     "id": "3700003",
     "name": "Western North Carolina nonmetropolitan area",
-    "state": "NC"
+    "state": "NC",
+    "lat": 33.615437,
+    "lng": -81.102858
   },
   {
     "id": "5300006",
     "name": "Western Washington nonmetropolitan area",
-    "state": "WA"
+    "state": "WA",
+    "lat": 38.90253,
+    "lng": -77.039386
   },
   {
     "id": "5500004",
     "name": "Western Wisconsin nonmetropolitan area",
-    "state": "WI"
+    "state": "WI",
+    "lat": 43.164229,
+    "lng": -89.913793
   },
   {
     "id": "5600006",
     "name": "Western Wyoming nonmetropolitan area",
-    "state": "WY"
+    "state": "WY",
+    "lat": 42.913514,
+    "lng": -85.70526
   },
   {
     "id": "48540",
     "name": "Wheeling, WV-OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 40.065627,
+    "lng": -80.72227
   },
   {
     "id": "48660",
     "name": "Wichita Falls, TX",
-    "state": "TX"
+    "state": "TX",
+    "lat": 33.900175,
+    "lng": -98.501835
   },
   {
     "id": "48620",
     "name": "Wichita, KS",
-    "state": "KS"
+    "state": "KS",
+    "lat": 37.693459,
+    "lng": -97.338212
   },
   {
     "id": "48680",
     "name": "Wildwood-The Villages, FL",
-    "state": "FL"
+    "state": "FL",
+    "lat": 28.927134,
+    "lng": -82.004039
   },
   {
     "id": "48700",
     "name": "Williamsport, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 41.241537,
+    "lng": -77.003556
   },
   {
     "id": "48900",
     "name": "Wilmington, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 34.22547,
+    "lng": -77.944855
   },
   {
     "id": "49020",
     "name": "Winchester, VA-WV",
-    "state": "VA"
+    "state": "VA",
+    "lat": 39.183711,
+    "lng": -78.164159
   },
   {
     "id": "49180",
     "name": "Winston-Salem, NC",
-    "state": "NC"
+    "state": "NC",
+    "lat": 36.098406,
+    "lng": -80.244912
   },
   {
     "id": "49340",
     "name": "Worcester, MA",
-    "state": "MA"
+    "state": "MA",
+    "lat": 42.263405,
+    "lng": -71.802193
   },
   {
     "id": "49420",
     "name": "Yakima, WA",
-    "state": "WA"
+    "state": "WA",
+    "lat": 46.602248,
+    "lng": -120.506076
   },
   {
     "id": "49620",
     "name": "York-Hanover, PA",
-    "state": "PA"
+    "state": "PA",
+    "lat": 39.962462,
+    "lng": -76.727707
   },
   {
     "id": "49660",
     "name": "Youngstown-Warren, OH",
-    "state": "OH"
+    "state": "OH",
+    "lat": 41.09948,
+    "lng": -80.649759
   },
   {
     "id": "49700",
     "name": "Yuba City, CA",
-    "state": "CA"
+    "state": "CA",
+    "lat": 39.140618,
+    "lng": -121.617656
   },
   {
     "id": "49740",
     "name": "Yuma, AZ",
-    "state": "AZ"
+    "state": "AZ",
+    "lat": 32.69232,
+    "lng": -114.628958
   }
 ]

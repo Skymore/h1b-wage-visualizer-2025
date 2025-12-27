@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import { Check, ChevronsUpDown, Search as SearchIcon } from 'lucide-react';
+import { Check, ChevronsUpDown, Search as SearchIcon, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -35,6 +35,7 @@ export function Search({ onSelectOccupation }: SearchProps) {
     const [value, setValue] = React.useState("15-1252"); // Default to Software Developers (15-1252)
     const [searchQuery, setSearchQuery] = React.useState(""); // Track search query
     const [occupations, setOccupations] = React.useState<Occupation[]>([]);
+    const [isExpanded, setIsExpanded] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/data/occupations.json')
@@ -69,19 +70,27 @@ export function Search({ onSelectOccupation }: SearchProps) {
 
     // manual filtering logic
     const filteredOccupations = React.useMemo(() => {
-        if (!searchQuery) return occupations.slice(0, 20); // Default 20
+        if (!searchQuery) {
+            return isExpanded ? occupations : occupations.slice(0, 20);
+        }
 
         // Simple case-insensitive inclusion search
         const lowerQuery = searchQuery.toLowerCase();
         return occupations.filter(occ =>
             occ.title.toLowerCase().includes(lowerQuery) ||
             occ.code.includes(lowerQuery)
-        );
-    }, [occupations, searchQuery]);
+        ); // if searching, show all matches
+    }, [occupations, searchQuery, isExpanded]);
 
     return (
         <div className="w-full max-w-sm">
-            <Popover open={open} onOpenChange={setOpen}>
+            <Popover open={open} onOpenChange={(val) => {
+                setOpen(val);
+                if (!val) {
+                    setIsExpanded(false); // Reset expand on close
+                    setSearchQuery("");
+                }
+            }}>
                 <PopoverTrigger asChild>
                     <Button
                         variant="outline"
@@ -130,6 +139,24 @@ export function Search({ onSelectOccupation }: SearchProps) {
                                 ))}
                             </CommandGroup>
                         </CommandList>
+
+                        {/* Expand Toggle (Only show if not searching and list is truncated) */}
+                        {!searchQuery && (
+                            <div className="p-2 border-t flex justify-center">
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    className="w-full h-8 text-xs"
+                                    onClick={() => setIsExpanded(!isExpanded)}
+                                >
+                                    {isExpanded ? (
+                                        <><ChevronUp className="mr-2 h-3 w-3" /> {t('show_less')}</>
+                                    ) : (
+                                        <><ChevronDown className="mr-2 h-3 w-3" /> {t('show_all', { count: occupations.length - 20 })}</>
+                                    )}
+                                </Button>
+                            </div>
+                        )}
                     </Command>
                 </PopoverContent>
             </Popover>

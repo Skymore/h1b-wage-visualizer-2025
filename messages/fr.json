@@ -1,0 +1,21 @@
+{
+    "HomePage": {
+        "title": "Visualisation des salaires H1B",
+        "subtitle": "Explorez les données salariales H1B 2025-2026 par profession et lieu",
+        "search_placeholder": "Rechercher une profession...",
+        "map_view": "Vue Carte",
+        "list_view": "Vue Liste",
+        "wages_for": "Salaires pour {soc} à {area}",
+        "search_locations": "Filtrer les lieux...",
+        "level_1": "Level 1",
+        "level_2": "Level 2",
+        "level_3": "Level 3",
+        "level_4": "Level 4",
+        "hourly": "Horaire",
+        "yearly": "Annuel",
+        "area": "Zone",
+        "records_found": "{count} enregistrements trouvés",
+        "show_all": "Tout afficher ({count} de plus)",
+        "show_less": "Afficher moins"
+    }
+}

@@ -2,16 +2,20 @@
     "HomePage": {
         "title": "H1B 賃金可視化",
         "subtitle": "2025-2026年度 H1B 職種・地域別賃金データの探索",
-        "search_placeholder": "職種を検索 (例: ソフトウェア開発者)...",
+        "search_placeholder": "職種を検索...",
         "map_view": "地図表示",
         "list_view": "リスト表示",
         "wages_for": "{area} における {soc} の賃金",
-        "search_locations": "地域をフィルタリング (例: 東京)...",
-        "level_1": "Level 1 (初級)",
-        "level_2": "Level 2 (中級)",
-        "level_3": "Level 3 (上級)",
-        "level_4": "Level 4 (エキスパート)",
+        "search_locations": "地域をフィルタリング...",
+        "level_1": "Level 1",
+        "level_2": "Level 2",
+        "level_3": "Level 3",
+        "level_4": "Level 4",
         "hourly": "時給",
-        "yearly": "年収"
+        "yearly": "年収",
+        "area": "エリア",
+        "records_found": "{count} 件のレコード",
+        "show_all": "すべて表示 ({count} 件)",
+        "show_less": "表示を減らす"
     }
 }

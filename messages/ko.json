@@ -2,16 +2,20 @@
     "HomePage": {
         "title": "H1B 임금 시각화",
         "subtitle": "2025-2026 H1B 직업 및 지역별 임금 데이터 탐색",
-        "search_placeholder": "직업 검색 (예: 소프트웨어 개발자)...",
+        "search_placeholder": "직업 검색...",
         "map_view": "지도 보기",
         "list_view": "목록 보기",
         "wages_for": "{area}의 {soc} 임금",
-        "search_locations": "지역 필터링 (예: 서울)...",
-        "level_1": "Level 1 (초급)",
-        "level_2": "Level 2 (숙련)",
-        "level_3": "Level 3 (전문)",
-        "level_4": "Level 4 (최고 수준)",
+        "search_locations": "지역 필터링...",
+        "level_1": "Level 1",
+        "level_2": "Level 2",
+        "level_3": "Level 3",
+        "level_4": "Level 4",
         "hourly": "시급",
-        "yearly": "연봉"
+        "yearly": "연봉",
+        "area": "지역",
+        "records_found": "{count}개의 기록",
+        "show_all": "전체 보기 ({count}개 더보기)",
+        "show_less": "간략히 보기"
     }
 }

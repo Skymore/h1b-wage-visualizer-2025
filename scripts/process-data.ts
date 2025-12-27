@@ -43,7 +43,7 @@ async function processData() {
     });
 
     // socRecords headers: "soccode","Title","Description"
-    socRecords.forEach(r => {
+    socRecords.forEach((r: any) => {
         occupations.set(r.soccode, r.Title);
     });
 
@@ -57,7 +57,7 @@ async function processData() {
     });
 
     // Geography headers: "Area","AreaName","StateAb","State","CountyTownName"
-    geoRecords.forEach(r => {
+    geoRecords.forEach((r: any) => {
         // Some Areas might be duplicated for multiple counties, we just need unique Area -> Name mapping
         if (!areas.has(r.Area)) {
             areas.set(r.Area, {
@@ -70,8 +70,8 @@ async function processData() {
 
     console.log('Processing wages...');
 
-    // Keep track of unique SOCs found in wage data
-    const usedSocs = new Set();
+    // Keep track of unique SOCs found in wage data and their counts
+    const socCounts = new Map();
 
     for (const record of records) {
         // Record keys: Area, SocCode, GeoLvl, Level1, Level2, Level3, Level4, Average
@@ -83,7 +83,7 @@ async function processData() {
             wagesBySoc.set(SocCode, []);
         }
 
-        usedSocs.add(SocCode);
+        socCounts.set(SocCode, (socCounts.get(SocCode) || 0) + 1);
 
         wagesBySoc.get(SocCode).push({
             area_id: Area,
@@ -94,17 +94,56 @@ async function processData() {
         });
     }
 
+    // List of popular H1B/PERM occupations to boost to the top
+    const POPULAR_SOCS = new Set([
+        "15-1252", // Software Developers
+        "17-2171", // Petroleum Engineers
+        "15-1253", // Software Quality Assurance Analysts and Testers
+        "15-2051", // Data Scientists
+        "15-1211", // Computer Systems Analysts
+        "15-1231", // Computer Network Support Specialists
+        "15-1241", // Computer Network Architects
+        "17-2051", // Civil Engineers
+        "17-2071", // Electrical Engineers
+        "17-2072", // Electronics Engineers, Except Computer
+        "17-2141", // Mechanical Engineers
+        "29-1141", // Registered Nurses
+        "13-2011", // Accountants and Auditors
+        "13-1111", // Management Analysts
+        "15-1299", // Computer Occupations, All Other
+        "15-2031", // Operations Research Analysts
+        "15-2041", // Statisticians
+        "11-3021", // Computer and Information Systems Managers
+        "11-2021", // Marketing Managers
+        "13-2051", // Financial Analysts
+    ]);
     // 1. Write occupations.json
-    const occupationsList = Array.from(usedSocs).map(code => ({
+    // Sort by: 
+    // 1. Is Popular (Boosted) -> Descending
+    // 2. Count (Popularity in data) -> Descending
+    // 3. Alphabetical -> Ascending
+    const occupationsList = Array.from(socCounts.keys()).map(code => ({
         code,
-        title: occupations.get(code) || "Unknown Occupation"
-    })).sort((a, b) => a.title.localeCompare(b.title));
+        title: occupations.get(code) || "Unknown Occupation",
+        count: socCounts.get(code),
+        isPopular: POPULAR_SOCS.has(code)
+    })).sort((a, b) => {
+        // Priority 1: Manual Popular List
+        if (a.isPopular && !b.isPopular) return -1;
+        if (!a.isPopular && b.isPopular) return 1;
+
+        // Priority 2: Data Count (if we have variation)
+        if (b.count !== a.count) return b.count - a.count;
+
+        // Priority 3: Alphabetical
+        return a.title.localeCompare(b.title);
+    });
 
     fs.writeFileSync(
         path.join(OUTPUT_DIR, 'occupations.json'),
         JSON.stringify(occupationsList, null, 2)
     );
-    console.log(`Written ${occupationsList.length} occupations.`);
+    console.log(`Written ${occupationsList.length} occupations (with manual popularity boost).`);
 
     // 2. Write areas.json
     const areasList = Array.from(areas.values()).sort((a, b) => a.name.localeCompare(b.name));

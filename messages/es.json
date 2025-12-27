@@ -2,16 +2,20 @@
     "HomePage": {
         "title": "Visualización de Salarios H1B",
         "subtitle": "Explore datos salariales H1B 2025-2026 por ocupación y ubicación",
-        "search_placeholder": "Buscar ocupación (ej. Desarrollador de Software)...",
+        "search_placeholder": "Buscar ocupación...",
         "map_view": "Vista de Mapa",
         "list_view": "Vista de Lista",
         "wages_for": "Salarios para {soc} en {area}",
-        "search_locations": "Filtrar ubicaciones (ej. Madrid)...",
-        "level_1": "Nivel 1 (Entrada)",
-        "level_2": "Nivel 2 (Calificado)",
-        "level_3": "Nivel 3 (Experimentado)",
-        "level_4": "Nivel 4 (Experto)",
+        "search_locations": "Filtrar ubicaciones...",
+        "level_1": "Nivel 1",
+        "level_2": "Nivel 2",
+        "level_3": "Nivel 3",
+        "level_4": "Nivel 4",
         "hourly": "Por Hora",
-        "yearly": "Anual"
+        "yearly": "Anual",
+        "area": "Área",
+        "records_found": "{count} registros encontrados",
+        "show_all": "Mostrar Todo ({count} más)",
+        "show_less": "Mostrar Menos"
     }
 }
