@@ -1,0 +1,72 @@
+
+'use client';
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useTranslations } from "next-intl";
+
+interface WageRecord {
+    area_id: string;
+    l1: number;
+    l2: number;
+    l3: number;
+    l4: number;
+}
+
+interface Area {
+    id: string;
+    name: string;
+    state: string;
+}
+
+export function WageDashboard({
+    socCode,
+    wageData,
+    areas
+}: {
+    socCode: string,
+    wageData: WageRecord[],
+    areas: Area[]
+}) {
+    const t = useTranslations('HomePage');
+
+    // Create a map of Area ID to Name for easy lookup
+    const areaMap = new Map(areas.map(a => [a.id, `${a.name}, ${a.state}`]));
+
+    // Sort by L2 Descending default
+    const sortedData = [...wageData].sort((a, b) => b.l2 - a.l2);
+
+    return (
+        <div className="space-y-6">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Wage Data List</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Area</TableHead>
+                                <TableHead>Level 1</TableHead>
+                                <TableHead>Level 2</TableHead>
+                                <TableHead>Level 3</TableHead>
+                                <TableHead>Level 4</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {sortedData.map((row) => (
+                                <TableRow key={row.area_id}>
+                                    <TableCell className="font-medium">{areaMap.get(row.area_id) || row.area_id}</TableCell>
+                                    <TableCell>${row.l1.toLocaleString()}</TableCell>
+                                    <TableCell>${row.l2.toLocaleString()}</TableCell>
+                                    <TableCell>${row.l3.toLocaleString()}</TableCell>
+                                    <TableCell>${row.l4.toLocaleString()}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
+        </div>
+    );
+}

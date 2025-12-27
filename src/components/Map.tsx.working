@@ -1,0 +1,23 @@
+
+'use client';
+
+import * as React from 'react';
+
+export default function MapView({
+    wageData
+}: {
+    wageData?: { area_id: string, l2: number }[]
+}) {
+    return (
+        <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">
+            <div className="text-center p-4">
+                <h3 className="text-lg font-semibold">Map View</h3>
+                <p className="text-sm text-muted-foreground">
+                    Map component is temporarily disabled due to build environment issues with react-map-gl.
+                    <br />
+                    (Module resolution error in current workspace configuration).
+                </p>
+            </div>
+        </div>
+    );
+}

@@ -1,0 +1,2652 @@
+[
+  {
+    "id": "10180",
+    "name": "Abilene, TX",
+    "state": "TX"
+  },
+  {
+    "id": "10380",
+    "name": "Aguadilla, PR",
+    "state": "PR"
+  },
+  {
+    "id": "10420",
+    "name": "Akron, OH",
+    "state": "OH"
+  },
+  {
+    "id": "200006",
+    "name": "Alaska nonmetropolitan area",
+    "state": "AK"
+  },
+  {
+    "id": "10580",
+    "name": "Albany-Schenectady-Troy, NY",
+    "state": "NY"
+  },
+  {
+    "id": "10500",
+    "name": "Albany, GA",
+    "state": "GA"
+  },
+  {
+    "id": "10540",
+    "name": "Albany, OR",
+    "state": "OR"
+  },
+  {
+    "id": "10740",
+    "name": "Albuquerque, NM",
+    "state": "NM"
+  },
+  {
+    "id": "10780",
+    "name": "Alexandria, LA",
+    "state": "LA"
+  },
+  {
+    "id": "10900",
+    "name": "Allentown-Bethlehem-Easton, PA-NJ",
+    "state": "NJ"
+  },
+  {
+    "id": "11020",
+    "name": "Altoona, PA",
+    "state": "PA"
+  },
+  {
+    "id": "11100",
+    "name": "Amarillo, TX",
+    "state": "TX"
+  },
+  {
+    "id": "11180",
+    "name": "Ames, IA",
+    "state": "IA"
+  },
+  {
+    "id": "11200",
+    "name": "Amherst Town-Northampton, MA",
+    "state": "MA"
+  },
+  {
+    "id": "11260",
+    "name": "Anchorage, AK",
+    "state": "AK"
+  },
+  {
+    "id": "11460",
+    "name": "Ann Arbor, MI",
+    "state": "MI"
+  },
+  {
+    "id": "11500",
+    "name": "Anniston-Oxford, AL",
+    "state": "AL"
+  },
+  {
+    "id": "11540",
+    "name": "Appleton, WI",
+    "state": "WI"
+  },
+  {
+    "id": "11640",
+    "name": "Arecibo, PR",
+    "state": "PR"
+  },
+  {
+    "id": "400001",
+    "name": "Arizona nonmetropolitan area",
+    "state": "AZ"
+  },
+  {
+    "id": "11700",
+    "name": "Asheville, NC",
+    "state": "NC"
+  },
+  {
+    "id": "12020",
+    "name": "Athens-Clarke County, GA",
+    "state": "GA"
+  },
+  {
+    "id": "12060",
+    "name": "Atlanta-Sandy Springs-Roswell, GA",
+    "state": "GA"
+  },
+  {
+    "id": "12100",
+    "name": "Atlantic City-Hammonton, NJ",
+    "state": "NJ"
+  },
+  {
+    "id": "12220",
+    "name": "Auburn-Opelika, AL",
+    "state": "AL"
+  },
+  {
+    "id": "12260",
+    "name": "Augusta-Richmond County, GA-SC",
+    "state": "GA"
+  },
+  {
+    "id": "12420",
+    "name": "Austin-Round Rock-San Marcos, TX",
+    "state": "TX"
+  },
+  {
+    "id": "12540",
+    "name": "Bakersfield-Delano, CA",
+    "state": "CA"
+  },
+  {
+    "id": "3200006",
+    "name": "Balance of Nevada nonmetropolitan area",
+    "state": "NV"
+  },
+  {
+    "id": "12580",
+    "name": "Baltimore-Columbia-Towson, MD",
+    "state": "MD"
+  },
+  {
+    "id": "12620",
+    "name": "Bangor, ME",
+    "state": "ME"
+  },
+  {
+    "id": "12700",
+    "name": "Barnstable Town, MA",
+    "state": "MA"
+  },
+  {
+    "id": "12940",
+    "name": "Baton Rouge, LA",
+    "state": "LA"
+  },
+  {
+    "id": "12980",
+    "name": "Battle Creek, MI",
+    "state": "MI"
+  },
+  {
+    "id": "13020",
+    "name": "Bay City, MI",
+    "state": "MI"
+  },
+  {
+    "id": "13140",
+    "name": "Beaumont-Port Arthur, TX",
+    "state": "TX"
+  },
+  {
+    "id": "13220",
+    "name": "Beckley, WV",
+    "state": "WV"
+  },
+  {
+    "id": "13380",
+    "name": "Bellingham, WA",
+    "state": "WA"
+  },
+  {
+    "id": "13460",
+    "name": "Bend, OR",
+    "state": "OR"
+  },
+  {
+    "id": "13740",
+    "name": "Billings, MT",
+    "state": "MT"
+  },
+  {
+    "id": "13780",
+    "name": "Binghamton, NY",
+    "state": "NY"
+  },
+  {
+    "id": "13820",
+    "name": "Birmingham, AL",
+    "state": "AL"
+  },
+  {
+    "id": "13900",
+    "name": "Bismarck, ND",
+    "state": "ND"
+  },
+  {
+    "id": "13980",
+    "name": "Blacksburg-Christiansburg-Radford, VA",
+    "state": "VA"
+  },
+  {
+    "id": "14010",
+    "name": "Bloomington, IL",
+    "state": "IL"
+  },
+  {
+    "id": "14020",
+    "name": "Bloomington, IN",
+    "state": "IN"
+  },
+  {
+    "id": "14260",
+    "name": "Boise City, ID",
+    "state": "ID"
+  },
+  {
+    "id": "4800005",
+    "name": "Border Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "14460",
+    "name": "Boston-Cambridge-Newton, MA-NH",
+    "state": "MA"
+  },
+  {
+    "id": "14500",
+    "name": "Boulder, CO",
+    "state": "CO"
+  },
+  {
+    "id": "14540",
+    "name": "Bowling Green, KY",
+    "state": "KY"
+  },
+  {
+    "id": "14580",
+    "name": "Bozeman, MT",
+    "state": "MT"
+  },
+  {
+    "id": "14740",
+    "name": "Bremerton-Silverdale-Port Orchard, WA",
+    "state": "WA"
+  },
+  {
+    "id": "14860",
+    "name": "Bridgeport-Stamford-Danbury, CT",
+    "state": "CT"
+  },
+  {
+    "id": "15180",
+    "name": "Brownsville-Harlingen, TX",
+    "state": "TX"
+  },
+  {
+    "id": "15260",
+    "name": "Brunswick-St. Simons, GA",
+    "state": "GA"
+  },
+  {
+    "id": "15380",
+    "name": "Buffalo-Cheektowaga, NY",
+    "state": "NY"
+  },
+  {
+    "id": "15540",
+    "name": "Burlington-South Burlington, VT",
+    "state": "VT"
+  },
+  {
+    "id": "15500",
+    "name": "Burlington, NC",
+    "state": "NC"
+  },
+  {
+    "id": "15940",
+    "name": "Canton-Massillon, OH",
+    "state": "OH"
+  },
+  {
+    "id": "15980",
+    "name": "Cape Coral-Fort Myers, FL",
+    "state": "FL"
+  },
+  {
+    "id": "16020",
+    "name": "Cape Girardeau, MO-IL",
+    "state": "IL"
+  },
+  {
+    "id": "3600001",
+    "name": "Capital/Northern New York nonmetropolitan area",
+    "state": "NY"
+  },
+  {
+    "id": "16180",
+    "name": "Carson City, NV",
+    "state": "NV"
+  },
+  {
+    "id": "16220",
+    "name": "Casper, WY",
+    "state": "WY"
+  },
+  {
+    "id": "16300",
+    "name": "Cedar Rapids, IA",
+    "state": "IA"
+  },
+  {
+    "id": "3600006",
+    "name": "Central East New York nonmetropolitan area",
+    "state": "NY"
+  },
+  {
+    "id": "1800002",
+    "name": "Central Indiana nonmetropolitan area",
+    "state": "IN"
+  },
+  {
+    "id": "2100003",
+    "name": "Central Kentucky nonmetropolitan area",
+    "state": "KY"
+  },
+  {
+    "id": "2200002",
+    "name": "Central Louisiana nonmetropolitan area",
+    "state": "LA"
+  },
+  {
+    "id": "2900001",
+    "name": "Central Missouri nonmetropolitan area",
+    "state": "MO"
+  },
+  {
+    "id": "3300002",
+    "name": "Central New Hampshire nonmetropolitan area",
+    "state": "NH"
+  },
+  {
+    "id": "3700002",
+    "name": "Central North Carolina nonmetropolitan area",
+    "state": "NC"
+  },
+  {
+    "id": "4100007",
+    "name": "Central Oregon nonmetropolitan area",
+    "state": "OR"
+  },
+  {
+    "id": "4200003",
+    "name": "Central Pennsylvania nonmetropolitan area",
+    "state": "PA"
+  },
+  {
+    "id": "16540",
+    "name": "Chambersburg, PA",
+    "state": "PA"
+  },
+  {
+    "id": "16580",
+    "name": "Champaign-Urbana, IL",
+    "state": "IL"
+  },
+  {
+    "id": "16700",
+    "name": "Charleston-North Charleston, SC",
+    "state": "SC"
+  },
+  {
+    "id": "16620",
+    "name": "Charleston, WV",
+    "state": "WV"
+  },
+  {
+    "id": "16740",
+    "name": "Charlotte-Concord-Gastonia, NC-SC",
+    "state": "NC"
+  },
+  {
+    "id": "16820",
+    "name": "Charlottesville, VA",
+    "state": "VA"
+  },
+  {
+    "id": "16860",
+    "name": "Chattanooga, TN-GA",
+    "state": "GA"
+  },
+  {
+    "id": "16940",
+    "name": "Cheyenne, WY",
+    "state": "WY"
+  },
+  {
+    "id": "16980",
+    "name": "Chicago-Naperville-Elgin, IL-IN",
+    "state": "IL"
+  },
+  {
+    "id": "17020",
+    "name": "Chico, CA",
+    "state": "CA"
+  },
+  {
+    "id": "17140",
+    "name": "Cincinnati, OH-KY-IN",
+    "state": "IN"
+  },
+  {
+    "id": "17300",
+    "name": "Clarksville, TN-KY",
+    "state": "KY"
+  },
+  {
+    "id": "17410",
+    "name": "Cleveland, OH",
+    "state": "OH"
+  },
+  {
+    "id": "17420",
+    "name": "Cleveland, TN",
+    "state": "TN"
+  },
+  {
+    "id": "4100006",
+    "name": "Coast Oregon nonmetropolitan area",
+    "state": "OR"
+  },
+  {
+    "id": "4800006",
+    "name": "Coastal Plains Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "17660",
+    "name": "Coeur d'Alene, ID",
+    "state": "ID"
+  },
+  {
+    "id": "17780",
+    "name": "College Station-Bryan, TX",
+    "state": "TX"
+  },
+  {
+    "id": "17820",
+    "name": "Colorado Springs, CO",
+    "state": "CO"
+  },
+  {
+    "id": "17860",
+    "name": "Columbia, MO",
+    "state": "MO"
+  },
+  {
+    "id": "17900",
+    "name": "Columbia, SC",
+    "state": "SC"
+  },
+  {
+    "id": "17980",
+    "name": "Columbus, GA-AL",
+    "state": "AL"
+  },
+  {
+    "id": "18020",
+    "name": "Columbus, IN",
+    "state": "IN"
+  },
+  {
+    "id": "18140",
+    "name": "Columbus, OH",
+    "state": "OH"
+  },
+  {
+    "id": "900001",
+    "name": "Connecticut nonmetropolitan area",
+    "state": "CT"
+  },
+  {
+    "id": "18580",
+    "name": "Corpus Christi, TX",
+    "state": "TX"
+  },
+  {
+    "id": "18700",
+    "name": "Corvallis, OR",
+    "state": "OR"
+  },
+  {
+    "id": "18880",
+    "name": "Crestview-Fort Walton Beach-Destin, FL",
+    "state": "FL"
+  },
+  {
+    "id": "19100",
+    "name": "Dallas-Fort Worth-Arlington, TX",
+    "state": "TX"
+  },
+  {
+    "id": "19140",
+    "name": "Dalton, GA",
+    "state": "GA"
+  },
+  {
+    "id": "19300",
+    "name": "Daphne-Fairhope-Foley, AL",
+    "state": "AL"
+  },
+  {
+    "id": "19340",
+    "name": "Davenport-Moline-Rock Island, IA-IL",
+    "state": "IA"
+  },
+  {
+    "id": "19430",
+    "name": "Dayton-Kettering-Beavercreek, OH",
+    "state": "OH"
+  },
+  {
+    "id": "19460",
+    "name": "Decatur, AL",
+    "state": "AL"
+  },
+  {
+    "id": "19500",
+    "name": "Decatur, IL",
+    "state": "IL"
+  },
+  {
+    "id": "19660",
+    "name": "Deltona-Daytona Beach-Ormond Beach, FL",
+    "state": "FL"
+  },
+  {
+    "id": "19740",
+    "name": "Denver-Aurora-Centennial, CO",
+    "state": "CO"
+  },
+  {
+    "id": "19780",
+    "name": "Des Moines-West Des Moines, IA",
+    "state": "IA"
+  },
+  {
+    "id": "19820",
+    "name": "Detroit-Warren-Dearborn, MI",
+    "state": "MI"
+  },
+  {
+    "id": "20020",
+    "name": "Dothan, AL",
+    "state": "AL"
+  },
+  {
+    "id": "20100",
+    "name": "Dover, DE",
+    "state": "DE"
+  },
+  {
+    "id": "20220",
+    "name": "Dubuque, IA",
+    "state": "IA"
+  },
+  {
+    "id": "20260",
+    "name": "Duluth, MN-WI",
+    "state": "MN"
+  },
+  {
+    "id": "20500",
+    "name": "Durham-Chapel Hill, NC",
+    "state": "NC"
+  },
+  {
+    "id": "20580",
+    "name": "Eagle Pass, TX",
+    "state": "TX"
+  },
+  {
+    "id": "500002",
+    "name": "East Arkansas nonmetropolitan area",
+    "state": "AR"
+  },
+  {
+    "id": "1700003",
+    "name": "East Central Illinois nonmetropolitan area",
+    "state": "IL"
+  },
+  {
+    "id": "1300003",
+    "name": "East Georgia nonmetropolitan area",
+    "state": "GA"
+  },
+  {
+    "id": "2100004",
+    "name": "East Kentucky nonmetropolitan area",
+    "state": "KY"
+  },
+  {
+    "id": "3800007",
+    "name": "East North Dakota nonmetropolitan area",
+    "state": "ND"
+  },
+  {
+    "id": "4600002",
+    "name": "East South Dakota nonmetropolitan area",
+    "state": "SD"
+  },
+  {
+    "id": "4700004",
+    "name": "East Tennessee nonmetropolitan area",
+    "state": "TN"
+  },
+  {
+    "id": "3000006",
+    "name": "East-Central Montana nonmetropolitan area",
+    "state": "MT"
+  },
+  {
+    "id": "800001",
+    "name": "Eastern and Southern Colorado nonmetropolitan area",
+    "state": "CO"
+  },
+  {
+    "id": "3500007",
+    "name": "Eastern New Mexico nonmetropolitan area",
+    "state": "NM"
+  },
+  {
+    "id": "3700001",
+    "name": "Eastern North Carolina nonmetropolitan area",
+    "state": "NC"
+  },
+  {
+    "id": "3900003",
+    "name": "Eastern Ohio nonmetropolitan area",
+    "state": "OH"
+  },
+  {
+    "id": "4100008",
+    "name": "Eastern Oregon nonmetropolitan area",
+    "state": "OR"
+  },
+  {
+    "id": "4800003",
+    "name": "Eastern Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "600006",
+    "name": "Eastern Sierra-Mother Lode Region of California nonmetropolitan area",
+    "state": "CA"
+  },
+  {
+    "id": "5300007",
+    "name": "Eastern Washington nonmetropolitan area",
+    "state": "WA"
+  },
+  {
+    "id": "5600007",
+    "name": "Eastern Wyoming nonmetropolitan area",
+    "state": "WY"
+  },
+  {
+    "id": "20740",
+    "name": "Eau Claire, WI",
+    "state": "WI"
+  },
+  {
+    "id": "20940",
+    "name": "El Centro, CA",
+    "state": "CA"
+  },
+  {
+    "id": "21340",
+    "name": "El Paso, TX",
+    "state": "TX"
+  },
+  {
+    "id": "21060",
+    "name": "Elizabethtown, KY",
+    "state": "KY"
+  },
+  {
+    "id": "21140",
+    "name": "Elkhart-Goshen, IN",
+    "state": "IN"
+  },
+  {
+    "id": "21300",
+    "name": "Elmira, NY",
+    "state": "NY"
+  },
+  {
+    "id": "21420",
+    "name": "Enid, OK",
+    "state": "OK"
+  },
+  {
+    "id": "21500",
+    "name": "Erie, PA",
+    "state": "PA"
+  },
+  {
+    "id": "21660",
+    "name": "Eugene-Springfield, OR",
+    "state": "OR"
+  },
+  {
+    "id": "21780",
+    "name": "Evansville, IN",
+    "state": "IN"
+  },
+  {
+    "id": "21820",
+    "name": "Fairbanks-College, AK",
+    "state": "AK"
+  },
+  {
+    "id": "22020",
+    "name": "Fargo, ND-MN",
+    "state": "MN"
+  },
+  {
+    "id": "22140",
+    "name": "Farmington, NM",
+    "state": "NM"
+  },
+  {
+    "id": "22220",
+    "name": "Fayetteville-Springdale-Rogers, AR",
+    "state": "AR"
+  },
+  {
+    "id": "22180",
+    "name": "Fayetteville, NC",
+    "state": "NC"
+  },
+  {
+    "id": "22380",
+    "name": "Flagstaff, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "22420",
+    "name": "Flint, MI",
+    "state": "MI"
+  },
+  {
+    "id": "22520",
+    "name": "Florence-Muscle Shoals, AL",
+    "state": "AL"
+  },
+  {
+    "id": "22500",
+    "name": "Florence, SC",
+    "state": "SC"
+  },
+  {
+    "id": "22540",
+    "name": "Fond du Lac, WI",
+    "state": "WI"
+  },
+  {
+    "id": "22660",
+    "name": "Fort Collins-Loveland, CO",
+    "state": "CO"
+  },
+  {
+    "id": "22900",
+    "name": "Fort Smith, AR-OK",
+    "state": "AR"
+  },
+  {
+    "id": "23060",
+    "name": "Fort Wayne, IN",
+    "state": "IN"
+  },
+  {
+    "id": "23420",
+    "name": "Fresno, CA",
+    "state": "CA"
+  },
+  {
+    "id": "23460",
+    "name": "Gadsden, AL",
+    "state": "AL"
+  },
+  {
+    "id": "23540",
+    "name": "Gainesville, FL",
+    "state": "FL"
+  },
+  {
+    "id": "23580",
+    "name": "Gainesville, GA",
+    "state": "GA"
+  },
+  {
+    "id": "23900",
+    "name": "Gettysburg, PA",
+    "state": "PA"
+  },
+  {
+    "id": "24020",
+    "name": "Glens Falls, NY",
+    "state": "NY"
+  },
+  {
+    "id": "24140",
+    "name": "Goldsboro, NC",
+    "state": "NC"
+  },
+  {
+    "id": "24220",
+    "name": "Grand Forks, ND-MN",
+    "state": "MN"
+  },
+  {
+    "id": "24260",
+    "name": "Grand Island, NE",
+    "state": "NE"
+  },
+  {
+    "id": "24300",
+    "name": "Grand Junction, CO",
+    "state": "CO"
+  },
+  {
+    "id": "24340",
+    "name": "Grand Rapids-Wyoming-Kentwood, MI",
+    "state": "MI"
+  },
+  {
+    "id": "24420",
+    "name": "Grants Pass, OR",
+    "state": "OR"
+  },
+  {
+    "id": "24500",
+    "name": "Great Falls, MT",
+    "state": "MT"
+  },
+  {
+    "id": "24540",
+    "name": "Greeley, CO",
+    "state": "CO"
+  },
+  {
+    "id": "24580",
+    "name": "Green Bay, WI",
+    "state": "WI"
+  },
+  {
+    "id": "24660",
+    "name": "Greensboro-High Point, NC",
+    "state": "NC"
+  },
+  {
+    "id": "24860",
+    "name": "Greenville-Anderson-Greer, SC",
+    "state": "SC"
+  },
+  {
+    "id": "24780",
+    "name": "Greenville, NC",
+    "state": "NC"
+  },
+  {
+    "id": "6600001",
+    "name": "Guam MSA",
+    "state": "GU"
+  },
+  {
+    "id": "25020",
+    "name": "Guayama, PR",
+    "state": "PR"
+  },
+  {
+    "id": "25060",
+    "name": "Gulfport-Biloxi, MS",
+    "state": "MS"
+  },
+  {
+    "id": "25180",
+    "name": "Hagerstown-Martinsburg, MD-WV",
+    "state": "MD"
+  },
+  {
+    "id": "25220",
+    "name": "Hammond, LA",
+    "state": "LA"
+  },
+  {
+    "id": "25260",
+    "name": "Hanford-Corcoran, CA",
+    "state": "CA"
+  },
+  {
+    "id": "25420",
+    "name": "Harrisburg-Carlisle, PA",
+    "state": "PA"
+  },
+  {
+    "id": "25500",
+    "name": "Harrisonburg, VA",
+    "state": "VA"
+  },
+  {
+    "id": "25540",
+    "name": "Hartford-West Hartford-East Hartford, CT",
+    "state": "CT"
+  },
+  {
+    "id": "25620",
+    "name": "Hattiesburg, MS",
+    "state": "MS"
+  },
+  {
+    "id": "1500001",
+    "name": "Hawaii / Kauai nonmetropolitan area",
+    "state": "HI"
+  },
+  {
+    "id": "25740",
+    "name": "Helena, MT",
+    "state": "MT"
+  },
+  {
+    "id": "25860",
+    "name": "Hickory-Lenoir-Morganton, NC",
+    "state": "NC"
+  },
+  {
+    "id": "4900011",
+    "name": "High Desert Utah nonmetropolitan area",
+    "state": "UT"
+  },
+  {
+    "id": "4800004",
+    "name": "Hill Country Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "25940",
+    "name": "Hilton Head Island-Bluffton-Port Royal, SC",
+    "state": "SC"
+  },
+  {
+    "id": "25980",
+    "name": "Hinesville, GA",
+    "state": "GA"
+  },
+  {
+    "id": "26140",
+    "name": "Homosassa Springs, FL",
+    "state": "FL"
+  },
+  {
+    "id": "26300",
+    "name": "Hot Springs, AR",
+    "state": "AR"
+  },
+  {
+    "id": "26380",
+    "name": "Houma-Bayou Cane-Thibodaux, LA",
+    "state": "LA"
+  },
+  {
+    "id": "26420",
+    "name": "Houston-Pasadena-The Woodlands, TX",
+    "state": "TX"
+  },
+  {
+    "id": "26580",
+    "name": "Huntington-Ashland, WV-KY-OH",
+    "state": "KY"
+  },
+  {
+    "id": "26620",
+    "name": "Huntsville, AL",
+    "state": "AL"
+  },
+  {
+    "id": "26820",
+    "name": "Idaho Falls, ID",
+    "state": "ID"
+  },
+  {
+    "id": "26900",
+    "name": "Indianapolis-Carmel-Greenwood, IN",
+    "state": "IN"
+  },
+  {
+    "id": "26980",
+    "name": "Iowa City, IA",
+    "state": "IA"
+  },
+  {
+    "id": "27060",
+    "name": "Ithaca, NY",
+    "state": "NY"
+  },
+  {
+    "id": "27100",
+    "name": "Jackson, MI",
+    "state": "MI"
+  },
+  {
+    "id": "27140",
+    "name": "Jackson, MS",
+    "state": "MS"
+  },
+  {
+    "id": "27180",
+    "name": "Jackson, TN",
+    "state": "TN"
+  },
+  {
+    "id": "27260",
+    "name": "Jacksonville, FL",
+    "state": "FL"
+  },
+  {
+    "id": "27340",
+    "name": "Jacksonville, NC",
+    "state": "NC"
+  },
+  {
+    "id": "27500",
+    "name": "Janesville-Beloit, WI",
+    "state": "WI"
+  },
+  {
+    "id": "27620",
+    "name": "Jefferson City, MO",
+    "state": "MO"
+  },
+  {
+    "id": "27740",
+    "name": "Johnson City, TN",
+    "state": "TN"
+  },
+  {
+    "id": "27780",
+    "name": "Johnstown, PA",
+    "state": "PA"
+  },
+  {
+    "id": "27860",
+    "name": "Jonesboro, AR",
+    "state": "AR"
+  },
+  {
+    "id": "27900",
+    "name": "Joplin, MO-KS",
+    "state": "KS"
+  },
+  {
+    "id": "27980",
+    "name": "Kahului-Wailuku, HI",
+    "state": "HI"
+  },
+  {
+    "id": "28020",
+    "name": "Kalamazoo-Portage, MI",
+    "state": "MI"
+  },
+  {
+    "id": "28100",
+    "name": "Kankakee, IL",
+    "state": "IL"
+  },
+  {
+    "id": "28140",
+    "name": "Kansas City, MO-KS",
+    "state": "KS"
+  },
+  {
+    "id": "2000006",
+    "name": "Kansas nonmetropolitan area",
+    "state": "KS"
+  },
+  {
+    "id": "28420",
+    "name": "Kennewick-Richland, WA",
+    "state": "WA"
+  },
+  {
+    "id": "28450",
+    "name": "Kenosha, WI",
+    "state": "WI"
+  },
+  {
+    "id": "28660",
+    "name": "Killeen-Temple, TX",
+    "state": "TX"
+  },
+  {
+    "id": "28700",
+    "name": "Kingsport-Bristol, TN-VA",
+    "state": "TN"
+  },
+  {
+    "id": "28740",
+    "name": "Kingston, NY",
+    "state": "NY"
+  },
+  {
+    "id": "28880",
+    "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY",
+    "state": "NY"
+  },
+  {
+    "id": "28940",
+    "name": "Knoxville, TN",
+    "state": "TN"
+  },
+  {
+    "id": "29020",
+    "name": "Kokomo, IN",
+    "state": "IN"
+  },
+  {
+    "id": "29100",
+    "name": "La Crosse-Onalaska, WI-MN",
+    "state": "MN"
+  },
+  {
+    "id": "29200",
+    "name": "Lafayette-West Lafayette, IN",
+    "state": "IN"
+  },
+  {
+    "id": "29180",
+    "name": "Lafayette, LA",
+    "state": "LA"
+  },
+  {
+    "id": "29340",
+    "name": "Lake Charles, LA",
+    "state": "LA"
+  },
+  {
+    "id": "29420",
+    "name": "Lake Havasu City-Kingman, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "29460",
+    "name": "Lakeland-Winter Haven, FL",
+    "state": "FL"
+  },
+  {
+    "id": "29540",
+    "name": "Lancaster, PA",
+    "state": "PA"
+  },
+  {
+    "id": "29620",
+    "name": "Lansing-East Lansing, MI",
+    "state": "MI"
+  },
+  {
+    "id": "29700",
+    "name": "Laredo, TX",
+    "state": "TX"
+  },
+  {
+    "id": "29740",
+    "name": "Las Cruces, NM",
+    "state": "NM"
+  },
+  {
+    "id": "29820",
+    "name": "Las Vegas-Henderson-North Las Vegas, NV",
+    "state": "NV"
+  },
+  {
+    "id": "29940",
+    "name": "Lawrence, KS",
+    "state": "KS"
+  },
+  {
+    "id": "30020",
+    "name": "Lawton, OK",
+    "state": "OK"
+  },
+  {
+    "id": "30140",
+    "name": "Lebanon, PA",
+    "state": "PA"
+  },
+  {
+    "id": "30340",
+    "name": "Lewiston-Auburn, ME",
+    "state": "ME"
+  },
+  {
+    "id": "30300",
+    "name": "Lewiston, ID-WA",
+    "state": "ID"
+  },
+  {
+    "id": "30500",
+    "name": "Lexington Park, MD",
+    "state": "MD"
+  },
+  {
+    "id": "30460",
+    "name": "Lexington-Fayette, KY",
+    "state": "KY"
+  },
+  {
+    "id": "30620",
+    "name": "Lima, OH",
+    "state": "OH"
+  },
+  {
+    "id": "30700",
+    "name": "Lincoln, NE",
+    "state": "NE"
+  },
+  {
+    "id": "30780",
+    "name": "Little Rock-North Little Rock-Conway, AR",
+    "state": "AR"
+  },
+  {
+    "id": "30860",
+    "name": "Logan, UT-ID",
+    "state": "ID"
+  },
+  {
+    "id": "31020",
+    "name": "Longview-Kelso, WA",
+    "state": "WA"
+  },
+  {
+    "id": "30980",
+    "name": "Longview, TX",
+    "state": "TX"
+  },
+  {
+    "id": "31080",
+    "name": "Los Angeles-Long Beach-Anaheim, CA",
+    "state": "CA"
+  },
+  {
+    "id": "31140",
+    "name": "Louisville/Jefferson County, KY-IN",
+    "state": "IN"
+  },
+  {
+    "id": "2800008",
+    "name": "Lower East Mississippi nonmetropolitan area",
+    "state": "MS"
+  },
+  {
+    "id": "2800007",
+    "name": "Lower West Mississippi nonmetropolitan area",
+    "state": "MS"
+  },
+  {
+    "id": "31180",
+    "name": "Lubbock, TX",
+    "state": "TX"
+  },
+  {
+    "id": "31340",
+    "name": "Lynchburg, VA",
+    "state": "VA"
+  },
+  {
+    "id": "31420",
+    "name": "Macon-Bibb County, GA",
+    "state": "GA"
+  },
+  {
+    "id": "31540",
+    "name": "Madison, WI",
+    "state": "WI"
+  },
+  {
+    "id": "31700",
+    "name": "Manchester-Nashua, NH",
+    "state": "NH"
+  },
+  {
+    "id": "31740",
+    "name": "Manhattan, KS",
+    "state": "KS"
+  },
+  {
+    "id": "31860",
+    "name": "Mankato, MN",
+    "state": "MN"
+  },
+  {
+    "id": "31900",
+    "name": "Mansfield, OH",
+    "state": "OH"
+  },
+  {
+    "id": "2400006",
+    "name": "Maryland nonmetropolitan area",
+    "state": "MD"
+  },
+  {
+    "id": "2500001",
+    "name": "Massachusetts nonmetropolitan area",
+    "state": "MA"
+  },
+  {
+    "id": "32420",
+    "name": "Mayaguez, PR",
+    "state": "PR"
+  },
+  {
+    "id": "32580",
+    "name": "McAllen-Edinburg-Mission, TX",
+    "state": "TX"
+  },
+  {
+    "id": "32780",
+    "name": "Medford, OR",
+    "state": "OR"
+  },
+  {
+    "id": "32820",
+    "name": "Memphis, TN-MS-AR",
+    "state": "AR"
+  },
+  {
+    "id": "32900",
+    "name": "Merced, CA",
+    "state": "CA"
+  },
+  {
+    "id": "33100",
+    "name": "Miami-Fort Lauderdale-West Palm Beach, FL",
+    "state": "FL"
+  },
+  {
+    "id": "33140",
+    "name": "Michigan City-La Porte, IN",
+    "state": "IN"
+  },
+  {
+    "id": "2600003",
+    "name": "Mid Michigan nonmetropolitan area",
+    "state": "MI"
+  },
+  {
+    "id": "1300002",
+    "name": "Middle Georgia nonmetropolitan area",
+    "state": "GA"
+  },
+  {
+    "id": "33220",
+    "name": "Midland, MI",
+    "state": "MI"
+  },
+  {
+    "id": "33260",
+    "name": "Midland, TX",
+    "state": "TX"
+  },
+  {
+    "id": "33340",
+    "name": "Milwaukee-Waukesha, WI",
+    "state": "WI"
+  },
+  {
+    "id": "33460",
+    "name": "Minneapolis-St. Paul-Bloomington, MN-WI",
+    "state": "MN"
+  },
+  {
+    "id": "33500",
+    "name": "Minot, ND",
+    "state": "ND"
+  },
+  {
+    "id": "33540",
+    "name": "Missoula, MT",
+    "state": "MT"
+  },
+  {
+    "id": "33660",
+    "name": "Mobile, AL",
+    "state": "AL"
+  },
+  {
+    "id": "33700",
+    "name": "Modesto, CA",
+    "state": "CA"
+  },
+  {
+    "id": "33740",
+    "name": "Monroe, LA",
+    "state": "LA"
+  },
+  {
+    "id": "33780",
+    "name": "Monroe, MI",
+    "state": "MI"
+  },
+  {
+    "id": "33860",
+    "name": "Montgomery, AL",
+    "state": "AL"
+  },
+  {
+    "id": "34060",
+    "name": "Morgantown, WV",
+    "state": "WV"
+  },
+  {
+    "id": "34100",
+    "name": "Morristown, TN",
+    "state": "TN"
+  },
+  {
+    "id": "34580",
+    "name": "Mount Vernon-Anacortes, WA",
+    "state": "WA"
+  },
+  {
+    "id": "34620",
+    "name": "Muncie, IN",
+    "state": "IN"
+  },
+  {
+    "id": "34740",
+    "name": "Muskegon-Norton Shores, MI",
+    "state": "MI"
+  },
+  {
+    "id": "34820",
+    "name": "Myrtle Beach-Conway-North Myrtle Beach, SC",
+    "state": "SC"
+  },
+  {
+    "id": "34900",
+    "name": "Napa, CA",
+    "state": "CA"
+  },
+  {
+    "id": "34940",
+    "name": "Naples-Marco Island, FL",
+    "state": "FL"
+  },
+  {
+    "id": "34980",
+    "name": "Nashville-Davidson--Murfreesboro--Franklin, TN",
+    "state": "TN"
+  },
+  {
+    "id": "35300",
+    "name": "New Haven, CT",
+    "state": "CT"
+  },
+  {
+    "id": "35380",
+    "name": "New Orleans-Metairie, LA",
+    "state": "LA"
+  },
+  {
+    "id": "35620",
+    "name": "New York-Newark-Jersey City, NY-NJ",
+    "state": "NJ"
+  },
+  {
+    "id": "35660",
+    "name": "Niles, MI",
+    "state": "MI"
+  },
+  {
+    "id": "500001",
+    "name": "North Arkansas nonmetropolitan area",
+    "state": "AR"
+  },
+  {
+    "id": "4700003",
+    "name": "North Central Tennessee nonmetropolitan area",
+    "state": "TN"
+  },
+  {
+    "id": "600003",
+    "name": "North Coast Region of California nonmetropolitan area",
+    "state": "CA"
+  },
+  {
+    "id": "1200006",
+    "name": "North Florida nonmetropolitan area",
+    "state": "FL"
+  },
+  {
+    "id": "1300001",
+    "name": "North Georgia nonmetropolitan area",
+    "state": "GA"
+  },
+  {
+    "id": "2900002",
+    "name": "North Missouri nonmetropolitan area",
+    "state": "MO"
+  },
+  {
+    "id": "3900002",
+    "name": "North Northeastern Ohio nonmetropolitan area (noncontiguous)",
+    "state": "OH"
+  },
+  {
+    "id": "35840",
+    "name": "North Port-Bradenton-Sarasota, FL",
+    "state": "FL"
+  },
+  {
+    "id": "4800002",
+    "name": "North Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "600007",
+    "name": "North Valley-Northern Mountains Region of California nonmetropolitan area",
+    "state": "CA"
+  },
+  {
+    "id": "100002",
+    "name": "Northeast Alabama nonmetropolitan area",
+    "state": "AL"
+  },
+  {
+    "id": "1900001",
+    "name": "Northeast Iowa nonmetropolitan area",
+    "state": "IA"
+  },
+  {
+    "id": "2200003",
+    "name": "Northeast Louisiana nonmetropolitan area",
+    "state": "LA"
+  },
+  {
+    "id": "2300001",
+    "name": "Northeast Maine nonmetropolitan area",
+    "state": "ME"
+  },
+  {
+    "id": "2700002",
+    "name": "Northeast Minnesota nonmetropolitan area",
+    "state": "MN"
+  },
+  {
+    "id": "3100003",
+    "name": "Northeast Nebraska nonmetropolitan area",
+    "state": "NE"
+  },
+  {
+    "id": "4000001",
+    "name": "Northeast Oklahoma nonmetropolitan area",
+    "state": "OK"
+  },
+  {
+    "id": "5100003",
+    "name": "Northeast Virginia nonmetropolitan area",
+    "state": "VA"
+  },
+  {
+    "id": "4200002",
+    "name": "Northeastern Pennsylvania nonmetropolitan area",
+    "state": "PA"
+  },
+  {
+    "id": "4500007",
+    "name": "Northeastern South Carolina nonmetropolitan area",
+    "state": "SC"
+  },
+  {
+    "id": "5500002",
+    "name": "Northeastern Wisconsin nonmetropolitan area",
+    "state": "WI"
+  },
+  {
+    "id": "1800001",
+    "name": "Northern Indiana nonmetropolitan area",
+    "state": "IN"
+  },
+  {
+    "id": "2600002",
+    "name": "Northern Michigan nonmetropolitan area",
+    "state": "MI"
+  },
+  {
+    "id": "3300001",
+    "name": "Northern New Hampshire nonmetropolitan area",
+    "state": "NH"
+  },
+  {
+    "id": "3500006",
+    "name": "Northern New Mexico nonmetropolitan area",
+    "state": "NM"
+  },
+  {
+    "id": "5000002",
+    "name": "Northern Vermont nonmetropolitan area",
+    "state": "VT"
+  },
+  {
+    "id": "5400002",
+    "name": "Northern West Virginia nonmetropolitan area",
+    "state": "WV"
+  },
+  {
+    "id": "100001",
+    "name": "Northwest Alabama nonmetropolitan area",
+    "state": "AL"
+  },
+  {
+    "id": "800003",
+    "name": "Northwest Colorado nonmetropolitan area",
+    "state": "CO"
+  },
+  {
+    "id": "1700001",
+    "name": "Northwest Illinois nonmetropolitan area",
+    "state": "IL"
+  },
+  {
+    "id": "1900002",
+    "name": "Northwest Iowa nonmetropolitan area",
+    "state": "IA"
+  },
+  {
+    "id": "2700001",
+    "name": "Northwest Minnesota nonmetropolitan area",
+    "state": "MN"
+  },
+  {
+    "id": "3100001",
+    "name": "Northwest Nebraska nonmetropolitan area",
+    "state": "NE"
+  },
+  {
+    "id": "4000002",
+    "name": "Northwest Oklahoma nonmetropolitan area",
+    "state": "OK"
+  },
+  {
+    "id": "5100004",
+    "name": "Northwest Virginia nonmetropolitan area",
+    "state": "VA"
+  },
+  {
+    "id": "1600006",
+    "name": "Northwestern Idaho nonmetropolitan area",
+    "state": "ID"
+  },
+  {
+    "id": "4200001",
+    "name": "Northwestern Pennsylvania nonmetropolitan area",
+    "state": "PA"
+  },
+  {
+    "id": "4800001",
+    "name": "Northwestern Region of Texas nonmetropolitan area",
+    "state": "TX"
+  },
+  {
+    "id": "4500003",
+    "name": "Northwestern South Carolina nonmetropolitan area",
+    "state": "SC"
+  },
+  {
+    "id": "5500001",
+    "name": "Northwestern Wisconsin nonmetropolitan area",
+    "state": "WI"
+  },
+  {
+    "id": "35980",
+    "name": "Norwich-New London-Willimantic, CT",
+    "state": "CT"
+  },
+  {
+    "id": "36100",
+    "name": "Ocala, FL",
+    "state": "FL"
+  },
+  {
+    "id": "36220",
+    "name": "Odessa, TX",
+    "state": "TX"
+  },
+  {
+    "id": "36260",
+    "name": "Ogden, UT",
+    "state": "UT"
+  },
+  {
+    "id": "36420",
+    "name": "Oklahoma City, OK",
+    "state": "OK"
+  },
+  {
+    "id": "36500",
+    "name": "Olympia-Lacey-Tumwater, WA",
+    "state": "WA"
+  },
+  {
+    "id": "36540",
+    "name": "Omaha, NE-IA",
+    "state": "IA"
+  },
+  {
+    "id": "36740",
+    "name": "Orlando-Kissimmee-Sanford, FL",
+    "state": "FL"
+  },
+  {
+    "id": "36780",
+    "name": "Oshkosh-Neenah, WI",
+    "state": "WI"
+  },
+  {
+    "id": "36980",
+    "name": "Owensboro, KY",
+    "state": "KY"
+  },
+  {
+    "id": "37100",
+    "name": "Oxnard-Thousand Oaks-Ventura, CA",
+    "state": "CA"
+  },
+  {
+    "id": "37140",
+    "name": "Paducah, KY-IL",
+    "state": "IL"
+  },
+  {
+    "id": "37340",
+    "name": "Palm Bay-Melbourne-Titusville, FL",
+    "state": "FL"
+  },
+  {
+    "id": "37460",
+    "name": "Panama City-Panama City Beach, FL",
+    "state": "FL"
+  },
+  {
+    "id": "37620",
+    "name": "Parkersburg-Vienna, WV",
+    "state": "WV"
+  },
+  {
+    "id": "37860",
+    "name": "Pensacola-Ferry Pass-Brent, FL",
+    "state": "FL"
+  },
+  {
+    "id": "37900",
+    "name": "Peoria, IL",
+    "state": "IL"
+  },
+  {
+    "id": "37980",
+    "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
+    "state": "DE"
+  },
+  {
+    "id": "38060",
+    "name": "Phoenix-Mesa-Chandler, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "38240",
+    "name": "Pinehurst-Southern Pines, NC",
+    "state": "NC"
+  },
+  {
+    "id": "38300",
+    "name": "Pittsburgh, PA",
+    "state": "PA"
+  },
+  {
+    "id": "38340",
+    "name": "Pittsfield, MA",
+    "state": "MA"
+  },
+  {
+    "id": "38540",
+    "name": "Pocatello, ID",
+    "state": "ID"
+  },
+  {
+    "id": "38660",
+    "name": "Ponce, PR",
+    "state": "PR"
+  },
+  {
+    "id": "38940",
+    "name": "Port St. Lucie, FL",
+    "state": "FL"
+  },
+  {
+    "id": "38860",
+    "name": "Portland-South Portland, ME",
+    "state": "ME"
+  },
+  {
+    "id": "38900",
+    "name": "Portland-Vancouver-Hillsboro, OR-WA",
+    "state": "OR"
+  },
+  {
+    "id": "39150",
+    "name": "Prescott Valley-Prescott, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "39300",
+    "name": "Providence-Warwick, RI-MA",
+    "state": "MA"
+  },
+  {
+    "id": "39340",
+    "name": "Provo-Orem-Lehi, UT",
+    "state": "UT"
+  },
+  {
+    "id": "39380",
+    "name": "Pueblo, CO",
+    "state": "CO"
+  },
+  {
+    "id": "7200006",
+    "name": "Puerto Rico nonmetropolitan area",
+    "state": "PR"
+  },
+  {
+    "id": "39460",
+    "name": "Punta Gorda, FL",
+    "state": "FL"
+  },
+  {
+    "id": "39540",
+    "name": "Racine-Mount Pleasant, WI",
+    "state": "WI"
+  },
+  {
+    "id": "39580",
+    "name": "Raleigh-Cary, NC",
+    "state": "NC"
+  },
+  {
+    "id": "39660",
+    "name": "Rapid City, SD",
+    "state": "SD"
+  },
+  {
+    "id": "39740",
+    "name": "Reading, PA",
+    "state": "PA"
+  },
+  {
+    "id": "39820",
+    "name": "Redding, CA",
+    "state": "CA"
+  },
+  {
+    "id": "39900",
+    "name": "Reno, NV",
+    "state": "NV"
+  },
+  {
+    "id": "40060",
+    "name": "Richmond, VA",
+    "state": "VA"
+  },
+  {
+    "id": "40140",
+    "name": "Riverside-San Bernardino-Ontario, CA",
+    "state": "CA"
+  },
+  {
+    "id": "40220",
+    "name": "Roanoke, VA",
+    "state": "VA"
+  },
+  {
+    "id": "40340",
+    "name": "Rochester, MN",
+    "state": "MN"
+  },
+  {
+    "id": "40380",
+    "name": "Rochester, NY",
+    "state": "NY"
+  },
+  {
+    "id": "40420",
+    "name": "Rockford, IL",
+    "state": "IL"
+  },
+  {
+    "id": "40580",
+    "name": "Rocky Mount, NC",
+    "state": "NC"
+  },
+  {
+    "id": "40660",
+    "name": "Rome, GA",
+    "state": "GA"
+  },
+  {
+    "id": "40900",
+    "name": "Sacramento-Roseville-Folsom, CA",
+    "state": "CA"
+  },
+  {
+    "id": "40980",
+    "name": "Saginaw, MI",
+    "state": "MI"
+  },
+  {
+    "id": "41420",
+    "name": "Salem, OR",
+    "state": "OR"
+  },
+  {
+    "id": "41500",
+    "name": "Salinas, CA",
+    "state": "CA"
+  },
+  {
+    "id": "41540",
+    "name": "Salisbury, MD",
+    "state": "MD"
+  },
+  {
+    "id": "41620",
+    "name": "Salt Lake City-Murray, UT",
+    "state": "UT"
+  },
+  {
+    "id": "41660",
+    "name": "San Angelo, TX",
+    "state": "TX"
+  },
+  {
+    "id": "41700",
+    "name": "San Antonio-New Braunfels, TX",
+    "state": "TX"
+  },
+  {
+    "id": "41740",
+    "name": "San Diego-Chula Vista-Carlsbad, CA",
+    "state": "CA"
+  },
+  {
+    "id": "41860",
+    "name": "San Francisco-Oakland-Fremont, CA",
+    "state": "CA"
+  },
+  {
+    "id": "41940",
+    "name": "San Jose-Sunnyvale-Santa Clara, CA",
+    "state": "CA"
+  },
+  {
+    "id": "41980",
+    "name": "San Juan-Bayamon-Caguas, PR",
+    "state": "PR"
+  },
+  {
+    "id": "42020",
+    "name": "San Luis Obispo-Paso Robles, CA",
+    "state": "CA"
+  },
+  {
+    "id": "41780",
+    "name": "Sandusky, OH",
+    "state": "OH"
+  },
+  {
+    "id": "42100",
+    "name": "Santa Cruz-Watsonville, CA",
+    "state": "CA"
+  },
+  {
+    "id": "42140",
+    "name": "Santa Fe, NM",
+    "state": "NM"
+  },
+  {
+    "id": "42200",
+    "name": "Santa Maria-Santa Barbara, CA",
+    "state": "CA"
+  },
+  {
+    "id": "42220",
+    "name": "Santa Rosa-Petaluma, CA",
+    "state": "CA"
+  },
+  {
+    "id": "42340",
+    "name": "Savannah, GA",
+    "state": "GA"
+  },
+  {
+    "id": "42540",
+    "name": "Scranton--Wilkes-Barre, PA",
+    "state": "PA"
+  },
+  {
+    "id": "42660",
+    "name": "Seattle-Tacoma-Bellevue, WA",
+    "state": "WA"
+  },
+  {
+    "id": "42680",
+    "name": "Sebastian-Vero Beach-West Vero Corridor, FL",
+    "state": "FL"
+  },
+  {
+    "id": "42700",
+    "name": "Sebring, FL",
+    "state": "FL"
+  },
+  {
+    "id": "43100",
+    "name": "Sheboygan, WI",
+    "state": "WI"
+  },
+  {
+    "id": "43300",
+    "name": "Sherman-Denison, TX",
+    "state": "TX"
+  },
+  {
+    "id": "43340",
+    "name": "Shreveport-Bossier City, LA",
+    "state": "LA"
+  },
+  {
+    "id": "43420",
+    "name": "Sierra Vista-Douglas, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "43580",
+    "name": "Sioux City, IA-NE-SD",
+    "state": "IA"
+  },
+  {
+    "id": "43620",
+    "name": "Sioux Falls, SD-MN",
+    "state": "MN"
+  },
+  {
+    "id": "43640",
+    "name": "Slidell-Mandeville-Covington, LA",
+    "state": "LA"
+  },
+  {
+    "id": "500004",
+    "name": "South Arkansas nonmetropolitan area",
+    "state": "AR"
+  },
+  {
+    "id": "43780",
+    "name": "South Bend-Mishawaka, IN-MI",
+    "state": "IN"
+  },
+  {
+    "id": "2100002",
+    "name": "South Central Kentucky nonmetropolitan area",
+    "state": "KY"
+  },
+  {
+    "id": "4700002",
+    "name": "South Central Tennessee nonmetropolitan area",
+    "state": "TN"
+  },
+  {
+    "id": "5500003",
+    "name": "South Central Wisconsin nonmetropolitan area",
+    "state": "WI"
+  },
+  {
+    "id": "1200003",
+    "name": "South Florida nonmetropolitan area",
+    "state": "FL"
+  },
+  {
+    "id": "1300004",
+    "name": "South Georgia nonmetropolitan area",
+    "state": "GA"
+  },
+  {
+    "id": "1700004",
+    "name": "South Illinois nonmetropolitan area",
+    "state": "IL"
+  },
+  {
+    "id": "3100006",
+    "name": "South Nebraska nonmetropolitan area",
+    "state": "NE"
+  },
+  {
+    "id": "100004",
+    "name": "Southeast Alabama nonmetropolitan area",
+    "state": "AL"
+  },
+  {
+    "id": "1900004",
+    "name": "Southeast Iowa nonmetropolitan area",
+    "state": "IA"
+  },
+  {
+    "id": "2700004",
+    "name": "Southeast Minnesota nonmetropolitan area",
+    "state": "MN"
+  },
+  {
+    "id": "2900003",
+    "name": "Southeast Missouri nonmetropolitan area",
+    "state": "MO"
+  },
+  {
+    "id": "4000004",
+    "name": "Southeast Oklahoma nonmetropolitan area",
+    "state": "OK"
+  },
+  {
+    "id": "1600007",
+    "name": "Southeast-Central Idaho nonmetropolitan area",
+    "state": "ID"
+  },
+  {
+    "id": "1800003",
+    "name": "Southern Indiana nonmetropolitan area",
+    "state": "IN"
+  },
+  {
+    "id": "2600004",
+    "name": "Southern Michigan nonmetropolitan area",
+    "state": "MI"
+  },
+  {
+    "id": "3900004",
+    "name": "Southern Ohio nonmetropolitan area",
+    "state": "OH"
+  },
+  {
+    "id": "4500005",
+    "name": "Southern South Carolina nonmetropolitan area",
+    "state": "SC"
+  },
+  {
+    "id": "5000001",
+    "name": "Southern Vermont nonmetropolitan area",
+    "state": "VT"
+  },
+  {
+    "id": "5400001",
+    "name": "Southern West Virginia nonmetropolitan area",
+    "state": "WV"
+  },
+  {
+    "id": "5100002",
+    "name": "Southside Virginia nonmetropolitan area",
+    "state": "VA"
+  },
+  {
+    "id": "100003",
+    "name": "Southwest Alabama nonmetropolitan area",
+    "state": "AL"
+  },
+  {
+    "id": "800002",
+    "name": "Southwest Colorado nonmetropolitan area",
+    "state": "CO"
+  },
+  {
+    "id": "1900003",
+    "name": "Southwest Iowa nonmetropolitan area",
+    "state": "IA"
+  },
+  {
+    "id": "2200006",
+    "name": "Southwest Louisiana nonmetropolitan area",
+    "state": "LA"
+  },
+  {
+    "id": "2300002",
+    "name": "Southwest Maine nonmetropolitan area",
+    "state": "ME"
+  },
+  {
+    "id": "2700003",
+    "name": "Southwest Minnesota nonmetropolitan area",
+    "state": "MN"
+  },
+  {
+    "id": "2900004",
+    "name": "Southwest Missouri nonmetropolitan area",
+    "state": "MO"
+  },
+  {
+    "id": "3000003",
+    "name": "Southwest Montana nonmetropolitan area",
+    "state": "MT"
+  },
+  {
+    "id": "3600004",
+    "name": "Southwest New York nonmetropolitan area",
+    "state": "NY"
+  },
+  {
+    "id": "4000003",
+    "name": "Southwest Oklahoma nonmetropolitan area",
+    "state": "OK"
+  },
+  {
+    "id": "5100001",
+    "name": "Southwest Virginia nonmetropolitan area",
+    "state": "VA"
+  },
+  {
+    "id": "3300006",
+    "name": "Southwestern New Hampshire nonmetropolitan area",
+    "state": "NH"
+  },
+  {
+    "id": "4200004",
+    "name": "Southwestern Pennsylvania nonmetropolitan area",
+    "state": "PA"
+  },
+  {
+    "id": "43900",
+    "name": "Spartanburg, SC",
+    "state": "SC"
+  },
+  {
+    "id": "44060",
+    "name": "Spokane-Spokane Valley, WA",
+    "state": "WA"
+  },
+  {
+    "id": "44100",
+    "name": "Springfield, IL",
+    "state": "IL"
+  },
+  {
+    "id": "44140",
+    "name": "Springfield, MA",
+    "state": "MA"
+  },
+  {
+    "id": "44180",
+    "name": "Springfield, MO",
+    "state": "MO"
+  },
+  {
+    "id": "44220",
+    "name": "Springfield, OH",
+    "state": "OH"
+  },
+  {
+    "id": "41060",
+    "name": "St. Cloud, MN",
+    "state": "MN"
+  },
+  {
+    "id": "41100",
+    "name": "St. George, UT",
+    "state": "UT"
+  },
+  {
+    "id": "41140",
+    "name": "St. Joseph, MO-KS",
+    "state": "KS"
+  },
+  {
+    "id": "41180",
+    "name": "St. Louis, MO-IL",
+    "state": "IL"
+  },
+  {
+    "id": "44300",
+    "name": "State College, PA",
+    "state": "PA"
+  },
+  {
+    "id": "44420",
+    "name": "Staunton-Stuarts Draft, VA",
+    "state": "VA"
+  },
+  {
+    "id": "44700",
+    "name": "Stockton-Lodi, CA",
+    "state": "CA"
+  },
+  {
+    "id": "44940",
+    "name": "Sumter, SC",
+    "state": "SC"
+  },
+  {
+    "id": "1000005",
+    "name": "Sussex Delaware nonmetropolitan area",
+    "state": "DE"
+  },
+  {
+    "id": "45060",
+    "name": "Syracuse, NY",
+    "state": "NY"
+  },
+  {
+    "id": "45220",
+    "name": "Tallahassee, FL",
+    "state": "FL"
+  },
+  {
+    "id": "45300",
+    "name": "Tampa-St. Petersburg-Clearwater, FL",
+    "state": "FL"
+  },
+  {
+    "id": "45460",
+    "name": "Terre Haute, IN",
+    "state": "IN"
+  },
+  {
+    "id": "45500",
+    "name": "Texarkana, TX-AR",
+    "state": "AR"
+  },
+  {
+    "id": "45780",
+    "name": "Toledo, OH",
+    "state": "OH"
+  },
+  {
+    "id": "45820",
+    "name": "Topeka, KS",
+    "state": "KS"
+  },
+  {
+    "id": "45900",
+    "name": "Traverse City, MI",
+    "state": "MI"
+  },
+  {
+    "id": "45940",
+    "name": "Trenton-Princeton, NJ",
+    "state": "NJ"
+  },
+  {
+    "id": "46060",
+    "name": "Tucson, AZ",
+    "state": "AZ"
+  },
+  {
+    "id": "46140",
+    "name": "Tulsa, OK",
+    "state": "OK"
+  },
+  {
+    "id": "46220",
+    "name": "Tuscaloosa, AL",
+    "state": "AL"
+  },
+  {
+    "id": "46300",
+    "name": "Twin Falls, ID",
+    "state": "ID"
+  },
+  {
+    "id": "46340",
+    "name": "Tyler, TX",
+    "state": "TX"
+  },
+  {
+    "id": "7800001",
+    "name": "U.S. Virgin Islands MSA",
+    "state": "VI"
+  },
+  {
+    "id": "2800006",
+    "name": "Upper East Mississippi nonmetropolitan area",
+    "state": "MS"
+  },
+  {
+    "id": "2600001",
+    "name": "Upper Peninsula of Michigan nonmetropolitan area",
+    "state": "MI"
+  },
+  {
+    "id": "46520",
+    "name": "Urban Honolulu, HI",
+    "state": "HI"
+  },
+  {
+    "id": "46540",
+    "name": "Utica-Rome, NY",
+    "state": "NY"
+  },
+  {
+    "id": "46660",
+    "name": "Valdosta, GA",
+    "state": "GA"
+  },
+  {
+    "id": "46700",
+    "name": "Vallejo, CA",
+    "state": "CA"
+  },
+  {
+    "id": "47020",
+    "name": "Victoria, TX",
+    "state": "TX"
+  },
+  {
+    "id": "47220",
+    "name": "Vineland, NJ",
+    "state": "NJ"
+  },
+  {
+    "id": "47260",
+    "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC",
+    "state": "NC"
+  },
+  {
+    "id": "47300",
+    "name": "Visalia, CA",
+    "state": "CA"
+  },
+  {
+    "id": "47380",
+    "name": "Waco, TX",
+    "state": "TX"
+  },
+  {
+    "id": "47460",
+    "name": "Walla Walla, WA",
+    "state": "WA"
+  },
+  {
+    "id": "47580",
+    "name": "Warner Robins, GA",
+    "state": "GA"
+  },
+  {
+    "id": "4900010",
+    "name": "Wasatch Front Fringe Utah nonmetropolitan area",
+    "state": "UT"
+  },
+  {
+    "id": "47900",
+    "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV",
+    "state": "DC"
+  },
+  {
+    "id": "47930",
+    "name": "Waterbury-Shelton, CT",
+    "state": "CT"
+  },
+  {
+    "id": "47940",
+    "name": "Waterloo-Cedar Falls, IA",
+    "state": "IA"
+  },
+  {
+    "id": "48060",
+    "name": "Watertown-Fort Drum, NY",
+    "state": "NY"
+  },
+  {
+    "id": "48140",
+    "name": "Wausau, WI",
+    "state": "WI"
+  },
+  {
+    "id": "48260",
+    "name": "Weirton-Steubenville, WV-OH",
+    "state": "OH"
+  },
+  {
+    "id": "48300",
+    "name": "Wenatchee-East Wenatchee, WA",
+    "state": "WA"
+  },
+  {
+    "id": "500003",
+    "name": "West Arkansas nonmetropolitan area",
+    "state": "AR"
+  },
+  {
+    "id": "1700002",
+    "name": "West Central Illinois nonmetropolitan area",
+    "state": "IL"
+  },
+  {
+    "id": "2800005",
+    "name": "West Delta Mississippi nonmetropolitan area",
+    "state": "MS"
+  },
+  {
+    "id": "2100001",
+    "name": "West Kentucky nonmetropolitan area",
+    "state": "KY"
+  },
+  {
+    "id": "3000004",
+    "name": "West Montana nonmetropolitan area",
+    "state": "MT"
+  },
+  {
+    "id": "3800006",
+    "name": "West North Dakota nonmetropolitan area",
+    "state": "ND"
+  },
+  {
+    "id": "3900001",
+    "name": "West Northwestern Ohio nonmetropolitan area",
+    "state": "OH"
+  },
+  {
+    "id": "4600003",
+    "name": "West South Dakota nonmetropolitan area",
+    "state": "SD"
+  },
+  {
+    "id": "4700001",
+    "name": "West Tennessee nonmetropolitan area",
+    "state": "TN"
+  },
+  {
+    "id": "3700003",
+    "name": "Western North Carolina nonmetropolitan area",
+    "state": "NC"
+  },
+  {
+    "id": "5300006",
+    "name": "Western Washington nonmetropolitan area",
+    "state": "WA"
+  },
+  {
+    "id": "5500004",
+    "name": "Western Wisconsin nonmetropolitan area",
+    "state": "WI"
+  },
+  {
+    "id": "5600006",
+    "name": "Western Wyoming nonmetropolitan area",
+    "state": "WY"
+  },
+  {
+    "id": "48540",
+    "name": "Wheeling, WV-OH",
+    "state": "OH"
+  },
+  {
+    "id": "48660",
+    "name": "Wichita Falls, TX",
+    "state": "TX"
+  },
+  {
+    "id": "48620",
+    "name": "Wichita, KS",
+    "state": "KS"
+  },
+  {
+    "id": "48680",
+    "name": "Wildwood-The Villages, FL",
+    "state": "FL"
+  },
+  {
+    "id": "48700",
+    "name": "Williamsport, PA",
+    "state": "PA"
+  },
+  {
+    "id": "48900",
+    "name": "Wilmington, NC",
+    "state": "NC"
+  },
+  {
+    "id": "49020",
+    "name": "Winchester, VA-WV",
+    "state": "VA"
+  },
+  {
+    "id": "49180",
+    "name": "Winston-Salem, NC",
+    "state": "NC"
+  },
+  {
+    "id": "49340",
+    "name": "Worcester, MA",
+    "state": "MA"
+  },
+  {
+    "id": "49420",
+    "name": "Yakima, WA",
+    "state": "WA"
+  },
+  {
+    "id": "49620",
+    "name": "York-Hanover, PA",
+    "state": "PA"
+  },
+  {
+    "id": "49660",
+    "name": "Youngstown-Warren, OH",
+    "state": "OH"
+  },
+  {
+    "id": "49700",
+    "name": "Yuba City, CA",
+    "state": "CA"
+  },
+  {
+    "id": "49740",
+    "name": "Yuma, AZ",
+    "state": "AZ"
+  }
+]
