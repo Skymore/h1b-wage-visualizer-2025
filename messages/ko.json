@@ -6,6 +6,7 @@
         "map_view": "지도 보기",
         "list_view": "목록 보기",
         "wages_for": "{area}의 {soc} 임금",
+        "search_locations": "지역 필터링 (예: 서울)...",
         "level_1": "Level 1 (초급)",
         "level_2": "Level 2 (숙련)",
         "level_3": "Level 3 (전문)",

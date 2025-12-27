@@ -6,6 +6,7 @@
         "map_view": "Vista de Mapa",
         "list_view": "Vista de Lista",
         "wages_for": "Salarios para {soc} en {area}",
+        "search_locations": "Filtrar ubicaciones (ej. Madrid)...",
         "level_1": "Nivel 1 (Entrada)",
         "level_2": "Nivel 2 (Calificado)",
         "level_3": "Nivel 3 (Experimentado)",

@@ -6,6 +6,7 @@
         "map_view": "地図表示",
         "list_view": "リスト表示",
         "wages_for": "{area} における {soc} の賃金",
+        "search_locations": "地域をフィルタリング (例: 東京)...",
         "level_1": "Level 1 (初級)",
         "level_2": "Level 2 (中級)",
         "level_3": "Level 3 (上級)",

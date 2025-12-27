@@ -4,6 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { useState, useMemo } from "react";
 import { ArrowUpDown, ChevronDown, ChevronUp } from "lucide-react";
@@ -38,6 +39,7 @@ export function WageDashboard({
     const [sortKey, setSortKey] = useState<SortKey>('l2');
     const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
     const [isExpanded, setIsExpanded] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     // Create a map of Area ID to Name for easy lookup
     const areaMap = useMemo(() => new Map(areas.map(a => [a.id, `${a.name}, ${a.state}`])), [areas]);
@@ -52,7 +54,18 @@ export function WageDashboard({
     };
 
     const sortedData = useMemo(() => {
-        return [...wageData].sort((a, b) => {
+        let filtered = wageData;
+
+        // Filter by Search Query
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            filtered = filtered.filter(row => {
+                const areaName = areaMap.get(row.area_id) || row.area_id;
+                return areaName.toLowerCase().includes(query);
+            });
+        }
+
+        return [...filtered].sort((a, b) => {
             let valA: any = a[sortKey as keyof WageRecord];
             let valB: any = b[sortKey as keyof WageRecord];
 
@@ -67,7 +80,7 @@ export function WageDashboard({
             valB = b[sortKey as keyof WageRecord];
             return sortDirection === 'asc' ? valA - valB : valB - valA;
         });
-    }, [wageData, sortKey, sortDirection, areaMap]);
+    }, [wageData, sortKey, sortDirection, areaMap, searchQuery]);
 
     const displayData = isExpanded ? sortedData : sortedData.slice(0, 20);
 
@@ -93,6 +106,14 @@ export function WageDashboard({
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
+                    <div className="mb-4">
+                        <Input
+                            placeholder={t('search_locations')}
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="max-w-sm"
+                        />
+                    </div>
                     <Table>
                         <TableHeader>
                             <TableRow>

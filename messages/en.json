@@ -6,6 +6,7 @@
         "map_view": "Map View",
         "list_view": "List View",
         "wages_for": "Wages for {soc} in {area}",
+        "search_locations": "Filter locations (e.g. New York)...",
         "level_1": "Level 1 (Entry)",
         "level_2": "Level 2 (Qualified)",
         "level_3": "Level 3 (Experienced)",

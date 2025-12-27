@@ -6,6 +6,7 @@
         "map_view": "地图模式",
         "list_view": "列表模式",
         "wages_for": "{soc} 在 {area} 的薪资",
+        "search_locations": "筛选地区 (例如 纽约)...",
         "level_1": "Level 1 (初级)",
         "level_2": "Level 2 (合格)",
         "level_3": "Level 3 (资深)",
