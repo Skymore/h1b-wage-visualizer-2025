@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 
 // Token should be in .env.local
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
@@ -27,6 +28,7 @@ export default function MapView({
     const [lng, setLng] = useState(-95.7129);
     const [lat, setLat] = useState(37.0902);
     const [zoom, setZoom] = useState(3);
+    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
         if (map.current || !mapContainer.current) return;
@@ -35,7 +37,7 @@ export default function MapView({
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/light-v11',
+            style: resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11',
             center: [lng, lat],
             zoom: zoom
         });
@@ -51,6 +53,13 @@ export default function MapView({
         });
 
     }, []);
+
+    // Update map style when theme changes
+    useEffect(() => {
+        if (!map.current) return;
+        const style = resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
+        map.current.setStyle(style);
+    }, [resolvedTheme]);
 
     const getColor = (wage: number, min: number, max: number) => {
         if (!wage || min === max) return '#3b82f6'; // Default blue
@@ -103,7 +112,7 @@ export default function MapView({
 
                 const popup = new mapboxgl.Popup({ offset: 25 })
                     .setHTML(`
-                        <div class="p-2">
+                        <div class="p-2 text-foreground bg-background rounded-md">
                             <h3 class="font-bold text-sm">${area.name}</h3>
                             <div class="text-xs pt-1">
                                 <div class="grid grid-cols-2 gap-x-2">
@@ -128,7 +137,7 @@ export default function MapView({
             }
         });
 
-    }, [wageData, areas, wageScale]);
+    }, [wageData, areas, wageScale, resolvedTheme]);
 
     return (
         <div className="h-[600px] w-full rounded-md border overflow-hidden relative">
