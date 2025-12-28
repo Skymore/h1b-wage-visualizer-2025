@@ -16,6 +16,22 @@
         "area": "Área",
         "records_found": "{count} registros encontrados",
         "show_all": "Mostrar Todo ({count} más)",
-        "show_less": "Mostrar Menos"
+        "show_less": "Mostrar Menos",
+        "level_2_annual_wage": "Salario Anual Nivel 2",
+        "high": "Alto",
+        "med_high": "Medio-Alto",
+        "medium": "Medio",
+        "low": "Bajo",
+        "select_to_compare": "Seleccionar para comparar",
+        "share_dialog_title": "Compartir ideas",
+        "share_dialog_desc": "Imagen de alta calidad generada para compartir.",
+        "generating_preview": "Generando vista previa...",
+        "copied": "¡Copiado!",
+        "copy_image": "Copiar imagen",
+        "download_png": "Descargar PNG",
+        "copy_not_supported": "Copia directa no soportada. Por favor descargue.",
+        "selected_count": "{count} / 4 Seleccionados",
+        "generate_comparison": "Generar imagen comparativa",
+        "clear": "Limpiar"
     }
 }

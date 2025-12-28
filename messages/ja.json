@@ -16,6 +16,22 @@
         "area": "エリア",
         "records_found": "{count} 件のレコード",
         "show_all": "すべて表示 ({count} 件)",
-        "show_less": "表示を減らす"
+        "show_less": "表示を減らす",
+        "level_2_annual_wage": "レベル2の年収",
+        "high": "高",
+        "med_high": "中高",
+        "medium": "中",
+        "low": "低",
+        "select_to_compare": "比較するために選択",
+        "share_dialog_title": "インサイトを共有",
+        "share_dialog_desc": "共有用に高品質な画像を生成しました。",
+        "generating_preview": "プレビューを生成中...",
+        "copied": "コピーしました！",
+        "copy_image": "画像をコピー",
+        "download_png": "PNGをダウンロード",
+        "copy_not_supported": "直接コピーはサポートされていません。ダウンロードしてください。",
+        "selected_count": "{count} / 4 選択中",
+        "generate_comparison": "比較画像を生成",
+        "clear": "クリア"
     }
 }

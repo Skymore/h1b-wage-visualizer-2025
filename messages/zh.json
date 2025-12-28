@@ -21,6 +21,17 @@
         "high": "高",
         "med_high": "中高",
         "medium": "中",
-        "low": "低"
+        "low": "低",
+        "select_to_compare": "勾选以对比薪资",
+        "share_dialog_title": "分享见解",
+        "share_dialog_desc": "已生成高清图片，可直接分享。",
+        "generating_preview": "正在生成预览...",
+        "copied": "已复制！",
+        "copy_image": "复制图片",
+        "download_png": "下载 PNG",
+        "copy_not_supported": "无法直接复制，请使用下载功能。",
+        "selected_count": "已选 {count} / 4",
+        "generate_comparison": "生成对比图",
+        "clear": "清除"
     }
 }

@@ -16,11 +16,23 @@ async function processData() {
     const csvContent = fs.readFileSync(path.join(INPUT_DIR, 'ALC_Export.csv'));
 
     // Parse CSV
+    interface AlcExportRecord {
+        Area: string;
+        SocCode: string;
+        GeoLvl: string;
+        Level1: string;
+        Level2: string;
+        Level3: string;
+        Level4: string;
+        Average: string;
+        Label: string;
+    }
+
     const records = parse(csvContent, {
         columns: true,
         skip_empty_lines: true,
         trim: true,
-    });
+    }) as AlcExportRecord[];
 
     console.log(`Parsed ${records.length} records.`);
 

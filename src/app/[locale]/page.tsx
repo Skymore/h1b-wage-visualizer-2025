@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search } from '@/components/Search';
 import dynamic from 'next/dynamic';
@@ -17,13 +18,29 @@ const MapView = dynamic(() => import('@/components/Map'), {
 
 export default function Home() {
   const t = useTranslations('HomePage');
-  const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
+  // Search Params
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [wageData, setWageData] = useState<any[]>([]);
   const [areas, setAreas] = useState<any[]>([]);
 
-  // Filters
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedState, setSelectedState] = useState('ALL');
+  // Initialize state from URL or defaults
+  const [selectedSoc, setSelectedSoc] = useState<string | null>(searchParams.get('soc'));
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+  const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
+
+  // Update URL wrapper
+  const updateUrl = (key: string, value: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value && value !== 'ALL') {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   // Fetch areas on mount
   useEffect(() => {
@@ -41,11 +58,6 @@ export default function Home() {
         .then(res => res.json())
         .then(data => setWageData(data.wages))
         .catch(err => console.error("Failed to load wages", err));
-
-      // Also fetch occupation title if not available differently, or we can get it from search component but that is sibling.
-      // We can fetch occupations.json again or just iterate if we had it. 
-      // Actually Search component fetches occupations.json. Let's lift that up or fetch here.
-      // Easiest is to fetch occupations.json once in parent.
     }
   }, [selectedSoc]);
 
@@ -115,6 +127,22 @@ export default function Home() {
     return { min: min === Infinity ? 0 : min, max: max === -Infinity ? 0 : max };
   }, [wageData]);
 
+  // Handlers
+  const handleSocSelect = (soc: string) => {
+    setSelectedSoc(soc);
+    updateUrl('soc', soc);
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+    updateUrl('q', val);
+  };
+
+  const handleStateChange = (val: string) => {
+    setSelectedState(val);
+    updateUrl('state', val);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 space-y-6">
       <header className="w-full max-w-7xl flex justify-end items-center py-4 px-4 space-x-2">
@@ -128,7 +156,7 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-xl z-10">
-        <Search onSelectOccupation={setSelectedSoc} />
+        <Search onSelectOccupation={handleSocSelect} />
       </div>
 
       {selectedSoc && (
@@ -136,13 +164,13 @@ export default function Home() {
           <Input
             placeholder={t('search_locations')}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => handleSearchChange(e.target.value)}
             className="max-w-sm"
           />
           <select
             className="flex h-10 w-full md:w-[200px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             value={selectedState}
-            onChange={(e) => setSelectedState(e.target.value)}
+            onChange={(e) => handleStateChange(e.target.value)}
           >
             <option value="ALL">All States</option>
             {uniqueStates.map(state => (

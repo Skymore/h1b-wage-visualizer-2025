@@ -11,8 +11,19 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 
+import { useSearchParams } from "next/navigation"
+import { useEffect } from "react"
+
 export function ThemeToggle() {
     const { setTheme } = useTheme()
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        const themeParam = searchParams.get('theme')
+        if (themeParam && ['light', 'dark', 'system'].includes(themeParam)) {
+            setTheme(themeParam)
+        }
+    }, [searchParams, setTheme])
 
     return (
         <Popover>

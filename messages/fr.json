@@ -21,6 +21,17 @@
         "high": "Élevé",
         "med_high": "Moy-Élevé",
         "medium": "Moyen",
-        "low": "Faible"
+        "low": "Faible",
+        "select_to_compare": "Sélectionner pour comparer",
+        "share_dialog_title": "Partager des informations",
+        "share_dialog_desc": "Image de haute qualité générée pour le partage.",
+        "generating_preview": "Génération de l'aperçu...",
+        "copied": "Copié !",
+        "copy_image": "Copier l'image",
+        "download_png": "Télécharger le PNG",
+        "copy_not_supported": "Copie directe non prise en charge. Veuillez télécharger.",
+        "selected_count": "{count} / 4 Sélectionnés",
+        "generate_comparison": "Générer image comparative",
+        "clear": "Effacer"
     }
 }

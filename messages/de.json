@@ -21,6 +21,17 @@
         "high": "Hoch",
         "med_high": "Mittel-Hoch",
         "medium": "Mittel",
-        "low": "Niedrig"
+        "low": "Niedrig",
+        "select_to_compare": "Zum Vergleichen auswählen",
+        "share_dialog_title": "Einblicke teilen",
+        "share_dialog_desc": "Hochwertiges Bild zum Teilen generiert.",
+        "generating_preview": "Vorschau wird generiert...",
+        "copied": "Kopiert!",
+        "copy_image": "Bild kopieren",
+        "download_png": "PNG herunterladen",
+        "copy_not_supported": "Direktes Kopieren nicht unterstützt. Bitte herunterladen.",
+        "selected_count": "{count} / 4 Ausgewählt",
+        "generate_comparison": "Vergleichsbild erstellen",
+        "clear": "Zurücksetzen"
     }
 }

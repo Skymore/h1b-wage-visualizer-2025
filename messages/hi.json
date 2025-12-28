@@ -21,6 +21,17 @@
         "high": "उच्च",
         "med_high": "मध्यम-उच्च",
         "medium": "मध्यम",
-        "low": "कम"
+        "low": "कम",
+        "select_to_compare": "तुलना के लिए चुनें",
+        "share_dialog_title": "इनसाइट्स साझा करें",
+        "share_dialog_desc": "साझा करने के लिए उच्च गुणवत्ता वाली छवि तैयार की गई।",
+        "generating_preview": "पूर्वावलोकन उत्पन्न हो रहा है...",
+        "copied": "कॉपी किया गया!",
+        "copy_image": "छवि कॉपी करें",
+        "download_png": "PNG डाउनलोड करें",
+        "copy_not_supported": "सीधा कॉपी समर्थित नहीं है। कृपया डाउनलोड करें।",
+        "selected_count": "{count} / 4 चयनित",
+        "generate_comparison": "तुलना छवि उत्पन्न करें",
+        "clear": "साफ़ करें"
     }
 }

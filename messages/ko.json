@@ -16,6 +16,22 @@
         "area": "지역",
         "records_found": "{count}개의 기록",
         "show_all": "전체 보기 ({count}개 더보기)",
-        "show_less": "간략히 보기"
+        "show_less": "간략히 보기",
+        "level_2_annual_wage": "레벨 2 연봉",
+        "high": "높음",
+        "med_high": "중간-높음",
+        "medium": "중간",
+        "low": "낮음",
+        "select_to_compare": "비교 선택",
+        "share_dialog_title": "인사이트 공유",
+        "share_dialog_desc": "공유를 위해 고품질 이미지가 생성되었습니다.",
+        "generating_preview": "미리보기 생성 중...",
+        "copied": "복사됨!",
+        "copy_image": "이미지 복사",
+        "download_png": "PNG 다운로드",
+        "copy_not_supported": "직접 복사가 지원되지 않습니다. 다운로드하십시오.",
+        "selected_count": "{count} / 4 선택됨",
+        "generate_comparison": "비교 이미지 생성",
+        "clear": "지우기"
     }
 }
