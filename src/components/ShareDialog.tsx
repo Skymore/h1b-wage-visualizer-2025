@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -40,6 +41,8 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
     const [isLoading, setIsLoading] = useState(true);
     const [imageUrl, setImageUrl] = useState<string>("");
 
+    const { resolvedTheme } = useTheme();
+
     // Create a map for area details
     const areaMap = new Map(areas.map(a => [a.id, a]));
 
@@ -74,11 +77,11 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
 
             const jsonStr = JSON.stringify(payload);
             const encoded = encodeURIComponent(jsonStr);
-            const url = `/api/og?data=${encoded}`;
+            const url = `/api/og?data=${encoded}&theme=${resolvedTheme}`;
             setImageUrl(url);
             setIsLoading(true); // Image loading state handled by onLoad
         }
-    }, [open, selectedData, areas, socCode, socTitle]);
+    }, [open, selectedData, areas, socCode, socTitle, resolvedTheme]);
 
     const handleDownload = async () => {
         if (!imageUrl) return;
@@ -115,29 +118,29 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[500px] flex flex-col items-center bg-slate-950 border-slate-800 text-white">
+            <DialogContent className="sm:max-w-[500px] flex flex-col items-center bg-background border-border text-foreground">
                 <DialogHeader>
                     <DialogTitle>{t('share_dialog_title')}</DialogTitle>
-                    <DialogDescription className="text-slate-400">
+                    <DialogDescription className="text-muted-foreground">
                         {t('share_dialog_desc')}
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="relative my-4 w-full flex justify-center min-h-[400px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                <div className="relative my-4 w-full flex justify-center min-h-[400px] bg-muted/50 rounded-xl overflow-hidden border border-border">
                     {imageUrl && (
                         /* eslint-disable-next-line @next/next/no-img-element */
                         <img
                             src={imageUrl}
                             alt="Wage Comparison"
-                            className={`max-h-[60vh] object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                            className={`max-h-[60vh] object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} shadow-lg rounded-md`}
                             onLoad={() => setIsLoading(false)}
                         />
                     )}
 
                     {isLoading && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <Loader2 className="h-8 w-8 animate-spin text-blue-500 mb-2" />
-                            <span className="text-sm text-slate-500">{t('generating_preview')}</span>
+                            <Loader2 className="h-8 w-8 animate-spin text-primary mb-2" />
+                            <span className="text-sm text-muted-foreground">{t('generating_preview')}</span>
                         </div>
                     )}
                 </div>
