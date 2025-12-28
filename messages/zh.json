@@ -33,5 +33,11 @@
         "selected_count": "已选 {count} / 4",
         "generate_comparison": "生成对比图",
         "clear": "清除"
+    },
+    "ChatWidget": {
+        "welcome": "您可以询问任何职位的H1B工资情况！",
+        "placeholder": "询问H1B工资...",
+        "clear": "清空",
+        "confirmClear": "确定要清空所有聊天记录吗？"
     }
 }

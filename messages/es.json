@@ -33,5 +33,11 @@
         "selected_count": "{count} / 4 Seleccionados",
         "generate_comparison": "Generar imagen comparativa",
         "clear": "Limpiar"
+    },
+    "ChatWidget": {
+        "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",
+        "placeholder": "Pregunta sobre salarios H1B...",
+        "clear": "Borrar",
+        "confirmClear": "¿Borrar todo el historial del chat?"
     }
 }

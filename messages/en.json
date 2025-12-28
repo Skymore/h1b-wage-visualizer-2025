@@ -33,5 +33,11 @@
         "selected_count": "{count} / 4 Selected",
         "generate_comparison": "Generate Comparison Image",
         "clear": "Clear"
+    },
+    "ChatWidget": {
+        "welcome": "Ask me about H1B wages for different occupations and locations!",
+        "placeholder": "Ask about H1B wages...",
+        "clear": "Clear",
+        "confirmClear": "Clear all chat history?"
     }
 }

@@ -33,5 +33,11 @@
         "selected_count": "{count} / 4 선택됨",
         "generate_comparison": "비교 이미지 생성",
         "clear": "지우기"
+    },
+    "ChatWidget": {
+        "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",
+        "placeholder": "H1B 급여에 대해 질문...",
+        "clear": "지우기",
+        "confirmClear": "모든 채팅 기록을 지우시겠습니까?"
     }
 }

@@ -33,5 +33,11 @@
         "selected_count": "{count} / 4 選択中",
         "generate_comparison": "比較画像を生成",
         "clear": "クリア"
+    },
+    "ChatWidget": {
+        "welcome": "職種や場所ごとのH1B給与について聞いてください！",
+        "placeholder": "H1B給与について尋ねる...",
+        "clear": "クリア",
+        "confirmClear": "チャット履歴をすべて消去しますか？"
     }
 }

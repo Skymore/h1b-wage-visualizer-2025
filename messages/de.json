@@ -33,5 +33,11 @@
         "selected_count": "{count} / 4 Ausgewählt",
         "generate_comparison": "Vergleichsbild erstellen",
         "clear": "Zurücksetzen"
+    },
+    "ChatWidget": {
+        "welcome": "Fragen Sie mich nach H1B-Gehältern für verschiedene Berufe und Orte!",
+        "placeholder": "Fragen Sie nach H1B-Gehältern...",
+        "clear": "Löschen",
+        "confirmClear": "Gesamten Chatverlauf löschen?"
     }
 }
