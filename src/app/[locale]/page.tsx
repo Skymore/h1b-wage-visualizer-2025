@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect, useMemo, useDeferredValue } from 'react';
+import { useState, useEffect, useMemo, useDeferredValue, useCallback } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search } from '@/components/Search';
@@ -148,7 +148,7 @@ export default function HomePage() {
   };
 
   // Update URL wrapper
-  const updateUrl = (key: string, value: string | null) => {
+  const updateUrl = useCallback((key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value && value !== 'ALL') {
       params.set(key, value);
@@ -156,7 +156,23 @@ export default function HomePage() {
       params.delete(key);
     }
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  }, [pathname, router, searchParams]);
+
+  const urlLocationQuery = searchParams.get('q') || '';
+
+  useEffect(() => {
+    if (urlLocationQuery === searchQuery) return;
+    const frame = requestAnimationFrame(() => setSearchQuery(urlLocationQuery));
+    return () => cancelAnimationFrame(frame);
+  }, [urlLocationQuery, searchQuery]);
+
+  useEffect(() => {
+    if (searchQuery === urlLocationQuery) return;
+    const timeout = window.setTimeout(() => {
+      updateUrl('q', searchQuery ? searchQuery : null);
+    }, 250);
+    return () => window.clearTimeout(timeout);
+  }, [searchQuery, urlLocationQuery, updateUrl]);
 
   // Fetch areas on mount
   useEffect(() => {
@@ -270,7 +286,6 @@ export default function HomePage() {
 
   const handleSearchChange = (val: string) => {
     setSearchQuery(val);
-    updateUrl('q', val);
   };
 
   const handleStateChange = (val: string) => {

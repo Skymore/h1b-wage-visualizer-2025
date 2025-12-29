@@ -21,7 +21,8 @@ export function ThemeToggle() {
 
     // Wait until mounted to avoid hydration mismatch
     useEffect(() => {
-        setMounted(true)
+        const frame = requestAnimationFrame(() => setMounted(true))
+        return () => cancelAnimationFrame(frame)
     }, [])
 
     useEffect(() => {

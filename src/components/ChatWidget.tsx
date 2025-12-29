@@ -208,22 +208,11 @@ export function ChatWidget() {
 
     const isLoading = status === 'submitted' || status === 'streaming';
 
-    const logChatMessage = (count = 1) => {
-        if (!visitorId) return;
-        fetch('/api/metrics/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ count, visitorId })
-        }).catch((error) => console.error('Failed to record chat metric', error));
-    };
-
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input.trim() || isLoading) return;
-        await sendMessage({ text: input });
-        logChatMessage(1);
+        const options = visitorId ? { body: { visitorId } } : undefined;
+        await sendMessage({ text: input }, options);
         setInput('');
     };
 
