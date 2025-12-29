@@ -45,6 +45,18 @@
         "welcome": "Ask me about H1B wages for different occupations and locations!",
         "placeholder": "Ask about H1B wages...",
         "clear": "Clear",
-        "confirmClear": "Clear all chat history?"
+        "confirmClear": "Clear all chat history?",
+        "header_title": "H1B Assistant",
+        "using_tool": "Using {tool}...",
+        "found_data": "Found data from {tool}",
+        "arguments": "Arguments:",
+        "result": "Result:",
+        "hi_there": "Hi there!",
+        "thinking": "Thinking...",
+        "you": "You",
+        "assistant": "Assistant",
+        "disclaimer": "AI can make mistakes. Check important info.",
+        "cancel": "Cancel",
+        "test_key": "Test translation"
     }
 }

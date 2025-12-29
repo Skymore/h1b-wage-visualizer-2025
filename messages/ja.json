@@ -18,7 +18,7 @@
         "records_found": "{count} 件のレコード",
         "show_all": "すべて表示 ({count} 件)",
         "show_less": "表示を減らす",
-        "level_2_annual_wage": "レベル2の年収",
+        "level_2_annual_wage": "Level 2の年収",
         "high": "高",
         "med_high": "中高",
         "medium": "中",
@@ -45,6 +45,18 @@
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",
         "placeholder": "H1B給与について尋ねる...",
         "clear": "クリア",
-        "confirmClear": "チャット履歴をすべて消去しますか？"
+        "confirmClear": "チャット履歴をすべて消去しますか？",
+        "header_title": "H1B アシスタント",
+        "using_tool": "{tool} を使用中...",
+        "found_data": "{tool} からのデータ",
+        "arguments": "引数:",
+        "result": "結果:",
+        "hi_there": "こんにちは！",
+        "thinking": "考え中...",
+        "you": "あなた",
+        "assistant": "アシスタント",
+        "disclaimer": "AI は間違いを犯す可能性があります。重要な情報を確認してください。",
+        "cancel": "Cancel",
+        "test_key": "テスト翻訳"
     }
 }

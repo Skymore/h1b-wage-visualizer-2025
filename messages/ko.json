@@ -18,7 +18,7 @@
         "records_found": "{count}개의 기록",
         "show_all": "전체 보기 ({count}개 더보기)",
         "show_less": "간략히 보기",
-        "level_2_annual_wage": "레벨 2 연봉",
+        "level_2_annual_wage": "Level 2 연봉",
         "high": "높음",
         "med_high": "중간-높음",
         "medium": "중간",
@@ -45,6 +45,18 @@
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",
         "placeholder": "H1B 급여에 대해 질문...",
         "clear": "지우기",
-        "confirmClear": "모든 채팅 기록을 지우시겠습니까?"
+        "confirmClear": "모든 채팅 기록을 지우시겠습니까?",
+        "header_title": "H1B 어시스턴트",
+        "using_tool": "{tool} 사용 중...",
+        "found_data": "{tool}에서 데이터 발견",
+        "arguments": "인수:",
+        "result": "결과:",
+        "hi_there": "안녕하세요!",
+        "thinking": "생각 중...",
+        "you": "나",
+        "assistant": "어시스턴트",
+        "disclaimer": "AI는 실수를 할 수 있습니다. 중요 정보를 확인하세요.",
+        "cancel": "Cancel",
+        "test_key": "테스트 번역"
     }
 }

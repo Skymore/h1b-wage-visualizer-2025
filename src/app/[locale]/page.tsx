@@ -10,6 +10,14 @@ import { WageDashboard } from '@/components/WageDashboard';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const MapView = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">Loading Map...</div>,
@@ -185,16 +193,17 @@ export default function Home() {
               onChange={(e) => handleSearchChange(e.target.value)}
               className="max-w-sm"
             />
-            <select
-              className="flex h-10 w-full md:w-[200px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              value={selectedState}
-              onChange={(e) => handleStateChange(e.target.value)}
-            >
-              <option value="ALL">{t('all_states')}</option>
-              {uniqueStates.map(state => (
-                <option key={state} value={state}>{state}</option>
-              ))}
-            </select>
+            <Select value={selectedState} onValueChange={handleStateChange}>
+              <SelectTrigger className="w-full md:w-[200px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ALL">{t('all_states')}</SelectItem>
+                {uniqueStates.map(state => (
+                  <SelectItem key={state} value={state}>{state}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             <div className="text-sm text-muted-foreground ml-auto">
               Showing {filteredWageData.length} locations
             </div>
@@ -211,11 +220,9 @@ export default function Home() {
               { tier: 5, label: t('tier_5') }
             ].map(({ tier, label }) => (
               <label key={tier} className="flex items-center gap-2 text-sm cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={selectedTiers.includes(tier)}
-                  onChange={() => handleTierToggle(tier)}
-                  className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                  onCheckedChange={() => handleTierToggle(tier)}
                 />
                 <span>{label}</span>
               </label>

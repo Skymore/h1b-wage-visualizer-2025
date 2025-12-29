@@ -18,7 +18,7 @@
         "records_found": "{count} enregistrements trouvés",
         "show_all": "Tout afficher ({count} de plus)",
         "show_less": "Montrer moins",
-        "level_2_annual_wage": "Salaire Annuel Niveau 2",
+        "level_2_annual_wage": "Salaire Annuel Level 2",
         "high": "Élevé",
         "med_high": "Moy-Élevé",
         "medium": "Moyen",
@@ -45,6 +45,18 @@
         "welcome": "Interrogez-moi sur les salaires H1B pour différentes professions et lieux !",
         "placeholder": "Renseignez-vous sur les salaires H1B...",
         "clear": "Effacer",
-        "confirmClear": "Effacer tout l'historique du chat ?"
+        "confirmClear": "Effacer tout l'historique du chat ?",
+        "header_title": "Assistant H1B",
+        "using_tool": "Utilisation de {tool}...",
+        "found_data": "Données trouvées de {tool}",
+        "arguments": "Arguments :",
+        "result": "Résultat :",
+        "hi_there": "Bonjour !",
+        "thinking": "Réfléchit...",
+        "you": "Vous",
+        "assistant": "Assistant",
+        "disclaimer": "L'IA peut faire des erreurs. Vérifiez les infos importantes.",
+        "cancel": "Cancel",
+        "test_key": "Traduction de test"
     }
 }

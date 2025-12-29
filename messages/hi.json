@@ -18,7 +18,7 @@
         "records_found": "{count} रिकॉर्ड मिले",
         "show_all": "सभी दिखाएं ({count} और)",
         "show_less": "कम दिखाएं",
-        "level_2_annual_wage": "स्तर 2 वार्षिक वेतन",
+        "level_2_annual_wage": "Level 2 वार्षिक वेतन",
         "high": "उच्च",
         "med_high": "मध्यम-उच्च",
         "medium": "मध्यम",
@@ -45,6 +45,18 @@
         "welcome": "विभिन्न व्यवसायों और स्थानों के लिए मुझसे H1B वेतन के बारे में पूछें!",
         "placeholder": "H1B वेतन के बारे में पूछें...",
         "clear": "साफ़ करें",
-        "confirmClear": "क्या आप सभी चैट इतिहास को साफ़ करना चाहते हैं?"
+        "confirmClear": "क्या आप सभी चैट इतिहास को साफ़ करना चाहते हैं?",
+        "header_title": "H1B सहायक",
+        "using_tool": "{tool} का उपयोग कर रहा है...",
+        "found_data": "{tool} से डेटा मिला",
+        "arguments": "तर्क:",
+        "result": "परिणाम:",
+        "hi_there": "नमस्ते!",
+        "thinking": "सोच रहा हूँ...",
+        "you": "आप",
+        "assistant": "सहायक",
+        "disclaimer": "AI गलतियाँ कर सकता है। महत्वपूर्ण जानकारी की जाँच करें।",
+        "cancel": "Cancel",
+        "test_key": "परीक्षण अनुवाद"
     }
 }

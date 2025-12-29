@@ -33,7 +33,7 @@
         "copy_not_supported": "无法直接复制，请使用下载功能。",
         "selected_count": "已选 {count} / 4",
         "generate_comparison": "生成对比图",
-        "clear": "清除",
+        "clear": "清空",
         "city_size": "城市等级：",
         "tier_1": "一线 (顶级都市)",
         "tier_2": "二线 (主要城市)",
@@ -45,6 +45,18 @@
         "welcome": "您可以询问任何职位的H1B工资情况！",
         "placeholder": "询问H1B工资...",
         "clear": "清空",
-        "confirmClear": "确定要清空所有聊天记录吗？"
+        "confirmClear": "确定要清空所有聊天记录吗？",
+        "header_title": "H1B 助手",
+        "using_tool": "正在使用 {tool}...",
+        "found_data": "从 {tool} 找到数据",
+        "arguments": "参数：",
+        "result": "结果：",
+        "hi_there": "你好！",
+        "thinking": "思考中...",
+        "you": "你",
+        "assistant": "助手",
+        "disclaimer": "AI 可能会犯错。请核对重要信息。",
+        "cancel": "Cancel",
+        "test_key": "测试翻译"
     }
 }

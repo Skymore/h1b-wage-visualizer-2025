@@ -33,7 +33,7 @@
         "copy_not_supported": "Direktes Kopieren nicht unterstützt. Bitte herunterladen.",
         "selected_count": "{count} / 4 Ausgewählt",
         "generate_comparison": "Vergleichsbild erstellen",
-        "clear": "Zurücksetzen",
+        "clear": "Löschen",
         "city_size": "Stadtgröße:",
         "tier_1": "Stufe 1 (Top-Metropolen)",
         "tier_2": "Stufe 2 (Großstädte)",
@@ -45,6 +45,18 @@
         "welcome": "Fragen Sie mich nach H1B-Gehältern für verschiedene Berufe und Orte!",
         "placeholder": "Fragen Sie nach H1B-Gehältern...",
         "clear": "Löschen",
-        "confirmClear": "Gesamten Chatverlauf löschen?"
+        "confirmClear": "Gesamten Chat-Verlauf löschen?",
+        "header_title": "H1B-Assistent",
+        "using_tool": "Mit {tool}...",
+        "found_data": "Daten von {tool} gefunden",
+        "arguments": "Argumente:",
+        "result": "Ergebnis:",
+        "hi_there": "Hallo!",
+        "thinking": "Wird nachgedacht...",
+        "you": "Sie",
+        "assistant": "Assistent",
+        "disclaimer": "KI kann Fehler machen. Überprüfen Sie wichtige Informationen.",
+        "cancel": "Abbrechen",
+        "test_key": "Testübersetzung"
     }
 }

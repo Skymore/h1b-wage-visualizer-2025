@@ -164,3 +164,21 @@ This project currently has no automated tests. When adding features, consider th
 2. Chat with AI → get wage comparisons → click to explore on map
 3. Share URL → recipient sees same occupation/filters
 4. Switch language → all UI updates, data unchanged
+
+## Development Guidelines
+
+### Component Standards
+- **Always use shadcn/ui components** instead of native HTML elements
+  - Use `<Checkbox>` not `<input type="checkbox">`
+  - Use `<Select>` not `<select>` (run `npx shadcn@latest add [component]` if missing)
+- **Use theme variables** (`bg-primary`, `text-muted-foreground`) instead of hardcoded colors
+
+### Internationalization
+- **All user-facing strings must be translated**
+  - Add keys to `messages/en.json` → Run `node scripts/sync-i18n.js`
+  - Use `useTranslations()` hook, never hardcode text
+- **Supported locales**: en, zh, ja, ko, es, fr, de, hi
+
+### Design System
+- **Theme**: New York / Neutral (grayscale, no color accents)
+- **Mobile**: Use `overflow-hidden` on body when modals open
