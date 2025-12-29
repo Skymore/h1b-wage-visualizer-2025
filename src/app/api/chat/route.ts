@@ -149,6 +149,7 @@ CRITICAL RULES:
 4. Support BATCH queries. If user asks "Seattle and NY", search for BOTH.
 5. Call getWageData in PARALLEL if needed.
 6. **PRIORITIZE ANNUAL WAGES**. The tool returns both. Display Annual (Yearly) wage by default. Hourly is secondary.
+7. **NO HALLUCINATIONS**. You MUST call \`getWageData\` to fetch real numbers. Never guess wages or levels. If you suggest cities, you MUST verify their data first.
 
 **MASTER OCCUPATION LIST (SOC Code: Title)**:
 Reference this list for valid SOC codes.
@@ -210,14 +211,26 @@ Answer in user's language.`,
 
                     let allResults: any[] = [];
                     const seen = new Set();
-
                     const searchTerms = Array.isArray(queries) ? queries : [queries];
 
                     for (const q of searchTerms) {
                         const lowerQuery = String(q).toLowerCase();
-                        const matches = areas
-                            .filter((area: any) => area.name.toLowerCase().includes(lowerQuery) || area.state.toLowerCase() === lowerQuery)
-                            .slice(0, 5);
+                        // Smart matching: split "Austin, TX" -> ["austin", "tx"]
+                        const queryTokens = lowerQuery.replace(/,/g, ' ').split(/\s+/).filter(t => t.length > 1);
+
+                        // Exactish match first
+                        let matches = areas.filter((area: any) => {
+                            const areaStr = `${area.name} ${area.state}`.toLowerCase();
+                            return queryTokens.every(token => areaStr.includes(token));
+                        }).slice(0, 5);
+
+                        // Fallback: if no matches, try matching just the first token (city name)
+                        if (matches.length === 0 && queryTokens.length > 0) {
+                            matches = areas.filter((area: any) => {
+                                const areaStr = `${area.name} ${area.state}`.toLowerCase();
+                                return areaStr.includes(queryTokens[0]);
+                            }).slice(0, 3);
+                        }
 
                         matches.forEach((a: any) => {
                             if (!seen.has(a.id)) {
