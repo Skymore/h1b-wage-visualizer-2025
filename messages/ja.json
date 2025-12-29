@@ -8,10 +8,14 @@
         "wages_for": "{area} における {soc} の賃金",
         "search_locations": "地域をフィルタリング...",
         "all_states": "すべての州",
-        "level_1": "Level 1",
-        "level_2": "Level 2",
-        "level_3": "Level 3",
-        "level_4": "Level 4",
+        "level_1": "レベル 1",
+        "level_2": "レベル 2",
+        "level_3": "レベル 3",
+        "level_4": "レベル 4",
+        "level_1_short": "L1",
+        "level_2_short": "L2",
+        "level_3_short": "L3",
+        "level_4_short": "L4",
         "hourly": "時給",
         "yearly": "年収",
         "area": "エリア",
@@ -78,6 +82,8 @@
         "prev": "前へ",
         "done": "完了",
         "filters_title": "場所を絞り込む",
-        "filters_desc": "州、名称、または都市の階層で絞り込み、最適な市場を見つけましょう。"
+        "filters_desc": "州、名称、または都市の階層で絞り込み、最適な市場を見つけましょう。",
+        "compare_title": "場所を比較",
+        "compare_desc": "複数の場所を選択して並べて比較したり、レポートを共有したりできます。"
     }
 }

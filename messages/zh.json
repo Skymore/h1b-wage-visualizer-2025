@@ -8,10 +8,14 @@
         "wages_for": "{soc} 在 {area} 的薪资",
         "search_locations": "筛选地区...",
         "all_states": "所有州",
-        "level_1": "Level 1",
-        "level_2": "Level 2",
-        "level_3": "Level 3",
-        "level_4": "Level 4",
+        "level_1": "等级 1",
+        "level_2": "等级 2",
+        "level_3": "等级 3",
+        "level_4": "等级 4",
+        "level_1_short": "L1",
+        "level_2_short": "L2",
+        "level_3_short": "L3",
+        "level_4_short": "L4",
         "hourly": "时薪",
         "yearly": "年薪",
         "area": "地区",
@@ -77,7 +81,9 @@
         "next": "下一步",
         "prev": "上一步",
         "done": "完成",
-        "filters_title": "筛选地点",
-        "filters_desc": "按州、名称或城市等级进行筛选，找到最适合您的市场。"
+        "filters_title": "搜索与筛选",
+        "filters_desc": "搜索职业并按地区或城市规模筛选，找到适合您的市场。",
+        "compare_title": "比较地点",
+        "compare_desc": "选择多个地点进行并排比较或分享报告。"
     }
 }

@@ -8,10 +8,14 @@
         "wages_for": "{area}의 {soc} 임금",
         "search_locations": "지역 필터링...",
         "all_states": "모든 주",
-        "level_1": "Level 1",
-        "level_2": "Level 2",
-        "level_3": "Level 3",
-        "level_4": "Level 4",
+        "level_1": "레벨 1",
+        "level_2": "레벨 2",
+        "level_3": "레벨 3",
+        "level_4": "레벨 4",
+        "level_1_short": "L1",
+        "level_2_short": "L2",
+        "level_3_short": "L3",
+        "level_4_short": "L4",
         "hourly": "시급",
         "yearly": "연봉",
         "area": "지역",
@@ -78,6 +82,8 @@
         "prev": "이전",
         "done": "완료",
         "filters_title": "위치 필터링",
-        "filters_desc": "주, 이름 또는 도시 등급별로 범위를 좁혀 귀하에게 가장 적합한 시장을 찾아보세요."
+        "filters_desc": "주, 이름 또는 도시 등급별로 범위를 좁혀 귀하에게 가장 적합한 시장을 찾아보세요.",
+        "compare_title": "지역 비교",
+        "compare_desc": "여러 지역을 선택하여 나란히 비교하거나 보고서를 공유하세요."
     }
 }

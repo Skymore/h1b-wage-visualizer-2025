@@ -8,10 +8,14 @@
         "wages_for": "Gehälter für {soc} in {area}",
         "search_locations": "Standorte filtern...",
         "all_states": "Alle Bundesstaaten",
-        "level_1": "Level 1",
-        "level_2": "Level 2",
-        "level_3": "Level 3",
-        "level_4": "Level 4",
+        "level_1": "Stufe 1",
+        "level_2": "Stufe 2",
+        "level_3": "Stufe 3",
+        "level_4": "Stufe 4",
+        "level_1_short": "L1",
+        "level_2_short": "L2",
+        "level_3_short": "L3",
+        "level_4_short": "L4",
         "hourly": "Stündlich",
         "yearly": "Jährlich",
         "area": "Gebiet",
@@ -78,6 +82,8 @@
         "prev": "Zurück",
         "done": "Fertig",
         "filters_title": "Standorte filtern",
-        "filters_desc": "Grenzen Sie die Suche nach Bundesstaat, Name oder Stadt-Kategorie ein, um den besten Markt für Sie zu finden."
+        "filters_desc": "Grenzen Sie die Suche nach Bundesstaat, Name oder Stadt-Kategorie ein, um den besten Markt für Sie zu finden.",
+        "compare_title": "Standorte vergleichen",
+        "compare_desc": "Wählen Sie mehrere Standorte aus, um sie direkt zu vergleichen oder einen Bericht zu teilen."
     }
 }

@@ -8,10 +8,14 @@
         "wages_for": "Salaires pour {soc} à {area}",
         "search_locations": "Filtrer les lieux...",
         "all_states": "Tous les États",
-        "level_1": "Level 1",
-        "level_2": "Level 2",
-        "level_3": "Level 3",
-        "level_4": "Level 4",
+        "level_1": "Niveau 1",
+        "level_2": "Niveau 2",
+        "level_3": "Niveau 3",
+        "level_4": "Niveau 4",
+        "level_1_short": "L1",
+        "level_2_short": "L2",
+        "level_3_short": "L3",
+        "level_4_short": "L4",
         "hourly": "Horaire",
         "yearly": "Annuel",
         "area": "Zone",
@@ -78,6 +82,8 @@
         "prev": "Précédent",
         "done": "Terminé",
         "filters_title": "Filtrer les lieux",
-        "filters_desc": "Affinez par État, nom ou catégorie de ville pour trouver le meilleur marché pour vous."
+        "filters_desc": "Affinez par État, nom ou catégorie de ville pour trouver le meilleur marché pour vous.",
+        "compare_title": "Comparer les lieux",
+        "compare_desc": "Sélectionnez plusieurs lieux pour les comparer côte à côte ou partager un rapport."
     }
 }

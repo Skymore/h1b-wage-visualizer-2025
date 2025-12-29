@@ -27,7 +27,7 @@ export default function MapView({
     const markers = useRef<mapboxgl.Marker[]>([]);
     const [lng, setLng] = useState(-95.7129);
     const [lat, setLat] = useState(37.0902);
-    const [zoom, setZoom] = useState(3);
+    const [zoom, setZoom] = useState(2);
     const { resolvedTheme } = useTheme();
 
     useEffect(() => {
@@ -35,11 +35,17 @@ export default function MapView({
 
         mapboxgl.accessToken = MAPBOX_TOKEN || "";
 
+        const isDesktop = window.innerWidth >= 768;
+        const initialZoom = isDesktop ? 3 : 2;
+
+        // Sync state immediately so UI label is correct
+        setZoom(initialZoom);
+
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11',
             center: [lng, lat],
-            zoom: zoom,
+            zoom: initialZoom,
             cooperativeGestures: true // Allows page scrolling with one finger, map panning with two
         });
 
@@ -117,10 +123,10 @@ export default function MapView({
                             <h3 class="font-bold text-sm">${area.name}</h3>
                             <div class="text-xs pt-1">
                                 <div class="grid grid-cols-2 gap-x-2">
-                                    <span>Level 1:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l1)}">${formatWageK(wage.l1)}</span>
-                                    <span>Level 2:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l2)}">${formatWageK(wage.l2)}</span>
-                                    <span>Level 3:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l3)}">${formatWageK(wage.l3)}</span>
-                                    <span>Level 4:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l4)}">${formatWageK(wage.l4)}</span>
+                                    <span>${t('level_1')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l1)}">${formatWageK(wage.l1)}</span>
+                                    <span>${t('level_2')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l2)}">${formatWageK(wage.l2)}</span>
+                                    <span>${t('level_3')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l3)}">${formatWageK(wage.l3)}</span>
+                                    <span>${t('level_4')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l4)}">${formatWageK(wage.l4)}</span>
                                 </div>
                             </div>
                         </div>
@@ -138,10 +144,10 @@ export default function MapView({
             }
         });
 
-    }, [wageData, areas, wageScale, resolvedTheme]);
+    }, [wageData, areas, wageScale, resolvedTheme, t]);
 
     return (
-        <div className="h-[400px] md:h-[600px] w-full rounded-md border overflow-hidden relative">
+        <div className="h-full w-full rounded-md border overflow-hidden relative">
             <div ref={mapContainer} className="w-full h-full" />
 
             {/* Legend */}
@@ -157,9 +163,7 @@ export default function MapView({
                 </div>
             )}
 
-            <div className="absolute top-2 left-2 bg-background/80 px-2 py-1 rounded text-xs z-10 font-mono">
-                Lng: {lng} | Lat: {lat} | Zoom: {zoom}
-            </div>
+
         </div>
     );
 }

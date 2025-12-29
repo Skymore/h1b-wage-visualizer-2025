@@ -235,64 +235,91 @@ export default function Home() {
         <LanguageSelector />
       </header>
 
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">{t('title')}</h1>
-        <p className="text-muted-foreground">{t('subtitle')}</p>
+      <div className="w-full flex flex-col items-center space-y-8 mb-8">
+        <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-3xl p-6 md:p-12 flex flex-col items-center text-center space-y-8">
+          <div className="space-y-4 max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
+              {t('title')}
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {t('subtitle')}
+            </p>
+          </div>
+
+
+        </div>
       </div>
 
-      <div id="search-bar" className="w-full max-w-xl z-10">
-        <Search onSelectOccupation={handleSocSelect} />
-      </div>
+      <div id="location-filters" className="w-full max-w-7xl px-4 py-2 space-y-5">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="w-full md:w-[350px] z-20 shadow-sm rounded-md">
+            <Search onSelectOccupation={handleSocSelect} />
+          </div>
 
-      {selectedSoc && (
-        <div id="location-filters" className="w-full max-w-7xl bg-card border rounded-lg p-4 space-y-3">
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-            <Input
-              placeholder={t('search_locations')}
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="max-w-sm"
-            />
-            <Select value={selectedState} onValueChange={handleStateChange}>
-              <SelectTrigger className="w-full md:w-[200px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ALL">{t('all_states')}</SelectItem>
-                {uniqueStates.map(state => (
-                  <SelectItem key={state} value={state}>{state}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <div className="text-sm text-muted-foreground ml-auto">
-              Showing {filteredWageData.length} locations
+          {selectedSoc && (
+            <>
+              <div className="flex-1 w-full flex flex-col md:flex-row gap-4">
+                <Input
+                  placeholder={t('search_locations')}
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="max-w-sm bg-muted/50 border-0 focus-visible:ring-1 focus-visible:ring-primary/20 h-12 shadow-sm"
+                />
+                <Select value={selectedState} onValueChange={handleStateChange}>
+                  <SelectTrigger className="w-full md:w-[200px] bg-muted/50 border-0 focus:ring-1 focus:ring-primary/20 h-12 shadow-sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ALL">{t('all_states')}</SelectItem>
+                    {uniqueStates.map(state => (
+                      <SelectItem key={state} value={state}>{state}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="text-sm font-medium text-muted-foreground whitespace-nowrap bg-muted/30 px-3 py-1 rounded-full">
+                Showing {filteredWageData.length} locations
+              </div>
+            </>
+          )}
+        </div>
+
+        {selectedSoc && (
+          /* City Tier Filter - Chips Style */
+          <div className="flex flex-col gap-3 pt-2">
+            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider pl-1">{t('city_size')}</span>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { tier: 1, label: t('tier_1') },
+                { tier: 2, label: t('tier_2') },
+                { tier: 3, label: t('tier_3') },
+                { tier: 4, label: t('tier_4') },
+                { tier: 5, label: t('tier_5') }
+              ].map(({ tier, label }) => {
+                const isSelected = selectedTiers.includes(tier);
+                return (
+                  <button
+                    key={tier}
+                    onClick={() => handleTierToggle(tier)}
+                    className={`
+                      inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+                      ${isSelected
+                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:opacity-90'
+                        : 'bg-muted/40 text-muted-foreground hover:bg-muted/60 hover:text-foreground'
+                      }
+                    `}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
             </div>
           </div>
-
-          {/* City Tier Filter */}
-          <div className="flex flex-wrap items-center gap-3 pt-2 border-t">
-            <span className="text-sm font-medium">{t('city_size')}</span>
-            {[
-              { tier: 1, label: t('tier_1') },
-              { tier: 2, label: t('tier_2') },
-              { tier: 3, label: t('tier_3') },
-              { tier: 4, label: t('tier_4') },
-              { tier: 5, label: t('tier_5') }
-            ].map(({ tier, label }) => (
-              <label key={tier} className="flex items-center gap-2 text-sm cursor-pointer">
-                <Checkbox
-                  checked={selectedTiers.includes(tier)}
-                  onCheckedChange={() => handleTierToggle(tier)}
-                />
-                <span>{label}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
-        <div id="map-view" className="w-full">
+        <div id="map-view" className="w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden border shadow-sm bg-card">
           <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} />
         </div>
 

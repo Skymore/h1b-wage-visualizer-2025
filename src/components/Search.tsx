@@ -83,7 +83,7 @@ export function Search({ onSelectOccupation }: SearchProps) {
     }, [occupations, searchQuery, isExpanded]);
 
     return (
-        <div className="w-full max-w-sm">
+        <div className="w-full">
             <Popover open={open} onOpenChange={(val) => {
                 setOpen(val);
                 if (!val) {
@@ -93,18 +93,20 @@ export function Search({ onSelectOccupation }: SearchProps) {
             }}>
                 <PopoverTrigger asChild>
                     <Button
-                        variant="outline"
+                        variant="ghost" // Changed from outline to ghost, manual styling below
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full justify-between"
+                        className="w-full justify-between h-12 text-base px-4 bg-background shadow-lg shadow-black/5 hover:bg-background/80 transition-all border-0 ring-1 ring-black/5"
                     >
-                        {value
-                            ? occupations.find((occ) => occ.code === value)?.title
-                            : t('search_placeholder')}
+                        <span className="truncate">
+                            {value
+                                ? occupations.find((occ) => occ.code === value)?.title
+                                : t('search_placeholder')}
+                        </span>
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[400px] p-0">
+                <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
                     {/* shouldFilter={false} to disable cmdk internal filtering since we do it manually */}
                     <Command shouldFilter={false}>
                         <CommandInput

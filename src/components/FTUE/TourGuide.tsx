@@ -31,15 +31,6 @@ export function TourGuide({ startTour, onTourEnd }: TourGuideProps) {
             },
             steps: [
                 {
-                    element: '#search-bar',
-                    popover: {
-                        title: t('search_title'),
-                        description: t('search_desc'),
-                        side: "bottom",
-                        align: 'start'
-                    }
-                },
-                {
                     element: '#location-filters',
                     popover: {
                         title: t('filters_title'),
@@ -63,6 +54,15 @@ export function TourGuide({ startTour, onTourEnd }: TourGuideProps) {
                         title: t('wages_title'),
                         description: t('wages_desc'),
                         side: "top",
+                        align: 'start'
+                    }
+                },
+                {
+                    element: '#compare-col-header',
+                    popover: {
+                        title: t('compare_title'),
+                        description: t('compare_desc'),
+                        side: "bottom",
                         align: 'start'
                     }
                 },
