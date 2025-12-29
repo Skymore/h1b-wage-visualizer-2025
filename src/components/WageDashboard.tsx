@@ -32,6 +32,7 @@ interface Area {
 
 type SortKey = 'area' | 'l1' | 'l2' | 'l3' | 'l4';
 type SortDirection = 'asc' | 'desc';
+type WageLevelKey = Exclude<SortKey, 'area'>;
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
@@ -172,7 +173,10 @@ export function WageDashboard({
     const urlSort = (searchParams.get('sort') as SortKey) || 'l2';
     const urlOrder = (searchParams.get('order') as SortDirection) || 'desc';
     const urlSelectedRaw = searchParams.get('selected');
-    const urlSelected = urlSelectedRaw ? new Set(urlSelectedRaw.split(',')) : new Set<string>();
+    const selectedAreaIds = useMemo(() => {
+        if (!urlSelectedRaw) return [] as string[];
+        return urlSelectedRaw.split(',').filter(Boolean);
+    }, [urlSelectedRaw]);
 
     // Local state (that syncs from URL initially, but we will drive from URL now ideally,
     // or keep local state and sync to URL. Let's sync local state to URL updates or just use URL as truth?
@@ -184,7 +188,7 @@ export function WageDashboard({
 
     const sortKey = urlSort;
     const sortDirection = urlOrder;
-    const selectedAreas = urlSelected;
+    const selectedAreas = useMemo(() => new Set<string>(selectedAreaIds), [selectedAreaIds]);
 
     // UI Local State
     const [isShareOpen, setIsShareOpen] = useState(false);
@@ -229,23 +233,22 @@ export function WageDashboard({
     };
 
     const selectedWageData = useMemo(() => {
-        return wageData.filter(w => selectedAreas.has(w.area_id));
-    }, [wageData, selectedAreas]);
+        if (selectedAreaIds.length === 0) return [];
+        const selection = new Set(selectedAreaIds);
+        return wageData.filter(w => selection.has(w.area_id));
+    }, [wageData, selectedAreaIds]);
 
     const sortedData = useMemo(() => {
         return [...wageData].sort((a, b) => {
-            let valA: any = a[sortKey as keyof WageRecord];
-            let valB: any = b[sortKey as keyof WageRecord];
-
             if (sortKey === 'area') {
-                valA = areaMap.get(a.area_id) || a.area_id;
-                valB = areaMap.get(b.area_id) || b.area_id;
-                return sortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                const areaA = areaMap.get(a.area_id) || a.area_id;
+                const areaB = areaMap.get(b.area_id) || b.area_id;
+                return sortDirection === 'asc' ? areaA.localeCompare(areaB) : areaB.localeCompare(areaA);
             }
 
-            // Numeric Sort
-            valA = a[sortKey as keyof WageRecord];
-            valB = b[sortKey as keyof WageRecord];
+            const numericKey = sortKey as WageLevelKey;
+            const valA = a[numericKey];
+            const valB = b[numericKey];
             return sortDirection === 'asc' ? valA - valB : valB - valA;
         });
     }, [wageData, sortKey, sortDirection, areaMap]);

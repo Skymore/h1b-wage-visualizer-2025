@@ -1,15 +1,143 @@
 
 // Disable AI SDK warnings - must be set before any AI SDK imports
+type GlobalWithAiSDK = typeof globalThis & { AI_SDK_LOG_WARNINGS?: boolean };
+
 if (typeof globalThis !== 'undefined') {
-    (globalThis as any).AI_SDK_LOG_WARNINGS = false;
+    (globalThis as GlobalWithAiSDK).AI_SDK_LOG_WARNINGS = false;
 }
 
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { streamText, tool, stepCountIs } from 'ai';
 import { z } from 'zod';
 import { promises as fs } from 'fs';
-import path from 'path';
+import * as path from 'path';
 import { rateLimit } from '@/lib/rate-limit';
+
+type OccupationRecord = {
+    code: string;
+    title: string;
+    count: number;
+    isPopular?: boolean;
+};
+
+type AreaRecord = {
+    id: string;
+    name: string;
+    state: string;
+    tier?: number;
+};
+
+type WageEntry = {
+    area_id: string;
+    l1: number;
+    l2: number;
+    l3: number;
+    l4: number;
+};
+
+type WageFile = {
+    soc: string;
+    wages: WageEntry[];
+};
+
+type WageSnapshot = {
+    hourly: {
+        l1: number;
+        l2: number;
+        l3: number;
+        l4: number;
+    };
+    annual: {
+        l1: number;
+        l2: number;
+        l3: number;
+        l4: number;
+    };
+};
+
+type WageLookupSuccess = WageSnapshot & {
+    socCode: string;
+    areaId?: string;
+    state?: string;
+};
+
+type WageLookupError = {
+    socCode: string;
+    areaId?: string;
+    state?: string;
+    error: string;
+};
+
+type WageLookupResult = WageLookupSuccess | WageLookupError;
+
+type AreaLevelInfo = {
+    areaId: string;
+    name: string;
+    state: string;
+    cityTier: number;
+    yourLevel: number;
+    thresholds: {
+        l1: number;
+        l2: number;
+        l3: number;
+        l4: number;
+    };
+};
+
+type OccupationSearchResult = {
+    code: string;
+    title: string;
+    count: number;
+    query: string;
+};
+
+type AreaSearchResult = {
+    id: string;
+    name: string;
+    state: string;
+    query: string;
+};
+
+type MessagePart = {
+    type: string;
+    text?: string;
+    toolInvocation?: {
+        toolCallId?: string;
+        toolName?: string;
+        args?: Record<string, unknown>;
+        state?: string;
+    };
+};
+
+type IncomingMessage = {
+    role: 'user' | 'assistant' | 'tool' | 'system';
+    content?: unknown;
+    parts?: MessagePart[];
+};
+
+type TextContent = { type: 'text'; text: string };
+type ToolCall = {
+    toolCallId?: string;
+    toolName?: string;
+    args?: Record<string, unknown>;
+};
+
+type CoreUserMessage = {
+    role: 'user';
+    content: string | TextContent[];
+};
+
+type CoreAssistantMessage = {
+    role: 'assistant';
+    content: TextContent[];
+    toolCalls?: ToolCall[];
+};
+
+type CoreMessage = CoreUserMessage | CoreAssistantMessage;
+
+interface ChatPayload {
+    messages: IncomingMessage[];
+}
 
 // Configure OpenRouter
 const openrouter = createOpenRouter({
@@ -17,11 +145,11 @@ const openrouter = createOpenRouter({
 });
 
 // Helper to read JSON files
-async function readJsonFile(relativePath: string) {
+async function readJsonFile<T>(relativePath: string): Promise<T | null> {
     const filePath = path.join(process.cwd(), 'public/data', relativePath);
     try {
         const data = await fs.readFile(filePath, 'utf-8');
-        return JSON.parse(data);
+        return JSON.parse(data) as T;
     } catch (error) {
         console.error(`Error reading file ${relativePath}:`, error);
         return null;
@@ -29,8 +157,8 @@ async function readJsonFile(relativePath: string) {
 }
 
 // Custom converter to handle UIMessage -> CoreMessage
-function convertToCoreMessages(messages: any[]): any[] {
-    return messages.map((m) => {
+function convertToCoreMessages(messages: IncomingMessage[]): CoreMessage[] {
+    return messages.map((m): CoreMessage | null => {
         // If it's already a CoreMessage (has strictly string/array content and no parts), return it.
         // But UIMessages usually have parts.
 
@@ -40,25 +168,44 @@ function convertToCoreMessages(messages: any[]): any[] {
             // UIMessage parts: { type: 'text', text: string } | { type: 'file' ... }
             // CoreMessage content: string | Array<{ type: 'text', text: string } | ...>
             if (m.parts) {
-                const content = m.parts.map((part: any) => {
-                    if (part.type === 'text') return { type: 'text', text: part.text };
-                    // Handle other parts if needed (files, etc) - for now just text
-                    return null;
-                }).filter(Boolean);
+                const content = m.parts
+                    .map((part) => {
+                        if (part.type === 'text' && part.text) {
+                            return { type: 'text', text: part.text } as TextContent;
+                        }
+                        return null;
+                    })
+                    .filter((part): part is TextContent => Boolean(part));
                 return { role: 'user', content };
             }
             // Fallback if content string exists
-            return { role: 'user', content: m.content || '' };
+            if (typeof m.content === 'string') {
+                return { role: 'user', content: m.content };
+            }
+            if (Array.isArray(m.content)) {
+                const content = m.content
+                    .map((part) => {
+                        if (typeof part === 'object' && part && 'text' in part && typeof (part as { text?: unknown }).text === 'string') {
+                            return { type: 'text', text: (part as { text: string }).text };
+                        }
+                        return null;
+                    })
+                    .filter((part): part is TextContent => Boolean(part));
+                if (content.length > 0) {
+                    return { role: 'user', content };
+                }
+            }
+            return { role: 'user', content: '' };
         }
 
         // 2. Handle Assistant Messages
         if (m.role === 'assistant') {
-            const content: any[] = [];
-            const toolCalls: any[] = [];
+            const content: TextContent[] = [];
+            const toolCalls: ToolCall[] = [];
 
             if (m.parts) {
-                m.parts.forEach((part: any) => {
-                    if (part.type === 'text') {
+                m.parts.forEach((part) => {
+                    if (part.type === 'text' && part.text) {
                         content.push({ type: 'text', text: part.text });
                     } else if (part.type.startsWith('tool-')) {
                         // Extract tool call info
@@ -73,7 +220,7 @@ function convertToCoreMessages(messages: any[]): any[] {
                 });
             }
 
-            const message: any = { role: 'assistant', content };
+            const message: CoreAssistantMessage = { role: 'assistant', content };
             if (toolCalls.length > 0) {
                 message.toolCalls = toolCalls;
             }
@@ -82,21 +229,11 @@ function convertToCoreMessages(messages: any[]): any[] {
 
         // 3. Handle Tool Messages
         if (m.role === 'tool') {
-            // UIMessage for tool results might differ. 
-            // CoreToolMessage: { role: 'tool', content: [ { type: 'tool-result', toolCallId, result } ] }
-            // Let's assume input messages might contain tool results. 
-            // However, useChat usually keeps a flat list where assistant has toolCalls, and subsequent messages are tool results.
-            // In UIMessage, tool results are often embedded or separate.
-            // If standard UIMessage has tool parts with 'result', we might need to look at that.
-            // BUT, the error was on a USER message. 
-            // Let's focus on passing mostly user/assistant text correctly. 
-
-            // If m.content is array of tool results:
-            return { role: 'tool', content: m.content };
+            return null;
         }
 
-        return m;
-    });
+        return null;
+    }).filter((msg): msg is CoreMessage => Boolean(msg));
 }
 
 export async function POST(req: Request) {
@@ -106,14 +243,23 @@ export async function POST(req: Request) {
         return new Response('Too Many Requests', { status: 429 });
     }
 
-    const payload = await req.json();
-    const { messages } = payload;
+    const payload = (await req.json()) as Partial<ChatPayload>;
+    if (!payload.messages || !Array.isArray(payload.messages)) {
+        return new Response('Invalid payload', { status: 400 });
+    }
+    const messages = payload.messages;
 
-    console.log('[Chat] Last message:', JSON.stringify(messages[messages.length - 1], null, 2));
+    const lastIncoming = messages[messages.length - 1];
+    if (lastIncoming) {
+        console.log('[Chat] Last message:', JSON.stringify(lastIncoming, null, 2));
+    }
 
     // Custom conversion
     const coreMessages = convertToCoreMessages(messages);
-    console.log('[Chat] Last converted:', JSON.stringify(coreMessages[coreMessages.length - 1], null, 2));
+    const lastConverted = coreMessages[coreMessages.length - 1];
+    if (lastConverted) {
+        console.log('[Chat] Last converted:', JSON.stringify(lastConverted, null, 2));
+    }
 
     // 2. Stream Text with Tools
     const modelName = 'google/gemini-3-flash-preview';
@@ -121,11 +267,11 @@ export async function POST(req: Request) {
     console.log('[Chat] Using model:', modelName);
 
     // Load popular occupations for context
-    const occupationsData = await readJsonFile('occupations.json');
+    const occupationsData = await readJsonFile<OccupationRecord[]>('occupations.json');
     const occupationsList = occupationsData
         ? occupationsData
-            .filter((o: any) => o.isPopular)
-            .map((o: any) => `- ${o.code}: ${o.title}`).join('\n')
+            .filter((o) => o.isPopular)
+            .map((o) => `- ${o.code}: ${o.title}`).join('\n')
         : '';
 
     const result = streamText({
@@ -174,25 +320,24 @@ Answer in user's language.`,
                 }),
                 execute: async ({ queries }) => {
                     console.log(`[Tool Execute] searchOccupations queries:`, queries);
-                    const occupations = await readJsonFile('occupations.json');
+                    const occupations = await readJsonFile<OccupationRecord[]>('occupations.json');
                     if (!occupations) return [];
 
-                    let allResults: any[] = [];
-                    const seen = new Set();
+                    const allResults: OccupationSearchResult[] = [];
+                    const seen = new Set<string>();
 
-                    // Handle single string case just in case
                     const searchTerms = Array.isArray(queries) ? queries : [queries];
 
-                    for (const q of searchTerms) {
-                        const lowerQuery = String(q).toLowerCase();
+                    for (const query of searchTerms) {
+                        const lowerQuery = String(query).toLowerCase();
                         const matches = occupations
-                            .filter((occ: any) => occ.title.toLowerCase().includes(lowerQuery))
+                            .filter((occ) => occ.title.toLowerCase().includes(lowerQuery))
                             .slice(0, 5);
 
-                        matches.forEach((m: any) => {
-                            if (!seen.has(m.code)) {
-                                seen.add(m.code);
-                                allResults.push({ code: m.code, title: m.title, count: m.count, query: q });
+                        matches.forEach((match) => {
+                            if (!seen.has(match.code)) {
+                                seen.add(match.code);
+                                allResults.push({ code: match.code, title: match.title, count: match.count, query });
                             }
                         });
                     }
@@ -206,36 +351,36 @@ Answer in user's language.`,
                 }),
                 execute: async ({ queries }) => {
                     console.log(`[Tool] searchAreas queries:`, queries);
-                    const areas = await readJsonFile('areas.json');
+                    const areas = await readJsonFile<AreaRecord[]>('areas.json');
                     if (!areas) return [];
 
-                    let allResults: any[] = [];
-                    const seen = new Set();
+                    const allResults: AreaSearchResult[] = [];
+                    const seen = new Set<string>();
                     const searchTerms = Array.isArray(queries) ? queries : [queries];
 
-                    for (const q of searchTerms) {
-                        const lowerQuery = String(q).toLowerCase();
+                    for (const query of searchTerms) {
+                        const lowerQuery = String(query).toLowerCase();
                         // Smart matching: split "Austin, TX" -> ["austin", "tx"]
                         const queryTokens = lowerQuery.replace(/,/g, ' ').split(/\s+/).filter(t => t.length > 1);
 
                         // Exactish match first
-                        let matches = areas.filter((area: any) => {
+                        let matches = areas.filter((area) => {
                             const areaStr = `${area.name} ${area.state}`.toLowerCase();
                             return queryTokens.every(token => areaStr.includes(token));
                         }).slice(0, 5);
 
                         // Fallback: if no matches, try matching just the first token (city name)
                         if (matches.length === 0 && queryTokens.length > 0) {
-                            matches = areas.filter((area: any) => {
+                            matches = areas.filter((area) => {
                                 const areaStr = `${area.name} ${area.state}`.toLowerCase();
                                 return areaStr.includes(queryTokens[0]);
                             }).slice(0, 3);
                         }
 
-                        matches.forEach((a: any) => {
-                            if (!seen.has(a.id)) {
-                                seen.add(a.id);
-                                allResults.push({ id: a.id, name: a.name, state: a.state, query: q });
+                        matches.forEach((area) => {
+                            if (!seen.has(area.id)) {
+                                seen.add(area.id);
+                                allResults.push({ id: area.id, name: area.name, state: area.state, query });
                             }
                         });
                     }
@@ -250,36 +395,35 @@ Answer in user's language.`,
                     state: z.string().optional().describe('State abbreviation to filter by (alternative to areaIds), e.g., "CA"'),
                 }),
                 execute: async ({ socCodes, areaIds, state }) => {
-                    const results = [];
+                    const results: WageLookupResult[] = [];
 
                     for (const socCode of socCodes) {
                         const wageFile = `wages/${socCode}.json`;
-                        const data = await readJsonFile(wageFile);
+                        const data = await readJsonFile<WageFile>(wageFile);
 
                         if (!data || !data.wages) {
                             results.push({ socCode, error: `No wage data found for SOC code ${socCode}` });
                             continue;
                         }
 
-                        const enrich = (w: any) => ({
-                            area_id: w.area_id,
-                            hourly: { l1: w.l1, l2: w.l2, l3: w.l3, l4: w.l4 },
+                        const formatWageSnapshot = (entry: WageEntry): WageSnapshot => ({
+                            hourly: { l1: entry.l1, l2: entry.l2, l3: entry.l3, l4: entry.l4 },
                             annual: {
-                                l1: Math.round(w.l1 * 2080),
-                                l2: Math.round(w.l2 * 2080),
-                                l3: Math.round(w.l3 * 2080),
-                                l4: Math.round(w.l4 * 2080)
+                                l1: Math.round(entry.l1 * 2080),
+                                l2: Math.round(entry.l2 * 2080),
+                                l3: Math.round(entry.l3 * 2080),
+                                l4: Math.round(entry.l4 * 2080)
                             }
                         });
 
-                        let wages = data.wages;
+                        const wages = [...data.wages];
 
                         // Case 1: Specific area IDs (n×m)
                         if (areaIds && areaIds.length > 0) {
                             for (const areaId of areaIds) {
-                                const specificArea = wages.find((w: any) => w.area_id === areaId);
+                                const specificArea = wages.find((w) => w.area_id === areaId);
                                 if (specificArea) {
-                                    results.push({ socCode, areaId, ...enrich(specificArea) });
+                                    results.push({ socCode, areaId, ...formatWageSnapshot(specificArea) });
                                 } else {
                                     results.push({ socCode, areaId, error: `No data for area ${areaId}` });
                                 }
@@ -287,21 +431,25 @@ Answer in user's language.`,
                         }
                         // Case 2: State filter
                         else if (state) {
-                            const areas = await readJsonFile('areas.json');
-                            const stateAreas = new Set(areas.filter((a: any) => a.state === state).map((a: any) => a.id));
+                            const areas = await readJsonFile<AreaRecord[]>('areas.json');
+                            if (!areas) {
+                                results.push({ socCode, state, error: `Area lookup failed for state ${state}` });
+                                continue;
+                            }
+                            const stateAreas = new Set(areas.filter((a) => a.state === state).map((a) => a.id));
 
-                            const stateWages = wages.filter((w: any) => stateAreas.has(w.area_id));
-                            stateWages.sort((a: any, b: any) => b.l4 - a.l4);
+                            const stateWages = wages.filter((w) => stateAreas.has(w.area_id));
+                            stateWages.sort((a, b) => b.l4 - a.l4);
 
-                            stateWages.slice(0, 5).forEach((w: any) => {
-                                results.push({ socCode, areaId: w.area_id, state, ...enrich(w) });
+                            stateWages.slice(0, 5).forEach((entry) => {
+                                results.push({ socCode, areaId: entry.area_id, state, ...formatWageSnapshot(entry) });
                             });
                         }
                         // Case 3: Top areas nationally
                         else {
-                            wages.sort((a: any, b: any) => b.l4 - a.l4);
-                            wages.slice(0, 5).forEach((w: any) => {
-                                results.push({ socCode, areaId: w.area_id, ...enrich(w) });
+                            wages.sort((a, b) => b.l4 - a.l4);
+                            wages.slice(0, 5).forEach((entry) => {
+                                results.push({ socCode, areaId: entry.area_id, ...formatWageSnapshot(entry) });
                             });
                         }
                     }
@@ -321,58 +469,59 @@ Answer in user's language.`,
                 }),
                 execute: async ({ socCode, annualSalary, minLevel, minCityTier = 2, state, page = 1 }) => {
                     const wageFile = `wages/${socCode}.json`;
-                    const data = await readJsonFile(wageFile);
+                    const data = await readJsonFile<WageFile>(wageFile);
 
                     if (!data || !data.wages) {
                         return { error: `No wage data found for SOC code ${socCode}` };
                     }
 
                     // Load areas for name mapping
-                    const areas = await readJsonFile('areas.json');
-                    const areaMap = new Map(areas?.map((a: any) => [a.id, a]) || []);
+                    const areas = await readJsonFile<AreaRecord[]>('areas.json');
+                    const areaMap = new Map((areas ?? []).map((a) => [a.id, a]));
 
                     // Calculate level for each area
-                    const areasWithLevel = data.wages.map((w: any) => {
+                    const areasWithLevel: AreaLevelInfo[] = data.wages.map((entry) => {
                         let level = 0;
-                        if (annualSalary >= Math.round(w.l4 * 2080)) level = 4;
-                        else if (annualSalary >= Math.round(w.l3 * 2080)) level = 3;
-                        else if (annualSalary >= Math.round(w.l2 * 2080)) level = 2;
-                        else if (annualSalary >= Math.round(w.l1 * 2080)) level = 1;
+                        if (annualSalary >= Math.round(entry.l4 * 2080)) level = 4;
+                        else if (annualSalary >= Math.round(entry.l3 * 2080)) level = 3;
+                        else if (annualSalary >= Math.round(entry.l2 * 2080)) level = 2;
+                        else if (annualSalary >= Math.round(entry.l1 * 2080)) level = 1;
 
-                        const areaInfo = areaMap.get(w.area_id) as { id: string; name: string; state: string; tier?: number } | undefined;
-                        return {
-                            areaId: w.area_id,
+                        const areaInfo = areaMap.get(entry.area_id);
+                        const info: AreaLevelInfo = {
+                            areaId: entry.area_id,
                             name: areaInfo?.name || 'Unknown',
                             state: areaInfo?.state || 'Unknown',
                             cityTier: areaInfo?.tier || 3,
                             yourLevel: level,
                             thresholds: {
-                                l1: Math.round(w.l1 * 2080),
-                                l2: Math.round(w.l2 * 2080),
-                                l3: Math.round(w.l3 * 2080),
-                                l4: Math.round(w.l4 * 2080)
+                                l1: Math.round(entry.l1 * 2080),
+                                l2: Math.round(entry.l2 * 2080),
+                                l3: Math.round(entry.l3 * 2080),
+                                l4: Math.round(entry.l4 * 2080)
                             }
                         };
+                        return info;
                     });
 
                     // Filter by minLevel
                     let filtered = areasWithLevel;
                     if (minLevel) {
-                        filtered = filtered.filter((a: any) => a.yourLevel >= minLevel);
+                        filtered = filtered.filter((area) => area.yourLevel >= minLevel);
                     }
 
                     // Filter by cityTier
                     if (minCityTier) {
-                        filtered = filtered.filter((a: any) => a.cityTier <= minCityTier);
+                        filtered = filtered.filter((area) => area.cityTier <= minCityTier);
                     }
 
                     // Filter by state
                     if (state) {
-                        filtered = filtered.filter((a: any) => a.state === state.toUpperCase());
+                        filtered = filtered.filter((area) => area.state === state.toUpperCase());
                     }
 
                     // Sort by level (descending), then by L1 threshold (ascending for easier targets)
-                    filtered.sort((a: any, b: any) => {
+                    filtered.sort((a, b) => {
                         if (b.yourLevel !== a.yourLevel) return b.yourLevel - a.yourLevel;
                         return a.thresholds.l1 - b.thresholds.l1;
                     });

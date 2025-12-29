@@ -8,7 +8,7 @@ try {
     stagedFiles = execSync('git diff --cached --name-only --diff-filter=ACM', { encoding: 'utf8' })
         .split('\n')
         .filter(file => /\.(tsx?|jsx?)$/.test(file) && file.trim() !== '');
-} catch (error) {
+} catch {
     console.error('❌ Failed to get staged files');
     process.exit(1);
 }
@@ -56,7 +56,7 @@ for (const file of stagedFiles) {
                 }
             }
         }
-    } catch (error) {
+    } catch {
         // Ignore errors for deleted files
     }
 }
@@ -76,7 +76,7 @@ if (stringsChanged) {
         execSync('git add messages/*.json', { stdio: 'inherit' });
         console.log('\n✅ Translations updated and staged\n');
     } catch (error) {
-        console.error('❌ Failed to build translations');
+        console.error('❌ Failed to build translations', error);
         process.exit(1);
     }
 }

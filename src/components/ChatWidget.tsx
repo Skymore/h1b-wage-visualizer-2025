@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useChat } from '@ai-sdk/react';
+import type { UIMessage } from 'ai';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bot, Send, User, Loader2, Sparkles, MapPin, Search, DollarSign, Trash2, ChevronRight, ChevronDown } from 'lucide-react';
@@ -16,20 +17,80 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 
+type ChatMessage = UIMessage;
+type MessagePart = ChatMessage['parts'][number];
+
+type ToolInvocationDetails = {
+    toolInvocation?: {
+        toolName?: string;
+        args?: unknown;
+        input?: unknown;
+        arguments?: unknown;
+        state?: string;
+        result?: unknown;
+    };
+    args?: unknown;
+    input?: unknown;
+    arguments?: unknown;
+    state?: string;
+    result?: unknown;
+    output?: unknown;
+    response?: unknown;
+};
+
+type ToolPartData = MessagePart & ToolInvocationDetails;
+
+const isToolMessagePart = (part: MessagePart): part is ToolPartData => {
+    if (typeof part.type !== 'string') return false;
+    return part.type.startsWith('tool-') || part.type === 'dynamic-tool';
+};
+
+const extractPrimitiveValues = (value: unknown): Array<string | number> => {
+    if (Array.isArray(value)) {
+        return value.flatMap((item) => extractPrimitiveValues(item));
+    }
+    if (typeof value === 'object' && value !== null) {
+        return Object.values(value).flatMap((item) => extractPrimitiveValues(item));
+    }
+    if (typeof value === 'string' || typeof value === 'number') {
+        return [value];
+    }
+    return [];
+};
+
+const summarizeArgs = (value: unknown): string => {
+    if (!value) return '';
+    const flattened = extractPrimitiveValues(value);
+    if (flattened.length === 0) return '';
+    const joined = flattened.join(', ');
+    return joined.length > 20 ? `(${joined.substring(0, 18)}...)` : `(${joined})`;
+};
+
+const isStoredMessagesArray = (value: unknown): value is ChatMessage[] => {
+    if (!Array.isArray(value)) return false;
+    return value.every((item) => {
+        if (typeof item !== 'object' || item === null) return false;
+        const potential = item as Partial<ChatMessage>;
+        return typeof potential.id === 'string'
+            && (potential.role === 'user' || potential.role === 'assistant' || potential.role === 'system')
+            && Array.isArray(potential.parts);
+    });
+};
+
 // Separate component for tool parts
-const ToolPart = ({ part, index }: { part: any; index: number }) => {
+const ToolPart = ({ part, index }: { part: ToolPartData; index: number }) => {
     const t = useTranslations('ChatWidget');
     const [isExpanded, setIsExpanded] = useState(false);
 
     // Safety extraction
-    const toolInvocation = part.toolInvocation || part;
-    const name = toolInvocation.toolName || part.type?.replace('tool-', '') || 'Tool';
+    const toolInvocation = part.toolInvocation;
+    const name = toolInvocation?.toolName || (typeof part.type === 'string' ? part.type.replace('tool-', '') : 'Tool');
     // Try args (standard), input (some providers), or arguments (raw)
-    const args = toolInvocation.args || toolInvocation.input || toolInvocation.arguments || null;
-    const hasOutput = part.state === 'output-available' || toolInvocation.state === 'result';
+    const args = toolInvocation?.args ?? toolInvocation?.input ?? toolInvocation?.arguments ?? part.args ?? part.input ?? part.arguments ?? null;
+    const hasOutput = part.state === 'output-available' || toolInvocation?.state === 'result';
 
     // Try to find result
-    const result = part.result || part.output || part.response || toolInvocation.result || null;
+    const result = part.result || part.output || part.response || toolInvocation?.result || null;
 
     // Always allowed to expand if done
     const canExpand = hasOutput;
@@ -41,15 +102,7 @@ const ToolPart = ({ part, index }: { part: any; index: number }) => {
     if (name.toLowerCase().includes('occupation')) Icon = Search;
 
     // Format args for summary
-    let argsSummary = '';
-    if (args) {
-        // e.g. { queries: ["Engineer"] } -> "Engineer"
-        const values = Object.values(args).flat().filter(v => typeof v === 'string' || typeof v === 'number');
-        if (values.length > 0) {
-            const joined = values.join(', ');
-            argsSummary = joined.length > 20 ? `(${joined.substring(0, 18)}...)` : `(${joined})`;
-        }
-    }
+    const argsSummary = summarizeArgs(args);
 
     if (!hasOutput) {
         return (
@@ -105,24 +158,30 @@ export function ChatWidget() {
     const [input, setInput] = useState('');
     const [isOpen, setIsOpen] = useState(false); // Default closed
     const [isClearDialogOpen, setIsClearDialogOpen] = useState(false);
-    const [initialMessages, setInitialMessages] = useState<any[]>([]);
+    const [initialMessages, setInitialMessages] = useState<ChatMessage[]>([]);
 
     // Load from localStorage on mount
     useEffect(() => {
         const stored = localStorage.getItem('h1b-chat-messages');
         if (stored) {
-            try {
-                const parsed = JSON.parse(stored);
-                if (parsed.length > 0) {
-                    setInitialMessages(parsed);
+            const frameId = requestAnimationFrame(() => {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (isStoredMessagesArray(parsed)) {
+                        setInitialMessages(parsed);
+                    } else {
+                        localStorage.removeItem('h1b-chat-messages');
+                    }
+                } catch (error) {
+                    console.error('Failed to parse stored messages:', error);
+                    localStorage.removeItem('h1b-chat-messages');
                 }
-            } catch (e) {
-                console.error('Failed to parse stored messages:', e);
-            }
+            });
+            return () => cancelAnimationFrame(frameId);
         }
     }, []);
 
-    const { messages, sendMessage, status, setMessages } = useChat();
+    const { messages, sendMessage, status, setMessages } = useChat<ChatMessage>();
 
     // Initialize messages from localStorage
     useEffect(() => {
@@ -249,30 +308,30 @@ export function ChatWidget() {
                             <p className="text-sm max-w-xs">{t('welcome')}</p>
                         </div>
                     ) : (
-                        messages.map((m: any) => (
-                            <div key={m.id} className={`flex gap-3 ${m.role === 'user' ? 'justify-end' : ''}`}>
+                        messages.map((message) => (
+                            <div key={message.id} className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : ''}`}>
                                 {/* Bot Avatar */}
-                                {m.role !== 'user' && (
+                                {message.role !== 'user' && (
                                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-1">
                                         <Bot className="w-5 h-5 text-primary" />
                                     </div>
                                 )}
 
                                 {/* Message Content */}
-                                <div className={`flex flex-col max-w-[85%] space-y-1 ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
-                                    <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${m.role === 'user'
+                                <div className={`flex flex-col max-w-[85%] space-y-1 ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+                                    <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${message.role === 'user'
                                         ? 'bg-primary text-primary-foreground rounded-tr-none'
                                         : 'bg-muted border border-border rounded-tl-none'
                                         }`}>
-                                        {m.parts ? m.parts.map((part: any, idx: number) => {
+                                        {message.parts ? message.parts.map((part, idx) => {
                                             if (part.type === 'text') {
                                                 return (
-                                                    <div key={idx} className={`prose prose-sm max-w-none ${m.role === 'user' ? 'text-white prose-invert' : 'dark:prose-invert'}`}>
+                                                    <div key={idx} className={`prose prose-sm max-w-none ${message.role === 'user' ? 'text-white prose-invert' : 'dark:prose-invert'}`}>
                                                         <ReactMarkdown>{part.text}</ReactMarkdown>
                                                     </div>
                                                 );
                                             }
-                                            if (part.type.startsWith('tool-')) {
+                                            if (isToolMessagePart(part)) {
                                                 return <ToolPart part={part} index={idx} key={idx} />;
                                             }
                                             return null;
@@ -281,12 +340,12 @@ export function ChatWidget() {
                                         )}
                                     </div>
                                     <span className="text-[10px] text-muted-foreground opacity-70 px-1">
-                                        {m.role === 'user' ? t('you') : t('assistant')}
+                                        {message.role === 'user' ? t('you') : t('assistant')}
                                     </span>
                                 </div>
 
                                 {/* User Avatar */}
-                                {m.role === 'user' && (
+                                {message.role === 'user' && (
                                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center mt-1">
                                         <User className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                                     </div>

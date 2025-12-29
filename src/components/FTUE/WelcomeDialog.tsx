@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 
 interface WelcomeDialogProps {
     onStartTour: () => void;

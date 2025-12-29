@@ -36,9 +36,16 @@ async function processData() {
 
     console.log(`Parsed ${records.length} records.`);
 
-    const occupations = new Map();
-    const areas = new Map();
-    const wagesBySoc = new Map();
+    const occupations = new Map<string, string>();
+    const areas = new Map<string, { id: string; name: string; state: string }>();
+    type WageEntry = {
+        area_id: string;
+        l1: number;
+        l2: number;
+        l3: number;
+        l4: number;
+    };
+    const wagesBySoc = new Map<string, WageEntry[]>();
 
     // Load SOC definitions if available (optional, or extract from main file)
     // The ALC_Export has "SocCode" but maybe not Title in every row? 
@@ -48,34 +55,48 @@ async function processData() {
 
     console.log('Reading oes_soc_occs.csv...');
     const socContent = fs.readFileSync(path.join(INPUT_DIR, 'oes_soc_occs.csv'));
+    interface SocRecord {
+        soccode: string;
+        Title: string;
+        Description?: string;
+    }
+
     const socRecords = parse(socContent, {
         columns: true,
         skip_empty_lines: true,
         trim: true
-    });
+    }) as SocRecord[];
 
     // socRecords headers: "soccode","Title","Description"
-    socRecords.forEach((r: any) => {
-        occupations.set(r.soccode, r.Title);
+    socRecords.forEach((record) => {
+        occupations.set(record.soccode, record.Title);
     });
 
     // Also need Geography.csv for Area Names
     console.log('Reading Geography.csv...');
     const geoContent = fs.readFileSync(path.join(INPUT_DIR, 'Geography.csv'));
+    interface GeographyRecord {
+        Area: string;
+        AreaName: string;
+        StateAb: string;
+        State?: string;
+        CountyTownName?: string;
+    }
+
     const geoRecords = parse(geoContent, {
         columns: true,
         skip_empty_lines: true,
         trim: true
-    });
+    }) as GeographyRecord[];
 
     // Geography headers: "Area","AreaName","StateAb","State","CountyTownName"
-    geoRecords.forEach((r: any) => {
+    geoRecords.forEach((record) => {
         // Some Areas might be duplicated for multiple counties, we just need unique Area -> Name mapping
-        if (!areas.has(r.Area)) {
-            areas.set(r.Area, {
-                id: r.Area,
-                name: r.AreaName,
-                state: r.StateAb
+        if (!areas.has(record.Area)) {
+            areas.set(record.Area, {
+                id: record.Area,
+                name: record.AreaName,
+                state: record.StateAb
             });
         }
     });
@@ -83,7 +104,7 @@ async function processData() {
     console.log('Processing wages...');
 
     // Keep track of unique SOCs found in wage data and their counts
-    const socCounts = new Map();
+    const socCounts = new Map<string, number>();
 
     for (const record of records) {
         // Record keys: Area, SocCode, GeoLvl, Level1, Level2, Level3, Level4, Average

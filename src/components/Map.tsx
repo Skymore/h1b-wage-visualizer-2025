@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useTranslations } from 'next-intl';
@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes';
 
 // Token should be in .env.local
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+const DEFAULT_CENTER: [number, number] = [-95.7129, 37.0902];
 
 type WageData = { area_id: string, l1: number, l2: number, l3: number, l4: number };
 type Area = { id: string, name: string, lat?: number, lng?: number };
@@ -25,10 +26,8 @@ export default function MapView({
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<mapboxgl.Map | null>(null);
     const markers = useRef<mapboxgl.Marker[]>([]);
-    const [lng, setLng] = useState(-95.7129);
-    const [lat, setLat] = useState(37.0902);
-    const [zoom, setZoom] = useState(2);
     const { resolvedTheme } = useTheme();
+    const initialTheme = useRef(resolvedTheme);
 
     useEffect(() => {
         if (map.current || !mapContainer.current) return;
@@ -37,14 +36,12 @@ export default function MapView({
 
         const isDesktop = window.innerWidth >= 768;
         const initialZoom = isDesktop ? 3 : 2;
-
-        // Sync state immediately so UI label is correct
-        setZoom(initialZoom);
+        const initialStyle = initialTheme.current === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11',
-            center: [lng, lat],
+            style: initialStyle,
+            center: DEFAULT_CENTER,
             zoom: initialZoom,
             cooperativeGestures: true // Allows page scrolling with one finger, map panning with two
         });
@@ -52,13 +49,11 @@ export default function MapView({
         map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
         map.current.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 
-        map.current.on('move', () => {
-            if (!map.current) return;
-            setLng(parseFloat(map.current.getCenter().lng.toFixed(4)));
-            setLat(parseFloat(map.current.getCenter().lat.toFixed(4)));
-            setZoom(parseFloat(map.current.getZoom().toFixed(2)));
-        });
-
+        return () => {
+            markers.current.forEach(marker => marker.remove());
+            map.current?.remove();
+            map.current = null;
+        };
     }, []);
 
     // Update map style when theme changes
@@ -144,7 +139,7 @@ export default function MapView({
             }
         });
 
-    }, [wageData, areas, wageScale, resolvedTheme, t]);
+    }, [wageData, areas, wageScale, t]);
 
     return (
         <div className="h-full w-full rounded-md border overflow-hidden relative">

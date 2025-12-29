@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import { Check, ChevronsUpDown, Search as SearchIcon, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, ChevronsUpDown, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,6 +25,10 @@ interface Occupation {
     title: string;
 }
 
+interface OccupationOption extends Occupation {
+    titleLower: string;
+}
+
 interface SearchProps {
     onSelectOccupation: (soc: string) => void;
 }
@@ -34,53 +38,40 @@ export function Search({ onSelectOccupation }: SearchProps) {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState("15-1252"); // Default to Software Developers (15-1252)
     const [searchQuery, setSearchQuery] = React.useState(""); // Track search query
-    const [occupations, setOccupations] = React.useState<Occupation[]>([]);
+    const [occupations, setOccupations] = React.useState<OccupationOption[]>([]);
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/data/occupations.json')
-            .then(res => res.json())
+            .then(res => res.json() as Promise<Occupation[]>)
             .then(data => {
-                setOccupations(data);
+                setOccupations(
+                    data.map((occ) => ({
+                        ...occ,
+                        titleLower: occ.title.toLowerCase(),
+                    }))
+                );
                 // Trigger initial selection
                 onSelectOccupation("15-1252");
-            });
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+            })
+            .catch((error) => console.error('Failed to load occupations', error));
+    }, [onSelectOccupation]);
 
-    // Limit to top 20 for performance and UI cleanliness, let CommandInput handle filtering logic if needed,
-    // but standard Command component filters based on rendered items. 
-    // To support "search finds others", all items should be in CommandList but we might want to lazy render or just rely on cmdk's virtualization if available.
-    // However, user specifically asked: "Default 20... remaining expand or search". 
-    // Standard cmdk is client-side filtering. If we pass all items to CommandItem, it might be heavy.
-    // Let's pass all items but styling might be the issue.
-    // Actually, cmdk filters automatically. The user wants to *see* only 20 initially?
-    // CommandList usually shows all matches.
-    // Let's fix the overlap first by adding `pt-10` or similar to CommandList or checking CommandInput positioning.
-
-    // Fix overlap: standard shadcn CommandInput is inside Command, which is inside PopoverContent.
-    // The overlap usually happens if CommandList doesn't have offset. 
-    // shadcn/ui generic Command usually handles this, but let's check styles.
-    // We will slice to 20 initially if no search? 
-    // Actually, Command handles filtering. If we slice 20, search won't find the rest unless we handle filtering manually.
-    // Strategy: Render ALL items (cmdk is fast) but maybe limit height?
-    // User said: "default 20 occupations... remaining search".
-    // This implies he wants to see a short list initially.
-    // But for Search to work on client-side, we need the data there.
-    // Let's stick to standard behavior but fix the CSS overlap which is critical.
+    const deferredQuery = React.useDeferredValue(searchQuery);
+    const normalizedQuery = deferredQuery.trim().toLowerCase();
 
     // manual filtering logic
     const filteredOccupations = React.useMemo(() => {
-        if (!searchQuery) {
+        if (!normalizedQuery) {
             return isExpanded ? occupations : occupations.slice(0, 20);
         }
 
         // Simple case-insensitive inclusion search
-        const lowerQuery = searchQuery.toLowerCase();
         return occupations.filter(occ =>
-            occ.title.toLowerCase().includes(lowerQuery) ||
-            occ.code.includes(lowerQuery)
+            occ.titleLower.includes(normalizedQuery) ||
+            occ.code.includes(normalizedQuery)
         ); // if searching, show all matches
-    }, [occupations, searchQuery, isExpanded]);
+    }, [occupations, normalizedQuery, isExpanded]);
 
     return (
         <div className="w-full">

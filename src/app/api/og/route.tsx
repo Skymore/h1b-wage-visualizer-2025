@@ -4,6 +4,21 @@ import QRCode from 'qrcode';
 // Switch to Node.js runtime to ensure qrcode library compatibility
 export const runtime = 'nodejs';
 
+type ShareRecord = {
+    area_id: string;
+    name: string;
+    l1: number;
+    l2: number;
+    l3: number;
+    l4: number;
+};
+
+interface SharePayload {
+    socCode: string;
+    socTitle?: string;
+    records: ShareRecord[];
+}
+
 export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
@@ -47,7 +62,14 @@ export async function GET(request: Request) {
             );
         }
 
-        const { socCode, socTitle, records } = JSON.parse(decodeURIComponent(dataParam));
+        const parsed = JSON.parse(decodeURIComponent(dataParam)) as Partial<SharePayload>;
+        if (!parsed || typeof parsed.socCode !== 'string' || !Array.isArray(parsed.records)) {
+            return new Response('Invalid data payload', { status: 400 });
+        }
+
+        const socCode = parsed.socCode;
+        const socTitle = parsed.socTitle;
+        const records: ShareRecord[] = parsed.records;
 
         // Generate QR Code
         const qrUrl = `https://h1b.ruit.me/?soc=${socCode}`;
@@ -68,8 +90,7 @@ export async function GET(request: Request) {
         };
 
         // Calculate max wage for scaling
-        // @ts-ignore
-        const allWages = records.flatMap(r => [r.l1, r.l2, r.l3, r.l4]);
+        const allWages = records.flatMap((record) => [record.l1, record.l2, record.l3, record.l4]);
         const maxWage = Math.max(...allWages);
 
         return new ImageResponse(
@@ -125,7 +146,6 @@ export async function GET(request: Request) {
 
                     {/* List */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', flex: 1 }}>
-                        {/* @ts-ignore */}
                         {records.map((record) => (
                             <div
                                 key={record.area_id}
@@ -217,6 +237,7 @@ export async function GET(request: Request) {
                             boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                             border: isLight ? '1px solid #e2e8f0' : 'none'
                         }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={qrCodeDataUrl} width="120" height="120" style={{ borderRadius: '4px' }} alt="QR Code" />
                         </div>
                     </div>
@@ -227,9 +248,10 @@ export async function GET(request: Request) {
                 height: 1350, // Higher resolution
             },
         );
-    } catch (e: any) {
-        console.log(`${e.message}`);
-        return new Response(`Failed to generate the image`, {
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('Failed to generate OG image:', message);
+        return new Response('Failed to generate the image', {
             status: 500,
         });
     }

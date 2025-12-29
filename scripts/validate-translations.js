@@ -47,7 +47,7 @@ function flattenObject(obj, prefix = '') {
 }
 
 // Check placeholder consistency
-function checkPlaceholders(source, translation, key) {
+function checkPlaceholders(source, translation) {
     const issues = [];
     for (const placeholder of REQUIRED_PLACEHOLDERS) {
         const inSource = source.includes(placeholder);
@@ -198,7 +198,7 @@ async function validateTranslations() {
             const translation = translations[locale]?.[key];
             if (!translation) continue;
 
-            const placeholderIssues = checkPlaceholders(sourceValue, translation, key);
+            const placeholderIssues = checkPlaceholders(sourceValue, translation);
             const termIssues = checkTechnicalTerms(sourceValue, translation);
 
             [...placeholderIssues, ...termIssues].forEach(problem => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { Button } from "@/components/ui/button";
@@ -44,7 +44,7 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
     const { resolvedTheme } = useTheme();
 
     // Create a map for area details
-    const areaMap = new Map(areas.map(a => [a.id, a]));
+    const areaMap = useMemo(() => new Map(areas.map(a => [a.id, a])), [areas]);
 
     useEffect(() => {
         if (open && selectedData.length > 0) {
@@ -78,10 +78,13 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
             const jsonStr = JSON.stringify(payload);
             const encoded = encodeURIComponent(jsonStr);
             const url = `/api/og?data=${encoded}&theme=${resolvedTheme}`;
-            setImageUrl(url);
-            setIsLoading(true); // Image loading state handled by onLoad
+            const frameId = requestAnimationFrame(() => {
+                setImageUrl(url);
+                setIsLoading(true); // Image loading state handled by onLoad
+            });
+            return () => cancelAnimationFrame(frameId);
         }
-    }, [open, selectedData, areas, socCode, socTitle, resolvedTheme]);
+    }, [open, selectedData, areaMap, socCode, socTitle, resolvedTheme]);
 
     const handleDownload = async () => {
         if (!imageUrl) return;

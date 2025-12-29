@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useDeferredValue } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search } from '@/components/Search';
@@ -10,7 +10,6 @@ import { WageDashboard } from '@/components/WageDashboard';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -21,6 +20,30 @@ import {
 
 import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
 import { TourGuide } from '@/components/FTUE/TourGuide';
+
+type WageRow = {
+  area_id: string;
+  l1: number;
+  l2: number;
+  l3: number;
+  l4: number;
+};
+
+type Area = {
+  id: string;
+  name: string;
+  state: string;
+  lat?: number;
+  lon?: number;
+  tier?: number;
+};
+
+type Occupation = {
+  code: string;
+  title: string;
+  count: number;
+  isPopular?: boolean;
+};
 
 const MapView = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">Loading Map...</div>,
@@ -34,12 +57,13 @@ export default function Home() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [wageData, setWageData] = useState<any[]>([]);
-  const [areas, setAreas] = useState<any[]>([]);
+  const [wageData, setWageData] = useState<WageRow[]>([]);
+  const [areas, setAreas] = useState<Area[]>([]);
 
   // Initialize state from URL or defaults
   const [selectedSoc, setSelectedSoc] = useState<string | null>(searchParams.get('soc'));
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+  const deferredLocationQuery = useDeferredValue(searchQuery);
   const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
   const [selectedTiers, setSelectedTiers] = useState<number[]>([1, 2, 3]); // Default: Tier 1-3
 
@@ -56,8 +80,8 @@ export default function Home() {
       params.delete('reset-ftue');
       router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       // Force state update to show welcome
-      setShowWelcome(true);
-      return;
+      const frameId = requestAnimationFrame(() => setShowWelcome(true));
+      return () => cancelAnimationFrame(frameId);
     }
 
     // Check if user has seen FTUE
@@ -67,7 +91,7 @@ export default function Home() {
       const timer = setTimeout(() => setShowWelcome(true), 1000);
       return () => clearTimeout(timer);
     }
-  }, [searchParams]);
+  }, [pathname, router, searchParams]);
 
   const handleStartTour = () => {
     setShowWelcome(false);
@@ -104,36 +128,46 @@ export default function Home() {
   // Fetch areas on mount
   useEffect(() => {
     fetch('/data/areas.json')
-      .then(res => res.json())
-      .then(setAreas);
+      .then(res => res.json() as Promise<Area[]>)
+      .then(setAreas)
+      .catch((error) => console.error('Failed to load areas', error));
   }, []);
-
-  const [selectedSocTitle, setSelectedSocTitle] = useState<string>('');
 
   // Fetch wages when SOC is selected
   useEffect(() => {
-    if (selectedSoc) {
-      fetch(`/data/wages/${selectedSoc}.json`)
-        .then(res => res.json())
-        .then(data => setWageData(data.wages))
-        .catch(err => console.error("Failed to load wages", err));
+    if (!selectedSoc) {
+      const frameId = requestAnimationFrame(() => setWageData([]));
+      return () => cancelAnimationFrame(frameId);
     }
+
+    let isCancelled = false;
+    fetch(`/data/wages/${selectedSoc}.json`)
+      .then(res => res.json() as Promise<{ wages: WageRow[] }>)
+      .then(data => {
+        if (!isCancelled) {
+          setWageData(data.wages || []);
+        }
+      })
+      .catch(err => console.error("Failed to load wages", err));
+
+    return () => {
+      isCancelled = true;
+    };
   }, [selectedSoc]);
 
-  const [occupations, setOccupations] = useState<any[]>([]);
+  const [occupations, setOccupations] = useState<Occupation[]>([]);
   useEffect(() => {
     fetch('/data/occupations.json')
-      .then(res => res.json())
+      .then(res => res.json() as Promise<Occupation[]>)
       .then(data => {
         setOccupations(data);
-      });
+      })
+      .catch((error) => console.error('Failed to load occupations', error));
   }, []);
 
-  useEffect(() => {
-    if (selectedSoc && occupations.length > 0) {
-      const occ = occupations.find(o => o.code === selectedSoc);
-      if (occ) setSelectedSocTitle(occ.title);
-    }
+  const selectedSocTitle = useMemo(() => {
+    if (!selectedSoc) return undefined;
+    return occupations.find(o => o.code === selectedSoc)?.title;
   }, [selectedSoc, occupations]);
 
   // Derived State: Filtered Wages
@@ -150,8 +184,8 @@ export default function Home() {
     let filtered = wageData;
 
     // 1. Filter by Search Query (Area Name)
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
+    if (deferredLocationQuery) {
+      const query = deferredLocationQuery.toLowerCase();
       filtered = filtered.filter(row => {
         const area = areaMap.get(row.area_id);
         const name = area ? `${area.name}, ${area.state}` : row.area_id;
@@ -176,7 +210,7 @@ export default function Home() {
     }
 
     return filtered;
-  }, [wageData, searchQuery, selectedState, selectedTiers, areaMap]);
+  }, [wageData, deferredLocationQuery, selectedState, selectedTiers, areaMap]);
 
   // Calculate Min/Max wages for consistent coloring (using full dataset)
   const wageScale = useMemo(() => {
@@ -196,6 +230,7 @@ export default function Home() {
 
   // Handlers
   const handleSocSelect = (soc: string) => {
+    if (selectedSoc === soc) return;
     setSelectedSoc(soc);
     updateUrl('soc', soc);
   };
