@@ -17,6 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from 'next/link';
+import { Github, Linkedin, Globe } from 'lucide-react';
 
 import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
 import { TourGuide } from '@/components/FTUE/TourGuide';
@@ -50,7 +52,7 @@ const MapView = dynamic(() => import('@/components/Map'), {
   ssr: false
 });
 
-export default function Home() {
+export default function HomePage() {
   const t = useTranslations('HomePage');
   // Search Params
   const searchParams = useSearchParams();
@@ -64,6 +66,23 @@ export default function Home() {
   const [selectedSoc, setSelectedSoc] = useState<string | null>(searchParams.get('soc'));
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const deferredLocationQuery = useDeferredValue(searchQuery);
+  const externalLinks = [
+    {
+      href: 'https://github.com/Skymore/h1b-wage-visualizer-2025',
+      label: 'GitHub',
+      icon: Github,
+    },
+    {
+      href: 'https://www.linkedin.com/in/ruit/',
+      label: 'LinkedIn',
+      icon: Linkedin,
+    },
+    {
+      href: 'https://ruit.me/',
+      label: 'Portfolio',
+      icon: Globe,
+    },
+  ] as const;
   const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
   const [selectedTiers, setSelectedTiers] = useState<number[]>([1, 2, 3]); // Default: Tier 1-3
 
@@ -265,9 +284,26 @@ export default function Home() {
         onTourEnd={handleTourEnd}
       />
 
-      <header className="w-full max-w-7xl flex justify-end items-center py-4 px-4 space-x-2">
-        <ThemeToggle />
-        <LanguageSelector />
+      <header className="w-full max-w-7xl flex flex-wrap items-center justify-between gap-3 py-4 px-4">
+        <div className="flex items-center gap-2">
+          {externalLinks.map(({ href, label, icon: Icon }) => (
+            <Link
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-sm text-foreground transition hover:bg-muted"
+            >
+              <Icon className="h-4 w-4" />
+              <span className="hidden sm:inline">{label}</span>
+            </Link>
+          ))}
+        </div>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <LanguageSelector />
+        </div>
       </header>
 
       <div className="w-full flex flex-col items-center space-y-8 mb-8">
