@@ -43,7 +43,8 @@
         "tier_2": "Nivel 2 (Ciudades Principales)",
         "tier_3": "Nivel 3 (Ciudades Normales)",
         "tier_4": "Nivel 4 (Pueblos Pequeños)",
-        "tier_5": "Nivel 5 (Puerto Rico)"
+        "tier_5": "Nivel 5 (Puerto Rico)",
+        "metrics_link": "Métricas"
     },
     "ChatWidget": {
         "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",
@@ -85,5 +86,27 @@
         "filters_desc": "Filtre por estado, nombre o nivel de ciudad para encontrar el mejor mercado para usted.",
         "compare_title": "Comparar ubicaciones",
         "compare_desc": "Seleccione varias ubicaciones para compararlas en paralelo o compartir un informe."
+    },
+    "Metrics": {
+        "badge_title": "Métricas",
+        "page_title": "Panel de uso",
+        "page_subtitle": "Supervise visitas, uso de chat y gasto de tokens en tiempo real.",
+        "back_button": "Volver al explorador",
+        "kv_warning": "Las credenciales de Redis no están configuradas. Las métricas permanecerán en cero hasta que se establezcan KV_REST_API_URL y KV_REST_API_TOKEN.",
+        "stat_total_visits": "Visitas totales",
+        "stat_unique_visitors": "Visitantes únicos",
+        "stat_chat_messages": "Mensajes de chat",
+        "stat_token_cost": "Costo de tokens (USD)",
+        "table_title": "Desglose de visitantes",
+        "table_subtitle": "IDs de visitantes cifrados con visitas, recuento de chats y uso de tokens.",
+        "table_tracked": "{count} rastreados",
+        "col_visitor": "Visitante",
+        "col_visits": "Visitas",
+        "col_chats": "Chats",
+        "col_prompt": "Prompt",
+        "col_completion": "Completion",
+        "col_total": "Total",
+        "col_cost": "Costo",
+        "empty_state": "Aún no hay datos de visitantes. Chatee con el asistente o cargue el mapa para comenzar a recopilar métricas."
     }
 }

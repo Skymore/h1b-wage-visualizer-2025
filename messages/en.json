@@ -43,7 +43,8 @@
         "tier_2": "Tier 2 (Major Cities)",
         "tier_3": "Tier 3 (Normal Cities)",
         "tier_4": "Tier 4 (Small Towns)",
-        "tier_5": "Tier 5 (Puerto Rico)"
+        "tier_5": "Tier 5 (Puerto Rico)",
+        "metrics_link": "Metrics"
     },
     "ChatWidget": {
         "welcome": "Ask me about H1B wages for different occupations and locations!",
@@ -84,5 +85,27 @@
         "next": "Next",
         "prev": "Previous",
         "done": "Done"
+    },
+    "Metrics": {
+        "badge_title": "Metrics",
+        "page_title": "Usage Dashboard",
+        "page_subtitle": "Monitor visits, chat usage, and token spend in real time.",
+        "back_button": "Back to explorer",
+        "kv_warning": "Redis credentials are not configured. Metrics will remain at zero until KV_REST_API_URL and KV_REST_API_TOKEN are set.",
+        "stat_total_visits": "Total Visits",
+        "stat_unique_visitors": "Unique Visitors",
+        "stat_chat_messages": "Chat Messages",
+        "stat_token_cost": "Token Cost (USD)",
+        "table_title": "Visitor Breakdown",
+        "table_subtitle": "Hashed visitor IDs with visits, chat counts, and token usage.",
+        "table_tracked": "{count} tracked",
+        "col_visitor": "Visitor",
+        "col_visits": "Visits",
+        "col_chats": "Chats",
+        "col_prompt": "Prompt",
+        "col_completion": "Completion",
+        "col_total": "Total",
+        "col_cost": "Cost",
+        "empty_state": "No visitor data yet. Chat with the assistant or load the map to start collecting metrics."
     }
 }

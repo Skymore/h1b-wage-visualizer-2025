@@ -43,7 +43,8 @@
         "tier_2": "二线 (主要城市)",
         "tier_3": "三线 (普通城市)",
         "tier_4": "四线 (小城镇)",
-        "tier_5": "五线 (波多黎各)"
+        "tier_5": "五线 (波多黎各)",
+        "metrics_link": "指标"
     },
     "ChatWidget": {
         "welcome": "您可以询问任何职位的H1B工资情况！",
@@ -85,5 +86,27 @@
         "filters_desc": "搜索职业并按地区或城市规模筛选，找到适合您的市场。",
         "compare_title": "比较地点",
         "compare_desc": "选择多个地点进行并排比较或分享报告。"
+    },
+    "Metrics": {
+        "badge_title": "指标",
+        "page_title": "使用情况仪表板",
+        "page_subtitle": "实时监控访问量、聊天使用情况和 Token 支出。",
+        "back_button": "返回探索页",
+        "kv_warning": "未配置 Redis 凭据。在设置 KV_REST_API_URL 和 KV_REST_API_TOKEN 之前，指标将保持为零。",
+        "stat_total_visits": "总访问次数",
+        "stat_unique_visitors": "独立访客数",
+        "stat_chat_messages": "聊天消息数",
+        "stat_token_cost": "Token 费用 (USD)",
+        "table_title": "访客明细",
+        "table_subtitle": "包含访问次数、聊天次数和 Token 使用情况的哈希访客 ID。",
+        "table_tracked": "已追踪 {count} 个",
+        "col_visitor": "访客",
+        "col_visits": "访问次数",
+        "col_chats": "聊天次数",
+        "col_prompt": "Prompt",
+        "col_completion": "Completion",
+        "col_total": "总计",
+        "col_cost": "费用",
+        "empty_state": "暂无访客数据。请与助手聊天或加载地图以开始收集指标。"
     }
 }

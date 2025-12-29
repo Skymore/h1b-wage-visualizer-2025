@@ -10,6 +10,7 @@ import { WageDashboard } from '@/components/WageDashboard';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -59,6 +60,11 @@ export default function HomePage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const localeSegment = useMemo(() => {
+    const segments = pathname.split('/').filter(Boolean);
+    return segments[0] ?? 'en';
+  }, [pathname]);
+  const metricsHref = `/${localeSegment}/metrics`;
 
   const [wageData, setWageData] = useState<WageRow[]>([]);
   const [areas, setAreas] = useState<Area[]>([]);
@@ -329,6 +335,14 @@ export default function HomePage() {
           ))}
         </div>
         <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="hidden md:inline-flex"
+          >
+            <Link href={metricsHref}>{t('metrics_link')}</Link>
+          </Button>
           <ThemeToggle />
           <LanguageSelector />
         </div>

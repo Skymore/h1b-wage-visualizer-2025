@@ -43,7 +43,8 @@
         "tier_2": "レベル2（主要都市）",
         "tier_3": "レベル3（一般都市）",
         "tier_4": "レベル4（小都市）",
-        "tier_5": "レベル5（プエルトリコ）"
+        "tier_5": "レベル5（プエルトリコ）",
+        "metrics_link": "メトリクス"
     },
     "ChatWidget": {
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",
@@ -85,5 +86,27 @@
         "filters_desc": "州、名称、または都市の階層で絞り込み、最適な市場を見つけましょう。",
         "compare_title": "場所を比較",
         "compare_desc": "複数の場所を選択して並べて比較したり、レポートを共有したりできます。"
+    },
+    "Metrics": {
+        "badge_title": "メトリクス",
+        "page_title": "利用状況ダッシュボード",
+        "page_subtitle": "訪問数、チャット利用状況、トークン消費量をリアルタイムで監視します。",
+        "back_button": "エクスプローラーに戻る",
+        "kv_warning": "Redisの資格情報が設定されていません。KV_REST_API_URLとKV_REST_API_TOKENが設定されるまで、メトリクスはゼロのままです。",
+        "stat_total_visits": "総訪問数",
+        "stat_unique_visitors": "ユニーク訪問者数",
+        "stat_chat_messages": "チャットメッセージ数",
+        "stat_token_cost": "トークン費用 (USD)",
+        "table_title": "訪問者内訳",
+        "table_subtitle": "訪問数、チャット数、トークン使用量を含むハッシュ化された訪問者ID。",
+        "table_tracked": "{count} 件を追跡中",
+        "col_visitor": "訪問者",
+        "col_visits": "訪問数",
+        "col_chats": "チャット数",
+        "col_prompt": "Prompt",
+        "col_completion": "Completion",
+        "col_total": "合計",
+        "col_cost": "コスト",
+        "empty_state": "訪問者データがまだありません。アシスタントとチャットするか、マップを読み込んでメトリクスの収集を開始してください。"
     }
 }

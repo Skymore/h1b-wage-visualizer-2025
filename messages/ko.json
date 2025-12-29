@@ -43,7 +43,8 @@
         "tier_2": "2등급 (주요 도시)",
         "tier_3": "3등급 (일반 도시)",
         "tier_4": "4등급 (소도시)",
-        "tier_5": "5등급 (푸에르토리코)"
+        "tier_5": "5등급 (푸에르토리코)",
+        "metrics_link": "메트릭"
     },
     "ChatWidget": {
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",
@@ -85,5 +86,27 @@
         "filters_desc": "주, 이름 또는 도시 등급별로 범위를 좁혀 귀하에게 가장 적합한 시장을 찾아보세요.",
         "compare_title": "지역 비교",
         "compare_desc": "여러 지역을 선택하여 나란히 비교하거나 보고서를 공유하세요."
+    },
+    "Metrics": {
+        "badge_title": "메트릭",
+        "page_title": "사용량 대시보드",
+        "page_subtitle": "방문 횟수, 채팅 사용량, 토큰 지출을 실시간으로 모니터링합니다.",
+        "back_button": "탐색기로 돌아가기",
+        "kv_warning": "Redis 자격 증명이 구성되지 않았습니다. KV_REST_API_URL 및 KV_REST_API_TOKEN이 설정될 때까지 메트릭은 0으로 유지됩니다.",
+        "stat_total_visits": "총 방문 수",
+        "stat_unique_visitors": "순 방문자 수",
+        "stat_chat_messages": "채팅 메시지",
+        "stat_token_cost": "토큰 비용 (USD)",
+        "table_title": "방문자 상세 내역",
+        "table_subtitle": "방문 횟수, 채팅 수, 토큰 사용량이 포함된 해시된 방문자 ID입니다.",
+        "table_tracked": "{count}명 추적됨",
+        "col_visitor": "방문자",
+        "col_visits": "방문 수",
+        "col_chats": "채팅 수",
+        "col_prompt": "Prompt",
+        "col_completion": "Completion",
+        "col_total": "합계",
+        "col_cost": "비용",
+        "empty_state": "아직 방문자 데이터가 없습니다. 어시스턴트와 채팅하거나 지도를 로드하여 메트릭 수집을 시작하세요."
     }
 }
