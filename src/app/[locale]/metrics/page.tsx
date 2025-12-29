@@ -26,8 +26,8 @@ export default async function MetricsPage({
   const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: 6,
+    maximumFractionDigits: 6,
   });
 
   const statCards = [

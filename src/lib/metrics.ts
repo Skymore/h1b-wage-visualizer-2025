@@ -3,7 +3,6 @@
 import crypto from "crypto";
 import { Redis } from "@upstash/redis";
 
-const COST_SCALE = 100;
 const REDIS_PREFIX = process.env.KV_METRICS_PREFIX ?? "h1b-metrics";
 const KEYS = {
   aggregate: `${REDIS_PREFIX}:aggregate`,
@@ -89,11 +88,16 @@ function parseRedisHash(raw: unknown): Record<string, string> {
 }
 
 function tokensFromHash(hash: Record<string, string>): TokenUsage {
+  const costUSD =
+    hash.costUSD !== undefined
+      ? parseNumber(hash.costUSD)
+      : parseNumber(hash.costCents ?? hash.cost_cents) / 100;
+
   return {
     prompt: parseNumber(hash.promptTokens ?? hash.prompt),
     completion: parseNumber(hash.completionTokens ?? hash.completion),
     total: parseNumber(hash.totalTokens ?? hash.total),
-    costUSD: parseNumber(hash.costCents ?? hash.costUSD) / COST_SCALE,
+    costUSD,
   };
 }
 
@@ -133,9 +137,13 @@ async function incrementTokenUsage(
     tasks.push(redis.hincrby(key, "totalTokens", Math.round(usage.total)));
   }
   if (usage.costUSD) {
-    tasks.push(
-      redis.hincrby(key, "costCents", Math.round(usage.costUSD * COST_SCALE))
-    );
+    const amount =
+      typeof usage.costUSD === "number" && Number.isFinite(usage.costUSD)
+        ? usage.costUSD
+        : parseNumber(usage.costUSD);
+    if (amount) {
+      tasks.push(redis.hincrbyfloat(key, "costUSD", amount));
+    }
   }
 
   await Promise.all(tasks);
