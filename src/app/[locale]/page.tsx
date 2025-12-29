@@ -190,7 +190,7 @@ export default function Home() {
               value={selectedState}
               onChange={(e) => handleStateChange(e.target.value)}
             >
-              <option value="ALL">All States</option>
+              <option value="ALL">{t('all_states')}</option>
               {uniqueStates.map(state => (
                 <option key={state} value={state}>{state}</option>
               ))}
