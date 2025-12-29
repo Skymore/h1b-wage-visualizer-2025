@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun, Monitor } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
@@ -12,11 +12,17 @@ import {
 } from "@/components/ui/popover"
 
 import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export function ThemeToggle() {
-    const { setTheme } = useTheme()
+    const { theme, setTheme } = useTheme()
     const searchParams = useSearchParams()
+    const [mounted, setMounted] = useState(false)
+
+    // Wait until mounted to avoid hydration mismatch
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     useEffect(() => {
         const themeParam = searchParams.get('theme')
@@ -25,20 +31,57 @@ export function ThemeToggle() {
         }
     }, [searchParams, setTheme])
 
+    if (!mounted) {
+        return (
+            <Button variant="outline" size="icon">
+                <Sun className="h-[1.2rem] w-[1.2rem]" />
+            </Button>
+        )
+    }
+
+    const currentIcon = () => {
+        if (theme === 'system') return <Monitor className="h-[1.2rem] w-[1.2rem]" />
+        if (theme === 'dark') return <Moon className="h-[1.2rem] w-[1.2rem]" />
+        return <Sun className="h-[1.2rem] w-[1.2rem]" />
+    }
+
     return (
         <Popover>
             <PopoverTrigger asChild>
                 <Button variant="outline" size="icon">
-                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    {currentIcon()}
                     <span className="sr-only">Toggle theme</span>
                 </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="w-32 p-1">
+            <PopoverContent align="end" className="w-36 p-1">
                 <div className="grid gap-1">
-                    <Button variant="ghost" size="sm" className="justify-start font-normal" onClick={() => setTheme("light")}>Light</Button>
-                    <Button variant="ghost" size="sm" className="justify-start font-normal" onClick={() => setTheme("dark")}>Dark</Button>
-                    <Button variant="ghost" size="sm" className="justify-start font-normal" onClick={() => setTheme("system")}>System</Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className={`justify-start font-normal ${theme === "light" ? "bg-muted" : ""}`}
+                        onClick={() => setTheme("light")}
+                    >
+                        <Sun className="mr-2 h-4 w-4" />
+                        Light
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className={`justify-start font-normal ${theme === "dark" ? "bg-muted" : ""}`}
+                        onClick={() => setTheme("dark")}
+                    >
+                        <Moon className="mr-2 h-4 w-4" />
+                        Dark
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className={`justify-start font-normal ${theme === "system" ? "bg-muted" : ""}`}
+                        onClick={() => setTheme("system")}
+                    >
+                        <Monitor className="mr-2 h-4 w-4" />
+                        System
+                    </Button>
                 </div>
             </PopoverContent>
         </Popover>
