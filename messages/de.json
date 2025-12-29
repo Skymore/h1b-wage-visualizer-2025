@@ -58,5 +58,26 @@
         "disclaimer": "KI kann Fehler machen. Überprüfen Sie wichtige Informationen.",
         "cancel": "Abbrechen",
         "test_key": "Testübersetzung"
+    },
+    "Welcome": {
+        "title": "Willkommen beim H1B Wage Visualizer",
+        "description": "Entdecken Sie H1B-Lohndaten in den USA. Vergleichen Sie Gehälter, erkunden Sie Standorte und finden Sie die beste Stadt für Ihre Karriere.",
+        "start_tour": "Tour starten",
+        "skip": "Überspringen"
+    },
+    "Tour": {
+        "search_title": "Berufe suchen",
+        "search_desc": "Suchen Sie nach Ihrer Berufsbezeichnung oder Ihrem SOC code (z. B. 'Software Developer').",
+        "map_title": "Interaktive Karte",
+        "map_desc": "Erkunden Sie Löhne geografisch. Filter helfen Ihnen, die besten Standorte zu finden.",
+        "wages_title": "Lohn-Dashboard",
+        "wages_desc": "Detaillierte Lohnübersichten nach Level und Stadtkategorie anzeigen.",
+        "chat_title": "KI-Assistent",
+        "chat_desc": "Haben Sie Fragen? Fragen Sie unseren KI-Assistenten nach spezifischen Einblicken.",
+        "next": "Weiter",
+        "prev": "Zurück",
+        "done": "Fertig",
+        "filters_title": "Standorte filtern",
+        "filters_desc": "Grenzen Sie die Suche nach Bundesstaat, Name oder Stadt-Kategorie ein, um den besten Markt für Sie zu finden."
     }
 }

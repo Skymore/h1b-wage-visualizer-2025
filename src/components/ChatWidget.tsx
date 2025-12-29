@@ -198,6 +198,7 @@ export function ChatWidget() {
             {/* Toggle Button (Visible when closed) */}
             {!isOpen && (
                 <Button
+                    id="chat-widget-trigger"
                     onClick={() => setIsOpen(true)}
                     className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 flex items-center justify-center transition-transform hover:scale-105"
                 >

@@ -175,9 +175,12 @@ This project currently has no automated tests. When adding features, consider th
 
 ### Internationalization
 - **All user-facing strings must be translated**
-  - Add keys to `messages/en.json` → Run `node scripts/sync-i18n.js`
+  - **Source of truth**: `messages/strings.json` (do NOT edit other language files directly)
+  - Add/modify keys in `strings.json` → Run `npm run translate` to generate all languages
   - Use `useTranslations()` hook, never hardcode text
+  - **Validation**: Run `npm run validate-i18n` to check for translation issues
 - **Supported locales**: en, zh, ja, ko, es, fr, de, hi
+- **Debug FTUE**: Append `?reset-ftue=true` to URL to reset onboarding tour
 
 ### Design System
 - **Theme**: New York / Neutral (grayscale, no color accents)

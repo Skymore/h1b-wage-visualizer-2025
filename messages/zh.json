@@ -58,5 +58,26 @@
         "disclaimer": "AI 可能会犯错。请核对重要信息。",
         "cancel": "Cancel",
         "test_key": "测试翻译"
+    },
+    "Welcome": {
+        "title": "欢迎使用 H1B Wage Visualizer",
+        "description": "探索全美 H1B 工资数据。比较薪资，探索地理位置，为您的职业生涯寻找最佳城市。",
+        "start_tour": "开始导览",
+        "skip": "跳过"
+    },
+    "Tour": {
+        "search_title": "搜索职业",
+        "search_desc": "通过搜索您的职位名称或 SOC code（例如 'Software Developer'）开始。",
+        "map_title": "交互式地图",
+        "map_desc": "按地理位置探索工资。筛选器可帮助您找到最佳地点。",
+        "wages_title": "工资仪表板",
+        "wages_desc": "按 Level 和城市等级查看详细的工资明细。",
+        "chat_title": "AI 助手",
+        "chat_desc": "有问题吗？向我们的 AI 助手咨询具体见解。",
+        "next": "下一步",
+        "prev": "上一步",
+        "done": "完成",
+        "filters_title": "筛选地点",
+        "filters_desc": "按州、名称或城市等级进行筛选，找到最适合您的市场。"
     }
 }

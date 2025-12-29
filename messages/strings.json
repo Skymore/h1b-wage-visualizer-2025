@@ -57,5 +57,26 @@
     "assistant": "Assistant",
     "disclaimer": "AI can make mistakes. Check important info.",
     "cancel": "Cancel"
+  },
+  "Welcome": {
+    "title": "Welcome to H1B Wage Visualizer",
+    "description": "Discover H1B wage data insights across the US. Compare salaries, explore locations, and find the best city for your career.",
+    "start_tour": "Take a Tour",
+    "skip": "Skip"
+  },
+  "Tour": {
+    "search_title": "Search Occupations",
+    "search_desc": "Start by searching for your job title or SOC code (e.g., 'Software Developer').",
+    "filters_title": "Filter Locations",
+    "filters_desc": "Narrow down by state, name, or city tier to find the best market for you.",
+    "map_title": "Interactive Map",
+    "map_desc": "Explore wages geographically. Filters help you find the best locations.",
+    "wages_title": "Wage Dashboard",
+    "wages_desc": "View detailed wage breakdowns by level and city tier.",
+    "chat_title": "AI Assistant",
+    "chat_desc": "Got questions? Ask our AI assistant for specific insights.",
+    "next": "Next",
+    "prev": "Previous",
+    "done": "Done"
   }
 }

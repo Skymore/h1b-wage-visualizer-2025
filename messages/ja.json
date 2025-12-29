@@ -58,5 +58,26 @@
         "disclaimer": "AI は間違いを犯す可能性があります。重要な情報を確認してください。",
         "cancel": "Cancel",
         "test_key": "テスト翻訳"
+    },
+    "Welcome": {
+        "title": "H1B Wage Visualizer へようこそ",
+        "description": "全米の H1B 賃金データを確認できます。給与の比較、場所の探索、キャリアに最適な都市の検索が可能です。",
+        "start_tour": "ツアーを開始",
+        "skip": "スキップ"
+    },
+    "Tour": {
+        "search_title": "職種を検索",
+        "search_desc": "職種名または SOC code（例：'Software Developer'）で検索を開始します。",
+        "map_title": "インタラクティブマップ",
+        "map_desc": "地域別の賃金を探索。フィルターを使用して最適な場所を見つけられます。",
+        "wages_title": "賃金ダッシュボード",
+        "wages_desc": "Level や都市ランク別の詳細な賃金内訳を表示します。",
+        "chat_title": "AI アシスタント",
+        "chat_desc": "ご質問がありますか？特定のインサイトについて AI アシスタントにお尋ねください。",
+        "next": "次へ",
+        "prev": "前へ",
+        "done": "完了",
+        "filters_title": "場所を絞り込む",
+        "filters_desc": "州、名称、または都市の階層で絞り込み、最適な市場を見つけましょう。"
     }
 }

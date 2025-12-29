@@ -58,5 +58,26 @@
         "disclaimer": "L'IA peut faire des erreurs. Vérifiez les infos importantes.",
         "cancel": "Cancel",
         "test_key": "Traduction de test"
+    },
+    "Welcome": {
+        "title": "Bienvenue sur H1B Wage Visualizer",
+        "description": "Découvrez les données salariales H1B aux États-Unis. Comparez les salaires, explorez les lieux et trouvez la meilleure ville pour votre carrière.",
+        "start_tour": "Suivre la visite",
+        "skip": "Passer"
+    },
+    "Tour": {
+        "search_title": "Rechercher des professions",
+        "search_desc": "Commencez par rechercher votre intitulé de poste ou votre SOC code (ex: 'Software Developer').",
+        "map_title": "Carte interactive",
+        "map_desc": "Explorez les salaires géographiquement. Les filtres vous aident à trouver les meilleurs emplacements.",
+        "wages_title": "Tableau de bord des salaires",
+        "wages_desc": "Consultez la répartition détaillée des salaires par Level et par catégorie de ville.",
+        "chat_title": "Assistant IA",
+        "chat_desc": "Vous avez des questions ? Demandez à notre assistant IA des informations spécifiques.",
+        "next": "Suivant",
+        "prev": "Précédent",
+        "done": "Terminé",
+        "filters_title": "Filtrer les lieux",
+        "filters_desc": "Affinez par État, nom ou catégorie de ville pour trouver le meilleur marché pour vous."
     }
 }

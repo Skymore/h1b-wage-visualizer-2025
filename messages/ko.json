@@ -58,5 +58,26 @@
         "disclaimer": "AI는 실수를 할 수 있습니다. 중요 정보를 확인하세요.",
         "cancel": "Cancel",
         "test_key": "테스트 번역"
+    },
+    "Welcome": {
+        "title": "H1B Wage Visualizer에 오신 것을 환영합니다",
+        "description": "미국 전역의 H1B 임금 데이터를 확인하세요. 급여를 비교하고, 지역을 탐색하며, 커리어를 위한 최적의 도시를 찾아보세요.",
+        "start_tour": "둘러보기",
+        "skip": "건너뛰기"
+    },
+    "Tour": {
+        "search_title": "직업 검색",
+        "search_desc": "직함 또는 SOC code(예: 'Software Developer')를 검색하여 시작하세요.",
+        "map_title": "대화형 지도",
+        "map_desc": "지역별 임금을 탐색하세요. 필터를 통해 최적의 위치를 찾을 수 있습니다.",
+        "wages_title": "임금 대시보드",
+        "wages_desc": "Level 및 도시 등급별 상세 임금 내역을 확인하세요.",
+        "chat_title": "AI 어시스턴트",
+        "chat_desc": "궁금한 점이 있으신가요? AI 어시스턴트에게 구체적인 정보를 물어보세요.",
+        "next": "다음",
+        "prev": "이전",
+        "done": "완료",
+        "filters_title": "위치 필터링",
+        "filters_desc": "주, 이름 또는 도시 등급별로 범위를 좁혀 귀하에게 가장 적합한 시장을 찾아보세요."
     }
 }

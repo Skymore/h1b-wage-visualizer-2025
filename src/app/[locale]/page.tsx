@@ -19,6 +19,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
+import { TourGuide } from '@/components/FTUE/TourGuide';
+
 const MapView = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">Loading Map...</div>,
   ssr: false
@@ -39,6 +42,53 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
   const [selectedTiers, setSelectedTiers] = useState<number[]>([1, 2, 3]); // Default: Tier 1-3
+
+  // FTUE State
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [startTour, setStartTour] = useState(false);
+
+  useEffect(() => {
+    // Debug: Reset FTUE if query param present
+    if (searchParams.get('reset-ftue') === 'true') {
+      localStorage.removeItem('hasSeenFTUE');
+      // Clean URL without reloading
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete('reset-ftue');
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      // Force state update to show welcome
+      setShowWelcome(true);
+      return;
+    }
+
+    // Check if user has seen FTUE
+    const hasSeen = localStorage.getItem('hasSeenFTUE');
+    if (!hasSeen) {
+      // Small delay to ensure loading is done
+      const timer = setTimeout(() => setShowWelcome(true), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
+
+  const handleStartTour = () => {
+    setShowWelcome(false);
+    // Wait for dialog exit animation
+    setTimeout(() => {
+      setStartTour(true);
+    }, 500);
+    localStorage.setItem('hasSeenFTUE', 'true');
+  };
+
+  const handleSkipWelcome = (open: boolean) => {
+    if (!open) {
+      setShowWelcome(false);
+      localStorage.setItem('hasSeenFTUE', 'true');
+    }
+  };
+
+  const handleTourEnd = () => {
+    setStartTour(false);
+    localStorage.setItem('hasSeenFTUE', 'true');
+  };
 
   // Update URL wrapper
   const updateUrl = (key: string, value: string | null) => {
@@ -170,6 +220,16 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 space-y-6">
+      <WelcomeDialog
+        isOpen={showWelcome}
+        onOpenChange={handleSkipWelcome}
+        onStartTour={handleStartTour}
+      />
+      <TourGuide
+        startTour={startTour}
+        onTourEnd={handleTourEnd}
+      />
+
       <header className="w-full max-w-7xl flex justify-end items-center py-4 px-4 space-x-2">
         <ThemeToggle />
         <LanguageSelector />
@@ -180,12 +240,12 @@ export default function Home() {
         <p className="text-muted-foreground">{t('subtitle')}</p>
       </div>
 
-      <div className="w-full max-w-xl z-10">
+      <div id="search-bar" className="w-full max-w-xl z-10">
         <Search onSelectOccupation={handleSocSelect} />
       </div>
 
       {selectedSoc && (
-        <div className="w-full max-w-7xl bg-card border rounded-lg p-4 space-y-3">
+        <div id="location-filters" className="w-full max-w-7xl bg-card border rounded-lg p-4 space-y-3">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <Input
               placeholder={t('search_locations')}
@@ -232,11 +292,11 @@ export default function Home() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
-        <div className="w-full">
+        <div id="map-view" className="w-full">
           <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} />
         </div>
 
-        <div className="w-full">
+        <div id="wage-dashboard" className="w-full">
           {selectedSoc && (
             <WageDashboard
               socCode={selectedSoc}
