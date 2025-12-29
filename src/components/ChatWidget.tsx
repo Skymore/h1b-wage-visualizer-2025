@@ -16,6 +16,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import { getOrCreateVisitorId } from '@/lib/visitor.client';
 
 type ChatMessage = UIMessage;
 type MessagePart = ChatMessage['parts'][number];
@@ -159,6 +160,7 @@ export function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false); // Default closed
     const [isClearDialogOpen, setIsClearDialogOpen] = useState(false);
     const [initialMessages, setInitialMessages] = useState<ChatMessage[]>([]);
+    const [visitorId, setVisitorId] = useState<string | null>(null);
 
     // Load from localStorage on mount
     useEffect(() => {
@@ -181,6 +183,13 @@ export function ChatWidget() {
         }
     }, []);
 
+    useEffect(() => {
+        const id = getOrCreateVisitorId();
+        if (!id) return;
+        const frameId = requestAnimationFrame(() => setVisitorId(id));
+        return () => cancelAnimationFrame(frameId);
+    }, []);
+
     const { messages, sendMessage, status, setMessages } = useChat<ChatMessage>();
 
     // Initialize messages from localStorage
@@ -199,10 +208,22 @@ export function ChatWidget() {
 
     const isLoading = status === 'submitted' || status === 'streaming';
 
+    const logChatMessage = (count = 1) => {
+        if (!visitorId) return;
+        fetch('/api/metrics/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ count, visitorId })
+        }).catch((error) => console.error('Failed to record chat metric', error));
+    };
+
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input.trim() || isLoading) return;
         await sendMessage({ text: input });
+        logChatMessage(1);
         setInput('');
     };
 

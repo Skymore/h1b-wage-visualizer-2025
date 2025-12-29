@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import Link from 'next/link';
 import { Github, Linkedin, Globe } from 'lucide-react';
+import { getOrCreateVisitorId } from '@/lib/visitor.client';
 
 import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
 import { TourGuide } from '@/components/FTUE/TourGuide';
@@ -111,6 +112,19 @@ export default function HomePage() {
       return () => clearTimeout(timer);
     }
   }, [pathname, router, searchParams]);
+
+  useEffect(() => {
+    const id = getOrCreateVisitorId();
+    if (!id) return;
+
+    fetch('/api/metrics/visit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ visitorId: id })
+    }).catch((error) => console.error('Failed to record visit', error));
+  }, []);
 
   const handleStartTour = () => {
     setShowWelcome(false);
