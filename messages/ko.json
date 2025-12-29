@@ -32,7 +32,13 @@
         "copy_not_supported": "직접 복사가 지원되지 않습니다. 다운로드하십시오.",
         "selected_count": "{count} / 4 선택됨",
         "generate_comparison": "비교 이미지 생성",
-        "clear": "지우기"
+        "clear": "지우기",
+        "city_size": "도시 규모:",
+        "tier_1": "1등급 (최상위 대도시)",
+        "tier_2": "2등급 (주요 도시)",
+        "tier_3": "3등급 (일반 도시)",
+        "tier_4": "4등급 (소도시)",
+        "tier_5": "5등급 (푸에르토리코)"
     },
     "ChatWidget": {
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",

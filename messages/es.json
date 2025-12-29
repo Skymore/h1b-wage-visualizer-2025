@@ -32,7 +32,13 @@
         "copy_not_supported": "Copia directa no soportada. Por favor descargue.",
         "selected_count": "{count} / 4 Seleccionados",
         "generate_comparison": "Generar imagen comparativa",
-        "clear": "Limpiar"
+        "clear": "Limpiar",
+        "city_size": "Tamaño de ciudad:",
+        "tier_1": "Nivel 1 (Grandes Metrópolis)",
+        "tier_2": "Nivel 2 (Ciudades Principales)",
+        "tier_3": "Nivel 3 (Ciudades Normales)",
+        "tier_4": "Nivel 4 (Pueblos Pequeños)",
+        "tier_5": "Nivel 5 (Puerto Rico)"
     },
     "ChatWidget": {
         "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",

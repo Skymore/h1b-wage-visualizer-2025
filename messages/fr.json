@@ -32,7 +32,13 @@
         "copy_not_supported": "Copie directe non prise en charge. Veuillez télécharger.",
         "selected_count": "{count} / 4 Sélectionnés",
         "generate_comparison": "Générer image comparative",
-        "clear": "Effacer"
+        "clear": "Effacer",
+        "city_size": "Taille de ville :",
+        "tier_1": "Niveau 1 (Grandes Métropoles)",
+        "tier_2": "Niveau 2 (Grandes Villes)",
+        "tier_3": "Niveau 3 (Villes Normales)",
+        "tier_4": "Niveau 4 (Petites Villes)",
+        "tier_5": "Niveau 5 (Porto Rico)"
     },
     "ChatWidget": {
         "welcome": "Interrogez-moi sur les salaires H1B pour différentes professions et lieux !",

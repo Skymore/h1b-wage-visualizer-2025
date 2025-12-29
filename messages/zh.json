@@ -32,7 +32,13 @@
         "copy_not_supported": "无法直接复制，请使用下载功能。",
         "selected_count": "已选 {count} / 4",
         "generate_comparison": "生成对比图",
-        "clear": "清除"
+        "clear": "清除",
+        "city_size": "城市等级：",
+        "tier_1": "一线 (顶级都市)",
+        "tier_2": "二线 (主要城市)",
+        "tier_3": "三线 (普通城市)",
+        "tier_4": "四线 (小城镇)",
+        "tier_5": "五线 (波多黎各)"
     },
     "ChatWidget": {
         "welcome": "您可以询问任何职位的H1B工资情况！",

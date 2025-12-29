@@ -32,7 +32,13 @@
         "copy_not_supported": "Direktes Kopieren nicht unterstützt. Bitte herunterladen.",
         "selected_count": "{count} / 4 Ausgewählt",
         "generate_comparison": "Vergleichsbild erstellen",
-        "clear": "Zurücksetzen"
+        "clear": "Zurücksetzen",
+        "city_size": "Stadtgröße:",
+        "tier_1": "Stufe 1 (Top-Metropolen)",
+        "tier_2": "Stufe 2 (Großstädte)",
+        "tier_3": "Stufe 3 (Normale Städte)",
+        "tier_4": "Stufe 4 (Kleinstädte)",
+        "tier_5": "Stufe 5 (Puerto Rico)"
     },
     "ChatWidget": {
         "welcome": "Fragen Sie mich nach H1B-Gehältern für verschiedene Berufe und Orte!",

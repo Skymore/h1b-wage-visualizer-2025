@@ -147,7 +147,7 @@ CRITICAL RULES:
 2. **NO MARKDOWN TABLES**. Tables render poorly on mobile. Use lists or key-value pairs.
 3. ALWAYS use tools.
 4. Support BATCH queries. If user asks "Seattle and NY", search for BOTH.
-5. Call getWageData in PARALLEL if needed.
+5. **USE BATCH MODE**: Call \`getWageData\` with ARRAYS (socCodes, areaIds) to get multiple results in ONE call. Never call it multiple times for the same query.
 6. **PRIORITIZE ANNUAL WAGES**. The tool returns both. Display Annual (Yearly) wage by default. Hourly is secondary.
 7. **NO HALLUCINATIONS**. You MUST call \`getWageData\` to fetch real numbers. Never guess wages or levels. If you suggest cities, you MUST verify their data first.
 
@@ -243,13 +243,83 @@ Answer in user's language.`,
                 },
             }),
             getWageData: tool({
-                description: 'Get wage data for a specific occupation code (SOC). Returns both hourly and calculated ANNUAL wages.',
+                description: 'Get wage data for occupation(s) and area(s). SUPPORTS BATCH: pass arrays to get all combinations (n×m) in one call. Much faster than multiple calls.',
                 inputSchema: z.object({
-                    socCode: z.string().describe('The occupation SOC code, e.g., "15-1132"'),
-                    areaId: z.string().optional().describe('Specific Area ID to filter by'),
-                    state: z.string().optional().describe('State abbreviation to filter by, e.g., "CA"'),
+                    socCodes: z.array(z.string()).describe('SOC codes to query, e.g., ["15-1252", "13-2011"]'),
+                    areaIds: z.array(z.string()).optional().describe('Area IDs to query, e.g., ["41860", "35620"]. If omitted, returns top areas.'),
+                    state: z.string().optional().describe('State abbreviation to filter by (alternative to areaIds), e.g., "CA"'),
                 }),
-                execute: async ({ socCode, areaId, state }) => {
+                execute: async ({ socCodes, areaIds, state }) => {
+                    const results = [];
+
+                    for (const socCode of socCodes) {
+                        const wageFile = `wages/${socCode}.json`;
+                        const data = await readJsonFile(wageFile);
+
+                        if (!data || !data.wages) {
+                            results.push({ socCode, error: `No wage data found for SOC code ${socCode}` });
+                            continue;
+                        }
+
+                        const enrich = (w: any) => ({
+                            area_id: w.area_id,
+                            hourly: { l1: w.l1, l2: w.l2, l3: w.l3, l4: w.l4 },
+                            annual: {
+                                l1: Math.round(w.l1 * 2080),
+                                l2: Math.round(w.l2 * 2080),
+                                l3: Math.round(w.l3 * 2080),
+                                l4: Math.round(w.l4 * 2080)
+                            }
+                        });
+
+                        let wages = data.wages;
+
+                        // Case 1: Specific area IDs (n×m)
+                        if (areaIds && areaIds.length > 0) {
+                            for (const areaId of areaIds) {
+                                const specificArea = wages.find((w: any) => w.area_id === areaId);
+                                if (specificArea) {
+                                    results.push({ socCode, areaId, ...enrich(specificArea) });
+                                } else {
+                                    results.push({ socCode, areaId, error: `No data for area ${areaId}` });
+                                }
+                            }
+                        }
+                        // Case 2: State filter
+                        else if (state) {
+                            const areas = await readJsonFile('areas.json');
+                            const stateAreas = new Set(areas.filter((a: any) => a.state === state).map((a: any) => a.id));
+
+                            const stateWages = wages.filter((w: any) => stateAreas.has(w.area_id));
+                            stateWages.sort((a: any, b: any) => b.l4 - a.l4);
+
+                            stateWages.slice(0, 5).forEach((w: any) => {
+                                results.push({ socCode, areaId: w.area_id, state, ...enrich(w) });
+                            });
+                        }
+                        // Case 3: Top areas nationally
+                        else {
+                            wages.sort((a: any, b: any) => b.l4 - a.l4);
+                            wages.slice(0, 5).forEach((w: any) => {
+                                results.push({ socCode, areaId: w.area_id, ...enrich(w) });
+                            });
+                        }
+                    }
+
+                    return results;
+                },
+            }),
+            findOptimalAreas: tool({
+                description: 'Find cities where a given salary achieves a target wage level. Perfect for optimizing H-1B lottery odds. Returns paginated results (50 per page). City tiers: 1=Top metros (NYC/SF), 2=Major cities (Austin/Denver), 3=Normal metros, 4=Small/rural, 5=Puerto Rico.',
+                inputSchema: z.object({
+                    socCode: z.string().describe('The occupation SOC code, e.g., "15-1252"'),
+                    annualSalary: z.number().describe('User\'s annual salary in USD, e.g., 117000'),
+                    minLevel: z.number().optional().describe('Minimum wage level to filter (1-4). e.g., 2 means only show cities where salary reaches at least Level 2'),
+                    minCityTier: z.number().optional().describe('Minimum city tier (1-5). Lower number = bigger city. e.g., 2 shows only top metros and major cities. Default: 2'),
+                    state: z.string().optional().describe('Filter by state abbreviation, e.g., "TX"'),
+                    page: z.number().optional().describe('Page number for pagination (default: 1)'),
+                }),
+                execute: async ({ socCode, annualSalary, minLevel, minCityTier = 2, state, page = 1 }) => {
                     const wageFile = `wages/${socCode}.json`;
                     const data = await readJsonFile(wageFile);
 
@@ -257,46 +327,70 @@ Answer in user's language.`,
                         return { error: `No wage data found for SOC code ${socCode}` };
                     }
 
-                    // Helper to enrich with annual data
-                    const enrich = (w: any) => ({
-                        area_id: w.area_id,
-                        hourly: { l1: w.l1, l2: w.l2, l3: w.l3, l4: w.l4 },
-                        annual: {
-                            l1: Math.round(w.l1 * 2080),
-                            l2: Math.round(w.l2 * 2080),
-                            l3: Math.round(w.l3 * 2080),
-                            l4: Math.round(w.l4 * 2080)
-                        }
+                    // Load areas for name mapping
+                    const areas = await readJsonFile('areas.json');
+                    const areaMap = new Map(areas?.map((a: any) => [a.id, a]) || []);
+
+                    // Calculate level for each area
+                    const areasWithLevel = data.wages.map((w: any) => {
+                        let level = 0;
+                        if (annualSalary >= Math.round(w.l4 * 2080)) level = 4;
+                        else if (annualSalary >= Math.round(w.l3 * 2080)) level = 3;
+                        else if (annualSalary >= Math.round(w.l2 * 2080)) level = 2;
+                        else if (annualSalary >= Math.round(w.l1 * 2080)) level = 1;
+
+                        const areaInfo = areaMap.get(w.area_id) as { id: string; name: string; state: string; tier?: number } | undefined;
+                        return {
+                            areaId: w.area_id,
+                            name: areaInfo?.name || 'Unknown',
+                            state: areaInfo?.state || 'Unknown',
+                            cityTier: areaInfo?.tier || 3,
+                            yourLevel: level,
+                            thresholds: {
+                                l1: Math.round(w.l1 * 2080),
+                                l2: Math.round(w.l2 * 2080),
+                                l3: Math.round(w.l3 * 2080),
+                                l4: Math.round(w.l4 * 2080)
+                            }
+                        };
                     });
 
-                    let wages = data.wages;
-
-                    if (areaId) {
-                        const specificArea = wages.find((w: any) => w.area_id === areaId);
-                        return specificArea ? { ...enrich(specificArea), socCode } : { error: `No data for area ${areaId} in SOC ${socCode}` };
+                    // Filter by minLevel
+                    let filtered = areasWithLevel;
+                    if (minLevel) {
+                        filtered = filtered.filter((a: any) => a.yourLevel >= minLevel);
                     }
 
+                    // Filter by cityTier
+                    if (minCityTier) {
+                        filtered = filtered.filter((a: any) => a.cityTier <= minCityTier);
+                    }
+
+                    // Filter by state
                     if (state) {
-                        const areas = await readJsonFile('areas.json');
-                        const stateAreas = new Set(areas.filter((a: any) => a.state === state).map((a: any) => a.id));
-
-                        wages = wages.filter((w: any) => stateAreas.has(w.area_id));
-                        wages.sort((a: any, b: any) => b.l4 - a.l4);
-                        return {
-                            socCode,
-                            state,
-                            count: wages.length,
-                            top_wages: wages.slice(0, 5).map(enrich),
-                            note: "Showing top 5 paying areas in this state"
-                        };
+                        filtered = filtered.filter((a: any) => a.state === state.toUpperCase());
                     }
 
-                    wages.sort((a: any, b: any) => b.l4 - a.l4);
+                    // Sort by level (descending), then by L1 threshold (ascending for easier targets)
+                    filtered.sort((a: any, b: any) => {
+                        if (b.yourLevel !== a.yourLevel) return b.yourLevel - a.yourLevel;
+                        return a.thresholds.l1 - b.thresholds.l1;
+                    });
+
+                    // Pagination
+                    const pageSize = 50;
+                    const totalCount = filtered.length;
+                    const totalPages = Math.ceil(totalCount / pageSize);
+                    const start = (page - 1) * pageSize;
+                    const end = start + pageSize;
+                    const results = filtered.slice(start, end);
+
                     return {
-                        socCode,
-                        count: wages.length,
-                        top_national_wages: wages.slice(0, 5).map(enrich),
-                        note: "Showing top 5 paying areas nationally"
+                        results,
+                        totalCount,
+                        currentPage: page,
+                        totalPages,
+                        hasMore: page < totalPages
                     };
                 },
             }),

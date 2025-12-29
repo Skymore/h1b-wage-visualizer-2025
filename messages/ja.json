@@ -32,7 +32,13 @@
         "copy_not_supported": "直接コピーはサポートされていません。ダウンロードしてください。",
         "selected_count": "{count} / 4 選択中",
         "generate_comparison": "比較画像を生成",
-        "clear": "クリア"
+        "clear": "クリア",
+        "city_size": "都市規模：",
+        "tier_1": "レベル1（トップメトロ）",
+        "tier_2": "レベル2（主要都市）",
+        "tier_3": "レベル3（一般都市）",
+        "tier_4": "レベル4（小都市）",
+        "tier_5": "レベル5（プエルトリコ）"
     },
     "ChatWidget": {
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",

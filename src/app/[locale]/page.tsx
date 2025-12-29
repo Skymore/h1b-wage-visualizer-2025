@@ -30,6 +30,7 @@ export default function Home() {
   const [selectedSoc, setSelectedSoc] = useState<string | null>(searchParams.get('soc'));
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
+  const [selectedTiers, setSelectedTiers] = useState<number[]>([1, 2, 3]); // Default: Tier 1-3
 
   // Update URL wrapper
   const updateUrl = (key: string, value: string | null) => {
@@ -108,8 +109,16 @@ export default function Home() {
       });
     }
 
+    // 3. Filter by City Tier
+    if (selectedTiers.length > 0 && selectedTiers.length < 5) {
+      filtered = filtered.filter(row => {
+        const area = areaMap.get(row.area_id);
+        return area && area.tier && selectedTiers.includes(area.tier);
+      });
+    }
+
     return filtered;
-  }, [wageData, searchQuery, selectedState, areaMap]);
+  }, [wageData, searchQuery, selectedState, selectedTiers, areaMap]);
 
   // Calculate Min/Max wages for consistent coloring (using full dataset)
   const wageScale = useMemo(() => {
@@ -143,6 +152,14 @@ export default function Home() {
     updateUrl('state', val);
   };
 
+  const handleTierToggle = (tier: number) => {
+    setSelectedTiers(prev =>
+      prev.includes(tier)
+        ? prev.filter(t => t !== tier)
+        : [...prev, tier].sort()
+    );
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8 space-y-6">
       <header className="w-full max-w-7xl flex justify-end items-center py-4 px-4 space-x-2">
@@ -160,25 +177,49 @@ export default function Home() {
       </div>
 
       {selectedSoc && (
-        <div className="w-full max-w-7xl bg-card border rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center">
-          <Input
-            placeholder={t('search_locations')}
-            value={searchQuery}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            className="max-w-sm"
-          />
-          <select
-            className="flex h-10 w-full md:w-[200px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            value={selectedState}
-            onChange={(e) => handleStateChange(e.target.value)}
-          >
-            <option value="ALL">All States</option>
-            {uniqueStates.map(state => (
-              <option key={state} value={state}>{state}</option>
+        <div className="w-full max-w-7xl bg-card border rounded-lg p-4 space-y-3">
+          <div className="flex flex-col md:flex-row gap-4 items-center">
+            <Input
+              placeholder={t('search_locations')}
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="max-w-sm"
+            />
+            <select
+              className="flex h-10 w-full md:w-[200px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              value={selectedState}
+              onChange={(e) => handleStateChange(e.target.value)}
+            >
+              <option value="ALL">All States</option>
+              {uniqueStates.map(state => (
+                <option key={state} value={state}>{state}</option>
+              ))}
+            </select>
+            <div className="text-sm text-muted-foreground ml-auto">
+              Showing {filteredWageData.length} locations
+            </div>
+          </div>
+
+          {/* City Tier Filter */}
+          <div className="flex flex-wrap items-center gap-3 pt-2 border-t">
+            <span className="text-sm font-medium">{t('city_size')}</span>
+            {[
+              { tier: 1, label: t('tier_1') },
+              { tier: 2, label: t('tier_2') },
+              { tier: 3, label: t('tier_3') },
+              { tier: 4, label: t('tier_4') },
+              { tier: 5, label: t('tier_5') }
+            ].map(({ tier, label }) => (
+              <label key={tier} className="flex items-center gap-2 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedTiers.includes(tier)}
+                  onChange={() => handleTierToggle(tier)}
+                  className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                />
+                <span>{label}</span>
+              </label>
             ))}
-          </select>
-          <div className="text-sm text-muted-foreground ml-auto">
-            Showing {filteredWageData.length} locations
           </div>
         </div>
       )}

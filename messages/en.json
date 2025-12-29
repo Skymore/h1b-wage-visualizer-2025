@@ -32,7 +32,13 @@
         "copy_not_supported": "Copy not supported directly. Please download.",
         "selected_count": "{count} / 4 Selected",
         "generate_comparison": "Generate Comparison Image",
-        "clear": "Clear"
+        "clear": "Clear",
+        "city_size": "City Size:",
+        "tier_1": "Tier 1 (Top Metros)",
+        "tier_2": "Tier 2 (Major Cities)",
+        "tier_3": "Tier 3 (Normal Cities)",
+        "tier_4": "Tier 4 (Small Towns)",
+        "tier_5": "Tier 5 (Puerto Rico)"
     },
     "ChatWidget": {
         "welcome": "Ask me about H1B wages for different occupations and locations!",
