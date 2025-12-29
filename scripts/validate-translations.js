@@ -3,6 +3,23 @@ const path = require('path');
 const readline = require('readline');
 
 const MESSAGES_DIR = path.join(__dirname, '../messages');
+
+// Load .env.local manually to ensure OPENROUTER_API_KEY is available
+const envPath = path.join(__dirname, '../.env.local');
+if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    envContent.split('\n').forEach(line => {
+        const match = line.match(/^([^=]+)=(.*)$/);
+        if (match) {
+            const key = match[1].trim();
+            // Remove comments if any, and trim quotes
+            let value = match[2].trim();
+            if (value) {
+                process.env[key] = value.replace(/^["']|["']$/g, '');
+            }
+        }
+    });
+}
 const SOURCE_FILE = 'strings.json';
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 

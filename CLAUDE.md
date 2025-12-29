@@ -10,17 +10,18 @@ H1B Wage Visualization web application for FY 2025-2026. Built with Next.js 16 (
 
 ### Development
 ```bash
-npm run dev          # Start development server at localhost:3000
-npm run build        # Build for production
-npm start            # Start production server
-npm run lint         # Run ESLint
+npm run dev           # Start development server at localhost:3000
+npm run build         # Build for production
+npm start             # Start production server
+npm run lint          # Run ESLint
+npm run translate     # AI-translate all locales from strings.json
+npm run validate-i18n # Check translation quality and consistency
 ```
 
 ### Data Processing
 ```bash
 npx tsx scripts/process-data.ts      # Process raw OFLC CSV data into JSON
 npx tsx scripts/enrich-areas.ts      # Add lat/lon to areas.json
-node scripts/sync-i18n.js             # Sync translation files with en.json
 ```
 
 ## Commit Guidelines
@@ -84,7 +85,9 @@ chore(deps): update dependencies
 ### Internationalization
 - **next-intl**: 8 supported locales
 - **Message Files** (`messages/[locale].json`): Translations for UI strings
-- **Sync Script** (`scripts/sync-i18n.js`): Ensures all locale files have same keys as en.json
+- **AI Scripts**:
+  - `scripts/build-translations.js`: Auto-translates `strings.json` to 8 languages using Gemini
+  - `scripts/validate-translations.js`: Checks for missing placeholders and inconsistencies
 - **Request Config** (`src/i18n/request.ts`): Loads messages per locale
 
 ## Important Patterns
@@ -111,7 +114,7 @@ Uses next-themes with Tailwind dark: classes. Map markers adapt to theme using C
 Required in `.env.local`:
 ```
 NEXT_PUBLIC_MAPBOX_TOKEN=pk.xxx...        # Mapbox GL access token
-OPENROUTER_API_KEY=sk-or-v1-xxx...       # OpenRouter API key
+OPENROUTER_API_KEY=sk-or-v1-xxx...       # OpenRouter API key (Required for Chat & Translations)
 OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
 ```
 
@@ -175,10 +178,14 @@ This project currently has no automated tests. When adding features, consider th
 
 ### Internationalization
 - **All user-facing strings must be translated**
-  - **Source of truth**: `messages/strings.json` (do NOT edit other language files directly)
-  - Add/modify keys in `strings.json` → Run `npm run translate` to generate all languages
+  - **Source of Truth**: `messages/strings.json`. (Ideally start by editing `messages/en.json` then copy to `strings.json`)
+  - **Workflow**:
+    1. Add/modify keys in `en.json`
+    2. Copy content to `strings.json`
+    3. Run `npm run translate` to auto-generate all other languages
+    4. Run `npm run validate-i18n` to check for quality/consistency
+  - **Environment**: Ensure `OPENROUTER_API_KEY` is set in `.env.local`
   - Use `useTranslations()` hook, never hardcode text
-  - **Validation**: Run `npm run validate-i18n` to check for translation issues
 - **Supported locales**: en, zh, ja, ko, es, fr, de, hi
 - **Debug FTUE**: Append `?reset-ftue=true` to URL to reset onboarding tour
 
