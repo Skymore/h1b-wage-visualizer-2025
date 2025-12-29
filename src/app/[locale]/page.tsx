@@ -161,10 +161,9 @@ export default function HomePage() {
   const urlLocationQuery = searchParams.get('q') || '';
 
   useEffect(() => {
-    if (urlLocationQuery === searchQuery) return;
     const frame = requestAnimationFrame(() => setSearchQuery(urlLocationQuery));
     return () => cancelAnimationFrame(frame);
-  }, [urlLocationQuery, searchQuery]);
+  }, [urlLocationQuery]);
 
   useEffect(() => {
     if (searchQuery === urlLocationQuery) return;
