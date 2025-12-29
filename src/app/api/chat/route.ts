@@ -120,6 +120,14 @@ export async function POST(req: Request) {
     const maxSteps = 10;
     console.log('[Chat] Using model:', modelName);
 
+    // Load popular occupations for context
+    const occupationsData = await readJsonFile('occupations.json');
+    const occupationsList = occupationsData
+        ? occupationsData
+            .filter((o: any) => o.isPopular)
+            .map((o: any) => `- ${o.code}: ${o.title}`).join('\n')
+        : '';
+
     const result = streamText({
         model: openrouter(modelName),
         stopWhen: stepCountIs(maxSteps),
@@ -141,6 +149,14 @@ CRITICAL RULES:
 4. Support BATCH queries. If user asks "Seattle and NY", search for BOTH.
 5. Call getWageData in PARALLEL if needed.
 6. **PRIORITIZE ANNUAL WAGES**. The tool returns both. Display Annual (Yearly) wage by default. Hourly is secondary.
+
+**MASTER OCCUPATION LIST (SOC Code: Title)**:
+Reference this list for valid SOC codes.
+- IF user's job title matches an entry here (e.g., "Software Engineer" -> "15-1252"): Use the provided SOC code. Do NOT call \`searchOccupations\`.
+- IF NOT found here: call \`searchOccupations\`.
+- NOTE: You still need an \`areaId\`. Call \`searchAreas\` if needed.
+- FINAL STEP: Once you have BOTH \`socCode\` and \`areaId\`, you MUST call \`getWageData\`. Do not stop until you get the wages.
+${occupationsList}
 
 H-1B FY2027 POLICY (Effective Oct 1, 2026):
 **LOTTERY:** Wage-based weighted lottery (Level 4=4x ... Level 1=1x).

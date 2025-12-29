@@ -19,54 +19,79 @@ import {
 // Separate component for tool parts
 const ToolPart = ({ part, index }: { part: any; index: number }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const toolName = part.type.replace('tool-', '');
-    const hasOutput = part.state === 'output-available';
 
-    // Try to find result in different fields
-    const result = part.result || part.output || part.response || null;
-    const hasResult = result !== null && hasOutput;
+    // Safety extraction
+    const toolInvocation = part.toolInvocation || part;
+    const name = toolInvocation.toolName || part.type?.replace('tool-', '') || 'Tool';
+    // Try args (standard), input (some providers), or arguments (raw)
+    const args = toolInvocation.args || toolInvocation.input || toolInvocation.arguments || null;
+    const hasOutput = part.state === 'output-available' || toolInvocation.state === 'result';
 
-    // Icon selection
+    // Try to find result
+    const result = part.result || part.output || part.response || toolInvocation.result || null;
+
+    // Always allowed to expand if done
+    const canExpand = hasOutput;
+
+    // Icon
     let Icon = Sparkles;
-    if (toolName.toLowerCase().includes('wage')) Icon = DollarSign;
-    if (toolName.toLowerCase().includes('area')) Icon = MapPin;
-    if (toolName.toLowerCase().includes('occupation')) Icon = Search;
+    if (name.toLowerCase().includes('wage')) Icon = DollarSign;
+    if (name.toLowerCase().includes('area')) Icon = MapPin;
+    if (name.toLowerCase().includes('occupation')) Icon = Search;
+
+    // Format args for summary
+    let argsSummary = '';
+    if (args) {
+        // e.g. { queries: ["Engineer"] } -> "Engineer"
+        const values = Object.values(args).flat().filter(v => typeof v === 'string' || typeof v === 'number');
+        if (values.length > 0) {
+            const joined = values.join(', ');
+            argsSummary = joined.length > 20 ? `(${joined.substring(0, 18)}...)` : `(${joined})`;
+        }
+    }
 
     if (!hasOutput) {
-        // Still loading
         return (
             <div key={index} className="flex items-center gap-2 text-xs p-2 my-1 rounded bg-blue-50/50 border border-blue-100 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                <span>Using {toolName}...</span>
+                <span>Using {name} {argsSummary}...</span>
             </div>
         );
     }
 
-    // Completed with expandable result
     return (
         <div key={index} className="flex flex-col gap-1 my-1">
             <button
-                onClick={() => hasResult && setIsExpanded(!isExpanded)}
-                className={`flex items-center justify-between gap-2 text-xs p-2 rounded border transition-colors w-full text-left ${hasResult
-                    ? 'bg-green-50/50 border-green-100 text-green-700 hover:bg-green-100/50 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400 dark:hover:bg-green-900/30 cursor-pointer'
-                    : 'bg-gray-50 border-gray-200 text-gray-500'
-                    }`}
+                onClick={() => canExpand && setIsExpanded(!isExpanded)}
+                className={`flex items-center justify-between gap-2 text-xs p-2 rounded border transition-colors w-full text-left cursor-pointer
+                    ${canExpand
+                        ? 'bg-green-50/50 border-green-100 text-green-700 hover:bg-green-100/50 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400'
+                        : 'bg-gray-50 border-gray-200 text-gray-500'}`}
             >
-                <div className="flex items-center gap-2">
-                    <Icon className="w-3 h-3" />
-                    <span>Found data from {toolName}</span>
+                <div className="flex items-center gap-2 overflow-hidden">
+                    <Icon className="w-3 h-3 flex-shrink-0" />
+                    <span className="truncate">Found data from {name} {argsSummary}</span>
                 </div>
-                {hasResult && (
-                    <ChevronDown className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                {canExpand && (
+                    <ChevronDown className={`w-3 h-3 flex-shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                 )}
             </button>
 
-            {/* Expandable JSON Result */}
-            {isExpanded && hasResult && (
+            {/* Expanded Details */}
+            {isExpanded && canExpand && (
                 <div className="ml-2 p-2 text-[10px] bg-gray-50 dark:bg-gray-900 rounded border border-gray-200 dark:border-gray-800 overflow-x-auto">
-                    <pre className="font-mono whitespace-pre-wrap text-gray-700 dark:text-gray-300">
-                        {JSON.stringify(result, null, 2)}
-                    </pre>
+                    {args && (
+                        <div className="mb-2">
+                            <div className="font-semibold text-gray-500 mb-0.5">Arguments:</div>
+                            <pre className="font-mono whitespace-pre-wrap text-gray-600 dark:text-gray-400">{JSON.stringify(args, null, 2)}</pre>
+                        </div>
+                    )}
+                    <div>
+                        <div className="font-semibold text-gray-500 mb-0.5">Result:</div>
+                        <pre className="font-mono whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                            {result ? JSON.stringify(result, null, 2) : '(Empty Result)'}
+                        </pre>
+                    </div>
                 </div>
             )}
         </div>
