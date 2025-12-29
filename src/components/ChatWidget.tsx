@@ -18,6 +18,7 @@ import {
 
 // Separate component for tool parts
 const ToolPart = ({ part, index }: { part: any; index: number }) => {
+    const t = useTranslations('ChatWidget');
     const [isExpanded, setIsExpanded] = useState(false);
 
     // Safety extraction
@@ -52,9 +53,9 @@ const ToolPart = ({ part, index }: { part: any; index: number }) => {
 
     if (!hasOutput) {
         return (
-            <div key={index} className="flex items-center gap-2 text-xs p-2 my-1 rounded bg-blue-50/50 border border-blue-100 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400">
+            <div key={index} className="flex items-center gap-2 text-xs p-2 my-1 rounded bg-muted/50 border border-muted text-muted-foreground">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                <span>Using {name} {argsSummary}...</span>
+                <span>{t('using_tool', { tool: name })} {argsSummary}</span>
             </div>
         );
     }
@@ -70,7 +71,7 @@ const ToolPart = ({ part, index }: { part: any; index: number }) => {
             >
                 <div className="flex items-center gap-2 overflow-hidden">
                     <Icon className="w-3 h-3 flex-shrink-0" />
-                    <span className="truncate">Found data from {name} {argsSummary}</span>
+                    <span className="truncate">{t('found_data', { tool: name })} {argsSummary}</span>
                 </div>
                 {canExpand && (
                     <ChevronDown className={`w-3 h-3 flex-shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
@@ -82,12 +83,12 @@ const ToolPart = ({ part, index }: { part: any; index: number }) => {
                 <div className="ml-2 p-2 text-[10px] bg-gray-50 dark:bg-gray-900 rounded border border-gray-200 dark:border-gray-800 overflow-x-auto">
                     {args && (
                         <div className="mb-2">
-                            <div className="font-semibold text-gray-500 mb-0.5">Arguments:</div>
+                            <div className="font-semibold text-gray-500 mb-0.5">{t('arguments')}</div>
                             <pre className="font-mono whitespace-pre-wrap text-gray-600 dark:text-gray-400">{JSON.stringify(args, null, 2)}</pre>
                         </div>
                     )}
                     <div>
-                        <div className="font-semibold text-gray-500 mb-0.5">Result:</div>
+                        <div className="font-semibold text-gray-500 mb-0.5">{t('result')}</div>
                         <pre className="font-mono whitespace-pre-wrap text-gray-700 dark:text-gray-300">
                             {result ? JSON.stringify(result, null, 2) : '(Empty Result)'}
                         </pre>
@@ -161,7 +162,15 @@ export function ChatWidget() {
     useEffect(() => {
         if (isOpen) {
             messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            // Lock body scroll
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Unlock body scroll
+            document.body.style.overflow = 'unset';
         }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [messages, status, isOpen]);
 
     return (
@@ -177,7 +186,7 @@ export function ChatWidget() {
                     </DialogHeader>
                     <DialogFooter>
                         <Button variant="outline" onClick={() => setIsClearDialogOpen(false)}>
-                            Cancel
+                            {t('cancel')}
                         </Button>
                         <Button variant="destructive" onClick={confirmClearChat}>
                             {t('clear')}
@@ -190,7 +199,7 @@ export function ChatWidget() {
             {!isOpen && (
                 <Button
                     onClick={() => setIsOpen(true)}
-                    className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-transform hover:scale-105"
+                    className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 flex items-center justify-center transition-transform hover:scale-105"
                 >
                     <Bot className="w-8 h-8" />
                 </Button>
@@ -198,7 +207,7 @@ export function ChatWidget() {
 
             {/* Chat Sidebar (Overlay) */}
             <div
-                className={`fixed top-0 right-0 h-screen w-full md:w-[500px] lg:w-[600px] bg-white dark:bg-gray-950 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col border-l border-gray-200 dark:border-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+                className={`fixed top-0 right-0 h-[100dvh] w-full md:w-[500px] lg:w-[600px] bg-white dark:bg-gray-950 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col border-l border-gray-200 dark:border-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
             >
                 {/* Header */}
@@ -213,8 +222,8 @@ export function ChatWidget() {
                             <ChevronRight className="w-5 h-5" />
                         </Button>
                         <div className="flex items-center gap-2">
-                            <Bot className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                            <h2 className="font-semibold text-lg">H1B Assistant</h2>
+                            <Bot className="h-5 w-5 text-primary" />
+                            <h2 className="font-semibold text-lg">{t('header_title')}</h2>
                         </div>
                     </div>
                     <Button
@@ -232,27 +241,27 @@ export function ChatWidget() {
                 <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-gray-950">
                     {messages.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground p-8">
-                            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-full mb-4">
-                                <Bot className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                            <div className="bg-muted p-4 rounded-full mb-4">
+                                <Bot className="h-8 w-8 text-primary" />
                             </div>
-                            <h3 className="font-medium text-foreground mb-1">Hi there!</h3>
-                            <p className="text-sm max-w-xs">{t('welcome') || 'Ask me about H1B wages!'}</p>
+                            <h3 className="font-medium text-foreground mb-1">{t('hi_there')}</h3>
+                            <p className="text-sm max-w-xs">{t('welcome')}</p>
                         </div>
                     ) : (
                         messages.map((m: any) => (
                             <div key={m.id} className={`flex gap-3 ${m.role === 'user' ? 'justify-end' : ''}`}>
                                 {/* Bot Avatar */}
                                 {m.role !== 'user' && (
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mt-1">
-                                        <Bot className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-1">
+                                        <Bot className="w-5 h-5 text-primary" />
                                     </div>
                                 )}
 
                                 {/* Message Content */}
                                 <div className={`flex flex-col max-w-[85%] space-y-1 ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                                     <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${m.role === 'user'
-                                        ? 'bg-blue-600 text-white rounded-tr-none'
-                                        : 'bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-tl-none'
+                                        ? 'bg-primary text-primary-foreground rounded-tr-none'
+                                        : 'bg-muted border border-border rounded-tl-none'
                                         }`}>
                                         {m.parts ? m.parts.map((part: any, idx: number) => {
                                             if (part.type === 'text') {
@@ -271,7 +280,7 @@ export function ChatWidget() {
                                         )}
                                     </div>
                                     <span className="text-[10px] text-muted-foreground opacity-70 px-1">
-                                        {m.role === 'user' ? 'You' : 'Assistant'}
+                                        {m.role === 'user' ? t('you') : t('assistant')}
                                     </span>
                                 </div>
 
@@ -288,12 +297,9 @@ export function ChatWidget() {
                     {/* Loading Indicator */}
                     {isLoading && (
                         <div className="flex gap-3">
-                            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                                <Bot className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                            </div>
-                            <div className="bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2">
-                                <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
-                                <span className="text-xs text-muted-foreground">Thinking...</span>
+                            <div className="bg-muted border border-border rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2">
+                                <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                                <span className="text-xs text-muted-foreground">{t('thinking')}</span>
                             </div>
                         </div>
                     )}
@@ -303,7 +309,7 @@ export function ChatWidget() {
 
                 {/* Input Area */}
                 <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-                    <form onSubmit={handleFormSubmit} className="flex gap-2 items-center bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full px-2 py-1 focus-within:ring-2 focus-within:ring-blue-500 ring-offset-2 dark:ring-offset-gray-950 transition-all">
+                    <form onSubmit={handleFormSubmit} className="flex gap-2 items-center bg-muted/50 border border-input rounded-full px-2 py-1 focus-within:ring-2 focus-within:ring-ring ring-offset-2 ring-offset-background transition-all">
                         <Input
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
@@ -315,13 +321,13 @@ export function ChatWidget() {
                             type="submit"
                             disabled={isLoading || !input.trim()}
                             size="icon"
-                            className={`rounded-full h-8 w-8 m-1 transition-all ${input.trim() ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 text-gray-500'}`}
+                            className={`rounded-full h-8 w-8 m-1 transition-all ${input.trim() ? '' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
                         >
-                            <Send className="h-4 w-4 text-white" />
+                            <Send className="h-4 w-4" />
                         </Button>
                     </form>
                     <div className="text-[10px] text-center text-muted-foreground mt-2 opacity-60">
-                        AI can make mistakes. Check important info.
+                        {t('disclaimer')}
                     </div>
                 </div>
             </div>

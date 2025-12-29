@@ -39,7 +39,8 @@ export default function MapView({
             container: mapContainer.current,
             style: resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11',
             center: [lng, lat],
-            zoom: zoom
+            zoom: zoom,
+            cooperativeGestures: true // Allows page scrolling with one finger, map panning with two
         });
 
         map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
@@ -140,7 +141,7 @@ export default function MapView({
     }, [wageData, areas, wageScale, resolvedTheme]);
 
     return (
-        <div className="h-[600px] w-full rounded-md border overflow-hidden relative">
+        <div className="h-[400px] md:h-[600px] w-full rounded-md border overflow-hidden relative">
             <div ref={mapContainer} className="w-full h-full" />
 
             {/* Legend */}

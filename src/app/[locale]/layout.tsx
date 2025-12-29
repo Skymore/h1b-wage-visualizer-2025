@@ -36,7 +36,7 @@ export default async function RootLayout({
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         inter.variable
-      )}>
+      )} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
