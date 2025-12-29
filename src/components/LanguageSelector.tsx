@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronDown, Globe } from "lucide-react"
+import { Check, Globe } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import { useTranslations } from "next-intl"
 
 const languages = [
     { code: "en", label: "English" },
@@ -26,6 +27,7 @@ export function LanguageSelector() {
     const router = useRouter()
     const pathname = usePathname()
     const [open, setOpen] = React.useState(false)
+    const t = useTranslations('HomePage')
 
     // Current locale is the first segment of the pathname
     // e.g. /en/some/path -> en
@@ -47,10 +49,16 @@ export function LanguageSelector() {
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-                <Button variant="outline" role="combobox" aria-expanded={open} className="w-[140px] justify-between">
-                    <Globe className="mr-2 h-4 w-4" />
-                    {languages.find((lang) => lang.code === currentLocale)?.label || "English"}
-                    <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                <Button
+                    variant="outline"
+                    size="icon"
+                    role="combobox"
+                    aria-expanded={open}
+                    aria-label={t('language_selector')}
+                    className="h-11 w-11"
+                >
+                    <Globe className="h-4 w-4" />
+                    <span className="sr-only">{t('language_selector')}</span>
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[140px] p-0">

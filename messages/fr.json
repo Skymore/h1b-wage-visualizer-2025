@@ -44,7 +44,8 @@
         "tier_3": "Niveau 3 (Villes Normales)",
         "tier_4": "Niveau 4 (Petites Villes)",
         "tier_5": "Niveau 5 (Porto Rico)",
-        "metrics_link": "Métriques"
+        "metrics_link": "Métriques",
+        "language_selector": "Changer de langue"
     },
     "ChatWidget": {
         "welcome": "Interrogez-moi sur les salaires H1B pour différentes professions et lieux !",

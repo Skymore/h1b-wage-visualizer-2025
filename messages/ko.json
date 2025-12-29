@@ -44,7 +44,8 @@
         "tier_3": "3등급 (일반 도시)",
         "tier_4": "4등급 (소도시)",
         "tier_5": "5등급 (푸에르토리코)",
-        "metrics_link": "메트릭"
+        "metrics_link": "메트릭",
+        "language_selector": "언어 변경"
     },
     "ChatWidget": {
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",

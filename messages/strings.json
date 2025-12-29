@@ -44,7 +44,8 @@
     "tier_3": "Tier 3 (Normal Cities)",
     "tier_4": "Tier 4 (Small Towns)",
     "tier_5": "Tier 5 (Puerto Rico)",
-    "metrics_link": "Metrics"
+    "metrics_link": "Metrics",
+    "language_selector": "Change language"
   },
   "ChatWidget": {
     "welcome": "Ask me about H1B wages for different occupations and locations!",

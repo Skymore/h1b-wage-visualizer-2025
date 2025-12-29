@@ -44,7 +44,8 @@
         "tier_3": "Nivel 3 (Ciudades Normales)",
         "tier_4": "Nivel 4 (Pueblos Pequeños)",
         "tier_5": "Nivel 5 (Puerto Rico)",
-        "metrics_link": "Métricas"
+        "metrics_link": "Métricas",
+        "language_selector": "Cambiar idioma"
     },
     "ChatWidget": {
         "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",

@@ -44,7 +44,8 @@
         "tier_3": "レベル3（一般都市）",
         "tier_4": "レベル4（小都市）",
         "tier_5": "レベル5（プエルトリコ）",
-        "metrics_link": "メトリクス"
+        "metrics_link": "メトリクス",
+        "language_selector": "言語を切り替える"
     },
     "ChatWidget": {
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",

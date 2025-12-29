@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from 'next/link';
-import { Github, Linkedin, Globe } from 'lucide-react';
+import { Github, Linkedin, Activity, Briefcase } from 'lucide-react';
 import { getOrCreateVisitorId } from '@/lib/visitor.client';
 
 import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
@@ -87,7 +87,7 @@ export default function HomePage() {
     {
       href: 'https://ruit.me/',
       label: 'Portfolio',
-      icon: Globe,
+      icon: Briefcase,
     },
   ] as const;
   const [selectedState, setSelectedState] = useState(searchParams.get('state') || 'ALL');
@@ -318,8 +318,8 @@ export default function HomePage() {
         onTourEnd={handleTourEnd}
       />
 
-      <header className="w-full max-w-7xl flex flex-wrap items-center justify-between gap-3 py-4 px-4">
-        <div className="flex items-center gap-2">
+      <header className="w-full max-w-7xl px-4 py-4">
+        <div className="flex items-center gap-2 overflow-x-auto md:hidden">
           {externalLinks.map(({ href, label, icon: Icon }) => (
             <Link
               key={label}
@@ -327,34 +327,64 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-sm text-foreground transition hover:bg-muted"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-card/70 text-foreground transition hover:bg-muted"
             >
-              <Icon className="h-4 w-4" />
-              <span className="hidden sm:inline">{label}</span>
+              <Icon className="h-4 w-4" aria-hidden />
+              <span className="sr-only">{label}</span>
             </Link>
           ))}
-        </div>
-        <div className="flex items-center gap-2">
           <Button
             asChild
             variant="outline"
-            size="sm"
-            className="hidden md:inline-flex"
+            size="icon"
+            className="shrink-0"
           >
-            <Link href={metricsHref}>{t('metrics_link')}</Link>
+            <Link href={metricsHref} aria-label={t('metrics_link')}>
+              <Activity className="h-4 w-4" aria-hidden />
+            </Link>
           </Button>
           <ThemeToggle />
           <LanguageSelector />
         </div>
+        <div className="hidden md:flex md:items-center md:justify-between">
+          <div className="flex items-center gap-2">
+            {externalLinks.map(({ href, label, icon: Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card/70 text-foreground transition hover:bg-muted"
+              >
+                <Icon className="h-4 w-4" aria-hidden />
+                <span className="sr-only">{label}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+            >
+              <Link href={metricsHref} aria-label={t('metrics_link')}>
+                <Activity className="h-4 w-4" aria-hidden />
+              </Link>
+            </Button>
+            <ThemeToggle />
+            <LanguageSelector />
+          </div>
+        </div>
       </header>
 
-      <div className="w-full flex flex-col items-center space-y-8 mb-8">
-        <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-3xl p-6 md:p-12 flex flex-col items-center text-center space-y-8">
-          <div className="space-y-4 max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
+      <div className="w-full flex flex-col items-center space-y-6 mb-8 px-4">
+        <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-2xl md:rounded-3xl p-5 md:p-12 flex flex-col items-start text-left space-y-6 md:items-center md:text-center md:space-y-8">
+          <div className="space-y-4 w-full max-w-2xl">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
               {t('title')}
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed md:text-lg">
               {t('subtitle')}
             </p>
           </div>
@@ -432,7 +462,7 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
-        <div id="map-view" className="w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden border shadow-sm bg-card">
+        <div id="map-view" className="w-full h-[320px] md:h-[600px] rounded-xl overflow-hidden border shadow-sm bg-card">
           <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} />
         </div>
 

@@ -44,7 +44,8 @@
         "tier_3": "Stufe 3 (Normale Städte)",
         "tier_4": "Stufe 4 (Kleinstädte)",
         "tier_5": "Stufe 5 (Puerto Rico)",
-        "metrics_link": "Metriken"
+        "metrics_link": "Metriken",
+        "language_selector": "Sprache wechseln"
     },
     "ChatWidget": {
         "welcome": "Fragen Sie mich nach H1B-Gehältern für verschiedene Berufe und Orte!",
