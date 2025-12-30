@@ -45,7 +45,22 @@
         "tier_4": "四线 (小城镇)",
         "tier_5": "五线 (波多黎各)",
         "metrics_link": "指标",
-        "language_selector": "切换语言"
+        "language_selector": "切换语言",
+        "legend_collapse": "收起图例",
+        "legend_expand": "展开图例",
+        "mapbox_attribution_toggle": "显示/隐藏署名",
+        "mapbox_fullscreen_enter": "进入全屏",
+        "mapbox_fullscreen_exit": "退出全屏",
+        "mapbox_geolocate_find": "查找我的位置",
+        "mapbox_geolocate_not_available": "位置不可用",
+        "mapbox_logo_title": "Mapbox 标志",
+        "mapbox_map_title": "地图",
+        "mapbox_nav_reset_bearing": "重置方向",
+        "mapbox_nav_zoom_in": "放大",
+        "mapbox_nav_zoom_out": "缩小",
+        "mapbox_scroll_zoom_ctrl": "按住 Ctrl 并滚动以缩放地图",
+        "mapbox_scroll_zoom_cmd": "按住 ⌘ 并滚动以缩放地图",
+        "mapbox_touch_pan": "使用两指移动地图"
     },
     "ChatWidget": {
         "welcome": "您可以询问任何职位的H1B工资情况！",

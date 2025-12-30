@@ -45,7 +45,22 @@
         "tier_4": "4등급 (소도시)",
         "tier_5": "5등급 (푸에르토리코)",
         "metrics_link": "메트릭",
-        "language_selector": "언어 변경"
+        "language_selector": "언어 변경",
+        "legend_collapse": "범례 접기",
+        "legend_expand": "범례 펼치기",
+        "mapbox_attribution_toggle": "저작권 표시 전환",
+        "mapbox_fullscreen_enter": "전체 화면",
+        "mapbox_fullscreen_exit": "전체 화면 종료",
+        "mapbox_geolocate_find": "내 위치 찾기",
+        "mapbox_geolocate_not_available": "위치 정보를 사용할 수 없음",
+        "mapbox_logo_title": "Mapbox 로고",
+        "mapbox_map_title": "지도",
+        "mapbox_nav_reset_bearing": "방향 재설정",
+        "mapbox_nav_zoom_in": "확대",
+        "mapbox_nav_zoom_out": "축소",
+        "mapbox_scroll_zoom_ctrl": "Ctrl 키를 누른 채 스크롤하여 지도 확대/축소",
+        "mapbox_scroll_zoom_cmd": "⌘ 키를 누른 채 스크롤하여 지도 확대/축소",
+        "mapbox_touch_pan": "두 손가락으로 지도를 이동"
     },
     "ChatWidget": {
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",

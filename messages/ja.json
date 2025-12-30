@@ -45,7 +45,22 @@
         "tier_4": "レベル4（小都市）",
         "tier_5": "レベル5（プエルトリコ）",
         "metrics_link": "メトリクス",
-        "language_selector": "言語を切り替える"
+        "language_selector": "言語を切り替える",
+        "legend_collapse": "凡例を折りたたむ",
+        "legend_expand": "凡例を展開",
+        "mapbox_attribution_toggle": "クレジットを切り替え",
+        "mapbox_fullscreen_enter": "全画面表示",
+        "mapbox_fullscreen_exit": "全画面を終了",
+        "mapbox_geolocate_find": "現在地を探す",
+        "mapbox_geolocate_not_available": "位置情報は利用できません",
+        "mapbox_logo_title": "Mapbox ロゴ",
+        "mapbox_map_title": "地図",
+        "mapbox_nav_reset_bearing": "方位をリセット",
+        "mapbox_nav_zoom_in": "ズームイン",
+        "mapbox_nav_zoom_out": "ズームアウト",
+        "mapbox_scroll_zoom_ctrl": "Ctrl を押しながらスクロールで地図をズーム",
+        "mapbox_scroll_zoom_cmd": "⌘ を押しながらスクロールで地図をズーム",
+        "mapbox_touch_pan": "2 本指で地図を移動"
     },
     "ChatWidget": {
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",

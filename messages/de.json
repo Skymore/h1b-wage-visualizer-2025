@@ -45,7 +45,22 @@
         "tier_4": "Stufe 4 (Kleinstädte)",
         "tier_5": "Stufe 5 (Puerto Rico)",
         "metrics_link": "Metriken",
-        "language_selector": "Sprache wechseln"
+        "language_selector": "Sprache wechseln",
+        "legend_collapse": "Legende einklappen",
+        "legend_expand": "Legende ausklappen",
+        "mapbox_attribution_toggle": "Attribution ein-/ausblenden",
+        "mapbox_fullscreen_enter": "Vollbildmodus",
+        "mapbox_fullscreen_exit": "Vollbild beenden",
+        "mapbox_geolocate_find": "Meinen Standort finden",
+        "mapbox_geolocate_not_available": "Standort nicht verfügbar",
+        "mapbox_logo_title": "Mapbox-Logo",
+        "mapbox_map_title": "Karte",
+        "mapbox_nav_reset_bearing": "Ausrichtung zurücksetzen",
+        "mapbox_nav_zoom_in": "Hineinzoomen",
+        "mapbox_nav_zoom_out": "Herauszoomen",
+        "mapbox_scroll_zoom_ctrl": "Mit Ctrl + Scrollen die Karte zoomen",
+        "mapbox_scroll_zoom_cmd": "Mit ⌘ + Scrollen die Karte zoomen",
+        "mapbox_touch_pan": "Mit zwei Fingern die Karte verschieben"
     },
     "ChatWidget": {
         "welcome": "Fragen Sie mich nach H1B-Gehältern für verschiedene Berufe und Orte!",

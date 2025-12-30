@@ -45,7 +45,22 @@
         "tier_4": "Tier 4 (Small Towns)",
         "tier_5": "Tier 5 (Puerto Rico)",
         "metrics_link": "Metrics",
-        "language_selector": "Change language"
+        "language_selector": "Change language",
+        "legend_collapse": "Collapse legend",
+        "legend_expand": "Expand legend",
+        "mapbox_attribution_toggle": "Toggle attribution",
+        "mapbox_fullscreen_enter": "Enter fullscreen",
+        "mapbox_fullscreen_exit": "Exit fullscreen",
+        "mapbox_geolocate_find": "Find my location",
+        "mapbox_geolocate_not_available": "Location not available",
+        "mapbox_logo_title": "Mapbox logo",
+        "mapbox_map_title": "Map",
+        "mapbox_nav_reset_bearing": "Reset bearing",
+        "mapbox_nav_zoom_in": "Zoom in",
+        "mapbox_nav_zoom_out": "Zoom out",
+        "mapbox_scroll_zoom_ctrl": "Use Ctrl + scroll to zoom the map",
+        "mapbox_scroll_zoom_cmd": "Use ⌘ + scroll to zoom the map",
+        "mapbox_touch_pan": "Use two fingers to move the map"
     },
     "ChatWidget": {
         "welcome": "Ask me about H1B wages for different occupations and locations!",

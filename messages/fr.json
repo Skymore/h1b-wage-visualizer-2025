@@ -45,7 +45,22 @@
         "tier_4": "Niveau 4 (Petites Villes)",
         "tier_5": "Niveau 5 (Porto Rico)",
         "metrics_link": "Métriques",
-        "language_selector": "Changer de langue"
+        "language_selector": "Changer de langue",
+        "legend_collapse": "Réduire la légende",
+        "legend_expand": "Déployer la légende",
+        "mapbox_attribution_toggle": "Afficher/masquer l'attribution",
+        "mapbox_fullscreen_enter": "Passer en plein écran",
+        "mapbox_fullscreen_exit": "Quitter le plein écran",
+        "mapbox_geolocate_find": "Trouver ma position",
+        "mapbox_geolocate_not_available": "Position indisponible",
+        "mapbox_logo_title": "Logo Mapbox",
+        "mapbox_map_title": "Carte",
+        "mapbox_nav_reset_bearing": "Réinitialiser l'orientation",
+        "mapbox_nav_zoom_in": "Zoomer",
+        "mapbox_nav_zoom_out": "Dézoomer",
+        "mapbox_scroll_zoom_ctrl": "Utilisez Ctrl + défilement pour zoomer sur la carte",
+        "mapbox_scroll_zoom_cmd": "Utilisez ⌘ + défilement pour zoomer sur la carte",
+        "mapbox_touch_pan": "Utilisez deux doigts pour déplacer la carte"
     },
     "ChatWidget": {
         "welcome": "Interrogez-moi sur les salaires H1B pour différentes professions et lieux !",

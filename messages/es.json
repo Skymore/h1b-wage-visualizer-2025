@@ -45,7 +45,22 @@
         "tier_4": "Nivel 4 (Pueblos Pequeños)",
         "tier_5": "Nivel 5 (Puerto Rico)",
         "metrics_link": "Métricas",
-        "language_selector": "Cambiar idioma"
+        "language_selector": "Cambiar idioma",
+        "legend_collapse": "Contraer leyenda",
+        "legend_expand": "Expandir leyenda",
+        "mapbox_attribution_toggle": "Alternar atribución",
+        "mapbox_fullscreen_enter": "Entrar en pantalla completa",
+        "mapbox_fullscreen_exit": "Salir de pantalla completa",
+        "mapbox_geolocate_find": "Encontrar mi ubicación",
+        "mapbox_geolocate_not_available": "Ubicación no disponible",
+        "mapbox_logo_title": "Logotipo de Mapbox",
+        "mapbox_map_title": "Mapa",
+        "mapbox_nav_reset_bearing": "Restablecer orientación",
+        "mapbox_nav_zoom_in": "Acercar",
+        "mapbox_nav_zoom_out": "Alejar",
+        "mapbox_scroll_zoom_ctrl": "Usa Ctrl y el desplazamiento para ampliar el mapa",
+        "mapbox_scroll_zoom_cmd": "Usa ⌘ y el desplazamiento para ampliar el mapa",
+        "mapbox_touch_pan": "Usa dos dedos para mover el mapa"
     },
     "ChatWidget": {
         "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",

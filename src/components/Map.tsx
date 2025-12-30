@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
+import { ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 // Token should be in .env.local
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
@@ -23,11 +25,48 @@ export default function MapView({
     wageScale?: { min: number, max: number }
 }) {
     const t = useTranslations('HomePage');
+    const locale = useLocale();
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<mapboxgl.Map | null>(null);
     const markers = useRef<mapboxgl.Marker[]>([]);
     const { resolvedTheme } = useTheme();
     const initialTheme = useRef(resolvedTheme);
+    const [legendOpen, setLegendOpen] = useState(true);
+
+    const mapboxLanguage = useMemo(() => {
+        const languageMap: Record<string, string> = {
+            en: 'en',
+            zh: 'zh-Hans',
+            ja: 'ja',
+            ko: 'ko',
+            es: 'es',
+            fr: 'fr',
+            de: 'de',
+            hi: 'hi'
+        };
+        return languageMap[locale] || 'en';
+    }, [locale]);
+    const languageRef = useRef(mapboxLanguage);
+
+    const mapboxLocale = useMemo(() => ({
+        'AttributionControl.ToggleAttribution': t('mapbox_attribution_toggle'),
+        'FullscreenControl.Enter': t('mapbox_fullscreen_enter'),
+        'FullscreenControl.Exit': t('mapbox_fullscreen_exit'),
+        'GeolocateControl.FindMyLocation': t('mapbox_geolocate_find'),
+        'GeolocateControl.LocationNotAvailable': t('mapbox_geolocate_not_available'),
+        'LogoControl.Title': t('mapbox_logo_title'),
+        'Map.Title': t('mapbox_map_title'),
+        'NavigationControl.ResetBearing': t('mapbox_nav_reset_bearing'),
+        'NavigationControl.ZoomIn': t('mapbox_nav_zoom_in'),
+        'NavigationControl.ZoomOut': t('mapbox_nav_zoom_out'),
+        'ScrollZoomBlocker.CtrlMessage': t('mapbox_scroll_zoom_ctrl'),
+        'ScrollZoomBlocker.CmdMessage': t('mapbox_scroll_zoom_cmd'),
+        'TouchPanBlocker.Message': t('mapbox_touch_pan')
+    }), [t]);
+
+    useEffect(() => {
+        languageRef.current = mapboxLanguage;
+    }, [mapboxLanguage]);
 
     useEffect(() => {
         if (map.current || !mapContainer.current) return;
@@ -43,11 +82,16 @@ export default function MapView({
             style: initialStyle,
             center: DEFAULT_CENTER,
             zoom: initialZoom,
-            cooperativeGestures: true // Allows page scrolling with one finger, map panning with two
+            cooperativeGestures: true, // Allows page scrolling with one finger, map panning with two
+            language: mapboxLanguage,
+            locale: mapboxLocale
         });
 
         map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
         map.current.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+        map.current.on('style.load', () => {
+            map.current?.setLanguage(languageRef.current);
+        });
 
         return () => {
             markers.current.forEach(marker => marker.remove());
@@ -62,6 +106,11 @@ export default function MapView({
         const style = resolvedTheme === 'dark' ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
         map.current.setStyle(style);
     }, [resolvedTheme]);
+
+    useEffect(() => {
+        if (!map.current) return;
+        map.current.setLanguage(mapboxLanguage);
+    }, [mapboxLanguage]);
 
     const getColor = (wage: number, min: number, max: number) => {
         if (!wage || min === max) return '#3b82f6'; // Default blue
@@ -147,13 +196,29 @@ export default function MapView({
 
             {/* Legend */}
             {wageScale && wageScale.max > 0 && (
-                <div className="absolute bottom-6 right-2 bg-background/90 p-2 rounded-md shadow-md text-xs border">
-                    <div className="font-bold mb-1">{t('level_2_annual_wage')}</div>
-                    <div className="space-y-1">
-                        <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#ef4444] mr-2"></span> {t('high')} ({`>$${Math.round((wageScale.min + (wageScale.max - wageScale.min) * 0.75) * 2080 / 1000)}k`})</div>
-                        <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#f97316] mr-2"></span> {t('med_high')}</div>
-                        <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#eab308] mr-2"></span> {t('medium')}</div>
-                        <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#22c55e] mr-2"></span> {t('low')} ({`<$${Math.round((wageScale.min + (wageScale.max - wageScale.min) * 0.25) * 2080 / 1000)}k`})</div>
+                <div className="absolute bottom-6 right-2">
+                    <div className="bg-background/90 p-2 rounded-md shadow-md text-xs border">
+                        <div className="flex items-center justify-between gap-2">
+                            <div className="font-bold">{t('level_2_annual_wage')}</div>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-6 w-6"
+                                onClick={() => setLegendOpen((prev) => !prev)}
+                                aria-expanded={legendOpen}
+                                aria-label={legendOpen ? t('legend_collapse') : t('legend_expand')}
+                            >
+                                <ChevronDown className={`h-4 w-4 transition-transform ${legendOpen ? 'rotate-180' : ''}`} />
+                            </Button>
+                        </div>
+                        {legendOpen && (
+                            <div className="space-y-1 pt-1">
+                                <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#ef4444] mr-2"></span> {t('high')} ({`>$${Math.round((wageScale.min + (wageScale.max - wageScale.min) * 0.75) * 2080 / 1000)}k`})</div>
+                                <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#f97316] mr-2"></span> {t('med_high')}</div>
+                                <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#eab308] mr-2"></span> {t('medium')}</div>
+                                <div className="flex items-center"><span className="w-3 h-3 rounded-full bg-[#22c55e] mr-2"></span> {t('low')} ({`<$${Math.round((wageScale.min + (wageScale.max - wageScale.min) * 0.25) * 2080 / 1000)}k`})</div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
