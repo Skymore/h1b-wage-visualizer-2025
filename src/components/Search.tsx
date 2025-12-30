@@ -31,12 +31,13 @@ interface OccupationOption extends Occupation {
 
 interface SearchProps {
     onSelectOccupation: (soc: string) => void;
+    selectedSoc?: string | null;
 }
 
-export function Search({ onSelectOccupation }: SearchProps) {
+export function Search({ onSelectOccupation, selectedSoc }: SearchProps) {
     const t = useTranslations('HomePage');
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState("15-1252"); // Default to Software Developers (15-1252)
+    const [value, setValue] = React.useState<string | null>(selectedSoc ?? null);
     const [searchQuery, setSearchQuery] = React.useState(""); // Track search query
     const [occupations, setOccupations] = React.useState<OccupationOption[]>([]);
     const [isExpanded, setIsExpanded] = React.useState(false);
@@ -51,11 +52,13 @@ export function Search({ onSelectOccupation }: SearchProps) {
                         titleLower: occ.title.toLowerCase(),
                     }))
                 );
-                // Trigger initial selection
-                onSelectOccupation("15-1252");
             })
             .catch((error) => console.error('Failed to load occupations', error));
-    }, [onSelectOccupation]);
+    }, []);
+
+    React.useEffect(() => {
+        setValue(selectedSoc ?? null);
+    }, [selectedSoc]);
 
     const deferredQuery = React.useDeferredValue(searchQuery);
     const normalizedQuery = deferredQuery.trim().toLowerCase();

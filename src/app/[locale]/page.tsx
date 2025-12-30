@@ -164,6 +164,13 @@ export default function HomePage() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, [pathname, router, searchParams]);
 
+  useEffect(() => {
+    if (selectedSoc) return;
+    const defaultSoc = '15-1252';
+    setSelectedSoc(defaultSoc);
+    updateUrl('soc', defaultSoc);
+  }, [selectedSoc, updateUrl]);
+
   const urlLocationQuery = searchParams.get('q') || '';
 
   useEffect(() => {
@@ -396,7 +403,7 @@ export default function HomePage() {
       <div id="location-filters" className="w-full max-w-7xl px-4 py-2 space-y-5">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="w-full md:w-[350px] z-20 shadow-sm rounded-md">
-            <Search onSelectOccupation={handleSocSelect} />
+            <Search onSelectOccupation={handleSocSelect} selectedSoc={selectedSoc} />
           </div>
 
           {selectedSoc && (
