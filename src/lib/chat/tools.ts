@@ -21,7 +21,6 @@ export function createChatTools() {
                 queries: z.array(z.string()).describe('List of job titles to search for, e.g., ["Software Engineer", "Data Scientist"]'),
             }),
             execute: async ({ queries }) => {
-                console.log(`[Tool Execute] searchOccupations queries:`, queries);
                 const occupations = await readPublicDataJson<OccupationRecord[]>('occupations.json');
                 if (!occupations) return [];
 
@@ -52,7 +51,6 @@ export function createChatTools() {
                 queries: z.array(z.string()).describe('List of locations to search for, e.g., ["New York", "CA"]'),
             }),
             execute: async ({ queries }) => {
-                console.log(`[Tool] searchAreas queries:`, queries);
                 const areas = await readPublicDataJson<AreaRecord[]>('areas.json');
                 if (!areas) return [];
 

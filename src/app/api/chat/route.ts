@@ -7,7 +7,7 @@ if (typeof globalThis !== 'undefined') {
 }
 
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-import { convertToModelMessages, isTextUIPart, stepCountIs, streamText } from 'ai';
+import { convertToModelMessages, stepCountIs, streamText } from 'ai';
 import type { UIMessage } from 'ai';
 import { rateLimit } from '@/lib/rate-limit';
 import { recordChatMessages } from '@/lib/metrics';
@@ -21,24 +21,6 @@ interface ChatPayload {
     messages: UIMessage[];
     visitorId?: string;
 }
-
-type ToolPartSummary = {
-    messageIndex: number;
-    partIndex: number;
-    type: string;
-    hasOutput: boolean;
-    toolName?: string;
-    toolCallId?: string;
-};
-
-const getMessageText = (message: UIMessage | undefined) => {
-    if (!message?.parts) return '';
-    return message.parts
-        .filter(isTextUIPart)
-        .map((part) => part.text)
-        .join(' ')
-        .trim();
-};
 
 // Configure OpenRouter
 const openrouter = createOpenRouter({
@@ -61,42 +43,9 @@ export async function POST(req: Request) {
         ? payload.visitorId
         : undefined;
 
-    // Debug: summarize tool parts in incoming UI messages (avoid logging full payloads)
-    const toolPartSummaries: ToolPartSummary[] = [];
-    messages.forEach((message, messageIndex) => {
-        message.parts?.forEach((part, partIndex) => {
-            if (typeof part.type === 'string' && (part.type.startsWith('tool-') || part.type === 'dynamic-tool')) {
-                const toolInvocation = (part as { toolInvocation?: { toolName?: string; toolCallId?: string; output?: unknown; result?: unknown } }).toolInvocation;
-                const hasOutput = Boolean(
-                    (part as { output?: unknown }).output ??
-                    (part as { result?: unknown }).result ??
-                    toolInvocation?.result ??
-                    toolInvocation?.output
-                );
-                toolPartSummaries.push({
-                    messageIndex,
-                    partIndex,
-                    type: part.type,
-                    hasOutput,
-                    toolName: toolInvocation?.toolName,
-                    toolCallId: toolInvocation?.toolCallId,
-                });
-            }
-        });
-    });
-    const lastIncoming = messages[messages.length - 1];
-    if (lastIncoming) {
-        console.log('[Chat] Last message:', lastIncoming.role, getMessageText(lastIncoming));
-    }
-    if (toolPartSummaries.length > 0) {
-        const toolPartTypes = Array.from(new Set(toolPartSummaries.map((summary) => summary.type)));
-        console.log('[Chat] Incoming tool parts:', toolPartSummaries.length, toolPartTypes);
-    }
-
     // 2. Stream Text with Tools
     const modelName = 'google/gemini-3-flash-preview';
     const maxSteps = 10;
-    console.log('[Chat] Using model:', modelName);
 
     // Load popular occupations for context
     const occupationsData = await readPublicDataJson<OccupationRecord[]>('occupations.json');
@@ -117,28 +66,13 @@ export async function POST(req: Request) {
         tools,
         ignoreIncompleteToolCalls: true,
     });
-    if (modelMessages.length > 0) {
-        const toolMessageCount = modelMessages.filter((message) => message.role === 'tool').length;
-        const lastRole = modelMessages[modelMessages.length - 1]?.role;
-        console.log('[Chat] Model messages:', modelMessages.length, 'tool:', toolMessageCount, 'last:', lastRole);
-    }
 
     const result = streamText({
         model: openrouter(modelName, {
             usage: { include: true },
         }),
         stopWhen: stepCountIs(maxSteps),
-        onStepFinish: (step) => {
-            console.log(`[Step] Finished step. Tool Calls: ${step.toolCalls?.length || 0}`);
-            if (step.text) {
-                console.log(`[Step] Text length: ${step.text.length}`);
-            }
-            if (step.toolCalls && step.toolCalls.length > 0) {
-                step.toolCalls.forEach(tc => {
-                    console.log(`[Step] Tool: ${tc.toolName}, CallId: ${tc.toolCallId}`);
-                });
-            }
-        },
+        onStepFinish: undefined,
         system: buildSystemPrompt(occupationsList),
         messages: modelMessages,
         tools,
