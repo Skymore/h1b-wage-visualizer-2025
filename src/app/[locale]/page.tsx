@@ -70,7 +70,8 @@ export default function HomePage() {
   const [areas, setAreas] = useState<Area[]>([]);
 
   // Initialize state from URL or defaults
-  const [selectedSoc, setSelectedSoc] = useState<string | null>(searchParams.get('soc'));
+  const defaultSoc = '15-1252';
+  const selectedSoc = searchParams.get('soc') ?? defaultSoc;
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const deferredLocationQuery = useDeferredValue(searchQuery);
   const externalLinks = [
@@ -165,11 +166,9 @@ export default function HomePage() {
   }, [pathname, router, searchParams]);
 
   useEffect(() => {
-    if (selectedSoc) return;
-    const defaultSoc = '15-1252';
-    setSelectedSoc(defaultSoc);
+    if (searchParams.get('soc')) return;
     updateUrl('soc', defaultSoc);
-  }, [selectedSoc, updateUrl]);
+  }, [defaultSoc, searchParams, updateUrl]);
 
   const urlLocationQuery = searchParams.get('q') || '';
 
@@ -292,7 +291,6 @@ export default function HomePage() {
   // Handlers
   const handleSocSelect = (soc: string) => {
     if (selectedSoc === soc) return;
-    setSelectedSoc(soc);
     updateUrl('soc', soc);
   };
 

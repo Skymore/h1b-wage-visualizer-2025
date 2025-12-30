@@ -98,7 +98,7 @@ export default function MapView({
             map.current?.remove();
             map.current = null;
         };
-    }, []);
+    }, [mapboxLanguage, mapboxLocale]);
 
     // Update map style when theme changes
     useEffect(() => {
