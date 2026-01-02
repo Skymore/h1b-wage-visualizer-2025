@@ -29,9 +29,29 @@ const openrouter = createOpenRouter({
 
 export async function POST(req: Request) {
     // 1. Rate Limiting
-    const ip = req.headers.get('x-forwarded-for') || 'unknown';
-    if (!rateLimit.check(ip)) {
-        return new Response('Too Many Requests', { status: 429 });
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 
+              req.headers.get('x-real-ip') || 
+              'unknown';
+    
+    const rateLimitResult = await rateLimit.checkAsync(ip);
+    
+    if (!rateLimitResult.success) {
+        return new Response(
+            JSON.stringify({ 
+                error: 'Too Many Requests',
+                message: `Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.reset - Date.now()) / 1000)} seconds.`
+            }), 
+            { 
+                status: 429,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+                    'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+                    'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+                    'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+                }
+            }
+        );
     }
 
     const payload = (await req.json()) as Partial<ChatPayload>;
