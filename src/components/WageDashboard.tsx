@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ShareDialog } from "./ShareDialog";
+import Link from 'next/link';
+import { toSlug } from '@/lib/utils';
 
 interface WageRecord {
     area_id: string;
@@ -319,7 +321,17 @@ export function WageDashboard({
                                         />
                                     </TableCell>
                                     <TableCell className={`font-medium ${sortKey === 'area' ? "text-primary font-bold bg-muted/10" : "text-foreground"}`}>
-                                        {areaMap.get(row.area_id) || row.area_id}
+                                        {socTitle ? (
+                                            <Link
+                                                href={`/${pathname.split('/').filter(Boolean)[0] || 'en'}/salary/${toSlug(socTitle)}/${toSlug(areaMap.get(row.area_id) || row.area_id)}`}
+                                                className="hover:underline hover:text-primary transition-colors block py-1"
+                                                title={`View salary details for ${socTitle} in ${areaMap.get(row.area_id) || row.area_id}`}
+                                            >
+                                                {areaMap.get(row.area_id) || row.area_id}
+                                            </Link>
+                                        ) : (
+                                            areaMap.get(row.area_id) || row.area_id
+                                        )}
                                     </TableCell>
                                     <TableCell className={`text-right ${sortKey === 'l1' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l1} usePopover={isTouchDevice} /></TableCell>
                                     <TableCell className={`text-right ${sortKey === 'l2' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l2} usePopover={isTouchDevice} /></TableCell>

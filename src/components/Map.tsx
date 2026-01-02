@@ -7,22 +7,25 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { toSlug } from '@/lib/utils';
 
 // Token should be in .env.local
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 const DEFAULT_CENTER: [number, number] = [-95.7129, 37.0902];
 
 type WageData = { area_id: string, l1: number, l2: number, l3: number, l4: number };
-type Area = { id: string, name: string, lat?: number, lng?: number };
+type Area = { id: string, name: string, lat?: number, lng?: number, state?: string };
 
 export default function MapView({
     wageData,
     areas = [],
-    wageScale
+    wageScale,
+    socTitle
 }: {
     wageData?: WageData[],
     areas?: Area[],
-    wageScale?: { min: number, max: number }
+    wageScale?: { min: number, max: number },
+    socTitle?: string
 }) {
     const t = useTranslations('HomePage');
     const locale = useLocale();
@@ -161,20 +164,33 @@ export default function MapView({
                     return `$${Math.round(hourly * 2080).toLocaleString()}`;
                 };
 
-                const popup = new mapboxgl.Popup({ offset: 25 })
-                    .setHTML(`
-                        <div class="p-2 text-foreground bg-background rounded-md">
-                            <h3 class="font-bold text-sm">${area.name}</h3>
-                            <div class="text-xs pt-1">
-                                <div class="grid grid-cols-2 gap-x-2">
-                                    <span>${t('level_1')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l1)}">${formatWageK(wage.l1)}</span>
-                                    <span>${t('level_2')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l2)}">${formatWageK(wage.l2)}</span>
-                                    <span>${t('level_3')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l3)}">${formatWageK(wage.l3)}</span>
-                                    <span>${t('level_4')}:</span> <span class="font-mono text-right" title="${formatWageFull(wage.l4)}">${formatWageK(wage.l4)}</span>
+                const detailsUrl = socTitle
+                    ? `/${locale}/salary/${toSlug(socTitle)}/${toSlug(`${area.name} ${area.state || ''}`)}`
+                    : '#';
+
+                const popupHtml = `
+                        <div class="p-2 text-foreground bg-background rounded-md min-w-[180px]">
+                            <h3 class="font-bold text-sm text-center border-b border-border/50 pb-2 mb-2">
+                                ${socTitle ? `
+                                    <a href="${detailsUrl}" class="text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center gap-1">
+                                        ${area.name}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    </a>
+                                ` : area.name}
+                            </h3>
+                            <div class="text-xs">
+                                <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+                                    <span class="text-muted-foreground">${t('level_1')}:</span> <span class="font-mono text-right font-medium" title="${formatWageFull(wage.l1)}">${formatWageK(wage.l1)}</span>
+                                    <span class="text-muted-foreground">${t('level_2')}:</span> <span class="font-mono text-right font-medium" title="${formatWageFull(wage.l2)}">${formatWageK(wage.l2)}</span>
+                                    <span class="text-muted-foreground">${t('level_3')}:</span> <span class="font-mono text-right font-medium" title="${formatWageFull(wage.l3)}">${formatWageK(wage.l3)}</span>
+                                    <span class="text-muted-foreground">${t('level_4')}:</span> <span class="font-mono text-right font-medium" title="${formatWageFull(wage.l4)}">${formatWageK(wage.l4)}</span>
                                 </div>
                             </div>
                         </div>
-                    `);
+                    `;
+
+                const popup = new mapboxgl.Popup({ offset: 25 })
+                    .setHTML(popupHtml);
 
                 const color = getColor(wage.l2, min, max);
                 const scale = getSize(wage.l2, min, max);
@@ -188,7 +204,7 @@ export default function MapView({
             }
         });
 
-    }, [wageData, areas, wageScale, t]);
+    }, [wageData, areas, wageScale, t, socTitle, locale]);
 
     return (
         <div className="h-full w-full rounded-md border overflow-hidden relative">

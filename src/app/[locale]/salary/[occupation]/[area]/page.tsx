@@ -39,7 +39,7 @@ async function getData(occupationSlug: string, areaSlug: string) {
   if (!occupations || !areas) return null;
 
   const occupation = occupations.find(o => toSlug(o.title) === occupationSlug);
-  
+
   // Area slug strategy: "new-york-ny" -> name: "New York", state: "NY"
   // Since we construct slugs as `toSlug(name + ' ' + state)`, we try to match that.
   const area = areas.find(a => toSlug(`${a.name} ${a.state}`) === areaSlug);
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const { occupation, area, wage } = data;
   const salary = wage ? `$${Math.round(wage.l2 * 2080).toLocaleString()}` : 'Unknown';
-  
+
   return {
     title: t('title', { occupation: occupation.title, area: `${area.name}, ${area.state}` }),
     description: `Current H1B prevailing wage for ${occupation.title} in ${area.name}, ${area.state}. Level 2 median salary is ${salary}. Explore hourly rates and wage levels for FY 2025-2026.`,
@@ -86,7 +86,7 @@ export async function generateStaticParams() {
   const targetAreas = areas.filter(a => a.tier && a.tier <= 2);
 
   const params = [];
-  
+
   // Generating params for ALL combinations would be huge:
   // ~50 occupations * ~400 areas * 8 locales = 160,000 pages
   // This is too many for a build.
@@ -102,9 +102,9 @@ export async function generateStaticParams() {
   // 
   // Since user asked for "Tier 3 + Popular", that's potentially 50 * 500 = 25,000 pages per locale.
   // We should limit locales to just 'en' for the static generation demonstration to avoid timeout.
-  
+
   // Let's generate for 'en' only initially to be safe.
-  
+
   for (const occupation of popularOccupations) {
     for (const area of targetAreas) {
       params.push({
@@ -136,7 +136,7 @@ export default async function SalaryPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-background">
       <div className="container max-w-5xl mx-auto px-4 py-8 space-y-8">
-        
+
         {/* Breadcrumb / Back */}
         <div className="flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
           <Link href={`/${locale}`} className="flex items-center gap-1">
@@ -160,7 +160,7 @@ export default async function SalaryPage({ params }: Props) {
               ))}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl">
-             {t('description', { occupation: occupation.title, code: occupation.code, area: area.name })}
+            {t('description', { occupation: occupation.title, code: occupation.code, area: area.name })}
           </p>
         </div>
 
@@ -176,7 +176,7 @@ export default async function SalaryPage({ params }: Props) {
               <p className="text-xs text-muted-foreground">{t('most_common')}</p>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{t('entry_level')}</CardTitle>

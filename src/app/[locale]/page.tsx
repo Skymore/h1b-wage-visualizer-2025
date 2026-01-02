@@ -549,7 +549,7 @@ export default function HomePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
         <div id="map-view" className="w-full h-[320px] md:h-[600px] rounded-xl overflow-hidden border shadow-sm bg-card">
-          <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} />
+          <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} socTitle={selectedSocTitle} />
         </div>
 
         <div id="wage-dashboard" className="w-full">
