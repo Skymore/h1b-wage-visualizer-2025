@@ -100,7 +100,7 @@ export function Search({ onSelectOccupation, selectedSoc }: SearchProps) {
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
+                <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start" side="bottom" avoidCollisions={false}>
                     {/* shouldFilter={false} to disable cmdk internal filtering since we do it manually */}
                     <Command shouldFilter={false}>
                         <CommandInput
