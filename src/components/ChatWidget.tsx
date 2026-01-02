@@ -320,8 +320,21 @@ export function ChatWidget() {
                                             {message.parts ? message.parts.map((part, idx) => {
                                                 if (part.type === 'text') {
                                                     return (
-                                                        <div key={idx} className={`prose prose-sm max-w-none ${message.role === 'user' ? 'text-white prose-invert' : 'dark:prose-invert'}`}>
-                                                            <ReactMarkdown>{part.text}</ReactMarkdown>
+                                                        <div key={idx} className={`prose prose-sm max-w-none break-words ${message.role === 'user'
+                                                            ? 'prose-invert dark:prose-slate' // Light mode: dark bg/light text. Dark mode: light bg/dark text (override invert)
+                                                            : 'dark:prose-invert'
+                                                            }`}>
+                                                            <ReactMarkdown
+                                                                components={{
+                                                                    strong: ({ node, ...props }) => <span className="font-bold text-indigo-600 dark:text-indigo-400" {...props} />,
+                                                                    a: ({ node, ...props }) => <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                                                                    p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                                                                    ul: ({ node, ...props }) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                                                                    li: ({ node, ...props }) => <li className="marker:text-gray-400 dark:marker:text-gray-600" {...props} />
+                                                                }}
+                                                            >
+                                                                {part.text}
+                                                            </ReactMarkdown>
                                                         </div>
                                                     );
                                                 }
