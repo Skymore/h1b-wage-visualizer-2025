@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect, useMemo, useDeferredValue, useCallback } from 'react';
+import { useState, useEffect, useMemo, useDeferredValue, useCallback, useRef } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search } from '@/components/Search';
@@ -103,6 +103,11 @@ export default function HomePage() {
   const selectedSoc = searchParams.get('soc') ?? defaultSoc;
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const deferredLocationQuery = useDeferredValue(searchQuery);
+  const isComposingRef = useRef(false);
+  const querySyncTimerRef = useRef<number | null>(null);
+  const ignoreNextUrlSyncRef = useRef(false);
+  const lastSyncedQueryRef = useRef('');
+  const searchQueryRef = useRef(searchQuery);
   const externalLinks = [
     {
       href: 'https://github.com/Skymore/h1b-wage-visualizer-2025',
@@ -185,14 +190,15 @@ export default function HomePage() {
 
   // Update URL wrapper
   const updateUrl = useCallback((key: string, value: string | null) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(window.location.search);
     if (value && value !== 'ALL') {
       params.set(key, value);
     } else {
       params.delete(key);
     }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [pathname, router, searchParams]);
+    const next = params.toString();
+    router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false });
+  }, [pathname, router]);
 
   useEffect(() => {
     if (searchParams.get('soc')) return;
@@ -202,17 +208,48 @@ export default function HomePage() {
   const urlLocationQuery = searchParams.get('q') || '';
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setSearchQuery(urlLocationQuery));
-    return () => cancelAnimationFrame(frame);
+    if (ignoreNextUrlSyncRef.current) {
+      if (urlLocationQuery === lastSyncedQueryRef.current) {
+        ignoreNextUrlSyncRef.current = false;
+        return;
+      }
+      ignoreNextUrlSyncRef.current = false;
+    }
+    if (urlLocationQuery === searchQueryRef.current) return;
+    setSearchQuery(urlLocationQuery);
   }, [urlLocationQuery]);
 
   useEffect(() => {
-    if (searchQuery === urlLocationQuery) return;
-    const timeout = window.setTimeout(() => {
-      updateUrl('q', searchQuery ? searchQuery : null);
-    }, 250);
-    return () => window.clearTimeout(timeout);
-  }, [searchQuery, urlLocationQuery, updateUrl]);
+    searchQueryRef.current = searchQuery;
+  }, [searchQuery]);
+
+  const syncQueryToUrl = useCallback((value: string) => {
+    if (isComposingRef.current) return;
+    const currentUrlQuery = new URLSearchParams(window.location.search).get('q') || '';
+    if (currentUrlQuery === value) return;
+    lastSyncedQueryRef.current = value;
+    ignoreNextUrlSyncRef.current = true;
+    updateUrl('q', value ? value : null);
+  }, [updateUrl]);
+
+  const scheduleQuerySync = useCallback((value: string) => {
+    if (isComposingRef.current) return;
+    if (querySyncTimerRef.current !== null) {
+      window.clearTimeout(querySyncTimerRef.current);
+    }
+    querySyncTimerRef.current = window.setTimeout(() => {
+      syncQueryToUrl(value);
+    }, 300);
+  }, [syncQueryToUrl]);
+
+  useEffect(() => {
+    scheduleQuerySync(searchQuery);
+    return () => {
+      if (querySyncTimerRef.current !== null) {
+        window.clearTimeout(querySyncTimerRef.current);
+      }
+    };
+  }, [searchQuery, scheduleQuerySync]);
 
   // Fetch areas on mount
   useEffect(() => {
@@ -442,6 +479,19 @@ export default function HomePage() {
                   placeholder={t('search_locations')}
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
+                  onBlur={() => syncQueryToUrl(searchQuery)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                      syncQueryToUrl(searchQuery);
+                    }
+                  }}
+                  onCompositionStart={() => {
+                    isComposingRef.current = true;
+                  }}
+                  onCompositionEnd={(event) => {
+                    isComposingRef.current = false;
+                    handleSearchChange(event.currentTarget.value);
+                  }}
                   className="max-w-sm bg-muted/50 border-0 focus-visible:ring-1 focus-visible:ring-primary/20 h-12 shadow-sm"
                 />
                 <Select value={selectedState} onValueChange={handleStateChange}>
