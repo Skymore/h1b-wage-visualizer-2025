@@ -19,8 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from 'next/link';
-import { Github, Linkedin, Activity, Briefcase } from 'lucide-react';
+import { Github, Linkedin, Activity, Briefcase, Snowflake, Flower2 } from 'lucide-react';
 import { getOrCreateVisitorId } from '@/lib/visitor.client';
+import { useSnow } from '@/components/SnowContext';
+import { useTheme } from 'next-themes';
 
 import { WelcomeDialog } from '@/components/FTUE/WelcomeDialog';
 import { TourGuide } from '@/components/FTUE/TourGuide';
@@ -53,6 +55,33 @@ const MapView = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full rounded-md border bg-muted flex items-center justify-center">Loading Map...</div>,
   ssr: false
 });
+
+function SnowToggle() {
+  const { isSnowing, toggleSnow } = useSnow();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  const isDark = resolvedTheme === 'dark';
+
+  const label = isDark ? "Let it snow" : "Let it bloom";
+  const Icon = isDark ? Snowflake : Flower2;
+
+  return (
+    <Button
+      variant={isSnowing ? "secondary" : "outline"}
+      size="icon"
+      onClick={toggleSnow}
+      className="transition-all duration-300 animate-in fade-in zoom-in shrink-0"
+      title={label}
+    >
+      <Icon className={`h-[1.2rem] w-[1.2rem] ${isSnowing ? (isDark ? 'text-blue-400 animate-pulse' : 'text-pink-400 animate-pulse') : ''}`} />
+      <span className="sr-only">{label}</span>
+    </Button>
+  );
+}
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -348,6 +377,7 @@ export default function HomePage() {
               <Activity className="h-4 w-4" aria-hidden />
             </Link>
           </Button>
+          <SnowToggle />
           <ThemeToggle />
           <LanguageSelector />
         </div>
@@ -377,6 +407,7 @@ export default function HomePage() {
                 <Activity className="h-4 w-4" aria-hidden />
               </Link>
             </Button>
+            <SnowToggle />
             <ThemeToggle />
             <LanguageSelector />
           </div>

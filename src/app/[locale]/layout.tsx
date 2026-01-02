@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ChatWidget } from "@/components/ChatWidget";
+import { SnowProvider } from "@/components/SnowContext";
+import { SnowEffect } from "@/components/SnowEffect";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -38,15 +40,18 @@ export default async function RootLayout({
         inter.variable
       )} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <ChatWidget />
-          </ThemeProvider>
+          <SnowProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <SnowEffect />
+              {children}
+              <ChatWidget />
+            </ThemeProvider>
+          </SnowProvider>
         </NextIntlClientProvider>
       </body>
     </html>
