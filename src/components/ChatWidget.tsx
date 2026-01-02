@@ -16,6 +16,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { getOrCreateVisitorId } from '@/lib/visitor.client';
 
 type ChatMessage = UIMessage;
@@ -244,6 +245,148 @@ export function ChatWidget() {
 
     return (
         <>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                {/* Visual Toggle Button (only visible when closed, but we can also use SheetTrigger if we wanted) */}
+                {!isOpen && (
+                    <Button
+                        id="chat-widget-trigger"
+                        onClick={() => setIsOpen(true)}
+                        className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 flex items-center justify-center transition-transform hover:scale-105"
+                    >
+                        <Bot className="w-8 h-8" />
+                    </Button>
+                )}
+
+                <SheetContent
+                    side="right"
+                    hideClose={true}
+                    className="w-full sm:max-w-[500px] lg:max-w-[600px] p-0 border-l border-gray-200 dark:border-gray-800 flex flex-col gap-0 bg-white dark:bg-gray-950"
+                >
+                    <SheetTitle className="sr-only">Chat Assistant</SheetTitle>
+                    {/* Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur shrink-0">
+                        <div className="flex items-center gap-3">
+                            {/* We can use SheetClose or just setOpen(false) */}
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                            >
+                                <ChevronRight className="w-5 h-5" />
+                            </Button>
+                            <div className="flex items-center gap-2">
+                                <Bot className="h-5 w-5 text-primary" />
+                                <h2 className="font-semibold text-lg">{t('header_title')}</h2>
+                            </div>
+                        </div>
+                        <Button
+                            onClick={handleClearChat}
+                            variant="ghost"
+                            size="sm"
+                            className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                        >
+                            <Trash2 className="h-4 w-4 mr-1" />
+                            {t('clear') || 'Clear'}
+                        </Button>
+                    </div>
+
+                    {/* Messages Area */}
+                    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-gray-950 min-h-0">
+                        {messages.length === 0 ? (
+                            <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground p-8">
+                                <div className="bg-muted p-4 rounded-full mb-4">
+                                    <Bot className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="font-medium text-foreground mb-1">{t('hi_there')}</h3>
+                                <p className="text-sm max-w-xs">{t('welcome')}</p>
+                            </div>
+                        ) : (
+                            messages.map((message) => (
+                                <div key={message.id} className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : ''}`}>
+                                    {/* Bot Avatar */}
+                                    {message.role !== 'user' && (
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-1">
+                                            <Bot className="w-5 h-5 text-primary" />
+                                        </div>
+                                    )}
+
+                                    {/* Message Content */}
+                                    <div className={`flex flex-col max-w-[85%] space-y-1 ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+                                        <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${message.role === 'user'
+                                            ? 'bg-primary text-primary-foreground rounded-tr-none'
+                                            : 'bg-muted border border-border rounded-tl-none'
+                                            }`}>
+                                            {message.parts ? message.parts.map((part, idx) => {
+                                                if (part.type === 'text') {
+                                                    return (
+                                                        <div key={idx} className={`prose prose-sm max-w-none ${message.role === 'user' ? 'text-white prose-invert' : 'dark:prose-invert'}`}>
+                                                            <ReactMarkdown>{part.text}</ReactMarkdown>
+                                                        </div>
+                                                    );
+                                                }
+                                                if (isToolMessagePart(part)) {
+                                                    return <ToolPart part={part} index={idx} key={idx} />;
+                                                }
+                                                return null;
+                                            }) : (
+                                                <div className="text-red-500 text-xs">Error: Message format incompatible</div>
+                                            )}
+                                        </div>
+                                        <span className="text-[10px] text-muted-foreground opacity-70 px-1">
+                                            {message.role === 'user' ? t('you') : t('assistant')}
+                                        </span>
+                                    </div>
+
+                                    {/* User Avatar */}
+                                    {message.role === 'user' && (
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center mt-1">
+                                            <User className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                        </div>
+                                    )}
+                                </div>
+                            ))
+                        )}
+
+                        {/* Loading Indicator */}
+                        {isLoading && (
+                            <div className="flex gap-3">
+                                <div className="bg-muted border border-border rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2">
+                                    <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                                    <span className="text-xs text-muted-foreground">{t('thinking')}</span>
+                                </div>
+                            </div>
+                        )}
+
+                        <div ref={messagesEndRef} />
+                    </div>
+
+                    {/* Input Area */}
+                    <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shrink-0">
+                        <form onSubmit={handleFormSubmit} className="flex gap-2 items-center bg-muted/50 border border-input rounded-full px-2 py-1 focus-within:ring-2 focus-within:ring-ring ring-offset-2 ring-offset-background transition-all">
+                            <Input
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder={t('placeholder') || 'Ask about H1B wages...'}
+                                disabled={isLoading}
+                                className="flex-1 border-none bg-transparent focus-visible:ring-0 shadow-none px-3"
+                            />
+                            <Button
+                                type="submit"
+                                disabled={isLoading || !input.trim()}
+                                size="icon"
+                                className={`rounded-full h-8 w-8 m-1 transition-all ${input.trim() ? '' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
+                            >
+                                <Send className="h-4 w-4" />
+                            </Button>
+                        </form>
+                        <div className="text-[10px] text-center text-muted-foreground mt-2 opacity-60">
+                            {t('disclaimer')}
+                        </div>
+                    </div>
+                </SheetContent>
+            </Sheet>
+
             {/* Clear Confirmation Dialog */}
             <Dialog open={isClearDialogOpen} onOpenChange={setIsClearDialogOpen}>
                 <DialogContent>
@@ -263,144 +406,6 @@ export function ChatWidget() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-
-            {/* Toggle Button (Visible when closed) */}
-            {!isOpen && (
-                <Button
-                    id="chat-widget-trigger"
-                    onClick={() => setIsOpen(true)}
-                    className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 flex items-center justify-center transition-transform hover:scale-105"
-                >
-                    <Bot className="w-8 h-8" />
-                </Button>
-            )}
-
-            {/* Chat Sidebar (Overlay) */}
-            <div
-                className={`fixed top-0 right-0 h-[100dvh] w-full md:w-[500px] lg:w-[600px] bg-white dark:bg-gray-950 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col border-l border-gray-200 dark:border-gray-800 ${isOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
-            >
-                {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur">
-                    <div className="flex items-center gap-3">
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => setIsOpen(false)}
-                            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </Button>
-                        <div className="flex items-center gap-2">
-                            <Bot className="h-5 w-5 text-primary" />
-                            <h2 className="font-semibold text-lg">{t('header_title')}</h2>
-                        </div>
-                    </div>
-                    <Button
-                        onClick={handleClearChat}
-                        variant="ghost"
-                        size="sm"
-                        className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
-                    >
-                        <Trash2 className="h-4 w-4 mr-1" />
-                        {t('clear') || 'Clear'}
-                    </Button>
-                </div>
-
-                {/* Messages Area */}
-                <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-gray-950">
-                    {messages.length === 0 ? (
-                        <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground p-8">
-                            <div className="bg-muted p-4 rounded-full mb-4">
-                                <Bot className="h-8 w-8 text-primary" />
-                            </div>
-                            <h3 className="font-medium text-foreground mb-1">{t('hi_there')}</h3>
-                            <p className="text-sm max-w-xs">{t('welcome')}</p>
-                        </div>
-                    ) : (
-                        messages.map((message) => (
-                            <div key={message.id} className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : ''}`}>
-                                {/* Bot Avatar */}
-                                {message.role !== 'user' && (
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-1">
-                                        <Bot className="w-5 h-5 text-primary" />
-                                    </div>
-                                )}
-
-                                {/* Message Content */}
-                                <div className={`flex flex-col max-w-[85%] space-y-1 ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
-                                    <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${message.role === 'user'
-                                        ? 'bg-primary text-primary-foreground rounded-tr-none'
-                                        : 'bg-muted border border-border rounded-tl-none'
-                                        }`}>
-                                        {message.parts ? message.parts.map((part, idx) => {
-                                            if (part.type === 'text') {
-                                                return (
-                                                    <div key={idx} className={`prose prose-sm max-w-none ${message.role === 'user' ? 'text-white prose-invert' : 'dark:prose-invert'}`}>
-                                                        <ReactMarkdown>{part.text}</ReactMarkdown>
-                                                    </div>
-                                                );
-                                            }
-                                            if (isToolMessagePart(part)) {
-                                                return <ToolPart part={part} index={idx} key={idx} />;
-                                            }
-                                            return null;
-                                        }) : (
-                                            <div className="text-red-500 text-xs">Error: Message format incompatible</div>
-                                        )}
-                                    </div>
-                                    <span className="text-[10px] text-muted-foreground opacity-70 px-1">
-                                        {message.role === 'user' ? t('you') : t('assistant')}
-                                    </span>
-                                </div>
-
-                                {/* User Avatar */}
-                                {message.role === 'user' && (
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center mt-1">
-                                        <User className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                                    </div>
-                                )}
-                            </div>
-                        ))
-                    )}
-
-                    {/* Loading Indicator */}
-                    {isLoading && (
-                        <div className="flex gap-3">
-                            <div className="bg-muted border border-border rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2">
-                                <Loader2 className="w-4 h-4 animate-spin text-primary" />
-                                <span className="text-xs text-muted-foreground">{t('thinking')}</span>
-                            </div>
-                        </div>
-                    )}
-
-                    <div ref={messagesEndRef} />
-                </div>
-
-                {/* Input Area */}
-                <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-                    <form onSubmit={handleFormSubmit} className="flex gap-2 items-center bg-muted/50 border border-input rounded-full px-2 py-1 focus-within:ring-2 focus-within:ring-ring ring-offset-2 ring-offset-background transition-all">
-                        <Input
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            placeholder={t('placeholder') || 'Ask about H1B wages...'}
-                            disabled={isLoading}
-                            className="flex-1 border-none bg-transparent focus-visible:ring-0 shadow-none px-3"
-                        />
-                        <Button
-                            type="submit"
-                            disabled={isLoading || !input.trim()}
-                            size="icon"
-                            className={`rounded-full h-8 w-8 m-1 transition-all ${input.trim() ? '' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                        >
-                            <Send className="h-4 w-4" />
-                        </Button>
-                    </form>
-                    <div className="text-[10px] text-center text-muted-foreground mt-2 opacity-60">
-                        {t('disclaimer')}
-                    </div>
-                </div>
-            </div>
         </>
     );
 }
