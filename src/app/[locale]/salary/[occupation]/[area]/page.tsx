@@ -80,9 +80,10 @@ export async function generateStaticParams() {
 
   if (!occupations || !areas) return [];
 
-  // Filter for Popular Occupations AND Tier 1-3 Areas
+  // Filter for Popular Occupations AND Tier 1-2 Areas (Optimization for build time)
+  // Tier 3 areas will be generated on-demand via ISR (dynamicParams = true)
   const popularOccupations = occupations.filter(o => o.isPopular);
-  const targetAreas = areas.filter(a => a.tier && a.tier <= 3);
+  const targetAreas = areas.filter(a => a.tier && a.tier <= 2);
 
   const params = [];
   
