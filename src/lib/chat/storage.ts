@@ -46,8 +46,8 @@ export async function saveChat(
         return;
     }
 
-    // Save full state with 30-day TTL
-    await redis.set(key, JSON.stringify(messages), { ex: 60 * 60 * 24 * 30 });
+    // Upstash Redis client automatically serializes objects
+    await redis.set(key, messages, { ex: 60 * 60 * 24 * 30 });
 }
 
 /**
@@ -63,18 +63,13 @@ export async function getChat(visitorId: string): Promise<UIMessage[]> {
     }
 
     const key = getChatKey(visitorId);
-    const data = await redis.get<string>(key);
+    const data = await redis.get<UIMessage[]>(key);
 
     if (!data) return [];
 
-    try {
-        const parsed = JSON.parse(data);
-        if (Array.isArray(parsed)) {
-            return parsed as UIMessage[];
-        }
-        return [];
-    } catch (error) {
-        console.error("[chat/storage] Failed to parse chat history:", error);
-        return [];
+    if (Array.isArray(data)) {
+        return data;
     }
+
+    return [];
 }

@@ -195,17 +195,22 @@ export function ChatWidget() {
                             const parsed = JSON.parse(stored);
                             if (isStoredMessagesArray(parsed) && parsed.length > 0) {
                                 // Migrate to backend
-                                await fetch('/api/chat/history', {
+                                const res = await fetch('/api/chat/history', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ visitorId, messages: parsed }),
                                 });
+
+                                if (!res.ok) {
+                                    throw new Error(`Migration failed: ${res.status}`);
+                                }
+
                                 setInitialMessages(parsed);
                                 localStorage.removeItem('h1b-chat-messages');
                             }
                         } catch (error) {
                             console.error('Failed to parse/migrate localStorage:', error);
-                            localStorage.removeItem('h1b-chat-messages');
+                            // Do NOT remove localStorage on error, so we can try again later
                         }
                     }
                 }
