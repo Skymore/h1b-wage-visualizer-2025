@@ -224,7 +224,7 @@ export default function MapView({
                                 aria-expanded={legendOpen}
                                 aria-label={legendOpen ? t('legend_collapse') : t('legend_expand')}
                             >
-                                <ChevronDown className={`h-4 w-4 transition-transform ${legendOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown className={`h-4 w-4 transition-transform ${legendOpen ? '' : 'rotate-180'}`} />
                             </Button>
                         </div>
                         {legendOpen && (
