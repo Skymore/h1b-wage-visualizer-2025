@@ -60,7 +60,8 @@
         "mapbox_nav_zoom_out": "축소",
         "mapbox_scroll_zoom_ctrl": "Ctrl 키를 누른 채 스크롤하여 지도 확대/축소",
         "mapbox_scroll_zoom_cmd": "⌘ 키를 누른 채 스크롤하여 지도 확대/축소",
-        "mapbox_touch_pan": "두 손가락으로 지도를 이동"
+        "mapbox_touch_pan": "두 손가락으로 지도를 이동",
+        "data_source": "데이터 소스"
     },
     "ChatWidget": {
         "welcome": "직업 및 위치별 H1B 급여에 대해 물어보세요!",

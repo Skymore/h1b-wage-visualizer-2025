@@ -60,7 +60,8 @@
         "mapbox_nav_zoom_out": "ズームアウト",
         "mapbox_scroll_zoom_ctrl": "Ctrl を押しながらスクロールで地図をズーム",
         "mapbox_scroll_zoom_cmd": "⌘ を押しながらスクロールで地図をズーム",
-        "mapbox_touch_pan": "2 本指で地図を移動"
+        "mapbox_touch_pan": "2 本指で地図を移動",
+        "data_source": "データソース"
     },
     "ChatWidget": {
         "welcome": "職種や場所ごとのH1B給与について聞いてください！",

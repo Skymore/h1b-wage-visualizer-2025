@@ -60,7 +60,8 @@
         "mapbox_nav_zoom_out": "Dézoomer",
         "mapbox_scroll_zoom_ctrl": "Utilisez Ctrl + défilement pour zoomer sur la carte",
         "mapbox_scroll_zoom_cmd": "Utilisez ⌘ + défilement pour zoomer sur la carte",
-        "mapbox_touch_pan": "Utilisez deux doigts pour déplacer la carte"
+        "mapbox_touch_pan": "Utilisez deux doigts pour déplacer la carte",
+        "data_source": "Source de données"
     },
     "ChatWidget": {
         "welcome": "Interrogez-moi sur les salaires H1B pour différentes professions et lieux !",

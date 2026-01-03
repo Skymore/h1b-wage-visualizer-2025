@@ -457,9 +457,21 @@ export default function HomePage() {
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
               {t('title')}
             </h1>
-            <p className="text-base text-muted-foreground leading-relaxed md:text-lg">
+            <div className="text-base text-muted-foreground leading-relaxed md:text-lg">
               {t('subtitle')}
-            </p>
+              <span className="mx-2 opacity-50">|</span>
+              <span className="text-sm">
+                <span className="opacity-70">{t('data_source')}: </span>
+                <a
+                  href="https://flag.dol.gov/wage-data/wage-search"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-primary transition-colors"
+                >
+                  DOL FLAG
+                </a>
+              </span>
+            </div>
           </div>
 
 

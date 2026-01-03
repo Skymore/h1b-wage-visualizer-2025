@@ -89,7 +89,8 @@
         "mapbox_nav_zoom_out": "Zoom out",
         "mapbox_scroll_zoom_ctrl": "Use Ctrl + scroll to zoom the map",
         "mapbox_scroll_zoom_cmd": "Use ⌘ + scroll to zoom the map",
-        "mapbox_touch_pan": "Use two fingers to move the map"
+        "mapbox_touch_pan": "Use two fingers to move the map",
+        "data_source": "Data source"
     },
     "ChatWidget": {
         "welcome": "Ask me about H1B wages for different occupations and locations!",

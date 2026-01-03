@@ -60,7 +60,8 @@
         "mapbox_nav_zoom_out": "Alejar",
         "mapbox_scroll_zoom_ctrl": "Usa Ctrl y el desplazamiento para ampliar el mapa",
         "mapbox_scroll_zoom_cmd": "Usa ⌘ y el desplazamiento para ampliar el mapa",
-        "mapbox_touch_pan": "Usa dos dedos para mover el mapa"
+        "mapbox_touch_pan": "Usa dos dedos para mover el mapa",
+        "data_source": "Fuente de datos"
     },
     "ChatWidget": {
         "welcome": "¡Pregúntame sobre los salarios H1B para diferentes ocupaciones y ubicaciones!",

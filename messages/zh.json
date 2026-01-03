@@ -60,7 +60,8 @@
         "mapbox_nav_zoom_out": "缩小",
         "mapbox_scroll_zoom_ctrl": "按住 Ctrl 并滚动以缩放地图",
         "mapbox_scroll_zoom_cmd": "按住 ⌘ 并滚动以缩放地图",
-        "mapbox_touch_pan": "使用两指移动地图"
+        "mapbox_touch_pan": "使用两指移动地图",
+        "data_source": "数据来源"
     },
     "ChatWidget": {
         "welcome": "您可以询问任何职位的H1B工资情况！",
