@@ -153,6 +153,13 @@
         "no_data": "Keine spezifischen Lohndaten für diese Kombination verfügbar.",
         "footer_title": "Suchen Sie andere Standorte?",
         "footer_desc": "Durchsuchen Sie unsere Datenbank mit über 850 Berufen an mehr als 2.600 US-Standorten.",
-        "view_map": "Auf Karte anzeigen"
+        "view_map": "Auf Karte anzeigen",
+        "national_rank": "Nationaler Rang",
+        "top_percent": "Top {percent}%",
+        "rank_desc": "Im Vergleich zu allen US-Metropolregionen",
+        "ai_insights": "AI-Einblicke",
+        "market_analysis": "Fragen Sie alles",
+        "ask_anything": "Erhalten Sie sofortige Antworten zu Trends, Steuern und Lifestyle.",
+        "chat_button": "Chat starten"
     }
 }

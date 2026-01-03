@@ -1,10 +1,11 @@
 import { readPublicDataJson } from '@/lib/chat/data';
+import { ChatTriggerButton } from '@/components/ChatTriggerButton';
 import { toSlug } from '@/lib/utils';
 import type { OccupationRecord, AreaRecord, WageFile } from '@/lib/chat/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { ArrowLeft, MapPin, Briefcase, DollarSign, TrendingUp } from 'lucide-react';
+import { ArrowLeft, MapPin, Briefcase, DollarSign, TrendingUp, Sparkles, ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import {
@@ -50,7 +51,19 @@ async function getData(occupationSlug: string, areaSlug: string) {
   const wageData = await readPublicDataJson<WageFile>(`wages/${occupation.code}.json`);
   const wage = wageData?.wages?.find(w => w.area_id === area.id);
 
-  return { occupation, area, wage, allAreas: areas };
+  // Calculate Percentile Rank (Top X%)
+  let topPercentile = 0;
+  if (wageData?.wages && wage) {
+    const allL2 = wageData.wages.map(w => w.l2).filter(l2 => l2 > 0).sort((a, b) => a - b);
+    const rankIndex = allL2.indexOf(wage.l2); // 0-based index
+    // Formula: (Count of items >= this item / Total) * 100
+    // Since sorted ascending, items >= this item is (Total - index)
+    if (rankIndex !== -1) {
+      topPercentile = Math.ceil(((allL2.length - rankIndex) / allL2.length) * 100);
+    }
+  }
+
+  return { occupation, area, wage, allAreas: areas, topPercentile };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -168,28 +181,6 @@ export default async function SalaryPage({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('median_wage')}</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{wage ? formatAnnual(wage.l2) : 'N/A'}</div>
-              <p className="text-xs text-muted-foreground">{t('most_common')}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('entry_level')}</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{wage ? formatAnnual(wage.l1) : 'N/A'}</div>
-              <p className="text-xs text-muted-foreground">{t('junior_positions')}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{t('location_tier')}</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -198,6 +189,38 @@ export default async function SalaryPage({ params }: Props) {
               <p className="text-xs text-muted-foreground">
                 {area.tier === 1 ? t('tier_1_desc') : area.tier === 2 ? t('tier_2_desc') : t('tier_3_desc')}
               </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{t('national_rank')}</CardTitle>
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {data.topPercentile ? t('top_percent', { percent: data.topPercentile }) : 'N/A'}
+              </div>
+              <p className="text-xs text-muted-foreground">{t('rank_desc')}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-primary/5 border-primary/20 transition-colors hover:bg-primary/10">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-primary">{t('ai_insights')}</CardTitle>
+              <Sparkles className="h-4 w-4 text-primary" />
+            </CardHeader>
+            <CardContent>
+              <ChatTriggerButton
+                variant="ghost"
+                className="p-0 h-auto text-2xl font-bold text-primary hover:bg-transparent hover:text-primary/80 justify-start pl-0 mb-1 w-full group"
+              >
+                <span className="border-b-2 border-primary/20 group-hover:border-primary transition-colors">
+                  {t('market_analysis')}
+                </span>
+                <ArrowRight className="ml-2 w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </ChatTriggerButton>
+              <p className="text-xs text-muted-foreground">{t('ask_anything')}</p>
             </CardContent>
           </Card>
         </div>
@@ -265,7 +288,7 @@ export default async function SalaryPage({ params }: Props) {
           <div className="flex justify-center gap-4 pt-2">
             <Button asChild size="lg">
               <Link href={`/${locale}?soc=${occupation.code}&q=${encodeURIComponent(area.name)}`}>
-                <Briefcase className="mr-2 h-4 w-4" />
+                <Globe className="mr-2 h-4 w-4" />
                 {t('view_map')}
               </Link>
             </Button>

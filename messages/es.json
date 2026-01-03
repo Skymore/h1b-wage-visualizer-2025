@@ -153,6 +153,13 @@
         "no_data": "No hay datos salariales específicos disponibles para esta combinación.",
         "footer_title": "¿Buscas otras ubicaciones?",
         "footer_desc": "Busca en nuestra base de datos de más de 850 ocupaciones en más de 2,600 ubicaciones en EE. UU.",
-        "view_map": "Ver en el mapa"
+        "view_map": "Ver en el mapa",
+        "national_rank": "Rango Nacional",
+        "top_percent": "Top {percent}%",
+        "rank_desc": "En comparación con todas las áreas metropolitanas de EE. UU.",
+        "ai_insights": "Perspectivas de IA",
+        "market_analysis": "Pregunta lo que sea",
+        "ask_anything": "Obtén respuestas instantáneas sobre tendencias, impuestos y estilo de vida.",
+        "chat_button": "Iniciar chat"
     }
 }

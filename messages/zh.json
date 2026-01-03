@@ -153,6 +153,13 @@
         "no_data": "该组合暂无特定工资数据。",
         "footer_title": "寻找其他地区？",
         "footer_desc": "搜索我们涵盖美国 2,600 多个地点、850 多种职业的完整数据库。",
-        "view_map": "在地图上查看"
+        "view_map": "在地图上查看",
+        "national_rank": "全美排名",
+        "top_percent": "前 {percent}%",
+        "rank_desc": "与全美所有都会区相比",
+        "ai_insights": "AI 洞察",
+        "market_analysis": "任意提问",
+        "ask_anything": "获取关于趋势、税务和生活方式的即时解答。",
+        "chat_button": "开始聊天"
     }
 }

@@ -26,14 +26,14 @@ npx tsx scripts/enrich-areas.ts      # Add lat/lon to areas.json
 
 ## Commit Guidelines
 
-Follow **Conventional Commits** (Angular style):
+Follow **Conventional Commits** (Angular style). **STRICT ADHERENCE REQUIRED.**
 
 ```
 <type>(<scope>): <description>
 ```
 
 - **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`
-- **Scope**: Optional - `chat`, `map`, `api`, `i18n`, etc.
+- **Scope**: Required - `chat`, `map`, `api`, `i18n`, etc.
 - **Description**: Lowercase, imperative mood, no period, ≤50 chars
 - **Breaking changes**: Add `!` after type, e.g., `feat(api)!: remove old endpoint`
 
@@ -179,16 +179,15 @@ This project currently has no automated tests. When adding features, consider th
 ### Internationalization
 - **All user-facing strings must be translated**
   - **Source of Truth**: `messages/strings.json`. (Ideally start by editing `messages/en.json` then copy to `strings.json`)
-  - **Workflow**:
-    1. Add/modify keys in `en.json`
-    2. Copy content to `strings.json`
-    3. Run `npm run translate` to auto-generate all other languages
+  - **Workflow** (**IMPORTANT**):
+    1. Add/modify keys in `messages/en.json` (Development)
+    2. **Copy content to `messages/strings.json`** (Source of Truth)
+    3. Run `npm run translate` to auto-generate all other languages (zh, ja, ko, es, fr, de, hi)
+       - **DO NOT** manually edit `zh.json`, `es.json`, etc. The script will overwrite them.
     4. Run `npm run validate-i18n` to check for quality/consistency
   - **Environment**: Ensure `OPENROUTER_API_KEY` is set in `.env.local`
   - Use `useTranslations()` hook, never hardcode text
 - **Supported locales**: en, zh, ja, ko, es, fr, de, hi
-- **Debug FTUE**: Append `?reset-ftue=true` to URL to reset onboarding tour
 
 ### Design System
 - **Theme**: New York / Neutral (grayscale, no color accents)
-- **Mobile**: Use `overflow-hidden` on body when modals open

@@ -26,7 +26,14 @@
         "no_data": "No specific wage data available for this combination.",
         "footer_title": "Looking for other locations?",
         "footer_desc": "Search our complete database of 850+ occupations across 2,600+ US locations.",
-        "view_map": "View on Map"
+        "view_map": "View on Map",
+        "national_rank": "National Rank",
+        "top_percent": "Top {percent}%",
+        "rank_desc": "Compared to all US metro areas",
+        "ai_insights": "AI Insights",
+        "market_analysis": "Ask Anything",
+        "ask_anything": "Get instant answers on trends, taxes, & lifestyle.",
+        "chat_button": "Start Chat"
     },
     "HomePage": {
         "title": "H1B Wage Visualization",

@@ -153,6 +153,13 @@
         "no_data": "この組み合わせに該当する特定の賃金データはありません。",
         "footer_title": "他の場所をお探しですか？",
         "footer_desc": "全米2,600以上の場所、850以上の職種の完全なデータベースを検索。",
-        "view_map": "地図で見る"
+        "view_map": "地図で見る",
+        "national_rank": "全米ランク",
+        "top_percent": "上位 {percent}%",
+        "rank_desc": "全米の主要都市圏との比較",
+        "ai_insights": "AI分析",
+        "market_analysis": "何でも質問する",
+        "ask_anything": "トレンド、税金、ライフスタイルについて即座に回答を得られます。",
+        "chat_button": "チャットを開始"
     }
 }

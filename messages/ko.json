@@ -153,6 +153,13 @@
         "no_data": "이 조합에 대한 특정 임금 데이터가 없습니다.",
         "footer_title": "다른 지역을 찾으시나요?",
         "footer_desc": "미국 내 2,600개 이상의 지역, 850개 이상의 직업에 대한 전체 데이터베이스를 검색하세요.",
-        "view_map": "지도로 보기"
+        "view_map": "지도로 보기",
+        "national_rank": "전국 순위",
+        "top_percent": "상위 {percent}%",
+        "rank_desc": "미국 내 모든 메트로 지역과 비교",
+        "ai_insights": "AI 인사이트",
+        "market_analysis": "무엇이든 물어보세요",
+        "ask_anything": "트렌드, 세금, 라이프스타일에 대한 즉각적인 답변을 받아보세요.",
+        "chat_button": "채팅 시작"
     }
 }

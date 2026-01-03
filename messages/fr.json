@@ -153,6 +153,13 @@
         "no_data": "Aucune donnée salariale spécifique disponible pour cette combinaison.",
         "footer_title": "Vous cherchez d'autres lieux ?",
         "footer_desc": "Explorez notre base de données de plus de 850 professions dans plus de 2 600 localités aux États-Unis.",
-        "view_map": "Voir sur la carte"
+        "view_map": "Voir sur la carte",
+        "national_rank": "Classement National",
+        "top_percent": "Top {percent}%",
+        "rank_desc": "Par rapport à toutes les zones métropolitaines des États-Unis",
+        "ai_insights": "Aperçus IA",
+        "market_analysis": "Posez vos questions",
+        "ask_anything": "Réponses instantanées sur les tendances, les impôts et le mode de vie.",
+        "chat_button": "Démarrer le chat"
     }
 }
