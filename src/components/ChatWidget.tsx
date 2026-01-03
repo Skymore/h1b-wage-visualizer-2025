@@ -162,34 +162,62 @@ export function ChatWidget() {
     const [isClearDialogOpen, setIsClearDialogOpen] = useState(false);
     const [initialMessages, setInitialMessages] = useState<ChatMessage[]>([]);
     const [visitorId, setVisitorId] = useState<string | null>(null);
+    const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
 
-    // Load from localStorage on mount
-    useEffect(() => {
-        const stored = localStorage.getItem('h1b-chat-messages');
-        if (stored) {
-            const frameId = requestAnimationFrame(() => {
-                try {
-                    const parsed = JSON.parse(stored);
-                    if (isStoredMessagesArray(parsed)) {
-                        setInitialMessages(parsed);
-                    } else {
-                        localStorage.removeItem('h1b-chat-messages');
-                    }
-                } catch (error) {
-                    console.error('Failed to parse stored messages:', error);
-                    localStorage.removeItem('h1b-chat-messages');
-                }
-            });
-            return () => cancelAnimationFrame(frameId);
-        }
-    }, []);
-
+    // Get visitor ID on mount
     useEffect(() => {
         const id = getOrCreateVisitorId();
         if (!id) return;
         const frameId = requestAnimationFrame(() => setVisitorId(id));
         return () => cancelAnimationFrame(frameId);
     }, []);
+
+    // Load history from backend (with migration from localStorage)
+    useEffect(() => {
+        if (!visitorId || isHistoryLoaded) return;
+
+        const loadHistory = async () => {
+            try {
+                // Fetch remote history
+                const response = await fetch(`/api/chat/history?visitorId=${visitorId}`);
+                const data = await response.json();
+
+                if (data.messages && Array.isArray(data.messages) && data.messages.length > 0) {
+                    // Backend has history, use it
+                    setInitialMessages(data.messages);
+                    // Clear localStorage (migration complete)
+                    localStorage.removeItem('h1b-chat-messages');
+                } else {
+                    // Backend is empty, check localStorage for migration
+                    const stored = localStorage.getItem('h1b-chat-messages');
+                    if (stored) {
+                        try {
+                            const parsed = JSON.parse(stored);
+                            if (isStoredMessagesArray(parsed) && parsed.length > 0) {
+                                // Migrate to backend
+                                await fetch('/api/chat/history', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ visitorId, messages: parsed }),
+                                });
+                                setInitialMessages(parsed);
+                                localStorage.removeItem('h1b-chat-messages');
+                            }
+                        } catch (error) {
+                            console.error('Failed to parse/migrate localStorage:', error);
+                            localStorage.removeItem('h1b-chat-messages');
+                        }
+                    }
+                }
+                setIsHistoryLoaded(true);
+            } catch (error) {
+                console.error('Failed to load chat history:', error);
+                setIsHistoryLoaded(true);
+            }
+        };
+
+        void loadHistory();
+    }, [visitorId, isHistoryLoaded]);
 
     const { messages, sendMessage, status, setMessages } = useChat<ChatMessage>();
 
@@ -200,12 +228,6 @@ export function ChatWidget() {
         }
     }, [initialMessages, messages.length, setMessages]);
 
-    // Save to localStorage
-    useEffect(() => {
-        if (messages.length > 0) {
-            localStorage.setItem('h1b-chat-messages', JSON.stringify(messages));
-        }
-    }, [messages]);
 
     const isLoading = status === 'submitted' || status === 'streaming';
 
@@ -221,7 +243,20 @@ export function ChatWidget() {
         setIsClearDialogOpen(true);
     };
 
-    const confirmClearChat = () => {
+    const confirmClearChat = async () => {
+        // Clear backend history
+        if (visitorId) {
+            try {
+                await fetch('/api/chat/history', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ visitorId, messages: [] }),
+                });
+            } catch (error) {
+                console.error('Failed to clear backend history:', error);
+            }
+        }
+        // Clear frontend state
         localStorage.removeItem('h1b-chat-messages');
         setMessages([]);
         setInitialMessages([]);

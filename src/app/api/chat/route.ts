@@ -15,6 +15,7 @@ import { readPublicDataJson } from '@/lib/chat/data';
 import { buildSystemPrompt } from '@/lib/chat/prompt';
 import { createChatTools } from '@/lib/chat/tools';
 import { extractCostUSD, summarizeTokenCounts } from '@/lib/chat/usage';
+import { saveChat } from '@/lib/chat/storage';
 import type { OccupationRecord } from '@/lib/chat/types';
 
 interface ChatPayload {
@@ -29,19 +30,19 @@ const openrouter = createOpenRouter({
 
 export async function POST(req: Request) {
     // 1. Rate Limiting
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 
-              req.headers.get('x-real-ip') || 
-              'unknown';
-    
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+        req.headers.get('x-real-ip') ||
+        'unknown';
+
     const rateLimitResult = await rateLimit.checkAsync(ip);
-    
+
     if (!rateLimitResult.success) {
         return new Response(
-            JSON.stringify({ 
+            JSON.stringify({
                 error: 'Too Many Requests',
                 message: `Rate limit exceeded. Try again in ${Math.ceil((rateLimitResult.reset - Date.now()) / 1000)} seconds.`
-            }), 
-            { 
+            }),
+            {
                 status: 429,
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,7 +93,23 @@ export async function POST(req: Request) {
             usage: { include: true },
         }),
         stopWhen: stepCountIs(maxSteps),
-        onStepFinish: undefined,
+        onFinish: async ({ text }) => {
+            // Save complete chat history to Redis after AI responds
+            if (visitorId && text) {
+                try {
+                    // Append AI's response as a new assistant message
+                    const assistantMessage: UIMessage = {
+                        id: `msg-${Date.now()}`,
+                        role: 'assistant',
+                        parts: [{ type: 'text', text }],
+                    };
+                    const updatedMessages = [...messages, assistantMessage];
+                    await saveChat(visitorId, updatedMessages);
+                } catch (error) {
+                    console.error('[Chat] Failed to save chat history:', error);
+                }
+            }
+        },
         system: buildSystemPrompt(occupationsList),
         messages: modelMessages,
         tools,
