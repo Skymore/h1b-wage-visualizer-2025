@@ -121,8 +121,8 @@ const ToolPart = ({ part, index }: { part: ToolPartData; index: number }) => {
                 onClick={() => canExpand && setIsExpanded(!isExpanded)}
                 className={`flex items-center justify-between gap-2 text-xs p-2 rounded border transition-colors w-full text-left cursor-pointer
                     ${canExpand
-                        ? 'bg-green-50/50 border-green-100 text-green-700 hover:bg-green-100/50 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400'
-                        : 'bg-gray-50 border-gray-200 text-gray-500'}`}
+                        ? 'bg-muted/50 border-border text-foreground hover:bg-muted'
+                        : 'bg-muted/30 border-border text-muted-foreground'}`}
             >
                 <div className="flex items-center gap-2 overflow-hidden">
                     <Icon className="w-3 h-3 flex-shrink-0" />
@@ -135,16 +135,16 @@ const ToolPart = ({ part, index }: { part: ToolPartData; index: number }) => {
 
             {/* Expanded Details */}
             {isExpanded && canExpand && (
-                <div className="ml-2 p-2 text-[10px] bg-gray-50 dark:bg-gray-900 rounded border border-gray-200 dark:border-gray-800 overflow-x-auto">
+                <div className="ml-2 p-2 text-[10px] bg-muted/30 rounded border border-border overflow-x-auto">
                     {args && (
                         <div className="mb-2">
-                            <div className="font-semibold text-gray-500 mb-0.5">{t('arguments')}</div>
-                            <pre className="font-mono whitespace-pre-wrap text-gray-600 dark:text-gray-400">{JSON.stringify(args, null, 2)}</pre>
+                            <div className="font-semibold text-muted-foreground mb-0.5">{t('arguments')}</div>
+                            <pre className="font-mono whitespace-pre-wrap text-muted-foreground">{JSON.stringify(args, null, 2)}</pre>
                         </div>
                     )}
                     <div>
-                        <div className="font-semibold text-gray-500 mb-0.5">{t('result')}</div>
-                        <pre className="font-mono whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                        <div className="font-semibold text-muted-foreground mb-0.5">{t('result')}</div>
+                        <pre className="font-mono whitespace-pre-wrap text-foreground">
                             {result ? JSON.stringify(result, null, 2) : '(Empty Result)'}
                         </pre>
                     </div>
@@ -300,18 +300,18 @@ export function ChatWidget() {
                 <SheetContent
                     side="right"
                     hideClose={true}
-                    className="w-full sm:max-w-[500px] lg:max-w-[600px] p-0 border-l border-gray-200 dark:border-gray-800 flex flex-col gap-0 bg-white dark:bg-gray-950"
+                    className="w-full sm:max-w-[500px] lg:max-w-[600px] p-0 border-l border-border flex flex-col gap-0 bg-background"
                 >
                     <SheetTitle className="sr-only">Chat Assistant</SheetTitle>
                     {/* Header */}
-                    <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur shrink-0">
+                    <div className="flex items-center justify-between p-4 border-b border-border bg-muted/80 backdrop-blur shrink-0">
                         <div className="flex items-center gap-3">
                             {/* We can use SheetClose or just setOpen(false) */}
                             <Button
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => setIsOpen(false)}
-                                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                                className="text-muted-foreground hover:text-foreground"
                             >
                                 <ChevronRight className="w-5 h-5" />
                             </Button>
@@ -332,7 +332,7 @@ export function ChatWidget() {
                     </div>
 
                     {/* Messages Area */}
-                    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-gray-950 min-h-0">
+                    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-background min-h-0">
                         {messages.length === 0 ? (
                             <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground p-8">
                                 <div className="bg-muted p-4 rounded-full mb-4">
@@ -366,11 +366,11 @@ export function ChatWidget() {
                                                             }`}>
                                                             <ReactMarkdown
                                                                 components={{
-                                                                    strong: ({ node, ...props }) => <span className="font-bold text-indigo-600 dark:text-indigo-400" {...props} />,
-                                                                    a: ({ node, ...props }) => <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
-                                                                    p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                                                                    ul: ({ node, ...props }) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
-                                                                    li: ({ node, ...props }) => <li className="marker:text-gray-400 dark:marker:text-gray-600" {...props} />
+                                                                    strong: (props) => <span className="font-bold text-foreground" {...props} />,
+                                                                    a: (props) => <a className="text-foreground hover:underline hover:text-muted-foreground transition-colors" target="_blank" rel="noopener noreferrer" {...props} />,
+                                                                    p: (props) => <p className="mb-2 last:mb-0" {...props} />,
+                                                                    ul: (props) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                                                                    li: (props) => <li className="marker:text-muted-foreground" {...props} />
                                                                 }}
                                                             >
                                                                 {part.text}
@@ -393,8 +393,8 @@ export function ChatWidget() {
 
                                     {/* User Avatar */}
                                     {message.role === 'user' && (
-                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center mt-1">
-                                            <User className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-1">
+                                            <User className="w-5 h-5 text-muted-foreground" />
                                         </div>
                                     )}
                                 </div>
@@ -415,7 +415,7 @@ export function ChatWidget() {
                     </div>
 
                     {/* Input Area */}
-                    <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shrink-0">
+                    <div className="p-4 border-t border-border bg-background shrink-0">
                         <form onSubmit={handleFormSubmit} className="flex gap-2 items-center bg-muted/50 border border-input rounded-full px-2 py-1 focus-within:ring-2 focus-within:ring-ring ring-offset-2 ring-offset-background transition-all">
                             <Input
                                 value={input}

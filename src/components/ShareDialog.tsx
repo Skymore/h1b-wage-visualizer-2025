@@ -151,12 +151,12 @@ export function ShareDialog({ open, onOpenChange, selectedData, areas, socCode, 
                 <DialogFooter className="w-full grid grid-cols-2 gap-2 sm:gap-4">
                     <Button variant="secondary" onClick={handleCopy} disabled={isLoading} className="w-full">
                         {isCopied ? (
-                            <><Check className="mr-2 h-4 w-4 text-green-500" /> {t('copied')}</>
+                            <><Check className="mr-2 h-4 w-4" /> {t('copied')}</>
                         ) : (
                             <><Copy className="mr-2 h-4 w-4" /> {t('copy_image')}</>
                         )}
                     </Button>
-                    <Button onClick={handleDownload} disabled={isLoading} className="w-full bg-blue-600 hover:bg-blue-500 text-white">
+                    <Button onClick={handleDownload} disabled={isLoading} className="w-full">
                         <Download className="mr-2 h-4 w-4" /> {t('download_png')}
                     </Button>
                 </DialogFooter>

@@ -77,7 +77,7 @@ function SnowToggle() {
       className="transition-all duration-300 animate-in fade-in zoom-in shrink-0"
       title={label}
     >
-      <Icon className={`h-[1.2rem] w-[1.2rem] ${isSnowing ? (isDark ? 'text-blue-400 animate-pulse' : 'text-pink-400 animate-pulse') : ''}`} />
+      <Icon className={`h-[1.2rem] w-[1.2rem] ${isSnowing ? 'text-foreground animate-pulse' : ''}`} />
       <span className="sr-only">{label}</span>
     </Button>
   );

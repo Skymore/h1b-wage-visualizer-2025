@@ -80,7 +80,7 @@ export default async function MetricsPage({
         </header>
 
         {!kvConfigured && (
-          <div className="rounded-lg border border-dashed border-amber-200 bg-amber-50/50 px-4 py-3 text-sm text-amber-900">
+          <div className="rounded-lg border border-dashed border-border bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
             {t("kv_warning")}
           </div>
         )}
