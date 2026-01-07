@@ -451,16 +451,16 @@ export default function HomePage() {
         </div>
       </header>
 
-      <div className="w-full flex flex-col items-center space-y-6 mb-8 px-4">
-        <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-2xl md:rounded-3xl p-5 md:p-12 flex flex-col items-start text-left space-y-6 md:items-center md:text-center md:space-y-8">
-          <div className="space-y-4 w-full max-w-4xl">
+      <div className="w-full flex flex-col items-center space-y-3 mb-5 px-4">
+        <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col items-start text-left space-y-3 md:items-center md:text-center md:space-y-5">
+          <div className="space-y-2 w-full max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
               {t('title')}
             </h1>
-            <div className="text-sm text-muted-foreground leading-relaxed md:text-base">
+            <div className="text-xs text-muted-foreground leading-relaxed md:text-sm">
               {t('subtitle')}
               <span className="mx-2 opacity-50">|</span>
-              <span className="text-sm">
+              <span className="text-xs">
                 <span className="opacity-70">{t('data_source')}: </span>
                 <a
                   href="https://flag.dol.gov/wage-data/wage-search"
@@ -478,15 +478,15 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div id="location-filters" className="w-full max-w-7xl px-4 py-2 space-y-5">
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div id="location-filters" className="w-full max-w-7xl px-4 py-2 space-y-4">
+        <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
           <div className="w-full md:w-[350px] z-20 shadow-sm rounded-md">
             <Search onSelectOccupation={handleSocSelect} selectedSoc={selectedSoc} />
           </div>
 
           {selectedSoc && (
             <>
-              <div className="flex-1 w-full flex flex-col md:flex-row gap-4">
+              <div className="flex-1 w-full flex flex-col md:flex-row gap-3">
                 <Input
                   placeholder={t('search_locations')}
                   value={searchQuery}
@@ -504,10 +504,10 @@ export default function HomePage() {
                     isComposingRef.current = false;
                     handleSearchChange(event.currentTarget.value);
                   }}
-                  className="max-w-sm bg-muted/50 border-0 focus-visible:ring-1 focus-visible:ring-primary/20 h-12 shadow-sm"
+                  className="max-w-sm bg-muted/50 border-0 focus-visible:ring-1 focus-visible:ring-primary/20 h-10 text-sm shadow-sm"
                 />
                 <Select value={selectedState} onValueChange={handleStateChange}>
-                  <SelectTrigger className="w-full md:w-[200px] bg-muted/50 border-0 focus:ring-1 focus:ring-primary/20 h-12 shadow-sm">
+                  <SelectTrigger className="w-full md:w-[200px] bg-muted/50 border-0 focus:ring-1 focus:ring-primary/20 h-10 text-sm shadow-sm">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -518,7 +518,7 @@ export default function HomePage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="text-sm font-medium text-muted-foreground whitespace-nowrap bg-muted/30 px-3 py-1 rounded-full">
+              <div className="text-xs font-medium text-muted-foreground whitespace-nowrap bg-muted/30 px-2.5 py-0.5 rounded-full">
                 Showing {filteredWageData.length} locations
               </div>
             </>
@@ -527,9 +527,9 @@ export default function HomePage() {
 
         {selectedSoc && (
           /* City Tier Filter - Chips Style */
-          <div className="flex flex-col gap-3 pt-2">
-            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider pl-1">{t('city_size')}</span>
-            <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-2 pt-2">
+            <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider pl-1">{t('city_size')}</span>
+            <div className="flex flex-wrap gap-1.5">
               {[
                 { tier: 1, label: t('tier_1') },
                 { tier: 2, label: t('tier_2') },
@@ -543,7 +543,7 @@ export default function HomePage() {
                     key={tier}
                     onClick={() => handleTierToggle(tier)}
                     className={`
-                      inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+                      inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200
                       ${isSelected
                         ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:opacity-90'
                         : 'bg-muted/40 text-muted-foreground hover:bg-muted/60 hover:text-foreground'

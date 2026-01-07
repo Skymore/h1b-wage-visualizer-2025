@@ -90,7 +90,7 @@ export function Search({ onSelectOccupation, selectedSoc }: SearchProps) {
                         variant="ghost" // Changed from outline to ghost, manual styling below
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full justify-between h-12 text-base px-4 bg-background shadow-lg shadow-black/5 hover:bg-background/80 transition-all border-0 ring-1 ring-black/5"
+                        className="w-full justify-between h-10 text-sm px-3 bg-background shadow-lg shadow-black/5 hover:bg-background/80 transition-all border-0 ring-1 ring-black/5"
                     >
                         <span className="truncate">
                             {value
@@ -105,7 +105,7 @@ export function Search({ onSelectOccupation, selectedSoc }: SearchProps) {
                     <Command shouldFilter={false}>
                         <CommandInput
                             placeholder={t('search_placeholder')}
-                            className="h-9"
+                            className="h-8 text-sm"
                             value={searchQuery}
                             onValueChange={setSearchQuery}
                         />
