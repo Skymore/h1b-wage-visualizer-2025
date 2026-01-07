@@ -453,11 +453,11 @@ export default function HomePage() {
 
       <div className="w-full flex flex-col items-center space-y-6 mb-8 px-4">
         <div className="w-full max-w-5xl bg-gradient-to-b from-muted/20 to-transparent rounded-2xl md:rounded-3xl p-5 md:p-12 flex flex-col items-start text-left space-y-6 md:items-center md:text-center md:space-y-8">
-          <div className="space-y-4 w-full max-w-2xl">
+          <div className="space-y-4 w-full max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-1">
               {t('title')}
             </h1>
-            <div className="text-base text-muted-foreground leading-relaxed md:text-lg">
+            <div className="text-sm text-muted-foreground leading-relaxed md:text-base">
               {t('subtitle')}
               <span className="mx-2 opacity-50">|</span>
               <span className="text-sm">
@@ -559,12 +559,12 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-7xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-[1280px]">
         <div id="map-view" className="w-full h-[320px] md:h-[600px] rounded-xl overflow-hidden border shadow-sm bg-card">
           <MapView wageData={filteredWageData} areas={areas} wageScale={wageScale} socTitle={selectedSocTitle} />
         </div>
 
-        <div id="wage-dashboard" className="w-full">
+        <div id="wage-dashboard" className="w-full h-[320px] md:h-[600px]">
           {selectedSoc && (
             <WageDashboard
               socCode={selectedSoc}
@@ -574,7 +574,7 @@ export default function HomePage() {
             />
           )}
           {!selectedSoc && (
-            <div className="flex bg-muted/30 h-[600px] items-center justify-center rounded-lg border border-dashed">
+            <div className="flex bg-muted/30 h-full items-center justify-center rounded-lg border border-dashed">
               <p className="text-muted-foreground">Select an occupation to view wages</p>
             </div>
           )}

@@ -69,6 +69,19 @@
   }
 }
 
+@layer utilities {
+  .scroll-gutter {
+    scrollbar-gutter: stable;
+    padding-right: 0.5rem;
+  }
+}
+
+@supports (scrollbar-gutter: stable) {
+  .scroll-gutter {
+    padding-right: 0;
+  }
+}
+
 /* Mapbox Dark Mode Overrides */
 .dark .mapboxgl-popup-content {
   background-color: hsl(var(--background));

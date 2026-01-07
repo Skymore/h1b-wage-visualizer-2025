@@ -255,13 +255,13 @@ export function WageDashboard({
         });
     }, [wageData, sortKey, sortDirection, areaMap]);
 
-    const displayData = isExpanded ? sortedData : sortedData.slice(0, 20);
+    const displayData = isExpanded ? sortedData : sortedData.slice(0, 10);
 
     if (!wageData) return null; // Accept empty array
 
     return (
-        <div className="space-y-6 relative pb-16">
-            <Card className="border-0 shadow-none bg-transparent">
+        <div className="h-full flex flex-col relative">
+            <Card className="border-0 shadow-none bg-transparent flex-1 flex flex-col overflow-hidden">
                 {selectedAreas.size > 0 && (
                     <div className="mb-4">
                         {/* Placeholder for potential future controls or just empty if not needed */}
@@ -269,11 +269,12 @@ export function WageDashboard({
                 )
                 }
 
-                <div className="rounded-xl border bg-card shadow-sm overflow-hidden">
-                    <Table>
-                        <TableHeader className="bg-muted/40 sticky top-0 z-10 backdrop-blur-sm">
-                            <TableRow className="hover:bg-transparent border-b">
-                                <TableHead id="compare-col-header" className="w-[50px] text-center">
+                <div className="rounded-xl border bg-card shadow-sm overflow-hidden flex-1 flex flex-col">
+                    <div className="overflow-auto flex-1 relative [&>div]:overflow-visible scroll-gutter">
+                        <Table>
+                        <TableHeader className="sticky top-0 z-20 bg-card">
+                            <TableRow className="hover:bg-transparent border-b border-border">
+                                <TableHead id="compare-col-header" className="w-[50px] text-center bg-card h-10 py-2">
                                     <TooltipProvider delayDuration={50}>
                                         <Tooltip>
                                             <TooltipTrigger asChild>
@@ -287,19 +288,19 @@ export function WageDashboard({
                                         </Tooltip>
                                     </TooltipProvider>
                                 </TableHead>
-                                <TableHead onClick={() => handleSort('area')} className="cursor-pointer hover:text-primary transition-colors py-4 whitespace-nowrap">
+                                <TableHead onClick={() => handleSort('area')} className="cursor-pointer hover:text-primary transition-colors py-2 h-10 whitespace-nowrap min-w-[300px] bg-card">
                                     <div className={`flex items-center gap-1 font-semibold flex-nowrap ${sortKey === 'area' ? 'text-primary' : ''}`}>{t('area')} <SortIcon active={sortKey === 'area'} direction={sortDirection as SortDirection} /></div>
                                 </TableHead>
-                                <TableHead onClick={() => handleSort('l1')} className="cursor-pointer hover:text-primary transition-colors text-right py-4 whitespace-nowrap px-2">
+                                <TableHead onClick={() => handleSort('l1')} className="cursor-pointer hover:text-primary transition-colors text-right py-2 h-10 whitespace-nowrap px-2 bg-card">
                                     <div className={`flex items-center justify-end gap-1 font-semibold flex-nowrap ${sortKey === 'l1' ? 'text-primary' : ''}`} title={t('level_1')}>L1 <SortIcon active={sortKey === 'l1'} direction={sortDirection as SortDirection} /></div>
                                 </TableHead>
-                                <TableHead onClick={() => handleSort('l2')} className="cursor-pointer hover:text-primary transition-colors text-right py-4 whitespace-nowrap px-2">
+                                <TableHead onClick={() => handleSort('l2')} className="cursor-pointer hover:text-primary transition-colors text-right py-2 h-10 whitespace-nowrap px-2 bg-card">
                                     <div className={`flex items-center justify-end gap-1 font-semibold flex-nowrap ${sortKey === 'l2' ? 'text-primary' : ''}`} title={t('level_2')}>L2 <SortIcon active={sortKey === 'l2'} direction={sortDirection as SortDirection} /></div>
                                 </TableHead>
-                                <TableHead onClick={() => handleSort('l3')} className="cursor-pointer hover:text-primary transition-colors text-right py-4 whitespace-nowrap px-2">
+                                <TableHead onClick={() => handleSort('l3')} className="cursor-pointer hover:text-primary transition-colors text-right py-2 h-10 whitespace-nowrap px-2 bg-card">
                                     <div className={`flex items-center justify-end gap-1 font-semibold flex-nowrap ${sortKey === 'l3' ? 'text-primary' : ''}`} title={t('level_3')}>L3 <SortIcon active={sortKey === 'l3'} direction={sortDirection as SortDirection} /></div>
                                 </TableHead>
-                                <TableHead onClick={() => handleSort('l4')} className="cursor-pointer hover:text-primary transition-colors text-right py-4 whitespace-nowrap px-2">
+                                <TableHead onClick={() => handleSort('l4')} className="cursor-pointer hover:text-primary transition-colors text-right py-2 h-10 whitespace-nowrap px-2 bg-card">
                                     <div className={`flex items-center justify-end gap-1 font-semibold flex-nowrap ${sortKey === 'l4' ? 'text-primary' : ''}`} title={t('level_4')}>L4 <SortIcon active={sortKey === 'l4'} direction={sortDirection as SortDirection} /></div>
                                 </TableHead>
                             </TableRow>
@@ -311,7 +312,7 @@ export function WageDashboard({
                                     data-state={selectedAreas.has(row.area_id) ? "selected" : ""}
                                     className="transition-colors hover:bg-muted/40 data-[state=selected]:bg-primary/5"
                                 >
-                                    <TableCell className="text-center">
+                                    <TableCell className="text-center py-3 px-2">
                                         <input
                                             type="checkbox"
                                             className="w-4 h-4 accent-primary cursor-pointer align-middle rounded border-gray-300"
@@ -320,7 +321,7 @@ export function WageDashboard({
                                             disabled={!selectedAreas.has(row.area_id) && selectedAreas.size >= 4}
                                         />
                                     </TableCell>
-                                    <TableCell className={`font-medium ${sortKey === 'area' ? "text-primary font-bold bg-muted/10" : "text-foreground"}`}>
+                                    <TableCell className={`font-medium min-w-[300px] py-3 px-3 ${sortKey === 'area' ? "text-primary font-bold bg-muted/10" : "text-foreground"}`}>
                                         {socTitle ? (
                                             <Link
                                                 href={`/${pathname.split('/').filter(Boolean)[0] || 'en'}/salary/${toSlug(socTitle)}/${toSlug(areaMap.get(row.area_id) || row.area_id)}`}
@@ -333,22 +334,23 @@ export function WageDashboard({
                                             areaMap.get(row.area_id) || row.area_id
                                         )}
                                     </TableCell>
-                                    <TableCell className={`text-right ${sortKey === 'l1' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l1} usePopover={isTouchDevice} /></TableCell>
-                                    <TableCell className={`text-right ${sortKey === 'l2' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l2} usePopover={isTouchDevice} /></TableCell>
-                                    <TableCell className={`text-right ${sortKey === 'l3' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l3} usePopover={isTouchDevice} /></TableCell>
-                                    <TableCell className={`text-right ${sortKey === 'l4' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l4} usePopover={isTouchDevice} /></TableCell>
+                                    <TableCell className={`text-right py-3 px-3 ${sortKey === 'l1' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l1} usePopover={isTouchDevice} /></TableCell>
+                                    <TableCell className={`text-right py-3 px-3 ${sortKey === 'l2' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l2} usePopover={isTouchDevice} /></TableCell>
+                                    <TableCell className={`text-right py-3 px-3 ${sortKey === 'l3' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l3} usePopover={isTouchDevice} /></TableCell>
+                                    <TableCell className={`text-right py-3 px-3 ${sortKey === 'l4' ? "font-bold bg-muted/10" : ""}`}><WageCell hourly={row.l4} usePopover={isTouchDevice} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
+                    </div>
 
-                    {wageData.length > 20 && (
-                        <div className="p-4 flex justify-center border-t bg-muted/10">
-                            <Button variant="ghost" onClick={() => setIsExpanded(!isExpanded)} className="text-muted-foreground hover:text-foreground">
+                    {wageData.length > 10 && (
+                        <div className="h-10 px-4 flex items-center justify-center border-t bg-muted/10 flex-shrink-0">
+                            <Button variant="ghost" size="sm" onClick={() => setIsExpanded(!isExpanded)} className="text-muted-foreground hover:text-foreground h-7">
                                 {isExpanded ? (
-                                    <><ChevronUp className="mr-2 h-4 w-4" /> {t('show_less')}</>
+                                    <><ChevronUp className="mr-2 h-3 w-3" /> {t('show_less')}</>
                                 ) : (
-                                    <><ChevronDown className="mr-2 h-4 w-4" /> {t('show_all', { count: wageData.length - 20 })}</>
+                                    <><ChevronDown className="mr-2 h-3 w-3" /> {t('show_all', { count: wageData.length - 10 })}</>
                                 )}
                             </Button>
                         </div>
