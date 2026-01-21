@@ -235,12 +235,24 @@ export function ChatWidget() {
 
 
     const isLoading = status === 'submitted' || status === 'streaming';
+    const presetQuestions = [
+        t('preset_q1'),
+        t('preset_q2'),
+        t('preset_q3'),
+    ];
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input.trim() || isLoading) return;
         const options = visitorId ? { body: { visitorId } } : undefined;
         await sendMessage({ text: input }, options);
+        setInput('');
+    };
+
+    const handlePresetQuestion = async (question: string) => {
+        if (!question.trim() || isLoading) return;
+        const options = visitorId ? { body: { visitorId } } : undefined;
+        await sendMessage({ text: question }, options);
         setInput('');
     };
 
@@ -293,7 +305,7 @@ export function ChatWidget() {
                         onClick={() => setIsOpen(true)}
                         className="fixed right-6 bottom-6 rounded-full w-14 h-14 shadow-lg z-50 flex items-center justify-center transition-transform hover:scale-105"
                     >
-                        <Bot className="w-8 h-8" />
+                        <Sparkles className="w-8 h-8 text-blue-500" />
                     </Button>
                 )}
 
@@ -316,7 +328,7 @@ export function ChatWidget() {
                                 <ChevronRight className="w-5 h-5" />
                             </Button>
                             <div className="flex items-center gap-2">
-                                <Bot className="h-5 w-5 text-primary" />
+                                <Sparkles className="h-5 w-5 text-blue-500" />
                                 <h2 className="font-semibold text-lg">{t('header_title')}</h2>
                             </div>
                         </div>
@@ -336,10 +348,25 @@ export function ChatWidget() {
                         {messages.length === 0 ? (
                             <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground p-8">
                                 <div className="bg-muted p-4 rounded-full mb-4">
-                                    <Bot className="h-8 w-8 text-primary" />
+                                    <Sparkles className="h-8 w-8 text-blue-500" />
                                 </div>
                                 <h3 className="font-medium text-foreground mb-1">{t('hi_there')}</h3>
                                 <p className="text-sm max-w-xs">{t('welcome')}</p>
+                                <div className="mt-4 flex flex-col gap-2 w-full max-w-sm">
+                                    {presetQuestions.map((question) => (
+                                        <Button
+                                            key={question}
+                                            type="button"
+                                            variant="secondary"
+                                            size="sm"
+                                            className="justify-start text-left whitespace-normal h-auto py-2"
+                                            onClick={() => handlePresetQuestion(question)}
+                                            disabled={isLoading}
+                                        >
+                                            {question}
+                                        </Button>
+                                    ))}
+                                </div>
                             </div>
                         ) : (
                             messages.map((message) => (

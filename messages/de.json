@@ -79,7 +79,10 @@
         "assistant": "Assistent",
         "disclaimer": "KI kann Fehler machen. Überprüfen Sie wichtige Informationen.",
         "cancel": "Abbrechen",
-        "test_key": "Testübersetzung"
+        "test_key": "Testübersetzung",
+        "preset_q1": "Wie hoch ist der Level 2 Lohn für Software Developers in San Francisco?",
+        "preset_q2": "Welche Städte zahlen am meisten für Data Scientists?",
+        "preset_q3": "Vergleiche Level 2 Löhne für Product Managers in New York und Austin."
     },
     "Welcome": {
         "title": "Willkommen beim H1B Wage Visualizer",

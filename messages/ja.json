@@ -79,7 +79,10 @@
         "assistant": "アシスタント",
         "disclaimer": "AI は間違いを犯す可能性があります。重要な情報を確認してください。",
         "cancel": "Cancel",
-        "test_key": "テスト翻訳"
+        "test_key": "テスト翻訳",
+        "preset_q1": "サンフランシスコの Software Developers の Level 2 賃金はいくらですか？",
+        "preset_q2": "Data Scientists に対して最も高い給与を支払っている都市はどこですか？",
+        "preset_q3": "ニューヨークとオースティンの Product Managers の Level 2 賃金を比較する。"
     },
     "Welcome": {
         "title": "H1B Wage Visualizer へようこそ",

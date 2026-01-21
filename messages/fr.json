@@ -79,7 +79,10 @@
         "assistant": "Assistant",
         "disclaimer": "L'IA peut faire des erreurs. Vérifiez les infos importantes.",
         "cancel": "Cancel",
-        "test_key": "Traduction de test"
+        "test_key": "Traduction de test",
+        "preset_q1": "Quel est le salaire Level 2 pour les Software Developers à San Francisco ?",
+        "preset_q2": "Quelles villes paient le mieux les Data Scientists ?",
+        "preset_q3": "Comparer les salaires Level 2 pour les Product Managers à New York et Austin."
     },
     "Welcome": {
         "title": "Bienvenue sur H1B Wage Visualizer",

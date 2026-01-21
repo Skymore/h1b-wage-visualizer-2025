@@ -79,7 +79,10 @@
         "assistant": "어시스턴트",
         "disclaimer": "AI는 실수를 할 수 있습니다. 중요 정보를 확인하세요.",
         "cancel": "Cancel",
-        "test_key": "테스트 번역"
+        "test_key": "테스트 번역",
+        "preset_q1": "샌프란시스코 Software Developers의 Level 2 임금은 얼마인가요?",
+        "preset_q2": "Data Scientists에게 가장 높은 급여를 주는 도시는 어디인가요?",
+        "preset_q3": "뉴욕과 오스틴의 Product Managers Level 2 임금을 비교해 주세요."
     },
     "Welcome": {
         "title": "H1B Wage Visualizer에 오신 것을 환영합니다",

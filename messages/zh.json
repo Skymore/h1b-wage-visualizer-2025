@@ -79,7 +79,10 @@
         "assistant": "助手",
         "disclaimer": "AI 可能会犯错。请核对重要信息。",
         "cancel": "Cancel",
-        "test_key": "测试翻译"
+        "test_key": "测试翻译",
+        "preset_q1": "旧金山 Software Developers 的 Level 2 工资是多少？",
+        "preset_q2": "哪些城市给 Data Scientists 的待遇最高？",
+        "preset_q3": "比较纽约和奥斯汀 Product Managers 的 Level 2 工资。"
     },
     "Welcome": {
         "title": "欢迎使用 H1B Wage Visualizer",

@@ -114,7 +114,10 @@
         "you": "You",
         "assistant": "Assistant",
         "disclaimer": "AI can make mistakes. Check important info.",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "preset_q1": "What is the Level 2 wage for Software Developers in San Francisco?",
+        "preset_q2": "Which cities pay the highest for Data Scientists?",
+        "preset_q3": "Compare Level 2 wages for Product Managers in New York and Austin."
     },
     "Welcome": {
         "title": "Welcome to H1B Wage Visualizer",

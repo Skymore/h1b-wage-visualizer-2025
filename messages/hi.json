@@ -79,7 +79,10 @@
         "assistant": "सहायक",
         "disclaimer": "AI गलतियाँ कर सकता है। महत्वपूर्ण जानकारी की जाँच करें।",
         "cancel": "Cancel",
-        "test_key": "परीक्षण अनुवाद"
+        "test_key": "परीक्षण अनुवाद",
+        "preset_q1": "San Francisco में Software Developers के लिए Level 2 वेतन क्या है?",
+        "preset_q2": "Data Scientists के लिए कौन से शहर सबसे अधिक भुगतान करते हैं?",
+        "preset_q3": "New York और Austin में Product Managers के लिए Level 2 वेतन की तुलना करें।"
     },
     "Welcome": {
         "title": "H1B Wage Visualizer में आपका स्वागत है",
